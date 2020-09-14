@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="1dp"
+    app:cardUseCompatPadding="true"
+    tools:context="UpdateProperty">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1200dp"
+            android:layout_margin="5dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:id="@+id/headerTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Update Property Details"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:background="?attr/colorButtonNormal"/>
+
+            </RelativeLayout>
+
+            <ImageButton
+                android:id="@+id/updateImageButton"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/design_default_color_background"
+                android:scaleType="fitXY"
+                android:src="@drawable/imageplsceholder" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="197dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:hint="   Property Type :"
+                    android:textSize="20dp" />
+
+                <Spinner
+                    android:id="@+id/updatePropertyTypeSpin"
+                    android:layout_width="190dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:inputType="text"
+                    android:minLines="1"
+                    android:text="State" />
+
+
+            </LinearLayout>
+
+
+
+
+            <EditText
+                android:id="@+id/updatePropertyNameEditText"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:hint="Property Name"
+                android:inputType="text"
+                android:minLines="3" />
+
+            <EditText
+                android:id="@+id/updateOwnerNameEditText"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:hint="Owner Name"
+                android:inputType="text"
+                android:minLines="3" />
+
+
+            <EditText
+                android:id="@+id/updateAddressEditText"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:hint="Address"
+                android:inputType="text"
+                android:minLines="5" />
+
+            <EditText
+                android:id="@+id/updateCityEditText"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:hint="City"
+                android:inputType="text"
+                android:minLines="1" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="66dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="197dp"
+                        android:layout_height="49dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:hint="   Select State :"
+                        android:textSize="20dp" />
+
+                    <Spinner
+                        android:id="@+id/updateStateSpin"
+                        android:layout_width="210dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:inputType="text"
+                        android:minLines="1"
+                        android:text="State" />
+
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/updateZipCodeEditText"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:hint="Zip/Postalcode"
+                android:inputType="text"
+                android:minLines="1" />
+
+            <EditText
+                android:id="@+id/updateDescriptionEditText"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:hint="Description"
+                android:inputType="text"
+                android:minLines="5" />
+
+            <Button
+                android:id="@+id/updateSaveBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="Save"
+                android:textColor="@color/cardview_light_background" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.cardview.widget.CardView>
