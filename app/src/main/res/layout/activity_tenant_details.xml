@@ -7,10 +7,10 @@
     tools:context=".TenantDetails">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="0dp">
+        android:orientation="vertical">
 
         <ScrollView
             android:id="@+id/scrollable"
@@ -26,16 +26,17 @@
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="1dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/tenant_design_row_recyclerview"/>
+                tools:listitem="@layout/tenant_design_row_recyclerview" />
         </ScrollView>
     </LinearLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
         android:layout_marginStart="328dp"
         android:layout_marginLeft="328dp"
-        android:layout_marginTop="730dp"
+        android:layout_marginTop="630dp"
         android:layout_marginBottom="127dp"
         android:baselineAlignBottom="true"
         android:clickable="true"

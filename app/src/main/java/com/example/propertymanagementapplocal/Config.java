@@ -30,8 +30,21 @@ public class Config {
 
     //colmuns names of tenants table
 
-    public static final String TABLE_TENANTS = "flats";
+    public static final String TABLE_TENANTS = "Tenants";
     public static final String COLUMN_TENANTS_ID = "_id";
+    public static final String COLUMN_TENANTS_NAME = "Name";
+    public static final String COLUMN_TENANTS_PHONE = "Phone";
+    public static final String COLUMN_TENANTS_EMAIL = "Email";
+    public static final String COLUMN_TENANTS_LEASESTART = "LeaseStart";
+    public static final String COLUMN_TENANTS_LEASEEND = "LeaseEnd";
+    public static final String COLUMN_TENANTS_RENTISPAID = "RentisPaid";
+    public static final String COLUMN_TENANTS_TOTALOCCUPANTS = "TotalOccupants";
+    public static final String COLUMN_TENANTS_NOTES= "Notes";
+    public static final String COLUMN_TENANTS_RENT = "Rent";
+    public static final String COLUMN_TENANTS_SECURITYDEPOSIT = "SecurityDeposit";
+    public static final String COLUMN_FT_ID = "FT_fk_id";
+    public static final String FLAT_SUB_CONSTRAINT = "flat_sub_unique";
+
 
     //others for general purpose key-value pair data
     public static final String TITLE = "title";
@@ -40,6 +53,8 @@ public class Config {
     public static final String CREATE_FLAT = "create_flat";
     public static final String UPDATE_FLAT = "update_flat";
     public static final String PROPERTY_ID = "_id";
+    public static final String CREATE_TENANT = "create_tenant";
+
 
 
 }

@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddFlat"></activity>
+        <activity android:name=".TenantNotes"></activity>
+        <activity android:name=".AddFlat" />
         <activity android:name=".UpdateProperty" />
         <activity android:name=".AddTenants" />
         <activity android:name=".TenantDetails" />

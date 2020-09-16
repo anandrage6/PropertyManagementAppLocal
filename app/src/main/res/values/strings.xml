@@ -79,4 +79,10 @@
         <item>5 BHK</item>
         <item>5+ BHK</item>
     </string-array>
+
+    <string-array name="Rent_is_Paid">
+    <item>Weekly</item>
+    <item>Monthly</item>
+    </string-array>
+
 </resources>

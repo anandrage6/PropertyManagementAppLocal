@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="328dp"
             android:layout_marginLeft="328dp"
-            android:layout_marginTop="730dp"
+            android:layout_marginTop="632dp"
             android:layout_marginBottom="127dp"
             android:baselineAlignBottom="true"
             android:clickable="true"

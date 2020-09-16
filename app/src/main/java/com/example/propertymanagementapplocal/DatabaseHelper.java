@@ -14,7 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper databaseHelper;
 
     // All Static variables
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 10;
 
     // Database Name
     private static final String DATABASE_NAME = Config.DATABASE_NAME;
@@ -71,8 +71,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + "CONSTRAINT " + Config.PROPERTY_SUB_CONSTRAINT + " UNIQUE (" + Config.COLUMN_FLATS_ID + ")"
                 + ")";
 
+        //CREATE TENANTS SQL FUNCTION
+        String CREATE_TENANT_TABLE = "CREATE TABLE " + Config.TABLE_TENANTS + "("
+                + Config.COLUMN_TENANTS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + Config.COLUMN_TENANTS_NAME + " TEXT, "
+                + Config.COLUMN_TENANTS_PHONE + " TEXT, "
+                + Config.COLUMN_TENANTS_EMAIL + " TEXT, "
+                + Config.COLUMN_TENANTS_LEASESTART + " TEXT, "
+                + Config.COLUMN_TENANTS_LEASEEND + " TEXT, "
+                + Config.COLUMN_TENANTS_RENTISPAID + " TEXT, "
+                + Config.COLUMN_TENANTS_TOTALOCCUPANTS + " TEXT, "
+                + Config.COLUMN_TENANTS_NOTES + " TEXT, "
+                + Config.COLUMN_TENANTS_RENT + " TEXT, "
+                + Config.COLUMN_TENANTS_SECURITYDEPOSIT + " TEXT, "
+                + Config.COLUMN_FT_ID + " INTEGER NOT NULL, "
+                + "FOREIGN KEY (" + Config.COLUMN_FT_ID + ") REFERENCES " + Config.TABLE_FLATS + "(" + Config.COLUMN_FLATS_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, "
+                + "CONSTRAINT " + Config.FLAT_SUB_CONSTRAINT + " UNIQUE (" + Config.COLUMN_TENANTS_ID + ")"
+                + ")";
+
         db.execSQL(CREATE_PROPERTIES_TABLE);
         db.execSQL(CREATE_FLAT_TABLE);
+        db.execSQL(CREATE_TENANT_TABLE);
 
         Logger.d("DB created!");
 
@@ -83,6 +102,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + Config.TABLE_PROPERTY);
         db.execSQL("DROP TABLE IF EXISTS " + Config.TABLE_FLATS);
+        db.execSQL("DROP TABLE IF EXISTS " + Config.TABLE_TENANTS);
 
         // Create tables again
         onCreate(db);

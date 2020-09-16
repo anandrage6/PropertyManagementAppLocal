@@ -131,9 +131,6 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         //Intent i = new Intent(this,addFlats.getClass());
         //this.startActivity(i);
 
-
-
-
     }
 
     @Override

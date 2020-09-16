@@ -51,6 +51,7 @@ public class DatabaseQueryClass {
         return id;
     }
 
+    //get all property
     public List<PropertyModelClass> getAllProperty() {
 
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
@@ -314,6 +315,40 @@ public class DatabaseQueryClass {
 
         return row > 0;
     }
+
+    //insert tenants
+
+    public long insertTenant(TenantModelClass tenant, long flatId) {
+        long rowId = -1;
+
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Config.COLUMN_TENANTS_NAME, tenant.getTenantName());
+        contentValues.put(Config.COLUMN_TENANTS_PHONE, tenant.getTenantphone());
+        contentValues.put(Config.COLUMN_TENANTS_EMAIL, tenant.getTenantEmail());
+        contentValues.put(Config.COLUMN_TENANTS_LEASESTART, tenant.getLeaseStart());
+        contentValues.put(Config.COLUMN_TENANTS_LEASEEND, tenant.getLeaseEnd());
+        contentValues.put(Config.COLUMN_TENANTS_RENTISPAID, tenant.getRentIsPaid());
+        contentValues.put(Config.COLUMN_TENANTS_TOTALOCCUPANTS, tenant.getTotalOccupants());
+        contentValues.put(Config.COLUMN_TENANTS_NOTES, tenant.getNotes());
+        contentValues.put(Config.COLUMN_TENANTS_RENT, tenant.getRentAmount());
+        contentValues.put(Config.COLUMN_TENANTS_SECURITYDEPOSIT, tenant.getSecurityDeposit());
+        contentValues.put(Config.COLUMN_FT_ID, flatId);
+
+        try {
+            rowId = sqLiteDatabase.insertOrThrow(Config.TABLE_TENANTS, null, contentValues);
+        } catch (SQLiteException e) {
+            Logger.d(e);
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            sqLiteDatabase.close();
+        }
+
+        return rowId;
+    }
+
 
 }
 
