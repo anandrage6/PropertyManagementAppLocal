@@ -1,29 +1,24 @@
 package com.example.propertymanagementapplocal;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.Toast;
-
-import androidx.fragment.app.DialogFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class UpdateProperty extends DialogFragment implements AdapterView.OnItemSelectedListener {
+public class UpdateProperty extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private static long propertyId;
     private static int propertyItemPosition;
@@ -32,6 +27,7 @@ public class UpdateProperty extends DialogFragment implements AdapterView.OnItem
     private EditText edtPropertyName, edtOwnerName, edtAddress, edtCity, edtZipCode, edtDescription;
     private Spinner stateSpin, propertyTypeSpin;
     private ImageButton imageButton;
+    private Toolbar toolbar;
 
     private Button updatebutton;
 
@@ -60,30 +56,32 @@ public class UpdateProperty extends DialogFragment implements AdapterView.OnItem
         //args.putString("title", "Update Property information");
         //updateProperty.setArguments(args);
 
-        //updateProperty.setStyle(DialogFragment.STYLE_NORMAL, R.style.CustomDialog);
+        //updateProperty.setStyle(DialogFragment.STYLE_NORMAL, R.style.fullScreenDialogTheme);
 
         return updateProperty;
+
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_update_property);
 
-        View view = inflater.inflate(R.layout.update_property, container, false);
+        toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+        //getSupportActionBar().setTitle("Property Management");
+        databaseQueryClass = new DatabaseQueryClass(getApplicationContext());
 
-        databaseQueryClass = new DatabaseQueryClass(getContext());
-
-        edtPropertyName = view.findViewById(R.id.updatePropertyNameEditText);
-        edtOwnerName = view.findViewById(R.id.updateOwnerNameEditText);
-        edtAddress = view.findViewById(R.id.updateAddressEditText);
-        edtCity = view.findViewById(R.id.updateCityEditText);
-        edtZipCode = view.findViewById(R.id.updateZipCodeEditText);
-        edtDescription = view.findViewById(R.id.updateDescriptionEditText);
-        updatebutton = view.findViewById(R.id.updateSaveBtn);
-        stateSpin = view.findViewById(R.id.updateStateSpin);
-        propertyTypeSpin = view.findViewById(R.id.updatePropertyTypeSpin);
-        imageButton = view.findViewById(R.id.updateImageButton);
+        edtPropertyName = findViewById(R.id.updatePropertyNameEditText);
+        edtOwnerName = findViewById(R.id.updateOwnerNameEditText);
+        edtAddress = findViewById(R.id.updateAddressEditText);
+        edtCity = findViewById(R.id.updateCityEditText);
+        edtZipCode = findViewById(R.id.updateZipCodeEditText);
+        edtDescription = findViewById(R.id.updateDescriptionEditText);
+        updatebutton = findViewById(R.id.updateSaveBtn);
+        stateSpin = findViewById(R.id.updateStateSpin);
+        propertyTypeSpin = findViewById(R.id.updatePropertyTypeSpin);
+        imageButton = findViewById(R.id.updateImageButton);
 
         //String title = getArguments().getString(Config.TITLE);
         //getDialog().setTitle(title);
@@ -106,7 +104,7 @@ public class UpdateProperty extends DialogFragment implements AdapterView.OnItem
         cstates = new ArrayList<String>();
         cstates.add(cState);
         List<String> allStates =  Arrays.asList(getResources().getStringArray(R.array.States));
-        stateAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, cstates);
+        stateAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, cstates);
         stateSpin.setAdapter(stateAdapter);
         stateAdapter.addAll(allStates);
         stateSpin.setOnItemSelectedListener(this);
@@ -116,7 +114,7 @@ public class UpdateProperty extends DialogFragment implements AdapterView.OnItem
         cPropertyTypes = new ArrayList<>();
         cPropertyTypes.add(cPropertyType);
         List<String> allPropertyTypes = Arrays.asList(getResources().getStringArray(R.array.Property_Types));
-        propertyTypeAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, cPropertyTypes);
+        propertyTypeAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, cPropertyTypes);
         propertyTypeSpin.setAdapter(propertyTypeAdapter);
         propertyTypeAdapter.addAll(allPropertyTypes);
         propertyTypeSpin.setOnItemSelectedListener(this);
@@ -146,43 +144,28 @@ public class UpdateProperty extends DialogFragment implements AdapterView.OnItem
                 long id = databaseQueryClass.updatePropertyInfo(mPropertyModelClass);
                 if(id>0){
                     propertyUpdateListener.onPropertyInfoUpdated(mPropertyModelClass, propertyItemPosition);
-                    getDialog().dismiss();
+                    //getDialog().dismiss();
+                    Intent i = new Intent(UpdateProperty.this, MainActivity.class);
+                    startActivity(i);
                 }
 
             }
         });
 
-        return view;
-
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Dialog dialog = getDialog();
-        if (dialog != null) {
-            int width = ViewGroup.LayoutParams.MATCH_PARENT;
-            int height = ViewGroup.LayoutParams.MATCH_PARENT;
-            //noinspection ConstantConditions
-            dialog.getWindow().setLayout(width, height);
-        }
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
         if(adapterView == stateSpin) {
             state = adapterView.getItemAtPosition(i).toString();
         }else if(adapterView == propertyTypeSpin){
             propertyType =  adapterView.getItemAtPosition(i).toString();
         }
+
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-
-
 }
-

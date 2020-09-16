@@ -1,19 +1,14 @@
 package com.example.propertymanagementapplocal;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -96,6 +91,7 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
                         switch (Item.getItemId()) {
                             case R.id.menu_item_Edit:
                                 //Toast.makeText(context, "Edit", Toast.LENGTH_LONG).show();
+
                                 UpdateProperty updateProperty = UpdateProperty.newInstance(property.getId(), itemPosition, new PropertyUpdateListener() {
                                     @Override
                                     public void onPropertyInfoUpdated(PropertyModelClass property, int position) {
@@ -103,7 +99,9 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
                                         notifyDataSetChanged();
                                     }
                                 });
-                                updateProperty.show(((MainActivity) context).getSupportFragmentManager(), Config.UPDATE_PROPERTY);
+                                Intent i = new Intent(context, updateProperty.getClass());
+                                context.startActivity(i);
+                                //updateProperty.show(((MainActivity) context).getSupportFragmentManager(), Config.UPDATE_PROPERTY);
                                     break;
                             case R.id.menu_item_delete:
                                 //Toast.makeText(context, "Deleted", Toast.LENGTH_LONG).show();
@@ -115,9 +113,9 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
                                     propertyList.remove(position);
                                     notifyDataSetChanged();
                                     //((MainActivity) context).viewVisibility();
-                                    Toast.makeText(context, "Student deleted successfully", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(context, "Property deleted successfully", Toast.LENGTH_LONG).show();
                                 } else
-                                    Toast.makeText(context, "Student not deleted. Something wrong!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(context, "Property not deleted. Something wrong!", Toast.LENGTH_LONG).show();
 
                                 break;
                             case R.id.menu_item_seeDetails:

@@ -14,7 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper databaseHelper;
 
     // All Static variables
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     // Database Name
     private static final String DATABASE_NAME = Config.DATABASE_NAME;
@@ -62,7 +62,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //CREATE FLATS  SQL FUNCTION
         String CREATE_FLAT_TABLE = "CREATE TABLE " + Config.TABLE_FLATS + "("
                 + Config.COLUMN_FLATS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + Config.COLUMN_FLATS_FLOOR + " TEXT NOT NULL, "
                 + Config.COLUMN_FLATS_FLATNO + " TEXT NOT NULL, "
+                + Config.COLUMN_FLATS_FLATFACING + " TEXT NOT NULL, "
+                + Config.COLUMN_FLATS_NOOFBEDROOMS + " TEXT NOT NULL, "
                 + Config.COLUMN_PF_ID + " INTEGER NOT NULL, "
                 + "FOREIGN KEY (" + Config.COLUMN_PF_ID + ") REFERENCES " + Config.TABLE_PROPERTY + "(" + Config.COLUMN_PROPERTY_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, "
                 + "CONSTRAINT " + Config.PROPERTY_SUB_CONSTRAINT + " UNIQUE (" + Config.COLUMN_FLATS_ID + ")"

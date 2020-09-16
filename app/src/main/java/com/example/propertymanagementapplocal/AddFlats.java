@@ -5,19 +5,25 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.fragment.app.DialogFragment;
 
-public class AddFlats extends DialogFragment {
+public class AddFlats extends DialogFragment implements AdapterView.OnItemSelectedListener {
 
     private static long propertyId;
     private static FlatsCreateListener flatsCreateListener;
 
 
-    EditText edtFlatNo;
+    EditText edtfloor, edtFlatNo ;
+    Spinner flatfacingSpinner, noofbedroomsSpinner;
     Button flatsave;
+
+    String flatfacing, noofbedrooms;
 
     public String strflatNo;
 
@@ -40,9 +46,23 @@ public class AddFlats extends DialogFragment {
         View view = inflater.inflate(R.layout.add_flats, container, false);
         getDialog().setTitle(getResources().getString(R.string.add_new_Flat));
 
-        /*
-        edtFlatNo = view.findViewById(R.id.flatNoEditText);
-        flatsave = view.findViewById(R.id.flatSavebtn);
+        edtfloor = view.findViewById(R.id.floorEdttxt);
+        edtFlatNo = view.findViewById(R.id.flatNoEdttxt);
+        flatfacingSpinner = view.findViewById(R.id.flatfacingSpin);
+        noofbedroomsSpinner = view.findViewById(R.id.noofBedroomsSpin);
+        flatsave = view.findViewById(R.id.flatsave);
+
+        //spinner part
+
+        ArrayAdapter<CharSequence> flatfacingAdapter = ArrayAdapter.createFromResource(getContext(), R.array.Flat_Facing, android.R.layout.simple_spinner_item);
+        flatfacingAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        flatfacingSpinner.setAdapter(flatfacingAdapter);
+        flatfacingSpinner.setOnItemSelectedListener(this);
+
+        ArrayAdapter<CharSequence> noofbedroomsAdapter = ArrayAdapter.createFromResource(getContext(), R.array.Number_of_Bathrooms, android.R.layout.simple_spinner_item);
+        noofbedroomsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        noofbedroomsSpinner.setAdapter(noofbedroomsAdapter);
+        noofbedroomsSpinner.setOnItemSelectedListener(this);
 
         flatsave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +71,6 @@ public class AddFlats extends DialogFragment {
             }
         });
 
-         */
 
         return view;
 
@@ -61,9 +80,10 @@ public class AddFlats extends DialogFragment {
 
     private void getData() {
 
+        String floor = edtfloor.getText().toString();
         String flatNo = edtFlatNo.getText().toString();
 
-        FlatsModelClass flats = new FlatsModelClass(-1, flatNo );
+        FlatsModelClass flats = new FlatsModelClass(-1, floor, flatNo, flatfacing, noofbedrooms );
 
         DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(getContext());
 
@@ -89,6 +109,23 @@ public class AddFlats extends DialogFragment {
         }
 
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        if(adapterView == flatfacingSpinner){
+            flatfacing = ""+adapterView.getItemAtPosition(i).toString();
+        }else if(adapterView == noofbedroomsSpinner){
+            noofbedrooms = ""+adapterView.getItemAtPosition(i).toString();
+
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
 }
+
+
 
 

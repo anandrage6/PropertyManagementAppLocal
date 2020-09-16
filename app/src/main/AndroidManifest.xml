@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AddFlat"></activity>
-        <activity android:name=".UpdatePropertyDetails" />
+        <activity android:name=".UpdateProperty" />
         <activity android:name=".AddTenants" />
         <activity android:name=".TenantDetails" />
         <activity android:name=".PropertyDetails" />

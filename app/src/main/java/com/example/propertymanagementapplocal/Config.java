@@ -21,7 +21,10 @@ public class Config {
     //column names of flats table
     public static final String TABLE_FLATS = "flats";
     public static final String COLUMN_FLATS_ID = "_id";
+    public static final String COLUMN_FLATS_FLOOR = "floor";
     public static final String COLUMN_FLATS_FLATNO = "flatno";
+    public static final String COLUMN_FLATS_FLATFACING = "flatfacing";
+    public static final String COLUMN_FLATS_NOOFBEDROOMS = "noofbedrooms";
     public static final String COLUMN_PF_ID = "fk_id";
     public static final String PROPERTY_SUB_CONSTRAINT = "property_sub_unique";
 
@@ -32,12 +35,11 @@ public class Config {
 
     //others for general purpose key-value pair data
     public static final String TITLE = "title";
-    public static final String CREATE_PROPERTY = "create_student";
-    public static final String UPDATE_PROPERTY = "update_student";
-    public static final String CREATE_FLAT = "create_subject";
-    public static final String UPDATE_FLAT = "update_subject";
+    public static final String CREATE_PROPERTY = "create_property";
+    public static final String UPDATE_PROPERTY = "update_property";
+    public static final String CREATE_FLAT = "create_flat";
+    public static final String UPDATE_FLAT = "update_flat";
     public static final String PROPERTY_ID = "_id";
-
 
 
 }

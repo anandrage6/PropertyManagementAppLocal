@@ -22,6 +22,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
     private long propertyId;
     String strLocationTv, strCity, strState, strZipCode, strownerNameTv, stringimage, totalAddress, strPropertyName;
     private Toolbar toolbar;
+    ImageButton editBtn;
 
     //ImageButton editbutton;
 
@@ -55,8 +56,26 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
 
-        // editbutton = findViewById(R.id.propertyEditBtn);
+        //editBtn = findViewById(R.id.propertyEditBtn);
+       /*
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PropertyModelClass mproperty =
+                UpdateProperty updateProperty = UpdateProperty.newInstance(property.getId(), itemPosition, new PropertyUpdateListener() {
+                    @Override
+                    public void onPropertyInfoUpdated(PropertyModelClass property, int position) {
+                        propertyList.set(position, property);
+                        notifyDataSetChanged();
+                    }
+                });
+                Intent i = new Intent(getApplicationContext(), updateProperty.getClass());
+                getApplicationContext().startActivity(i);
+            }
+        });
 
+
+        */
         //floating add button
         //flats
         ImageButton flatAddBtn;
@@ -109,8 +128,8 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
     private void openActivityAddFlats() {
         AddFlats addFlats = AddFlats.newInstance(refpropertyId, this);
         addFlats.show(getSupportFragmentManager(), Config.CREATE_FLAT);
-        //Intent i = new Intent(getApplication(),addFlats.getClass());
-      // startActivity(i);
+        //Intent i = new Intent(this,addFlats.getClass());
+        //this.startActivity(i);
 
 
 

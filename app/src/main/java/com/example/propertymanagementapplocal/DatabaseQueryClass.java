@@ -215,7 +215,10 @@ public class DatabaseQueryClass {
         SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
+        contentValues.put(Config.COLUMN_FLATS_FLOOR, flats.getFloor());
         contentValues.put(Config.COLUMN_FLATS_FLATNO, flats.getFlaNo());
+        contentValues.put(Config.COLUMN_FLATS_FLATFACING, flats.getFaltfacing());
+        contentValues.put(Config.COLUMN_FLATS_NOOFBEDROOMS, flats.getNoofbedrooms());
         contentValues.put(Config.COLUMN_PF_ID, id);
 
         try {
@@ -245,9 +248,12 @@ public class DatabaseQueryClass {
                     null, null, null);
 
             if (cursor != null && cursor.moveToFirst()) {
-                String FlatNo = cursor.getString(cursor.getColumnIndex(Config.COLUMN_FLATS_FLATNO));
+                String floor = cursor.getString(cursor.getColumnIndex(Config.COLUMN_FLATS_FLOOR));
+                String flatNo = cursor.getString(cursor.getColumnIndex(Config.COLUMN_FLATS_FLATNO));
+                String flatFacing = cursor.getString(cursor.getColumnIndex(Config.COLUMN_FLATS_FLATFACING));
+                String noofBedrooms = cursor.getString(cursor.getColumnIndex(Config.COLUMN_FLATS_NOOFBEDROOMS));
 
-                flats = new FlatsModelClass(flatsId, FlatNo);
+                flats = new FlatsModelClass(flatsId, floor, flatNo, flatFacing, noofBedrooms);
             }
         } catch (SQLiteException e) {
             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
@@ -270,7 +276,7 @@ public class DatabaseQueryClass {
         Cursor cursor = null;
         try{
             cursor = sqLiteDatabase.query(Config.TABLE_FLATS,
-                    new String[] {Config.COLUMN_FLATS_ID, Config.COLUMN_FLATS_FLATNO},
+                    new String[] {Config.COLUMN_FLATS_ID, Config.COLUMN_FLATS_FLOOR, Config.COLUMN_FLATS_FLATNO, Config.COLUMN_FLATS_FLATFACING, Config.COLUMN_FLATS_NOOFBEDROOMS},
                     Config.COLUMN_PF_ID + " = ? ",
                     new String[] {String.valueOf(pfId)},
                     null, null, null);
@@ -279,10 +285,12 @@ public class DatabaseQueryClass {
                 flatsList = new ArrayList<>();
                 do {
                     int id = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_FLATS_ID));
+                    String floor = cursor.getString(cursor.getColumnIndex(Config.COLUMN_FLATS_FLOOR));
                     String flatNo = cursor.getString(cursor.getColumnIndex(Config.COLUMN_FLATS_FLATNO));
+                    String flatFacing = cursor.getString(cursor.getColumnIndex(Config.COLUMN_FLATS_FLATFACING));
+                    String noofBedrooms = cursor.getString(cursor.getColumnIndex(Config.COLUMN_FLATS_NOOFBEDROOMS));
 
-
-                    flatsList.add(new FlatsModelClass(id, flatNo));
+                    flatsList.add(new FlatsModelClass(id, floor, flatNo, flatFacing, noofBedrooms));
                 } while (cursor.moveToNext());
             }
         } catch (SQLiteException e){
@@ -296,6 +304,7 @@ public class DatabaseQueryClass {
         return flatsList;
     }
 
+    //single delete
     public boolean deleteFlatById(long flatId) {
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
