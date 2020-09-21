@@ -1,8 +1,10 @@
 package com.example.propertymanagementapplocal;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 
 import androidx.annotation.Nullable;
 
@@ -14,7 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper databaseHelper;
 
     // All Static variables
-    private static final int DATABASE_VERSION = 10;
+    private static final int DATABASE_VERSION = 7;
 
     // Database Name
     private static final String DATABASE_NAME = Config.DATABASE_NAME;
@@ -84,7 +86,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + Config.COLUMN_TENANTS_NOTES + " TEXT, "
                 + Config.COLUMN_TENANTS_RENT + " TEXT, "
                 + Config.COLUMN_TENANTS_SECURITYDEPOSIT + " TEXT, "
+                //+ Config.COLUMN_PT_ID + " INTEGER NOT NULL, "
                 + Config.COLUMN_FT_ID + " INTEGER NOT NULL, "
+                //+ "FOREIGN KEY (" + Config.COLUMN_PT_ID + ") REFERENCES " + Config.TABLE_PROPERTY + "(" + Config.COLUMN_PROPERTY_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, "
                 + "FOREIGN KEY (" + Config.COLUMN_FT_ID + ") REFERENCES " + Config.TABLE_FLATS + "(" + Config.COLUMN_FLATS_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, "
                 + "CONSTRAINT " + Config.FLAT_SUB_CONSTRAINT + " UNIQUE (" + Config.COLUMN_TENANTS_ID + ")"
                 + ")";
@@ -112,8 +116,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onOpen(SQLiteDatabase db) {
         super.onOpen(db);
-
         //enable foreign key constraints like ON UPDATE CASCADE, ON DELETE CASCADE
         db.execSQL("PRAGMA foreign_keys=ON;");
+
     }
 }

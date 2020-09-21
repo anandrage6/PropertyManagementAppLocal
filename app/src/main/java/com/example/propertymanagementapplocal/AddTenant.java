@@ -3,7 +3,9 @@ package com.example.propertymanagementapplocal;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,15 +17,20 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
+
+import com.orhanobut.logger.Logger;
 
 import java.util.Calendar;
 
 public class AddTenant extends DialogFragment implements AdapterView.OnItemSelectedListener {
 
-    private static long flatId;
+    private static long FlatId;
+    private static long propertyId;
+    //private static String address;
     private static TenantCreateListener tenantCreateListener;
 
     private Toolbar toolbar;
@@ -36,9 +43,15 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
     ImageButton incrementBtn, decrementBtn;
     int count = 0;
 
-    public static AddTenant newInstance(long flatId, TenantCreateListener listener) {
+    //default constructor
+    public AddTenant() {
 
-        flatId = flatId;
+    }
+
+    public static AddTenant newInstance(long refFlatId, TenantCreateListener listener) {
+        //Log.d("RefPropertyId : == >", String.valueOf(refPropertyId));
+        //propertyId = refPropertyId;
+        FlatId = refFlatId;
         tenantCreateListener = listener;
         AddTenant addTenant = new AddTenant();
         addTenant.setStyle(DialogFragment.STYLE_NORMAL, R.style.fullScreenDialogTheme);
@@ -56,9 +69,10 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
         //getSupportActionBar().setTitle("");
 
 
-        tvNotes = view.findViewById(R.id.tenantNotesTextView);
+
         //note = getArguments().getString("Note");
 
+        /*
         //tvNotes.setText(note);
         tvNotes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +83,7 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
             }
         });
 
+         */
 
 
         //id's
@@ -92,7 +107,7 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
             @Override
             public void onClick(View view) {
                 count++;
-                tvValue.setText(""+ count);
+                tvValue.setText("" + count);
 
             }
         });
@@ -101,9 +116,9 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
         decrementBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(count <= 0) count = 0;
-               else count--;
-                tvValue.setText(""+ count);
+                if (count <= 0) count = 0;
+                else count--;
+                tvValue.setText("" + count);
             }
         });
 
@@ -175,13 +190,18 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
         String notes = tvNotes.getText().toString();
         String rentAmount = edtRent.getText().toString();
         String securityDeposit = edtSecurityDeposit.getText().toString();
-        TenantModelClass tenant = new TenantModelClass(-1, name, phone, email, leaseStart, leaseEnd, rentisPaid, totalOccupants, notes,rentAmount,securityDeposit);
+        TenantModelClass tenant = new TenantModelClass(-1, name, phone, email, leaseStart, leaseEnd, rentisPaid, totalOccupants, notes, rentAmount, securityDeposit);
 
         DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(getContext());
 
-        long id = databaseQueryClass.insertTenant(tenant, flatId);
+        //Log.d("propertyId", String.valueOf(propertyId));
+        //Log.d("FlatId", String.valueOf(FlatId));
 
-        if(id>0){
+        long id = databaseQueryClass.insertTenant(tenant, FlatId);
+        Log.e("Result tenant id : ==> ", String.valueOf(id));
+
+
+        if (id > 0) {
             tenant.setTenantId(id);
             tenantCreateListener.onTenantCreated(tenant);
             getDialog().dismiss();
@@ -190,7 +210,7 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        rentIsPaid = ""+adapterView.getItemAtPosition(i).toString();
+        rentIsPaid = "" + adapterView.getItemAtPosition(i).toString();
 
     }
 
@@ -198,6 +218,7 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
     @Override
     public void onStart() {
         super.onStart();

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -268,7 +269,7 @@ public class DatabaseQueryClass {
     }
 
 
-    //get All subjects by id
+    //get All flats by id
     public List<FlatsModelClass> getAllFlatsByPFId(long pfId){
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
@@ -277,7 +278,8 @@ public class DatabaseQueryClass {
         Cursor cursor = null;
         try{
             cursor = sqLiteDatabase.query(Config.TABLE_FLATS,
-                    new String[] {Config.COLUMN_FLATS_ID, Config.COLUMN_FLATS_FLOOR, Config.COLUMN_FLATS_FLATNO, Config.COLUMN_FLATS_FLATFACING, Config.COLUMN_FLATS_NOOFBEDROOMS},
+                    new String[] {Config.COLUMN_FLATS_ID, Config.COLUMN_FLATS_FLOOR, Config.COLUMN_FLATS_FLATNO,
+                            Config.COLUMN_FLATS_FLATFACING, Config.COLUMN_FLATS_NOOFBEDROOMS},
                     Config.COLUMN_PF_ID + " = ? ",
                     new String[] {String.valueOf(pfId)},
                     null, null, null);
@@ -335,6 +337,7 @@ public class DatabaseQueryClass {
         contentValues.put(Config.COLUMN_TENANTS_NOTES, tenant.getNotes());
         contentValues.put(Config.COLUMN_TENANTS_RENT, tenant.getRentAmount());
         contentValues.put(Config.COLUMN_TENANTS_SECURITYDEPOSIT, tenant.getSecurityDeposit());
+        //contentValues.put(Config.COLUMN_PT_ID, id);
         contentValues.put(Config.COLUMN_FT_ID, flatId);
 
         try {
@@ -349,6 +352,52 @@ public class DatabaseQueryClass {
         return rowId;
     }
 
+    //get All tenants by id
+    public List<TenantModelClass> getAllTenantsByFId(long fId){
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
+
+        List<TenantModelClass> tenantList = new ArrayList<>();
+        Cursor cursor = null;
+        try{
+            cursor = sqLiteDatabase.query(Config.TABLE_TENANTS,
+                    new String[] {Config.COLUMN_TENANTS_ID, Config.COLUMN_TENANTS_NAME,
+                            Config.COLUMN_TENANTS_PHONE, Config.COLUMN_TENANTS_EMAIL, Config.COLUMN_TENANTS_LEASESTART, Config.COLUMN_TENANTS_LEASEEND, Config.COLUMN_TENANTS_RENTISPAID,
+                            Config.COLUMN_TENANTS_TOTALOCCUPANTS, Config.COLUMN_TENANTS_NOTES, Config.COLUMN_TENANTS_RENT, Config.COLUMN_TENANTS_SECURITYDEPOSIT},
+                    Config.COLUMN_FT_ID + " = ? ",
+                    new String[] {String.valueOf(fId)},
+                    null, null, null);
+
+            if(cursor!=null && cursor.moveToFirst()){
+                tenantList = new ArrayList<>();
+                do {
+                    int id = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_TENANTS_ID));
+                    String name = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_NAME));
+                    String phone = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_PHONE));
+                    String email = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_EMAIL));
+                    String leaseStart = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_LEASESTART));
+                    String leaseEnd = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_LEASEEND));
+                    String rentIsPaid = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_RENTISPAID));
+                    String totalOccupants = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_TOTALOCCUPANTS));
+                    String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_NOTES));
+                    String rent = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_RENT));
+                    String securityDeposit = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_SECURITYDEPOSIT));
+
+                    tenantList.add(new TenantModelClass(id, name, email, phone, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rent, securityDeposit));
+                    Log.d("TotalTenantList : ==> ", String.valueOf(tenantList.size()));
+                } while (cursor.moveToNext());
+            }
+        } catch (SQLiteException e){
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            if(cursor!=null)
+                cursor.close();
+            sqLiteDatabase.close();
+        }
+
+        return tenantList;
+
+    }
 
 }
 

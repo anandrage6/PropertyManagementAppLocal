@@ -27,6 +27,7 @@ public class AddFlats extends DialogFragment implements AdapterView.OnItemSelect
 
     public String strflatNo;
 
+    //default constructor
     public AddFlats() {
     }
 

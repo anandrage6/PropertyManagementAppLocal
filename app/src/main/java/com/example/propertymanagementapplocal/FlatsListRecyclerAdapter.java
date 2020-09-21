@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecyclerAdapter.CustomViewHolder> {
-    private Context context;
 
+    private Context context;
     private List<FlatsModelClass> flatsList;
 
 
@@ -37,6 +37,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
     @Override
     public void onBindViewHolder(@NonNull final CustomViewHolder holder, final int position) {
         final int listPosition = position;
+        final PropertyModelClass property = new PropertyModelClass();
         final FlatsModelClass flats = flatsList.get(position);
         final long flatId = flats.getFlatId();
         holder.flatNo.setText(flats.getFlaNo());
@@ -49,6 +50,13 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, TenantDetails.class);
+                //intent.putExtra(Config.COLUMN_PROPERTY_ID, property.getId());
+                intent.putExtra(Config.COLUMN_FLATS_ID, flats.getFlatId());
+                intent.putExtra(Config.COLUMN_FLATS_FLOOR, flats.getFloor());
+                intent.putExtra(Config.COLUMN_FLATS_FLATNO, flats.getFlaNo());
+                intent.putExtra(Config.COLUMN_FLATS_FLATFACING, flats.getFaltfacing());
+                intent.putExtra(Config.COLUMN_FLATS_NOOFBEDROOMS, flats.getNoofbedrooms());
+
                 context.startActivity(intent);
             }
         });
@@ -101,6 +109,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
 
     @Override
     public int getItemCount() {
+
         return flatsList.size();
     }
 

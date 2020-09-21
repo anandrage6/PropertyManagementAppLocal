@@ -48,7 +48,7 @@ public class TenantNotes extends AppCompatActivity {
                 String note = tenantNotes.getText().toString();
                 FragmentManager fm = getSupportFragmentManager();
                 AddTenant addTenant = new AddTenant();
-                fm.beginTransaction().replace(R.id.fragmentContainer,addTenant).commit();
+               // fm.beginTransaction().replace(R.id.fragmentContainer,addTenant).commit();
 
                 Bundle data = new Bundle();//create bundle instance
                 data.putString("Note", note);//put string to pass with a key value

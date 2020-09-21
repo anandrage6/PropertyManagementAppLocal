@@ -4,30 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
     tools:context=".TenantDetails">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ScrollView
-            android:id="@+id/scrollable"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="0dp"
+        tools:ignore="MissingConstraints">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/apartmentRecyclerId"
-                android:layout_width="409dp"
-                android:layout_height="match_parent"
+                android:id="@+id/tenantRecyclerId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
                 android:layout_marginLeft="1dp"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="1dp"
                 android:layout_marginRight="1dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/tenant_design_row_recyclerview" />
-        </ScrollView>
+                tools:listitem="@layout/tenant_design_row_recyclerview"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

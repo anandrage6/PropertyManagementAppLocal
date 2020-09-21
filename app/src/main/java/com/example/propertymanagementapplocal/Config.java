@@ -3,7 +3,7 @@ package com.example.propertymanagementapplocal;
 public class Config {
 
     // Database name
-    public static final String DATABASE_NAME = "propertyManagement-db";
+    public static final String DATABASE_NAME = "propertyManagement-db2";
 
     //column names of student table
     public static final String TABLE_PROPERTY = "properties";
@@ -42,7 +42,8 @@ public class Config {
     public static final String COLUMN_TENANTS_NOTES= "Notes";
     public static final String COLUMN_TENANTS_RENT = "Rent";
     public static final String COLUMN_TENANTS_SECURITYDEPOSIT = "SecurityDeposit";
-    public static final String COLUMN_FT_ID = "FT_fk_id";
+    //public static final String COLUMN_PT_ID = "property_fk_id";
+    public static final String COLUMN_FT_ID = "flat_fk_id";
     public static final String FLAT_SUB_CONSTRAINT = "flat_sub_unique";
 
 
@@ -54,7 +55,6 @@ public class Config {
     public static final String UPDATE_FLAT = "update_flat";
     public static final String PROPERTY_ID = "_id";
     public static final String CREATE_TENANT = "create_tenant";
-
-
+    public static final String UPDATE_TENANT = "update_tenant";
 
 }

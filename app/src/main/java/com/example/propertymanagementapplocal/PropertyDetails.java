@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -102,8 +103,10 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
 
 
         refpropertyId = getIntent().getLongExtra(Config.COLUMN_PROPERTY_ID, -1);
+        Log.d("PropertyDetRefId : ==> ", String.valueOf(refpropertyId));
 
         flatsList.addAll(databaseQueryClass.getAllFlatsByPFId(refpropertyId));
+        Log.d("FlatList : ==> ", String.valueOf(flatsList.size()));
 
         flatsListRecyclerAdapter = new FlatsListRecyclerAdapter(this, flatsList);
         flatsrecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));

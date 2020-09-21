@@ -21,7 +21,7 @@
                android:src="@drawable/ic_profile" />
 
            <TextView
-               android:id="@+id/tenantNameTextView"
+               android:id="@+id/tenantNameTV"
                android:layout_width="298dp"
                android:layout_height="match_parent"
                android:layout_marginLeft="20dp"
@@ -48,7 +48,7 @@
                android:src="@drawable/ic_email" />
 
            <TextView
-               android:id="@+id/tenantEmailTextView"
+               android:id="@+id/tenantEmailTV"
                android:layout_width="298dp"
                android:layout_height="match_parent"
                android:layout_marginLeft="20dp"
@@ -75,7 +75,7 @@
                android:src="@drawable/ic_call" />
 
            <TextView
-               android:id="@+id/tenantPhoneTextView"
+               android:id="@+id/tenantPhoneTV"
                android:layout_width="298dp"
                android:layout_height="match_parent"
                android:layout_marginLeft="20dp"
