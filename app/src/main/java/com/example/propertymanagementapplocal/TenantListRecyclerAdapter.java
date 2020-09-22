@@ -34,8 +34,15 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
         final TenantModelClass tenants = tenantList.get(position);
         final long tenantId = tenants.getTenantId();
         holder.name.setText(tenants.getTenantName());
-        holder.phone.setText(tenants.getTenantphone());
         holder.email.setText(tenants.getTenantEmail());
+        holder.phone.setText(tenants.getTenantphone());
+        holder.leaseStart.setText(tenants.getLeaseStart());
+        holder.leaseEnd.setText(tenants.getLeaseEnd());
+        holder.rentIsPaid.setText(tenants.getRentIsPaid());
+        holder.totalOccupants.setText(tenants.getTotalOccupants());
+        holder.notes.setText(tenants.getNotes());
+        holder.rentAmount.setText(tenants.getRentAmount());
+        holder.securityDeposit.setText(tenants.getSecurityDeposit());
 
     }
 
@@ -47,12 +54,21 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
 
     public class tenantCustomViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name,email,phone;
+        TextView name,email,phone,leaseStart,leaseEnd,rentIsPaid,totalOccupants,notes,rentAmount,securityDeposit;
         public tenantCustomViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.tenantNameTV);
-            phone = itemView.findViewById(R.id.tenantPhoneTV);
             email = itemView.findViewById(R.id.tenantEmailTV);
+            phone = itemView.findViewById(R.id.tenantPhoneTV);
+            leaseStart = itemView.findViewById(R.id.leaseStartTextView);
+            leaseEnd = itemView.findViewById(R.id.leaseEndTextView);
+            rentIsPaid = itemView.findViewById(R.id.rentIsPaidTextView);
+            totalOccupants = itemView.findViewById(R.id.totaloccupantsTextView);
+            notes = itemView.findViewById(R.id.notesTextView);
+            rentAmount = itemView.findViewById(R.id.rentAmountTextView);
+            securityDeposit = itemView.findViewById(R.id.depositTextView);
+
+
         }
     }
 }

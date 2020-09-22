@@ -26,7 +26,7 @@ import com.orhanobut.logger.Logger;
 
 import java.util.Calendar;
 
-public class AddTenant extends DialogFragment implements AdapterView.OnItemSelectedListener {
+public class AddTenant extends DialogFragment implements AdapterView.OnItemSelectedListener{
 
     private static long FlatId;
     private static long propertyId;
@@ -101,6 +101,17 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
         decrementBtn = view.findViewById(R.id.tenantDecrementBtn);
         saveBtn = view.findViewById(R.id.tenantSaveButton);
         cancelBtn = view.findViewById(R.id.tenantCancelButton);
+
+        //String strNotes = getContext().getString(Note);
+        //tvNotes.setText(strNote);
+        tvNotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(getContext(),Note.class);
+                i.getStringExtra(tvNotes.getText().toString());
+                getContext().startActivity(i);
+            }
+        });
 
         //increment value part
         incrementBtn.setOnClickListener(new View.OnClickListener() {
@@ -177,6 +188,7 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
         });
         return view;
     }
+
 
     private void getData() {
 

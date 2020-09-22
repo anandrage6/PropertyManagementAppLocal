@@ -81,8 +81,8 @@
     </string-array>
 
     <string-array name="Rent_is_Paid">
-    <item>Weekly</item>
-    <item>Monthly</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
     </string-array>
 
 </resources>

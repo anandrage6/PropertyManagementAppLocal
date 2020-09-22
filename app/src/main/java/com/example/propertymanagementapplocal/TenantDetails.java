@@ -66,6 +66,8 @@ public class TenantDetails extends AppCompatActivity implements TenantCreateList
 
 
 
+
+
         //floating button
         btnadd = findViewById(R.id.addbtn);
         btnadd.setOnClickListener(new View.OnClickListener() {
@@ -73,10 +75,18 @@ public class TenantDetails extends AppCompatActivity implements TenantCreateList
             public void onClick(View view) {
                 //Toast.makeText(Appartments.this, "button clicked", Toast.LENGTH_LONG).show();
                 openActivityAddTenant();
+               // viewVisibility();
 
             }
         });
 
+    }
+
+    public void viewVisibility() {
+        if(tenantList.isEmpty())
+            btnadd.setVisibility(View.VISIBLE);
+        else
+            btnadd.setVisibility(View.GONE);
     }
 
     private void openActivityAddTenant() {
@@ -88,6 +98,8 @@ public class TenantDetails extends AppCompatActivity implements TenantCreateList
     public void onTenantCreated(TenantModelClass tenant) {
         tenantList.add(tenant);
         tenantListRecyclerAdapter.notifyDataSetChanged();
+        //viewVisibility();
 
     }
+
 }

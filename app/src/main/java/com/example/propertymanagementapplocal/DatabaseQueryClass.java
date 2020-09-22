@@ -383,7 +383,7 @@ public class DatabaseQueryClass {
                     String rent = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_RENT));
                     String securityDeposit = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_SECURITYDEPOSIT));
 
-                    tenantList.add(new TenantModelClass(id, name, email, phone, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rent, securityDeposit));
+                    tenantList.add(new TenantModelClass(id, name, phone, email, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rent, securityDeposit));
                     Log.d("TotalTenantList : ==> ", String.valueOf(tenantList.size()));
                 } while (cursor.moveToNext());
             }
