@@ -160,7 +160,4 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, AddProperty.class);
         startActivity(i);
     }
-
-
-
 }

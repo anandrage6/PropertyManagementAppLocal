@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
     TextView locationTv,ownerNameTv, propertyNameTv;
     ImageView imagetv;
     private long propertyId;
-    String strLocationTv, strCity, strState, strZipCode, strownerNameTv, stringimage, totalAddress, strPropertyName;
+    String strLocationTv, strCity, strState, strZipCode, strownerNameTv, stringimage, totalAddress, strPropertyName, strPropertyType, strDescription;
     private Toolbar toolbar;
     ImageButton editBtn;
 
@@ -57,26 +58,33 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
 
-        //editBtn = findViewById(R.id.propertyEditBtn);
-       /*
+        editBtn = findViewById(R.id.propertyEditBtn);
+
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PropertyModelClass mproperty =
-                UpdateProperty updateProperty = UpdateProperty.newInstance(property.getId(), itemPosition, new PropertyUpdateListener() {
-                    @Override
-                    public void onPropertyInfoUpdated(PropertyModelClass property, int position) {
-                        propertyList.set(position, property);
-                        notifyDataSetChanged();
-                    }
-                });
-                Intent i = new Intent(getApplicationContext(), updateProperty.getClass());
-                getApplicationContext().startActivity(i);
+                //Toast.makeText(getApplicationContext(),"Edit", Toast.LENGTH_LONG).show();
+                /*
+                Intent intent = new Intent(PropertyDetails.this, UpdateProperty.class);
+                intent.putExtra("PROPERTYID",propertyId);
+                intent.putExtra("IMAGE",stringimage);
+                intent.putExtra("PROPERTYTYPE",strPropertyType);
+                intent.putExtra("PROPERTYNAME",strPropertyName);
+                intent.putExtra("OWNERNAME",strownerNameTv);
+                intent.putExtra("ADDRESS",strLocationTv);
+                intent.putExtra("CITY",strCity);
+                intent.putExtra("STATE",strState);
+                intent.putExtra("ZIPCODE",strZipCode);
+                intent.putExtra("DESCRIPTION",strDescription);
+                startActivity(intent);
+
+
+                 */
             }
         });
 
 
-        */
+
         //floating add button
         //flats
         ImageButton flatAddBtn;
@@ -91,6 +99,8 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         strZipCode = getIntent().getStringExtra(Config.COLUMN_PROPERTY_ZIPCODE);
         totalAddress = strLocationTv+","+strCity+""+strState+"-"+strZipCode;
         strPropertyName = getIntent().getStringExtra(Config.COLUMN_PROPERTY_PROPERTYNAME);
+        strPropertyType = getIntent().getStringExtra(Config.COLUMN_PROPERTY_PROPERTYTYPE);
+        strDescription = getIntent().getStringExtra(Config.COLUMN_PROPERTY_DESCRIPTION);
 
         strownerNameTv = getIntent().getStringExtra(Config.COLUMN_PROPERTY_OWNERNAME);
         stringimage = getIntent().getStringExtra(Config.COLUMN_PROPERTY_IMAGE);

@@ -3,6 +3,8 @@ package com.example.propertymanagementapplocal;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -167,5 +170,27 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    public void onBackPressed(){
+        android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Confirm Exit...!!");
+        alertDialogBuilder.setMessage("Are you sure you want to exit");
+        alertDialogBuilder.setCancelable(false);
+        alertDialogBuilder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(UpdateProperty.this, "You Clicked on Cancel", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }

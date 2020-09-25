@@ -2,6 +2,7 @@ package com.example.propertymanagementapplocal;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -65,25 +66,6 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
 
         //tool bar
         toolbar = view.findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-        //getSupportActionBar().setTitle("");
-
-
-
-        //note = getArguments().getString("Note");
-
-        /*
-        //tvNotes.setText(note);
-        tvNotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getContext(), TenantNotes.class);
-                //i.putExtra("cNote", note);
-                startActivity(i);
-            }
-        });
-
-         */
 
 
         //id's
@@ -102,13 +84,21 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
         saveBtn = view.findViewById(R.id.tenantSaveButton);
         cancelBtn = view.findViewById(R.id.tenantCancelButton);
 
-        //String strNotes = getContext().getString(Note);
-        //tvNotes.setText(strNote);
+        /*
+        Bundle b = this.getArguments();
+            String strNotes = b.getString("Note");
+            tvNotes.setText(strNotes);
+
+         */
+        if (getArguments() != null) {
+            String strNotes = this.getArguments().getString("Note");
+            tvNotes.setText(strNotes);
+        }
         tvNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i= new Intent(getContext(),Note.class);
-                i.getStringExtra(tvNotes.getText().toString());
+                i.putExtra("CurrentNote",tvNotes.getText().toString());
                 getContext().startActivity(i);
             }
         });

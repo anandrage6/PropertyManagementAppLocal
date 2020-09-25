@@ -33,6 +33,7 @@
                     android:textAlignment="textStart"
                     android:layout_marginLeft="30dp"
                     android:textSize="20sp"
+                    android:textColor="@color/cardview_light_background"
                     android:layout_gravity="start" />
             </androidx.appcompat.widget.Toolbar>
 

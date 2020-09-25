@@ -27,21 +27,20 @@
 
     </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addbtn"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="328dp"
-        android:layout_marginLeft="328dp"
-        android:layout_marginTop="630dp"
-        android:layout_marginBottom="127dp"
-        android:baselineAlignBottom="true"
-        android:clickable="true"
-        android:src="@drawable/ic_add_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.357"
-        tools:ignore="MissingConstraints" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_add_btn"
+            tools:ignore="RtlCompat" />
+
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

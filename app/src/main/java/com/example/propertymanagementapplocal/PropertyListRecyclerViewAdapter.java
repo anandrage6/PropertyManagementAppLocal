@@ -61,6 +61,7 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
             public void onClick(View view) {
                Intent intent = new Intent(context, PropertyDetails.class);
                 intent.putExtra(Config.COLUMN_PROPERTY_ID, property.getId());
+                intent.putExtra(Config.COLUMN_PROPERTY_PROPERTYTYPE, property.getPropertyType());
                 intent.putExtra(Config.COLUMN_PROPERTY_PROPERTYNAME, property.getPropertyName());
                 intent.putExtra(Config.COLUMN_PROPERTY_OWNERNAME, property.getOwnerName());
                 intent.putExtra(Config.COLUMN_PROPERTY_IMAGE, property.getImage());
