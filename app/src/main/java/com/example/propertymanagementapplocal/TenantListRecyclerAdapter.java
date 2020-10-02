@@ -1,6 +1,8 @@
 package com.example.propertymanagementapplocal;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +45,14 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
         holder.notes.setText(tenants.getNotes());
         holder.rentAmount.setText(tenants.getRentAmount());
         holder.securityDeposit.setText(tenants.getSecurityDeposit());
+
+
+        InvoicesFragment fragmentB=new InvoicesFragment();
+        Bundle bundle=new Bundle();
+        bundle.putLong("2",tenants.getTenantId());
+        //Log.d()
+        fragmentB.setArguments(bundle);
+
 
     }
 

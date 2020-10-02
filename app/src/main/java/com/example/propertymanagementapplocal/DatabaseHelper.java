@@ -16,7 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper databaseHelper;
 
     // All Static variables
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 9;
 
     // Database Name
     private static final String DATABASE_NAME = Config.DATABASE_NAME;
@@ -93,9 +93,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + "CONSTRAINT " + Config.FLAT_SUB_CONSTRAINT + " UNIQUE (" + Config.COLUMN_TENANTS_ID + ")"
                 + ")";
 
+        //CREATE TABLE INVOICE
+        String CREATE_INVOICE_TABLE = "CREATE TABLE " + Config.TABLE_INVOICE + "("
+                + Config.COLUMN_INVOICE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + Config.COLUMN_INVOICE_TITLE + " TEXT, "
+                + Config.COLUMN_INVOICE_DETAILS + " TEXT, "
+                + Config.COLUMN_INVOICE_AMOUNT + " TEXT, "
+                + Config.COLUMN_INVOICE_RENT + " TEXT, "
+                + Config.COLUMN_INVOICE_INVOICE_ISSUED + " TEXT, "
+                + Config.COLUMN_INVOICE_PaymentDue + " TEXT, "
+                + Config.COLUMN_INVOICE_Notes + " TEXT, "
+                + Config.COLUMN_FI_ID + " INTEGER NOT NULL, "
+                + "FOREIGN KEY (" + Config.COLUMN_FI_ID + ") REFERENCES " + Config.TABLE_FLATS + "(" + Config.COLUMN_FLATS_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, "
+                + "CONSTRAINT " + Config.INVOICE_SUB_CONSTRAINT + " UNIQUE (" + Config.COLUMN_INVOICE_ID + ")"
+                + ")";
+
+
+
         db.execSQL(CREATE_PROPERTIES_TABLE);
         db.execSQL(CREATE_FLAT_TABLE);
         db.execSQL(CREATE_TENANT_TABLE);
+        db.execSQL(CREATE_INVOICE_TABLE);
+
 
         Logger.d("DB created!");
 
@@ -107,6 +126,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + Config.TABLE_PROPERTY);
         db.execSQL("DROP TABLE IF EXISTS " + Config.TABLE_FLATS);
         db.execSQL("DROP TABLE IF EXISTS " + Config.TABLE_TENANTS);
+        db.execSQL("DROP TABLE IF EXISTS " + Config.TABLE_INVOICE);
 
         // Create tables again
         onCreate(db);

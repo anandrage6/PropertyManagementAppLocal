@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -53,7 +54,10 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
         holder.propertyTvInfo.setText(property.getPropertyName());
         holder.ownerNameTv.setText(property.getOwnerName());
         holder.descriptionTv.setText(property.getDescription());
-        holder.imageView.setImageURI(Uri.parse(property.getImage()));
+       // holder.imageView.setImageURI(Uri.parse(property.getImage()));
+        final String imageurl = property.getImage();
+        holder.imageView.setVisibility(View.VISIBLE);
+        Picasso.get().load(imageurl).into(holder.imageView);
 
         //item click function
         holder.itemView.setOnClickListener(new View.OnClickListener() {

@@ -46,6 +46,20 @@ public class Config {
     public static final String COLUMN_FT_ID = "flat_fk_id";
     public static final String FLAT_SUB_CONSTRAINT = "flat_sub_unique";
 
+    //Columns names of invoices
+    public static final String TABLE_INVOICE = "Invoice";
+    public static final String COLUMN_INVOICE_ID = "_id";
+    public static final String COLUMN_INVOICE_TITLE = "Title";
+    public static final String COLUMN_INVOICE_DETAILS = "Details";
+    public static final String COLUMN_INVOICE_AMOUNT = "Amount";
+    public static final String COLUMN_INVOICE_RENT = "Rent";
+    public static final String COLUMN_INVOICE_INVOICE_ISSUED = "Invoice_issued";
+    public static final String COLUMN_INVOICE_PaymentDue = "Payment_due";
+    public static final String COLUMN_INVOICE_Notes = "Notes";
+    public static final String COLUMN_FI_ID = "flat_fk_id";
+    public static final String INVOICE_SUB_CONSTRAINT = "flat_sub_unique";
+
+
 
     //others for general purpose key-value pair data
     public static final String TITLE = "title";
@@ -56,5 +70,7 @@ public class Config {
     public static final String PROPERTY_ID = "_id";
     public static final String CREATE_TENANT = "create_tenant";
     public static final String UPDATE_TENANT = "update_tenant";
+    public static final String CREATE_INVOICE = "create_invoice";
+
 
 }

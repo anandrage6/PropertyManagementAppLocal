@@ -2,16 +2,21 @@ package com.example.propertymanagementapplocal;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -49,6 +54,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Intent intent = new Intent(context, TenantDetails.class);
                 //intent.putExtra(Config.COLUMN_PROPERTY_ID, property.getId());
                 intent.putExtra(Config.COLUMN_FLATS_ID, flats.getFlatId());
@@ -58,10 +64,27 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
                 intent.putExtra(Config.COLUMN_FLATS_NOOFBEDROOMS, flats.getNoofbedrooms());
 
                 context.startActivity(intent);
+
+                 */
+                //fragmentJump(flats);
+
+
+                Intent intent = new Intent(context,TotalTenant.class);
+
+                intent.putExtra(Config.COLUMN_FLATS_ID, flats.getFlatId());
+                intent.putExtra(Config.COLUMN_FLATS_FLOOR, flats.getFloor());
+                intent.putExtra(Config.COLUMN_FLATS_FLATNO, flats.getFlaNo());
+                intent.putExtra(Config.COLUMN_FLATS_FLATFACING, flats.getFaltfacing());
+                intent.putExtra(Config.COLUMN_FLATS_NOOFBEDROOMS, flats.getNoofbedrooms());
+
+                context.startActivity(intent);
+
+
             }
         });
 
-        //update/see details/ delete
+
+            //update/see details/ delete
         holder.optionMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,6 +129,32 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
         });
 
     }
+/*
+    private void fragmentJump(FlatsModelClass mflats) {
+
+        OverView overView = new OverView();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("item_selected_Key", (Parcelable) mflats);
+        overView.setArguments(bundle);
+        switchContent(R.id.list, overView);
+
+    }
+
+    private void switchContent(int list, OverView overView) {
+        if(context == null){
+            return;
+            if(context instanceof TotalTenant){
+                TotalTenant totalTenant = context;
+                Fragment frag = overView;
+                totalTenant.switchContent(list, frag);
+            }
+
+        }
+    }
+
+ */
+
+
 
     @Override
     public int getItemCount() {

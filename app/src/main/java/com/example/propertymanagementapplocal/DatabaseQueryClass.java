@@ -399,6 +399,87 @@ public class DatabaseQueryClass {
 
     }
 
+
+    //insert Invoice
+
+    public long insertInvoice(InvoiceModelClass invoice, long flatId) {
+        long rowId = -1;
+
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Config.COLUMN_INVOICE_TITLE, invoice.getTitle());
+        contentValues.put(Config.COLUMN_INVOICE_DETAILS, invoice.getDetails());
+        contentValues.put(Config.COLUMN_INVOICE_AMOUNT, invoice.getAmount());
+        contentValues.put(Config.COLUMN_INVOICE_RENT, invoice.getRent());
+        contentValues.put(Config.COLUMN_INVOICE_INVOICE_ISSUED, invoice.getInvoiceIssued());
+        contentValues.put(Config.COLUMN_INVOICE_PaymentDue, invoice.getPaymentDue());
+        contentValues.put(Config.COLUMN_INVOICE_Notes, invoice.getNotes());
+        //contentValues.put(Config.COLUMN_PT_ID, id);
+        contentValues.put(Config.COLUMN_FI_ID, flatId);
+
+        try {
+            rowId = sqLiteDatabase.insertOrThrow(Config.TABLE_INVOICE, null, contentValues);
+        } catch (SQLiteException e) {
+            Logger.d(e);
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            sqLiteDatabase.close();
+        }
+
+        return rowId;
+    }
+
+
+    //get All invoice by id
+
+    //get All tenants by id
+    public List<InvoiceModelClass> getAllInvoicebyId(long fId){
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
+
+        List<InvoiceModelClass> invoiceList = new ArrayList<>();
+        Cursor cursor = null;
+        try{
+            cursor = sqLiteDatabase.query(Config.TABLE_INVOICE,
+                    new String[] {Config.COLUMN_INVOICE_ID, Config.COLUMN_INVOICE_TITLE,
+                            Config.COLUMN_INVOICE_DETAILS, Config.COLUMN_INVOICE_AMOUNT, Config.COLUMN_INVOICE_RENT, Config.COLUMN_INVOICE_INVOICE_ISSUED, Config.COLUMN_INVOICE_PaymentDue,
+                            Config.COLUMN_INVOICE_Notes},
+                    Config.COLUMN_FI_ID + " = ? ",
+                    new String[] {String.valueOf(fId)},
+                    null, null, null);
+
+            if(cursor!=null && cursor.moveToFirst()){
+                invoiceList = new ArrayList<>();
+                do {
+                    long id = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_INVOICE_ID));
+                    String title = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_TITLE));
+                    String details = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_DETAILS));
+                    String amount = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_AMOUNT));
+                    String rent = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_RENT));
+                    String invoiceIssued = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_INVOICE_ISSUED));
+                    String paymentDue = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_PaymentDue));
+                    String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_Notes));
+
+                    invoiceList.add(new InvoiceModelClass(id, title, details, amount, rent, invoiceIssued, paymentDue, notes));
+                    Log.d("TotalInvoiceList : ==> ", String.valueOf(invoiceList.size()));
+                } while (cursor.moveToNext());
+            }
+        } catch (SQLiteException e){
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            if(cursor!=null)
+                cursor.close();
+            sqLiteDatabase.close();
+        }
+
+        return invoiceList;
+
+    }
+
+
+
 }
 
 
