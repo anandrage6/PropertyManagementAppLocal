@@ -213,6 +213,7 @@ public class AddT extends AppCompatActivity implements AdapterView.OnItemSelecte
 
         }
 
+        /*
         FragmentManager fm = getSupportFragmentManager();
         OverView overView = new OverView();
         Bundle b = new Bundle();
@@ -220,6 +221,9 @@ public class AddT extends AppCompatActivity implements AdapterView.OnItemSelecte
         b.putLong("rFId", FlatId);
         overView.setArguments(b);
         fm.beginTransaction().replace(R.id.addTenant, overView).commit();
+
+         */
+        //getSupportFragmentManager().findFragmentById(R.id.addTenant);
         finish();
 
     }

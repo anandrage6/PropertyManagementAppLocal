@@ -34,6 +34,8 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
         final int invoiceListPosition = position;
         final InvoiceModelClass invoice = invoiceList.get(position);
         final long invoiceId = invoice.getInvoiceId();
+
+        /*
         holder.title.setText(invoice.getTitle());
         holder.details.setText(invoice.getDetails());
         holder.amount.setText(invoice.getAmount());
@@ -42,10 +44,40 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
         holder.paymentdue.setText(invoice.getPaymentDue());
         holder.note.setText(invoice.getNotes());
 
+         */
+
+        //list details
+
+        holder.invoiceissuedDateTv.setText(invoice.getInvoiceIssued());
+        holder.paymentduedateTv.setText(invoice.getPaymentDue());
+        holder.rentTextView.setText(invoice.getRent());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(context, InvoiceFullDetails.class);
+                intent.putExtra(Config.COLUMN_INVOICE_ID, invoice.getInvoiceId());
+                intent.putExtra(Config.COLUMN_INVOICE_TITLE, invoice.getTitle());
+                intent.putExtra(Config.COLUMN_INVOICE_DETAILS, invoice.getDetails());
+                intent.putExtra(Config.COLUMN_INVOICE_AMOUNT, invoice.getAmount());
+                intent.putExtra(Config.COLUMN_INVOICE_RENT, invoice.getRent());
+                intent.putExtra(Config.COLUMN_INVOICE_INVOICE_ISSUED, invoice.getInvoiceIssued());
+                intent.putExtra(Config.COLUMN_INVOICE_PaymentDue, invoice.getPaymentDue());
+                intent.putExtra(Config.COLUMN_INVOICE_Notes, invoice.getNotes());
+
+                context.startActivity(intent);
+
+            }
+        });
+
+        /*
         InvoicesFragment fragmentB=new InvoicesFragment();
         Bundle bundle=new Bundle();
         bundle.getLong("2",invoice.getInvoiceId());
         fragmentB.setArguments(bundle);
+        
+         */
 
 
     }
@@ -56,17 +88,17 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
     }
 
     public class invoiceCustomViewHolder extends RecyclerView.ViewHolder {
-        TextView title, details, amount, rent, invoiceIssued, paymentdue, note;
+
+        TextView invoiceissuedDateTv, paymentduedateTv, rentTextView;
+
         public invoiceCustomViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            title = itemView.findViewById(R.id.titleTv);
-            details = itemView.findViewById(R.id.detailsTv);
-            amount = itemView.findViewById(R.id.amountTv);
-            rent = itemView.findViewById(R.id.rentTv);
-            invoiceIssued = itemView.findViewById(R.id.invoiceissuedDateTv);
-            paymentdue = itemView.findViewById(R.id.paymentdueDateTv);
-            note = itemView.findViewById(R.id.noteTv);
+
+
+            invoiceissuedDateTv = itemView.findViewById(R.id.invoiceissuedDateTextView);
+            paymentduedateTv = itemView.findViewById(R.id.paymentdueTextView);
+            rentTextView = itemView.findViewById(R.id.rentTextView);
 
         }
     }
