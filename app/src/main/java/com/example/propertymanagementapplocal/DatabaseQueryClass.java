@@ -384,7 +384,7 @@ public class DatabaseQueryClass {
                     String securityDeposit = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_SECURITYDEPOSIT));
 
                     tenantList.add(new TenantModelClass(id, name, phone, email, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rent, securityDeposit));
-                    Log.d("TotalTenantList : ==> ", String.valueOf(tenantList.size()));
+                    //Log.d("TotalTenantList : ==> ", String.valueOf(tenantList.size()));
                 } while (cursor.moveToNext());
             }
         } catch (SQLiteException e){
@@ -432,9 +432,8 @@ public class DatabaseQueryClass {
     }
 
 
-    //get All invoice by id
 
-    //get All tenants by id
+    //get All invoice by id
     public List<InvoiceModelClass> getAllInvoicebyId(long fId){
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
@@ -463,7 +462,7 @@ public class DatabaseQueryClass {
                     String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_Notes));
 
                     invoiceList.add(new InvoiceModelClass(id, title, details, amount, rent, invoiceIssued, paymentDue, notes));
-                    Log.d("TotalInvoiceList : ==> ", String.valueOf(invoiceList.size()));
+                   // Log.d("TotalInvoiceList : ==> ", String.valueOf(invoiceList.size()));
                 } while (cursor.moveToNext());
             }
         } catch (SQLiteException e){
@@ -479,6 +478,80 @@ public class DatabaseQueryClass {
     }
 
 
+
+    //insert payments
+
+    public long insertPayments(PaymentsModelClass payment, long flatId) {
+        long rowId = -1;
+
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Config.COLUMN_PAYMENT_AMOUNT, payment.getAmount());
+        contentValues.put(Config.COLUMN_PAYMENT_PAIDWITH, payment.getPaidwith());
+        contentValues.put(Config.COLUMN_PAYMENT_DATERECEIVED, payment.getDatereceived());
+        contentValues.put(Config.COLUMN_PAYMENT_RECEIVEDFROM, payment.getReceivedfrom());
+        contentValues.put(Config.COLUMN_PAYMENT_TAXSTATUS, payment.getTaxstatus());
+        contentValues.put(Config.COLUMN_PAYMENT_NOTES, payment.getNotes());
+        contentValues.put(Config.COLUMN_FPY_ID, flatId);
+
+        try {
+            rowId = sqLiteDatabase.insertOrThrow(Config.TABLE_PAYMENTS, null, contentValues);
+        } catch (SQLiteException e) {
+            Logger.d(e);
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            sqLiteDatabase.close();
+        }
+
+        return rowId;
+    }
+
+
+    //get All payments by id
+    public List<PaymentsModelClass> getAllPaymentsbyId(long fId){
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
+
+        List<PaymentsModelClass> paymentsList = new ArrayList<>();
+        Cursor cursor = null;
+        try{
+            cursor = sqLiteDatabase.query(Config.TABLE_PAYMENTS,
+                    new String[] {Config.COLUMN_PAYMENT_ID, Config.COLUMN_PAYMENT_AMOUNT,
+                            Config.COLUMN_PAYMENT_PAIDWITH, Config.COLUMN_PAYMENT_DATERECEIVED, Config.COLUMN_PAYMENT_RECEIVEDFROM, Config.COLUMN_PAYMENT_TAXSTATUS,
+                            Config.COLUMN_PAYMENT_NOTES},
+                            Config.COLUMN_FPY_ID + " = ? ",
+                            new String[] {String.valueOf(fId)},
+                            null, null, null);
+
+            if(cursor!=null && cursor.moveToFirst()){
+                paymentsList = new ArrayList<>();
+                do {
+                    long id = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_PAYMENT_ID));
+                    String amount = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_AMOUNT));
+                    String paidwith = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_PAIDWITH));
+                    String datereceived = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_DATERECEIVED));
+                    String receivedfrom = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_RECEIVEDFROM));
+                    String taxstatus = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_TAXSTATUS));
+                    String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_NOTES));
+
+
+                    paymentsList.add(new PaymentsModelClass(id, amount, paidwith, datereceived, receivedfrom, taxstatus, notes));
+                    // Log.d("TotalInvoiceList : ==> ", String.valueOf(invoiceList.size()));
+                } while (cursor.moveToNext());
+            }
+        } catch (SQLiteException e){
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+            } finally {
+                if(cursor!=null)
+                    cursor.close();
+                sqLiteDatabase.close();
+            }
+
+            return paymentsList;
+
+        }
 
 }
 

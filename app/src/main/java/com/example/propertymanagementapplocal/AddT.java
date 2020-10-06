@@ -103,7 +103,7 @@ public class AddT extends AppCompatActivity implements AdapterView.OnItemSelecte
 
        Intent  in = getIntent();
        FlatId = in.getLongExtra("flatId", -1);
-       Log.d("ResultRefFlatId : ==>", String.valueOf(FlatId));
+       Log.d("RefFlatId in AddT : ==>", String.valueOf(FlatId));
 
 
 

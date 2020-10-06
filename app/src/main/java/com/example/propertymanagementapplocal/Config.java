@@ -3,7 +3,7 @@ package com.example.propertymanagementapplocal;
 public class Config {
 
     // Database name
-    public static final String DATABASE_NAME = "propertyManagement-db2";
+    public static final String DATABASE_NAME = "propertyManagement-db3";
 
     //column names of student table
     public static final String TABLE_PROPERTY = "properties";
@@ -59,6 +59,19 @@ public class Config {
     public static final String COLUMN_FI_ID = "flat_fk_id";
     public static final String INVOICE_SUB_CONSTRAINT = "flat_sub_unique";
 
+    //Columns names of Payments
+
+    public static final String TABLE_PAYMENTS = "Payments";
+    public static final String COLUMN_PAYMENT_ID = "_id";
+    public static final String COLUMN_PAYMENT_AMOUNT = "Amount";
+    public static final String COLUMN_PAYMENT_PAIDWITH = "Paid_with";
+    public static final String COLUMN_PAYMENT_DATERECEIVED = "Date_Received";
+    public static final String COLUMN_PAYMENT_RECEIVEDFROM = "Received_From";
+    public static final String COLUMN_PAYMENT_TAXSTATUS = "Tax_status";
+    public static final String COLUMN_PAYMENT_NOTES = "Notes";
+    public static final String COLUMN_FPY_ID = "flat_fk_id";
+    public static final String PAYMENTS_SUB_CONSTRAINT = "flat_sub_unique";
+
 
 
     //others for general purpose key-value pair data
@@ -71,6 +84,7 @@ public class Config {
     public static final String CREATE_TENANT = "create_tenant";
     public static final String UPDATE_TENANT = "update_tenant";
     public static final String CREATE_INVOICE = "create_invoice";
+    public static final String CREATE_PAYMENT = "create_payment";
 
 
 }

@@ -3,129 +3,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".PaymentFragment">
 
-   <androidx.cardview.widget.CardView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
-       <RelativeLayout
-           android:layout_width="match_parent"
-           android:layout_height="match_parent">
-       <LinearLayout
-           android:id="@+id/firstlinear"
-           android:layout_width="match_parent"
-           android:layout_height="50dp"
-           android:orientation="horizontal">
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Amount"
-               android:textSize="20sp"
-               android:textAlignment="textStart"
-               android:gravity="start"
-               android:layout_gravity="center"
-               android:layout_marginStart="8dp"
-               tools:ignore="RtlCompat" />
-           <EditText
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="Amount"
-               android:textSize="20sp"
-               android:textAlignment="textEnd"
-               android:gravity="start"
-               android:layout_gravity="center"
-               android:layout_marginStart="150dp"
-               tools:ignore="RtlCompat" />
-       </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="0dp"
+        tools:ignore="MissingConstraints">
 
-           <LinearLayout
-               android:id="@+id/secondlinear"
-               android:layout_width="match_parent"
-               android:layout_height="50dp"
-               android:layout_below="@id/firstlinear"
-               android:orientation="horizontal">
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Paid with"
-                   android:textSize="20sp"
-                   android:textAlignment="textStart"
-                   android:gravity="start"
-                   android:layout_gravity="center"
-                   android:layout_marginStart="8dp"
-                   tools:ignore="RtlCompat" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/paymentRecyclerId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="1dp"
+            tools:listitem="@layout/payments_design_row_recyclerview"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
-               <Spinner
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   android:layout_gravity="center"
-                   android:layout_marginStart="140dp"
-                   android:gravity="start"
-                   android:text="Amount"
-                   android:textAlignment="textEnd"
-                   android:textSize="20sp"
-                   tools:ignore="RtlCompat" />
-           </LinearLayout>
+    </LinearLayout>
 
-           <LinearLayout
-               android:id="@+id/thirdlinear"
-               android:layout_width="match_parent"
-               android:layout_height="50dp"
-               android:layout_below="@id/secondlinear"
-               android:orientation="horizontal">
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Date received"
-                   android:textSize="20sp"
-                   android:textAlignment="textStart"
-                   android:gravity="start"
-                   android:layout_gravity="center"
-                   android:layout_marginStart="8dp"
-                   tools:ignore="RtlCompat" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="0dp">
 
-               <Spinner
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   android:layout_gravity="center"
-                   android:layout_marginStart="100dp"
-                   android:gravity="start"
-                   android:text="Amount"
-                   android:textAlignment="textEnd"
-                   android:textSize="20sp"
-                   tools:ignore="RtlCompat" />
-           </LinearLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/paymentaddbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_add_btn"
+            tools:ignore="RtlCompat" />
 
-           <LinearLayout
-               android:id="@+id/fourthlinear"
-               android:layout_width="match_parent"
-               android:layout_height="50dp"
-               android:layout_below="@id/thirdlinear"
-               android:orientation="horizontal">
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Received from"
-                   android:textSize="20sp"
-                   android:textAlignment="textStart"
-                   android:gravity="start"
-                   android:layout_gravity="center"
-                   android:layout_marginStart="8dp"
-                   tools:ignore="RtlCompat" />
-               <EditText
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   android:text="name"
-                   android:textSize="20sp"
-                   android:textAlignment="textEnd"
-                   android:gravity="start"
-                   android:layout_gravity="center"
-                   android:layout_marginStart="150dp"
-                   tools:ignore="RtlCompat" />
-           </LinearLayout>
-
-       </RelativeLayout>
-
-   </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 
 </FrameLayout>

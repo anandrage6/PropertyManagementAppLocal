@@ -40,11 +40,13 @@ public class TotalTenant extends AppCompatActivity {
         refFlatId = getIntent().getLongExtra(Config.COLUMN_FLATS_ID, -1);
         Log.d("flatRefFId in Total Tenant:==>", String.valueOf(refFlatId));
 
-        /*
-        refTenantId = getIntent().getLongExtra(Config.COLUMN_INVOICE_ID, -1);
-        Log.d("Tenant in Total Tenant:==>", String.valueOf(refTenantId));
 
-         */
+        //refTenantId = getIntent().getExtras().getLong("2");
+       // Log.d("Tenant in Total Tenant:==>", String.valueOf(refTenantId));
+
+
+
+
         setSupportActionBar(mytoolbar);
         getSupportActionBar().setTitle("Tenant");
         //((AppCompatActivity)getApplicationContext()).setSupportActionBar(mytoolbar);
@@ -62,6 +64,10 @@ public class TotalTenant extends AppCompatActivity {
         bundle = new Bundle();
         bundle.putLong("1", refFlatId);
         Log.d("flatRefFId in bundle Tenant:==>", String.valueOf(bundle));
+
+
+
+
         //OverView Pass data
         OverView oV = new OverView();
         oV.setArguments(bundle);
@@ -72,8 +78,17 @@ public class TotalTenant extends AppCompatActivity {
         IF.setArguments(bundle);
         viePageAdapter.addFragnment(IF, "Invoices");
 
+        //payments
+        PaymentFragment pF = new PaymentFragment();
+        pF.setArguments(bundle);
+        viePageAdapter.addFragnment(pF, "Payments");
+
+
         //documents
-        viePageAdapter.addFragnment(new Documents(), "Documents");
+        Documents d = new Documents();
+        d.setArguments(bundle);
+        viePageAdapter.addFragnment(d, "Documents");
+
         viewPager.setAdapter(viePageAdapter);
 
     }

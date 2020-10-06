@@ -1,5 +1,6 @@
 package com.example.propertymanagementapplocal;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -109,6 +110,7 @@ public class AddInvoice extends DialogFragment {
         return view;
     }
 
+    @SuppressLint("LongLogTag")
     private void getData() {
 
         String strTitle = title.getText().toString();
@@ -127,7 +129,7 @@ public class AddInvoice extends DialogFragment {
         //Log.d("FlatId", String.valueOf(FlatId));
 
         long id = databaseQueryClass.insertInvoice(invoice, FlatId);
-        Log.e("Result tenant id : ==> ", String.valueOf(id));
+        Log.e("Result Invoice id : ==> ", String.valueOf(id));
 
 
         if (id > 0) {

@@ -1,5 +1,6 @@
 package com.example.propertymanagementapplocal;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +31,7 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
         return new tenantCustomViewHolder(view);
     }
 
+    @SuppressLint("LongLogTag")
     @Override
     public void onBindViewHolder(@NonNull tenantCustomViewHolder holder, int position) {
         final int tenantlistPosition = position;
@@ -47,11 +49,15 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
         holder.securityDeposit.setText(tenants.getSecurityDeposit());
 
 
-        InvoicesFragment fragmentB=new InvoicesFragment();
+
+
+        OverView fragmentB=new OverView();
         Bundle bundle=new Bundle();
         bundle.putLong("2",tenants.getTenantId());
-        //Log.d()
+        Log.d("TenantId in bundle : ==> ", String.valueOf(bundle));
         fragmentB.setArguments(bundle);
+
+
 
 
     }

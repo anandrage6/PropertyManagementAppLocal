@@ -43,10 +43,16 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
         View v = inflater.inflate(R.layout.fragment_invoices, container, false);
 
         refFlatId = getArguments().getLong("1");
-        Log.d("flatRefFId_in_overView : ==> ", String.valueOf(refFlatId));
+        Log.d("flatRefFId_in_invoices: ==> ", String.valueOf(refFlatId));
         //Log.d("flatRefFId_in_overView : ==> ", String.valueOf(getArguments().getLong("1")));
+
+
+        /*
         refTenantId = getArguments().getLong("2");
-        Log.d("TenantRefId : ==> ", String.valueOf(refTenantId));
+        Log.d("TenantRefId_in_invoices : ==> ", String.valueOf(refTenantId));
+
+         */
+
 
 
 
@@ -55,9 +61,9 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
 
         databaseQueryClass = new DatabaseQueryClass(getContext());
         invoiceList = new ArrayList<>();
-        Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllInvoicebyId(refFlatId)));
+        //Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllInvoicebyId(refFlatId)));
         invoiceList.addAll(databaseQueryClass.getAllInvoicebyId(refFlatId));
-        Log.d("InvoiceList : ==> ", String.valueOf(invoiceList.size()));
+        //Log.d("InvoiceList : ==> ", String.valueOf(invoiceList.size()));
         //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
 
          invoiceListAdapter = new InvoiceListAdapter(getContext(), invoiceList);

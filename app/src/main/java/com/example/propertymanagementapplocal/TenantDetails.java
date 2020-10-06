@@ -16,7 +16,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
 public class TenantDetails extends AppCompatActivity implements TenantCreateListener {
+
+
     FloatingActionButton btnadd;
     TextView name, phone, email;
     String strName, strPhone, strEmail;
@@ -30,6 +33,9 @@ public class TenantDetails extends AppCompatActivity implements TenantCreateList
 
     private List<TenantModelClass> tenantList ;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +45,7 @@ public class TenantDetails extends AppCompatActivity implements TenantCreateList
         //refPropertyId = getIntent().getLongExtra(Config.COLUMN_PROPERTY_ID, -1);
         //Log.d("TenantDetailsRefPId:==>", String.valueOf(refPropertyId));
         refFlatId = getIntent().getLongExtra(Config.COLUMN_FLATS_ID, -1);
-        Log.d("TenantDetailsRefFId:==>", String.valueOf(refFlatId));
+        //Log.d("TenantDetailsRefFId:==>", String.valueOf(refFlatId));
 
         /*
         name = findViewById(R.id.tenantNameTV);
@@ -48,14 +54,15 @@ public class TenantDetails extends AppCompatActivity implements TenantCreateList
 
          */
 
+        /*
         //retrive full details part
         tenantRecyclerView = findViewById(R.id.tenantRecyclerId);
 
         databaseQueryClass = new DatabaseQueryClass(this);
         tenantList = new ArrayList<>();
-        Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllTenantsByFId(refFlatId)));
+        //Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllTenantsByFId(refFlatId)));
         tenantList.addAll(databaseQueryClass.getAllTenantsByFId(refFlatId));
-        Log.d("TenantList : ==> ", String.valueOf(tenantList.size()));
+        //Log.d("TenantList : ==> ", String.valueOf(tenantList.size()));
         //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
 
 
@@ -63,6 +70,7 @@ public class TenantDetails extends AppCompatActivity implements TenantCreateList
         tenantListRecyclerAdapter = new TenantListRecyclerAdapter(this, tenantList);
         tenantRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         tenantRecyclerView.setAdapter(tenantListRecyclerAdapter);
+
 
 
 
@@ -80,7 +88,15 @@ public class TenantDetails extends AppCompatActivity implements TenantCreateList
             }
         });
 
+
+
+         */
+
     }
+
+
+
+
 
     public void viewVisibility() {
         if(tenantList.isEmpty())
@@ -103,3 +119,9 @@ public class TenantDetails extends AppCompatActivity implements TenantCreateList
     }
 
 }
+
+
+
+
+
+

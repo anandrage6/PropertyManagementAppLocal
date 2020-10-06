@@ -30,6 +30,7 @@ public class OverView extends Fragment implements TenantCreateListener  {
     TextView name, phone, email;
     String strName, strPhone, strEmail;
     private long refFlatId;
+    private long refTenantId;
     private long refPropertyId;
     // private String address;
     private RecyclerView tenantRecyclerView;
@@ -59,8 +60,8 @@ public class OverView extends Fragment implements TenantCreateListener  {
 
         //refFlatId = getArguments().getLong(Config.COLUMN_FLATS_ID, -1);
 
-          rFid= getArguments().getLong("rFId");
-        Log.d("rFid : ==> ", String.valueOf(rFid));
+         // rFid= getArguments().getLong("rFId");
+        //Log.d("rFid : ==> ", String.valueOf(rFid));
 
 
 
@@ -68,15 +69,23 @@ public class OverView extends Fragment implements TenantCreateListener  {
         Log.d("flatRefFId_in_overView : ==> ", String.valueOf(refFlatId));
         //Log.d("flatRefFId_in_overView : ==> ", String.valueOf(getArguments().getLong("1")));
 
+        //
+        if(getArguments()!=null)
+        {
+            refTenantId = getArguments().getInt("2", -1);
+            Log.d("TenantRefId_in_OverView : ==> ", String.valueOf(refTenantId));
+        }
+
+
 
         //retrive full details part
         tenantRecyclerView = view.findViewById(R.id.tenantRecyclerId);
 
         databaseQueryClass = new DatabaseQueryClass(getContext());
         tenantList = new ArrayList<>();
-        Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllTenantsByFId(refFlatId)));
+       // Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllTenantsByFId(refFlatId)));
         tenantList.addAll(databaseQueryClass.getAllTenantsByFId(refFlatId));
-        Log.d("TenantList : ==> ", String.valueOf(tenantList.size()));
+        //Log.d("TenantList : ==> ", String.valueOf(tenantList.size()));
         //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
 
         tenantListRecyclerAdapter = new TenantListRecyclerAdapter(getContext(), tenantList);
