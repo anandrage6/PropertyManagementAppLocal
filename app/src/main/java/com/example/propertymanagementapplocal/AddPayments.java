@@ -3,6 +3,7 @@ package com.example.propertymanagementapplocal;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -121,6 +122,7 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
 
     }
 
+    @SuppressLint("LongLogTag")
     private void getData() {
         String amount = pAmount.getText().toString();
         String paidwith = strPaidwith;
@@ -145,6 +147,7 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
             payment.setPaymentId(id);
 
         }
+        finish();
     }
 
     @Override

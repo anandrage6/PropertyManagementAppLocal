@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PaymentFragment extends Fragment {
+public class PaymentFragment extends Fragment implements PaymentsCreateListener {
     FloatingActionButton btnadd;
     private long refFlatId;
     private long refTenantId;
@@ -65,9 +65,9 @@ public class PaymentFragment extends Fragment {
 
         //
 
-        /*
+
         //retrive full details part
-        paymentRecyclerView = v.findViewById(R.id.invoiceRecyclerId);
+        paymentRecyclerView = v.findViewById(R.id.paymentRecyclerId);
 
         databaseQueryClass = new DatabaseQueryClass(getContext());
         paymentList = new ArrayList<>();
@@ -80,7 +80,7 @@ public class PaymentFragment extends Fragment {
         paymentRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         paymentRecyclerView.setAdapter(paymentListRecyclerViewAdapter);
 
-         */
+
 
         return  v;
     }
@@ -90,5 +90,11 @@ public class PaymentFragment extends Fragment {
         i.putExtra("flatId", refFlatId);
         getContext().startActivity(i);
 
+    }
+
+    @Override
+    public void onPaymentCreated(PaymentsModelClass payments) {
+        paymentList.add(payments);
+        paymentListRecyclerViewAdapter.notifyDataSetChanged();
     }
 }
