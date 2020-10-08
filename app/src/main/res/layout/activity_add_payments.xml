@@ -40,7 +40,7 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/cardview_dark_background"
                 android:textAlignment="center"
-                android:text="Add Tenant"
+                android:text="Add Payment"
                 android:layout_marginStart="80dp"
                 android:textSize="20sp"
                 android:gravity="center_horizontal"
