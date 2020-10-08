@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InvoiceAddNewLine">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/Heavy_rain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:popupTheme="@style/AppTheme">
+
+        <Button
+            android:id="@+id/addLineCancelButton"
+            android:layout_width="72dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/roundedborder"
+            android:text="CANCEL"
+            android:textColor="@color/green" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/cardview_dark_background"
+            android:textAlignment="center"
+            android:text="Add line"
+            android:layout_marginStart="80dp"
+            android:textSize="20sp"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="16dp" />
+
+
+        <Button
+            android:id="@+id/addLineSaveButton"
+            android:layout_width="72dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/roundedborder"
+            android:text="SAVE"
+            android:textColor="@color/green" />
+    </androidx.appcompat.widget.Toolbar>
+</com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp">
+        <LinearLayout
+            android:id="@+id/firstlinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="92dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="Amount"
+                android:textAlignment="textStart"
+                android:textSize="20sp"
+                tools:ignore="RtlCompat" />
+            <EditText
+                android:id="@+id/addLineAmountEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="0.00"
+                android:textAlignment="textEnd"
+                android:gravity="center"
+                android:layout_marginStart="150dp"
+                android:layout_marginLeft="150dp"
+                android:layout_gravity="end"
+                tools:ignore="RtlCompat" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondlinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/cardview_light_background"
+            android:layout_below="@id/firstlinear"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="92dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="Title"
+                android:textAlignment="textStart"
+                android:textSize="20sp"
+                tools:ignore="RtlCompat" />
+            <EditText
+                android:id="@+id/addLineTitleEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="title"
+                android:textAlignment="textEnd"
+                android:layout_marginStart="70dp"
+                android:layout_marginLeft="150dp"
+                android:gravity="center"
+                android:layout_gravity="end"
+                tools:ignore="RtlCompat" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/thirdlinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/cardview_light_background"
+            android:layout_below="@id/secondlinear"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="92dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="Details"
+                android:textAlignment="textStart"
+                android:textSize="20sp"
+                tools:ignore="RtlCompat" />
+            <EditText
+                android:id="@+id/addLineDetailsEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="details"
+                android:textAlignment="textEnd"
+                android:layout_gravity="end"
+                android:layout_marginStart="70dp"
+                android:layout_marginLeft="150dp"
+                android:gravity="center"
+                tools:ignore="RtlCompat" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>

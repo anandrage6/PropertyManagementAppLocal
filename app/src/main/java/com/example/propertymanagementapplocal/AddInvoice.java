@@ -17,6 +17,7 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
+/*
 public class AddInvoice extends DialogFragment {
     private static long FlatId;
     private static InvoiceCreateListener invoiceCreateListener;
@@ -152,3 +153,5 @@ public class AddInvoice extends DialogFragment {
         }
     }
 }
+
+ */

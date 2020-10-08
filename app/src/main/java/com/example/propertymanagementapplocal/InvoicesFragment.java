@@ -1,6 +1,7 @@
 package com.example.propertymanagementapplocal;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -90,8 +91,15 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
     }
 
     private void openActivityAddInvoice() {
+        /*
         AddInvoice addTenant = AddInvoice.newInstance(refFlatId, this);
         addTenant.show(getParentFragmentManager(), Config.CREATE_INVOICE);
+
+         */
+
+        Intent i = new Intent(getActivity(), AddInvoices.class );
+        i.putExtra("flatId", refFlatId);
+        getContext().startActivity(i);
 
     }
 
