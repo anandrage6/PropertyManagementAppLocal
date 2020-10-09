@@ -70,12 +70,21 @@ public class OverView extends Fragment implements TenantCreateListener  {
         //Log.d("flatRefFId_in_overView : ==> ", String.valueOf(getArguments().getLong("1")));
 
         //
+        /*
         if(getArguments()!=null)
         {
-            refTenantId = getArguments().getInt("2", -1);
+            refTenantId = getArguments().getInt("2", 0);
             Log.d("TenantRefId_in_OverView : ==> ", String.valueOf(refTenantId));
         }
 
+         */
+
+        if(getArguments()!=null)
+        {
+            refTenantId = getArguments().getLong("TenantId");
+            //Log.d("Tenanid :", "No Id");
+            Log.d("TenantRefId_in_OverView : ==> ", String.valueOf(refTenantId));
+        }
 
 
         //retrive full details part

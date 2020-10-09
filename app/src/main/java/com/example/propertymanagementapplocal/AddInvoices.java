@@ -20,6 +20,7 @@ import java.util.Calendar;
 
 public class AddInvoices extends AppCompatActivity {
     private static long FlatId;
+    private static long refTenantId;
 
     EditText rent;
     TextView amount, details, title, paymentdue, invoiceIssued, note, addLine;
@@ -173,13 +174,16 @@ public class AddInvoices extends AppCompatActivity {
 
         String strTitle = title.getText().toString();
         String strDetails = details.getText().toString();
-        String strAmount = amount.getText().toString();
-        String strRent = rent.getText().toString();
+        int strAmount = Integer.parseInt(amount.getText().toString());
+        int strRent = Integer.parseInt(rent.getText().toString());
         String strInvoiceIssued = invoiceIssued.getText().toString();
         String strpaymentdue = paymentdue.getText().toString();
         String strNote = note.getText().toString();
+        String Amount = amount.getText().toString();
+        String totalrent = String.valueOf(strRent - strAmount);
+        Log.d("totalrent : ==> ", totalrent);
 
-        InvoiceModelClass invoice = new InvoiceModelClass(-1, strTitle, strDetails, strAmount, strRent, strInvoiceIssued, strpaymentdue, strNote );
+        InvoiceModelClass invoice = new InvoiceModelClass(-1, strTitle, strDetails, Amount, totalrent, strInvoiceIssued, strpaymentdue, strNote );
 
         DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(this);
 

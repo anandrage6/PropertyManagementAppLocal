@@ -43,16 +43,23 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_invoices, container, false);
 
+
         refFlatId = getArguments().getLong("1");
         Log.d("flatRefFId_in_invoices: ==> ", String.valueOf(refFlatId));
         //Log.d("flatRefFId_in_overView : ==> ", String.valueOf(getArguments().getLong("1")));
 
+        //fragment
 
         /*
-        refTenantId = getArguments().getLong("2");
-        Log.d("TenantRefId_in_invoices : ==> ", String.valueOf(refTenantId));
+        if(getArguments()!=null)
+        {
+            refTenantId = getArguments().getLong("TenantId");
+            //Log.d("Tenanid :", "No Id");
+            Log.d("TenantRefId_in_Invoice : ==> ", String.valueOf(refTenantId));
+        }
 
          */
+
 
 
 

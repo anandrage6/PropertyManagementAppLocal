@@ -46,8 +46,11 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
 
          */
 
+        String id = String.valueOf(invoiceId);
+
         //list details
 
+        holder.invoiceIdTv.setText(" # "+id);
         holder.invoiceissuedDateTv.setText(invoice.getInvoiceIssued());
         holder.paymentduedateTv.setText(invoice.getPaymentDue());
         holder.rentTextView.setText(invoice.getRent());
@@ -89,7 +92,7 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
 
     public class invoiceCustomViewHolder extends RecyclerView.ViewHolder {
 
-        TextView invoiceissuedDateTv, paymentduedateTv, rentTextView;
+        TextView invoiceissuedDateTv, paymentduedateTv, rentTextView, invoiceIdTv;
 
         public invoiceCustomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -99,6 +102,7 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
             invoiceissuedDateTv = itemView.findViewById(R.id.invoiceissuedDateTextView);
             paymentduedateTv = itemView.findViewById(R.id.paymentdueTextView);
             rentTextView = itemView.findViewById(R.id.rentTextView);
+            invoiceIdTv = itemView.findViewById(R.id.invoiceId);
 
         }
     }

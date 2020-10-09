@@ -1,19 +1,18 @@
 package com.example.propertymanagementapplocal;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TableLayout;
+
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.ArrayList;
 
 public class TotalTenant extends AppCompatActivity {
 
@@ -66,6 +65,8 @@ public class TotalTenant extends AppCompatActivity {
         Log.d("flatRefFId in bundle Tenant:==>", String.valueOf(bundle));
 
 
+       //refTenantId = getIntent().getLongExtra("TId", -1);
+        //Log.d("TenantId in  TotalTenant:==>", String.valueOf(refTenantId));
 
 
         //OverView Pass data
@@ -92,14 +93,6 @@ public class TotalTenant extends AppCompatActivity {
         viewPager.setAdapter(viePageAdapter);
 
     }
-/*
-    public void switchContent(int list, Fragment frag) {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(list, frag, frag.toString());
-        ft.addToBackStack(null);
-        ft.commit();
-    }
 
 
- */
 }

@@ -45,11 +45,6 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
         Log.d("flatRefFId_in_payments : ==> ", String.valueOf(refFlatId));
         //Log.d("flatRefFId_in_overView : ==> ", String.valueOf(getArguments().getLong("1")));
 
-        Bundle bundle = this.getArguments();
-        if (bundle != null) {
-            refTenantId = bundle.getInt("2", -1);
-            Log.d("TenantRefId_in_Payments : ==> ", String.valueOf(refTenantId));
-        }
 
         //floating button
         btnadd = v.findViewById(R.id.paymentaddbtn);

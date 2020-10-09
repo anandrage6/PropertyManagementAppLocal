@@ -1,7 +1,9 @@
 package com.example.propertymanagementapplocal;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -37,6 +42,7 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
         final int tenantlistPosition = position;
         final TenantModelClass tenants = tenantList.get(position);
         final long tenantId = tenants.getTenantId();
+
         holder.name.setText(tenants.getTenantName());
         holder.email.setText(tenants.getTenantEmail());
         holder.phone.setText(tenants.getTenantphone());
@@ -50,14 +56,31 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
 
 
 
-
-        OverView fragmentB=new OverView();
-        Bundle bundle=new Bundle();
-        bundle.putLong("2",tenants.getTenantId());
+        /*
+        //passing  tenantid in to invoice fragment
+        Bundle bundle = new Bundle();
+        bundle.putLong("TenantId",tenants.getTenantId());
         Log.d("TenantId in bundle : ==> ", String.valueOf(bundle));
+        OverView fragmentB = new OverView();
         fragmentB.setArguments(bundle);
+        //Log.d("TenantId in bundle : ==> ", fragmentB);
+        FragmentManager  fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.overViewList, fragmentB);
+        ft.commit();
+
+         */
 
 
+
+
+
+        /*
+        Intent i = new Intent();
+        i.putExtra("TId: ==>", tenantId);
+        context.startActivity(i);
+
+         */
 
 
     }

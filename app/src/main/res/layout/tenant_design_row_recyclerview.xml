@@ -40,6 +40,7 @@
                 android:gravity="start"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginLeft="10dp" />
         </LinearLayout>
 
@@ -66,6 +67,7 @@
                 android:textAlignment="textStart"
                 android:gravity="start"
                 android:layout_gravity="start"
+                android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp" />
 
@@ -94,6 +96,7 @@
                 android:textAlignment="textStart"
                 android:gravity="start"
                 android:layout_gravity="start"
+                android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp" />
         </LinearLayout>
@@ -148,11 +151,13 @@
                 android:layout_height="wrap_content"
                 android:hint="LeaseStart "
                 android:textSize="25sp"
-                android:textAlignment="textStart"
+                android:textAlignment="textEnd"
                 android:gravity="start"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginEnd="10dp"
+                android:layout_marginLeft="10dp"
+                tools:ignore="RtlCompat" />
 
         </LinearLayout>
 
@@ -186,8 +191,10 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="start"
                 android:hint="LeaseEnd "
-                android:textAlignment="textStart"
-                android:textSize="25sp" />
+                android:textAlignment="textEnd"
+                android:layout_marginEnd="10dp"
+                android:textSize="25sp"
+                tools:ignore="RtlCompat" />
         </LinearLayout>
 
         <LinearLayout
@@ -203,7 +210,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rent is Paid : "
+                android:text="Rent Frequency : "
                 android:textSize="25sp"
                 android:textAlignment="textStart"
                 android:gravity="start"
@@ -216,11 +223,13 @@
                 android:layout_height="wrap_content"
                 android:hint="Rent is paid "
                 android:textSize="25sp"
-                android:textAlignment="textStart"
+                android:textAlignment="textEnd"
                 android:gravity="start"
                 android:layout_gravity="start"
                 android:layout_marginStart="20dp"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                tools:ignore="RtlCompat" />
 
         </LinearLayout>
 
@@ -250,11 +259,13 @@
                 android:layout_height="wrap_content"
                 android:hint="occupants "
                 android:textSize="25sp"
-                android:textAlignment="textStart"
+                android:textAlignment="textEnd"
                 android:gravity="start"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                tools:ignore="RtlCompat" />
 
         </LinearLayout>
 
@@ -275,7 +286,7 @@
                 android:textSize="25sp"
                 android:textAlignment="textStart"
                 android:gravity="start"
-                android:layout_gravity="center"
+                android:layout_gravity="start"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp" />
             <TextView
@@ -289,7 +300,9 @@
                 android:gravity="start"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                tools:ignore="RtlCompat" />
 
         </LinearLayout>
 
@@ -319,11 +332,13 @@
                 android:layout_height="wrap_content"
                 android:hint="Rent "
                 android:textSize="25sp"
-                android:textAlignment="textStart"
+                android:textAlignment="textEnd"
                 android:gravity="start"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                tools:ignore="RtlCompat" />
 
         </LinearLayout>
 
@@ -353,11 +368,13 @@
                 android:layout_height="wrap_content"
                 android:hint="Deposit "
                 android:textSize="25sp"
-                android:textAlignment="textStart"
+                android:textAlignment="textEnd"
                 android:gravity="start"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                tools:ignore="RtlCompat" />
 
         </LinearLayout>
     </RelativeLayout>
