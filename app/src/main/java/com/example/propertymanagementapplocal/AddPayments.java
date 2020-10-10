@@ -116,6 +116,12 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
                 getData();
             }
         });
+        pCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
 

@@ -223,7 +223,7 @@
                 android:gravity="center"
                 android:layout_marginStart="0dp"
                 android:textAlignment="center"
-                android:hint="sele date"
+                android:hint="Select Date"
                 android:textSize="20sp"
                 android:layout_marginLeft="0dp"
                 tools:ignore="RtlCompat">
@@ -259,7 +259,7 @@
                 android:gravity="center"
                 android:layout_marginStart="0dp"
                 android:textAlignment="center"
-                android:hint="sele date"
+                android:hint="Select Date"
                 android:textSize="20sp"
                 android:layout_marginLeft="0dp"
                 tools:ignore="RtlCompat">

@@ -21,7 +21,7 @@ public class AddFlats extends DialogFragment implements AdapterView.OnItemSelect
 
     EditText edtfloor, edtFlatNo ;
     Spinner flatfacingSpinner, noofbedroomsSpinner;
-    Button flatsave;
+    Button flatsave, flatCancel;
 
     String flatfacing, noofbedrooms;
 
@@ -51,7 +51,8 @@ public class AddFlats extends DialogFragment implements AdapterView.OnItemSelect
         edtFlatNo = view.findViewById(R.id.flatNoEdttxt);
         flatfacingSpinner = view.findViewById(R.id.flatfacingSpin);
         noofbedroomsSpinner = view.findViewById(R.id.noofBedroomsSpin);
-        flatsave = view.findViewById(R.id.flatsave);
+        flatsave = view.findViewById(R.id.flatsaveBtn);
+        flatCancel = view.findViewById(R.id.flatCancelButton);
 
         //spinner part
 
@@ -69,6 +70,12 @@ public class AddFlats extends DialogFragment implements AdapterView.OnItemSelect
             @Override
             public void onClick(View view) {
                 getData();
+            }
+        });
+        flatCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getDialog().dismiss();
             }
         });
 

@@ -35,10 +35,11 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
     ImageButton imageBtn;
     EditText edtpropertyName, edtownerName, edtaddress, edtcity,  edtzipcode, edtdescription, image;
     Spinner statespinn, propertyTypeSpinn;
-    Button btnsave;
+    Button btnsave, btnCancel;
     private Uri imageUri;
     //ProgressDialog mprogress;
     String state, propertyType;
+    String imagetext;
 
     public  String propertyName, ownerName, address, city, zipcode, description;
 
@@ -72,6 +73,7 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
         edtzipcode = findViewById(R.id.zipCodeEditText);
         edtdescription = findViewById(R.id.descriptionEditText);
         btnsave = findViewById(R.id.saveBtn);
+        btnCancel = findViewById(R.id.propertyCancelButton);
 
 
 
@@ -100,6 +102,7 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
             }
         });
 
+        //Button save
         btnsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,27 +111,38 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
             }
         });
 
+        //Button cancel
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 
     private void getData() {
-        propertyName = ""+edtpropertyName.getText().toString().trim();
-        ownerName = ""+edtownerName.getText().toString().trim();
-        address = ""+edtaddress.getText().toString().trim();
-        city = ""+edtcity.getText().toString().trim();
-        zipcode = ""+edtzipcode.getText().toString().trim();
-        description = ""+edtdescription.getText().toString().trim();
-        String imagetext = imageUri.toString();
+        propertyName = "" + edtpropertyName.getText().toString().trim();
+        ownerName = "" + edtownerName.getText().toString().trim();
+        address = "" + edtaddress.getText().toString().trim();
+        city = "" + edtcity.getText().toString().trim();
+        zipcode = "" + edtzipcode.getText().toString().trim();
+        description = "" + edtdescription.getText().toString().trim();
 
 
-        PropertyModelClass model = new PropertyModelClass(-1, propertyType, propertyName, ownerName, address, city, state, zipcode, description, imagetext);
-        DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(this);
-        long id = databaseQueryClass.insertProperty(model);
-        if(id>0) {
-            model.setId(id);
-        }
-        startActivity(new Intent(AddProperty.this, MainActivity.class));
-       // Log.e("Record : ", String.valueOf(id));
+            imagetext = imageUri.toString();
+
+
+            PropertyModelClass model = new PropertyModelClass(-1, propertyType, propertyName, ownerName, address, city, state, zipcode, description, imagetext);
+            DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(this);
+            long id = databaseQueryClass.insertProperty(model);
+            if (id > 0) {
+                model.setId(id);
+            }
+            startActivity(new Intent(AddProperty.this, MainActivity.class));
+            // Log.e("Record : ", String.valueOf(id));
+
     }
 
     private void imagePickDialog() {

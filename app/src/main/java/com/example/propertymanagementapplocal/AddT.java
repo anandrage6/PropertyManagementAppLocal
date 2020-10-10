@@ -180,6 +180,12 @@ public class AddT extends AppCompatActivity implements AdapterView.OnItemSelecte
                 getData();
             }
         });
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 

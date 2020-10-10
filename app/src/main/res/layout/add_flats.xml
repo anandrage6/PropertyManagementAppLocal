@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/Heavy_rain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,21 +20,43 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:popupTheme="@style/AppTheme" >
+            app:popupTheme="@style/AppTheme">
+
+            <Button
+                android:id="@+id/flatCancelButton"
+                android:layout_width="72dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/roundedborder"
+                android:text="CANCEL"
+                android:textColor="@color/green" />
 
             <TextView
-                android:layout_width="120dp"
-                android:layout_marginStart="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Add Flats"
-                android:textSize="20dp"
-                android:textColor="@color/cardview_light_background"
+                android:textColor="@color/cardview_dark_background"
                 android:textAlignment="center"
+                android:text="Add Flat"
+                android:layout_marginStart="80dp"
+                android:textSize="20sp"
                 android:gravity="center_horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginLeft="170dp" />
+                android:layout_marginLeft="16dp" />
+
+
+            <Button
+                android:id="@+id/flatsaveBtn"
+                android:layout_width="72dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="85dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/roundedborder"
+                android:text="SAVE"
+                android:textColor="@color/green" />
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -42,123 +64,147 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="58dp"
-        tools:ignore="MissingConstraints">
-        <androidx.cardview.widget.CardView
+        android:layout_marginTop="60dp">
+        <LinearLayout
+            android:id="@+id/firstlinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/Heavy_rain"
+            android:background="@color/cardview_light_background"
             android:layout_marginTop="0dp"
-            tools:ignore="MissingConstraints">
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/firstlinear"
+            <TextView
+                android:layout_width="129dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="Floor"
+                android:textAlignment="textStart"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
+
+            <EditText
+                android:id="@+id/floorEdttxt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/appBarLayout"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:hint="Floor"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:layout_marginLeft="150dp"
+                android:layout_marginRight="10dp" />
 
-                <TextView
-                    android:layout_width="99dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_horizontal"
-                    android:text="Floor"
-                    android:textAlignment="center"
-                    android:textSize="20sp" />
+        </LinearLayout>
 
-                <EditText
-                    android:id="@+id/floorEdttxt"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="140dp"
-                    android:layout_marginLeft="70dp"
-                    android:hint="" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/secondlinear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="59dp"
-                android:layout_below="@id/firstlinear">
-
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_horizontal"
-                    android:text="Flat.No"
-                    android:textAlignment="center"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/flatNoEdttxt"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint=""
-                    android:layout_marginStart="125dp"
-                    android:layout_marginLeft="70dp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="117dp">
-
-                <TextView
-                    android:layout_width="140dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_horizontal"
-                    android:text="Flat Facing"
-                    android:textAlignment="center"
-                    android:textSize="20sp" />
-
-                <Spinner
-                    android:id="@+id/flatfacingSpin"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="100dp"
-                    android:layout_marginLeft="70dp"
-                    android:hint="floor" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="167dp">
-
-                <TextView
-                    android:layout_width="219dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_horizontal"
-                    android:text="Number of Bedrooms"
-                    android:textAlignment="center"
-                    android:textSize="20sp" />
-
-                <Spinner
-                    android:id="@+id/noofBedroomsSpin"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="70dp"
-                    android:hint="floor" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <Button
-            android:id="@+id/flatsave"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/secondlinear"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="250dp"
-            android:layout_marginStart="165dp"
-            android:text="save"
-            android:background="@color/skyblue"
-            android:layout_marginLeft="170dp" />
-    </RelativeLayout>
+            android:layout_below="@id/firstlinear"
+            android:layout_marginTop="3dp"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="129dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="Flat.No"
+                android:textAlignment="textStart"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
+
+            <EditText
+                android:id="@+id/flatNoEdttxt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Floor"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:layout_marginLeft="150dp"
+                android:layout_marginRight="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/thirdlinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/secondlinear"
+            android:background="@color/cardview_light_background"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="129dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="Flat Facing"
+                android:textAlignment="textStart"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
+
+            <Spinner
+                android:id="@+id/flatfacingSpin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Floor"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:layout_marginLeft="150dp"
+                android:layout_marginRight="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fourthlinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/thirdlinear"
+            android:background="@color/cardview_light_background"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="Number of Bedrooms"
+                android:textAlignment="textStart"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
+
+            <Spinner
+                android:id="@+id/noofBedroomsSpin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Floor"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:layout_marginLeft="150dp"
+                android:layout_marginRight="10dp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

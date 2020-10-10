@@ -28,6 +28,10 @@ public class AddInvoices extends AppCompatActivity {
     LinearLayout linearLayout;
 
 
+    double strAmount = Double.parseDouble("0.00");
+    double strRent = Double.parseDouble("0.00");
+
+
 
 //notes activity result
     @Override
@@ -124,6 +128,14 @@ public class AddInvoices extends AppCompatActivity {
             }
         });
 
+        //cancel button
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         //select dates
 
         Calendar calendar = Calendar.getInstance();
@@ -174,14 +186,15 @@ public class AddInvoices extends AppCompatActivity {
 
         String strTitle = title.getText().toString();
         String strDetails = details.getText().toString();
-        int strAmount = Integer.parseInt(amount.getText().toString());
-        int strRent = Integer.parseInt(rent.getText().toString());
+        strAmount = Integer.parseInt(amount.getText().toString());
+        strRent = Integer.parseInt(rent.getText().toString());
         String strInvoiceIssued = invoiceIssued.getText().toString();
         String strpaymentdue = paymentdue.getText().toString();
         String strNote = note.getText().toString();
         String Amount = amount.getText().toString();
-        String totalrent = String.valueOf(strRent - strAmount);
-        Log.d("totalrent : ==> ", totalrent);
+            String totalrent = String.valueOf(strRent - strAmount);
+            Log.d("totalrent : ==> ", totalrent);
+
 
         InvoiceModelClass invoice = new InvoiceModelClass(-1, strTitle, strDetails, Amount, totalrent, strInvoiceIssued, strpaymentdue, strNote );
 
