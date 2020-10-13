@@ -63,6 +63,7 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                Intent intent = new Intent(context, PropertyDetails.class);
                 intent.putExtra(Config.COLUMN_PROPERTY_ID, property.getId());
                 intent.putExtra(Config.COLUMN_PROPERTY_PROPERTYTYPE, property.getPropertyType());

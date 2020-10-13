@@ -55,6 +55,8 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         imagetv = findViewById(R.id.imageViewDetails);
         propertyNameTv = findViewById(R.id.propertyNameTv);
 
+        flatsrecyclerView = findViewById(R.id.flatsRecyclerViewid);
+
         //tool bar
         toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
@@ -73,8 +75,8 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
             @Override
             public void onClick(View view) {
                 //Toast.makeText(getApplicationContext(),"Edit", Toast.LENGTH_LONG).show();
-                /*
-                Intent intent = new Intent(PropertyDetails.this, UpdateProperty.class);
+
+                Intent intent = new Intent(PropertyDetails.this, UpdateProperty2.class);
                 intent.putExtra("PROPERTYID",propertyId);
                 intent.putExtra("IMAGE",stringimage);
                 intent.putExtra("PROPERTYTYPE",strPropertyType);
@@ -87,7 +89,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
                 intent.putExtra("DESCRIPTION",strDescription);
                 startActivity(intent);
 
-                 */
+
             }
         });
 
@@ -98,8 +100,6 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         ImageButton flatAddBtn;
 
         //retrive full details part
-        flatsrecyclerView = findViewById(R.id.flatsRecyclerViewid);
-
         propertyId = getIntent().getLongExtra(Config.COLUMN_PROPERTY_ID, -1);
         strLocationTv = getIntent().getStringExtra(Config.COLUMN_PROPERTY_ADDRESS);
         strCity = getIntent().getStringExtra(Config.COLUMN_PROPERTY_CITY);
@@ -126,6 +126,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         flatsList.addAll(databaseQueryClass.getAllFlatsByPFId(refpropertyId));
         Log.d("FlatList : ==> ", String.valueOf(flatsList.size()));
 
+        //flats part
         flatsListRecyclerAdapter = new FlatsListRecyclerAdapter(this, flatsList);
         flatsrecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         flatsrecyclerView.setAdapter(flatsListRecyclerAdapter);
