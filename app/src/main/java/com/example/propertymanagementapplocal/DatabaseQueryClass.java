@@ -23,6 +23,7 @@ public class DatabaseQueryClass {
         Logger.addLogAdapter(new AndroidLogAdapter());
     }
 
+    //insert property
     public long insertProperty(PropertyModelClass propertyModel) {
         long id = -1;
 
@@ -106,6 +107,7 @@ public class DatabaseQueryClass {
         return Collections.emptyList();
     }
 
+    //get property by id
     public PropertyModelClass getPropertyById(long id) {
 
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);

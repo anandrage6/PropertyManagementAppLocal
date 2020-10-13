@@ -5,208 +5,351 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10sp"
+                android:layout_marginTop="58dp">
+                <LinearLayout
+                    android:id="@+id/firstlinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cardview_light_background"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="2dp">
+
+                    <ImageButton
+                        android:id="@+id/updateImageButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@color/design_default_color_background"
+                        android:scaleType="fitXY"
+
+                        android:src="@drawable/imageplsceholder" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/secondlinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cardview_light_background"
+                    android:orientation="horizontal"
+                    android:layout_below="@id/firstlinear"
+                    android:layout_marginBottom="2dp">
+
+                    <TextView
+                        android:layout_width="174dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="Property Type"
+                        android:textAlignment="center"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlCompat" />
+
+                    <Spinner
+                        android:id="@+id/updatePropertyTypeSpin"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginLeft="100dp"
+                        android:hint="PropertyType"
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/thirdlinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/secondlinear"
+                    android:background="@color/cardview_light_background"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="181dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="Property Name"
+                        android:textAlignment="center"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlCompat" />
+                    <EditText
+                        android:id="@+id/updatePropertyNameEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Property Name"
+                        android:background="@null"
+                        android:textAlignment="center"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginLeft="100dp"
+                        android:layout_gravity="center_horizontal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fourthlinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/thirdlinear"
+                    android:background="@color/cardview_light_background"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="160dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="Owner Name"
+                        android:textAlignment="center"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlCompat" />
+                    <EditText
+                        android:id="@+id/updateOwnerNameEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Owner Name"
+                        android:background="@null"
+                        android:textAlignment="center"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginLeft="100dp"
+                        android:layout_gravity="center_horizontal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fifthlinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fourthlinear"
+                    android:background="@color/cardview_light_background"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="126dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="Address"
+                        android:textAlignment="center"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlCompat" />
+
+                    <EditText
+                        android:id="@+id/updateAddressEditText"
+                        android:layout_width="262dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="100dp"
+                        android:background="@null"
+                        android:hint="Address"
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/sixthlinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fifthlinear"
+                    android:background="@color/cardview_light_background"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="126dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="City"
+                        android:textAlignment="center"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlCompat" />
+                    <EditText
+                        android:id="@+id/updateCityEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="City"
+                        android:background="@null"
+                        android:textAlignment="center"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="100dp"
+                        android:layout_gravity="center_horizontal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/seventhlinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sixthlinear"
+                    android:background="@color/cardview_light_background"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="126dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="State"
+                        android:textAlignment="center"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlCompat" />
+
+                    <Spinner
+                        android:id="@+id/updateStateSpin"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="60dp"
+                        android:layout_marginLeft="100dp"
+                        android:hint="state"
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/eightlinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/seventhlinear"
+                    android:background="@color/cardview_light_background"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="126dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="Zip Code"
+                        android:textAlignment="center"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlCompat" />
+                    <EditText
+                        android:id="@+id/updateZipCodeEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Zip Code"
+                        android:background="@null"
+                        android:textAlignment="center"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="100dp"
+                        android:layout_gravity="center_horizontal" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ninthlinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/eightlinear"
+                    android:background="@color/cardview_light_background"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="147dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="Description"
+                        android:textAlignment="center"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlCompat" />
+
+                    <EditText
+                        android:id="@+id/updateDescriptionEditText"
+                        android:layout_width="257dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginLeft="100dp"
+                        android:background="@null"
+                        android:hint="Description"
+                        android:textAlignment="center" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:background="@color/Heavy_rain"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/Heavy_rain"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:popupTheme="@style/AppTheme">
 
-        <Button
-            android:id="@+id/flatCancelButton"
-            android:layout_width="72dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/roundedborder"
-            android:text="CANCEL"
-            android:textColor="@color/green" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="@color/cardview_dark_background"
-            android:textAlignment="center"
-            android:text="Add Flat"
-            android:layout_marginStart="80dp"
-            android:textSize="20sp"
-            android:gravity="center_horizontal"
-            android:layout_marginLeft="16dp" />
-
-
-        <Button
-            android:id="@+id/flatsaveBtn"
-            android:layout_width="72dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="85dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/roundedborder"
-            android:text="SAVE"
-            android:textColor="@color/green" />
-    </androidx.appcompat.widget.Toolbar>
-
-</com.google.android.material.appbar.AppBarLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="60dp">
-        <LinearLayout
-            android:id="@+id/firstlinear"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/cardview_light_background"
-            android:layout_marginTop="0dp"
-            android:orientation="horizontal">
+            app:popupTheme="@style/AppTheme">
 
-            <TextView
-                android:layout_width="129dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="10dp"
-                android:gravity="center"
-                android:text="Floor"
-                android:textAlignment="textStart"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-
-            <EditText
-                android:id="@+id/floorEdttxt"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Floor"
-                android:textAlignment="center"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="100dp"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:layout_marginLeft="150dp"
-                android:layout_marginRight="10dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/secondlinear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-             android:layout_below="@id/firstlinear"
-            android:layout_marginTop="3dp"
-            android:background="@color/cardview_light_background"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="129dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="10dp"
-                android:gravity="center"
-                android:text="Flat.No"
-                android:textAlignment="textStart"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-
-            <EditText
-                android:id="@+id/flatNoEdttxt"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Floor"
-                android:textAlignment="center"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="100dp"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:layout_marginLeft="150dp"
-                android:layout_marginRight="10dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/thirdlinear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/secondlinear"
-            android:background="@color/cardview_light_background"
-            android:layout_marginTop="3dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="129dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="10dp"
-                android:gravity="center"
-                android:text="Flat Facing"
-                android:textAlignment="textStart"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-
-            <Spinner
-                android:id="@+id/flatfacingSpin"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Floor"
-                android:textAlignment="center"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="100dp"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:layout_marginLeft="150dp"
-                android:layout_marginRight="10dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/fourthlinear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/thirdlinear"
-            android:background="@color/cardview_light_background"
-            android:layout_marginTop="3dp"
-            android:orientation="horizontal">
+            <Button
+                android:id="@+id/updateropertyCancelButton"
+                android:layout_width="72dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/roundedborder"
+                android:text="CANCEL"
+                android:textColor="@color/green"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_marginStart="10dp"
-                android:gravity="center"
-                android:text="Number of Bedrooms"
-                android:textAlignment="textStart"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                tools:ignore="RtlCompat" />
-
-            <Spinner
-                android:id="@+id/noofBedroomsSpin"
-                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Floor"
+                android:layout_marginStart="55dp"
+                android:layout_marginLeft="16dp"
+                android:gravity="center_horizontal"
+                android:text="Update Property"
                 android:textAlignment="center"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:layout_marginLeft="150dp"
-                android:layout_marginRight="10dp" />
-
-        </LinearLayout>
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
 
-    </RelativeLayout>
+            <Button
+                android:id="@+id/updatePropertySaveBtn"
+                android:layout_width="72dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/roundedborder"
+                android:text="SAVE"
+                android:textColor="@color/green"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

@@ -32,12 +32,18 @@
                     android:layout_marginTop="0dp"
                     android:layout_marginRight="1dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/apartment_design_row_recycler_view"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
+
+
+
             </ScrollView>
+
+
+
         </LinearLayout>
 
         <RelativeLayout
@@ -84,6 +90,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
+        <TextView
+            android:id="@+id/emptyListTextView"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Property"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -94,6 +113,7 @@
         app:menu="@menu/drawer"
         app:headerLayout="@layout/header"
         android:layout_gravity = "start"/>
+
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

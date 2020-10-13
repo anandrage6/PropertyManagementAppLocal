@@ -130,9 +130,13 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
         zipcode = "" + edtzipcode.getText().toString().trim();
         description = "" + edtdescription.getText().toString().trim();
 
-
-            imagetext = imageUri.toString();
-
+        try {
+            if (!imageUri.toString().isEmpty() || imageUri.toString().isEmpty()) {
+                imagetext = imageUri.toString();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
             PropertyModelClass model = new PropertyModelClass(-1, propertyType, propertyName, ownerName, address, city, state, zipcode, description, imagetext);
             DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(this);

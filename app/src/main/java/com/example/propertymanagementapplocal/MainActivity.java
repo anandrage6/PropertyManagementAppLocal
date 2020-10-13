@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     FloatingActionButton btnadd;
 
+    private TextView propertyListEmptyTextView;
+
     //new recycler part
     private RecyclerView recyclerView;
     private PropertyListRecyclerViewAdapter propertyListRecyclerViewAdapter;
@@ -57,7 +59,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(propertyListRecyclerViewAdapter);
 
-        //viewVisibility();
+        //viewVisibility
+
+        propertyListEmptyTextView = findViewById(R.id.emptyListTextView);
+        viewVisibility();
 
 
         //floating button
@@ -159,5 +164,12 @@ public class MainActivity extends AppCompatActivity {
     public void openActivityAddProperty(){
         Intent i = new Intent(this, AddProperty.class);
         startActivity(i);
+    }
+
+    public void viewVisibility() {
+        if(propertyList.isEmpty())
+            propertyListEmptyTextView.setVisibility(View.VISIBLE);
+        else
+            propertyListEmptyTextView.setVisibility(View.GONE);
     }
 }

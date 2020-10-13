@@ -26,6 +26,8 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
     private Toolbar toolbar;
     ImageButton editBtn;
 
+    private TextView flatEmptyListTV;
+
     //ImageButton editbutton;
 
 
@@ -55,8 +57,15 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
 
         //tool bar
         toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
+        //setSupportActionBar(toolbar);
+        //getSupportActionBar().setTitle("");
+
+        /*
+        //visibility
+        flatEmptyListTV = findViewById(R.id.flatEmptyListTextView);
+        viewVisibility();
+
+         */
 
         editBtn = findViewById(R.id.propertyEditBtn);
 
@@ -77,7 +86,6 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
                 intent.putExtra("ZIPCODE",strZipCode);
                 intent.putExtra("DESCRIPTION",strDescription);
                 startActivity(intent);
-
 
                  */
             }
@@ -152,5 +160,11 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         flatsList.add(flat);
         flatsListRecyclerAdapter.notifyDataSetChanged();
 
+    }
+    public void viewVisibility() {
+        if(flatsList.isEmpty())
+            flatEmptyListTV.setVisibility(View.VISIBLE);
+        else
+            flatEmptyListTV.setVisibility(View.GONE);
     }
 }

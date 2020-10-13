@@ -32,7 +32,7 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
     private ImageButton imageButton;
     private Toolbar toolbar;
 
-    private Button updatebutton;
+    private Button updateSavebutton, updateCancelButton;
 
     private String propertyName = "", ownerName = "", address = "", city = "", zipcode = "", description = "", state = "", propertyType = "", image = "";
 
@@ -65,6 +65,8 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
 
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +83,8 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
         edtCity = findViewById(R.id.updateCityEditText);
         edtZipCode = findViewById(R.id.updateZipCodeEditText);
         edtDescription = findViewById(R.id.updateDescriptionEditText);
-        updatebutton = findViewById(R.id.updateSaveBtn);
+        updateSavebutton = findViewById(R.id.updatePropertySaveBtn);
+        updateCancelButton = findViewById(R.id.updateropertyCancelButton);
         stateSpin = findViewById(R.id.updateStateSpin);
         propertyTypeSpin = findViewById(R.id.updatePropertyTypeSpin);
         imageButton = findViewById(R.id.updateImageButton);
@@ -124,7 +127,7 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
 
 
 
-        updatebutton.setOnClickListener(new View.OnClickListener() {
+        updateSavebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 propertyName = edtPropertyName.getText().toString();
@@ -152,6 +155,15 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
                     startActivity(i);
                 }
 
+            }
+        });
+
+        //cancel button
+
+        updateCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 

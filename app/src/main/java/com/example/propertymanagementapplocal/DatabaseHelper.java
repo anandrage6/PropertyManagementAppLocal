@@ -16,7 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper databaseHelper;
 
     // All Static variables
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 4;
 
     // Database Name
     private static final String DATABASE_NAME = Config.DATABASE_NAME;
@@ -50,12 +50,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String CREATE_PROPERTIES_TABLE = "CREATE TABLE " + Config.TABLE_PROPERTY + "("
                 + Config.COLUMN_PROPERTY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + Config.COLUMN_PROPERTY_PROPERTYTYPE + " TEXT NOT NULL, "
-                + Config.COLUMN_PROPERTY_PROPERTYNAME + " TEXT NOT NULL, "
-                + Config.COLUMN_PROPERTY_OWNERNAME + " TEXT NOT NULL, "
-                + Config.COLUMN_PROPERTY_ADDRESS + " TEXT NOT NULL, "
-                + Config.COLUMN_PROPERTY_CITY + " TEXT NOT NULL, "
-                + Config.COLUMN_PROPERTY_STATE + " TEXT NOT NULL, "
+                + Config.COLUMN_PROPERTY_PROPERTYTYPE + " TEXT, "
+                + Config.COLUMN_PROPERTY_PROPERTYNAME + " TEXT, "
+                + Config.COLUMN_PROPERTY_OWNERNAME + " TEXT, "
+                + Config.COLUMN_PROPERTY_ADDRESS + " TEXT, "
+                + Config.COLUMN_PROPERTY_CITY + " TEXT, "
+                + Config.COLUMN_PROPERTY_STATE + " TEXT, "
                 + Config.COLUMN_PROPERTY_ZIPCODE + " TEXT, "
                 + Config.COLUMN_PROPERTY_DESCRIPTION + " TEXT, " //NULLABLE
                 + Config.COLUMN_PROPERTY_IMAGE + " TEXT "
@@ -64,10 +64,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //CREATE FLATS  SQL FUNCTION
         String CREATE_FLAT_TABLE = "CREATE TABLE " + Config.TABLE_FLATS + "("
                 + Config.COLUMN_FLATS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + Config.COLUMN_FLATS_FLOOR + " TEXT NOT NULL, "
-                + Config.COLUMN_FLATS_FLATNO + " TEXT NOT NULL, "
-                + Config.COLUMN_FLATS_FLATFACING + " TEXT NOT NULL, "
-                + Config.COLUMN_FLATS_NOOFBEDROOMS + " TEXT NOT NULL, "
+                + Config.COLUMN_FLATS_FLOOR + " TEXT, "
+                + Config.COLUMN_FLATS_FLATNO + " TEXT, "
+                + Config.COLUMN_FLATS_FLATFACING + " TEXT, "
+                + Config.COLUMN_FLATS_NOOFBEDROOMS + " TEXT, "
                 + Config.COLUMN_PF_ID + " INTEGER NOT NULL, "
                 + "FOREIGN KEY (" + Config.COLUMN_PF_ID + ") REFERENCES " + Config.TABLE_PROPERTY + "(" + Config.COLUMN_PROPERTY_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, "
                 + "CONSTRAINT " + Config.PROPERTY_SUB_CONSTRAINT + " UNIQUE (" + Config.COLUMN_FLATS_ID + ")"
