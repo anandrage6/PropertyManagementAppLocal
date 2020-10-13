@@ -52,11 +52,6 @@
         <item>Villa</item>
     </string-array>
 
-    <string name="err_propertyName"> Enter Valid Property Name</string>
-    <string name="err_ownerName"> Enter Valid Owner Name</string>
-    <string name="err_city"> Enter Valid City Name </string>
-    <string name="err_zipCode"> Enter Valid ZipCode</string>
-
     <string name="add_new_Flat">Add New Flat</string>
 
     <string-array name="Flat_Facing">
@@ -93,8 +88,21 @@
         <item>Bank transfer</item>
         <item>Phonepe</item>
         <item>Google pay</item>
-
     </string-array>
+
+    //validations to property
+    <string name="err_propertyName"> Enter Valid Property Name</string>
+    <string name="err_ownerName"> Enter Valid Owner Name</string>
+    <string name="err_city"> Enter Valid City Name </string>
+    <string name="err_zipCode"> Enter Valid ZipCode</string>
+
+    //validations to tenants
+    <string name="err_tenantName"> Enter Valid Tenant Name</string>
+    <string name="err_telphone"> Enter Valid Phone Number</string>
+    <string name="err_email">Enter Valid Email Address</string>
+
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

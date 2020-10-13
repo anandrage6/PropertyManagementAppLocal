@@ -27,8 +27,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
+import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
 
 public class AddProperty extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     //instance variables
@@ -40,6 +43,10 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
     //ProgressDialog mprogress;
     String state, propertyType;
     String imagetext;
+
+    //Awesome Validation
+    AwesomeValidation awesomeValidation;
+
 
     public  String propertyName, ownerName, address, city, zipcode, description;
 
@@ -74,6 +81,15 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
         edtdescription = findViewById(R.id.descriptionEditText);
         btnsave = findViewById(R.id.saveBtn);
         btnCancel = findViewById(R.id.propertyCancelButton);
+
+        //Awesome validations
+
+        //Awesome
+        awesomeValidation = new AwesomeValidation(BASIC);
+        awesomeValidation.addValidation(AddProperty.this, R.id.propertyNameEditText, "[a-zA-Z\\s]+", R.string.err_propertyName);
+        awesomeValidation.addValidation(AddProperty.this, R.id.ownerNameEditText, "[a-zA-Z\\s]+", R.string.err_ownerName);
+        awesomeValidation.addValidation(AddProperty.this, R.id.cityEditText, "[a-zA-Z\\s]+", R.string.err_city);
+        awesomeValidation.addValidation(AddProperty.this, R.id.zipCodeEditText, "^[1-9][0-9]{5}$", R.string.err_zipCode);
 
 
 
@@ -123,20 +139,23 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
     }
 
     private void getData() {
-        propertyName = "" + edtpropertyName.getText().toString().trim();
-        ownerName = "" + edtownerName.getText().toString().trim();
-        address = "" + edtaddress.getText().toString().trim();
-        city = "" + edtcity.getText().toString().trim();
-        zipcode = "" + edtzipcode.getText().toString().trim();
-        description = "" + edtdescription.getText().toString().trim();
 
-        try {
-            if (!imageUri.toString().isEmpty() || imageUri.toString().isEmpty()) {
-                imagetext = imageUri.toString();
+        if(awesomeValidation.validate()) {
+            propertyName = "" + edtpropertyName.getText().toString().trim();
+            ownerName = "" + edtownerName.getText().toString().trim();
+            address = "" + edtaddress.getText().toString().trim();
+            city = "" + edtcity.getText().toString().trim();
+            zipcode = "" + edtzipcode.getText().toString().trim();
+            description = "" + edtdescription.getText().toString().trim();
+
+
+            try {
+                if (!imageUri.toString().isEmpty() || imageUri.toString().isEmpty()) {
+                    imagetext = imageUri.toString();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
 
             PropertyModelClass model = new PropertyModelClass(-1, propertyType, propertyName, ownerName, address, city, state, zipcode, description, imagetext);
             DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(this);
@@ -146,6 +165,7 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
             }
             startActivity(new Intent(AddProperty.this, MainActivity.class));
             // Log.e("Record : ", String.valueOf(id));
+        }
 
     }
 

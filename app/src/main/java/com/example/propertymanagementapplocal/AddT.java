@@ -22,8 +22,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 
 import java.util.Calendar;
+
+import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
 
 public class AddT extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -41,6 +47,9 @@ public class AddT extends AppCompatActivity implements AdapterView.OnItemSelecte
     Button saveBtn, cancelBtn;
     ImageButton incrementBtn, decrementBtn;
     int count = 0;
+
+    //Awesome Validation
+    AwesomeValidation awesomeValidation;
 
 
     @Override
@@ -88,6 +97,13 @@ public class AddT extends AppCompatActivity implements AdapterView.OnItemSelecte
         }
         */
 
+
+       //Awesome Validation
+
+        awesomeValidation = new AwesomeValidation(BASIC);
+        awesomeValidation.addValidation(AddT.this, R.id.tenantNameEditText, "[a-zA-Z\\s]+", R.string.err_tenantName);
+        awesomeValidation.addValidation(AddT.this, R.id.tenentPhoneEditText, RegexTemplate.TELEPHONE, R.string.err_telphone);
+        awesomeValidation.addValidation(AddT.this, R.id.tenantEmailEditText, android.util.Patterns.EMAIL_ADDRESS, R.string.err_email);
 
 
         tvNotes.setOnClickListener(new View.OnClickListener() {
@@ -192,32 +208,35 @@ public class AddT extends AppCompatActivity implements AdapterView.OnItemSelecte
 
     private void getData() {
 
-        String name = edtTenantName.getText().toString();
-        String phone = edtPhoneNumber.getText().toString();
-        String email = edtEmail.getText().toString();
-        String leaseStart = tvLeaseStart.getText().toString();
-        String leaseEnd = tvLeaseEnd.getText().toString();
-        String rentisPaid = rentIsPaid;
-        String totalOccupants = tvValue.getText().toString();
-        String notes = tvNotes.getText().toString();
-        String rentAmount = edtRent.getText().toString();
-        String securityDeposit = edtSecurityDeposit.getText().toString();
-        TenantModelClass tenant = new TenantModelClass(-1, name, phone, email, leaseStart, leaseEnd, rentisPaid, totalOccupants, notes, rentAmount, securityDeposit);
+        if(awesomeValidation.validate()) {
+            String name = edtTenantName.getText().toString();
+            String phone = edtPhoneNumber.getText().toString();
+            String email = edtEmail.getText().toString();
+            String leaseStart = tvLeaseStart.getText().toString();
+            String leaseEnd = tvLeaseEnd.getText().toString();
+            String rentisPaid = rentIsPaid;
+            String totalOccupants = tvValue.getText().toString();
+            String notes = tvNotes.getText().toString();
+            String rentAmount = edtRent.getText().toString();
+            String securityDeposit = edtSecurityDeposit.getText().toString();
 
-        DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(this);
+            if(phone.length()  == 10) {
+                TenantModelClass tenant = new TenantModelClass(-1, name, phone, email, leaseStart, leaseEnd, rentisPaid, totalOccupants, notes, rentAmount, securityDeposit);
 
-        //Log.d("propertyId", String.valueOf(propertyId));
-        //Log.d("FlatId", String.valueOf(FlatId));
+                DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(this);
+
+                //Log.d("propertyId", String.valueOf(propertyId));
+                //Log.d("FlatId", String.valueOf(FlatId));
 
 
-        long id = databaseQueryClass.insertTenant(tenant, FlatId);
-        Log.e("Result tenant id : ==> ", String.valueOf(id));
+                long id = databaseQueryClass.insertTenant(tenant, FlatId);
+                Log.e("Result tenant id : ==> ", String.valueOf(id));
 
 
-        if (id > 0) {
-            tenant.setTenantId(id);
+                if (id > 0) {
+                    tenant.setTenantId(id);
 
-        }
+                }
 
         /*
         FragmentManager fm = getSupportFragmentManager();
@@ -229,8 +248,14 @@ public class AddT extends AppCompatActivity implements AdapterView.OnItemSelecte
         fm.beginTransaction().replace(R.id.addTenant, overView).commit();
 
          */
-        //getSupportFragmentManager().findFragmentById(R.id.addTenant);
-        finish();
+                //getSupportFragmentManager().findFragmentById(R.id.addTenant);
+                finish();
+
+
+            }else{
+                Toast.makeText(getApplicationContext(), "Please Enter Valid 10 digits Number", Toast.LENGTH_LONG).show();
+            }
+        }
 
     }
 
@@ -244,6 +269,5 @@ public class AddT extends AppCompatActivity implements AdapterView.OnItemSelecte
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-
 
 }
