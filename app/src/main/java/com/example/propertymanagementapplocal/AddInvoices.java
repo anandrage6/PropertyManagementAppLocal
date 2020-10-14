@@ -27,9 +27,10 @@ public class AddInvoices extends AppCompatActivity {
     Button save, cancel;
     LinearLayout linearLayout;
 
+    String Title, Amount, Details;
 
-    double strAmount = Double.parseDouble("0.00");
-    double strRent = Double.parseDouble("0.00");
+    double strAmount;
+    double strRent;
 
 
 
@@ -47,15 +48,25 @@ public class AddInvoices extends AppCompatActivity {
 
             }
         }
+
+
         if (requestCode == 2) {
             if (resultCode == Activity.RESULT_OK) {
-                String strTitle = data.getStringExtra("title");
-                String strDetails = data.getStringExtra("details");
-                String strAmount = data.getStringExtra("amount");
+                 Title = data.getStringExtra("title");
+                 Details = data.getStringExtra("details");
+                 Amount = data.getStringExtra("amount");
 
-                amount.setText(strAmount);
-                details.setText(strDetails);
-                title.setText(strTitle);
+                amount.setText(Amount);
+                details.setText(Details);
+                title.setText(Title);
+
+                if(!Amount.isEmpty() && !Details.isEmpty() && !Title.isEmpty()){
+                    linearLayout.setVisibility(linearLayout.VISIBLE);
+                }else{
+                    linearLayout.setVisibility(linearLayout.GONE);
+
+                }
+
             }
 
         }
@@ -78,17 +89,14 @@ public class AddInvoices extends AppCompatActivity {
         note = findViewById(R.id.invoiceNoteTextView);
         save = findViewById(R.id.invoiceSaveButton);
         cancel = findViewById(R.id.invoiceCancelButton);
-        linearLayout = findViewById(R.id.invoicefirstlinear);
+        linearLayout = findViewById(R.id.hidelayout);
         addLine = findViewById(R.id.addlineTextview);
 
-        /*
-        if(!title.getText().toString().isEmpty() && !details.getText().toString().isEmpty() && !amount.getText().toString().isEmpty()){
-            linearLayout.setVisibility(View.VISIBLE);
-        }else{
-            linearLayout.setVisibility(View.GONE);
-        }
 
-         */
+
+        linearLayout.setVisibility(linearLayout.GONE);
+
+
 
         //notes
         note.setOnClickListener(new View.OnClickListener() {
@@ -186,7 +194,11 @@ public class AddInvoices extends AppCompatActivity {
 
         String strTitle = title.getText().toString();
         String strDetails = details.getText().toString();
-        strAmount = Integer.parseInt(amount.getText().toString());
+        try {
+            strAmount = Integer.parseInt(amount.getText().toString());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         strRent = Integer.parseInt(rent.getText().toString());
         String strInvoiceIssued = invoiceIssued.getText().toString();
         String strpaymentdue = paymentdue.getText().toString();

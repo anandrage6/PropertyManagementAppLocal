@@ -40,6 +40,7 @@
                 android:background="@color/cardview_light_background"
                 android:orientation="vertical">
                 <LinearLayout
+                    android:id="@+id/invoiceFullDetailsHide"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:orientation="horizontal">
