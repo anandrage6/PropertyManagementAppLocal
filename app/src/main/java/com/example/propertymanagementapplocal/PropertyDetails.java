@@ -26,6 +26,10 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
     private Toolbar toolbar;
     ImageButton editBtn;
 
+    //floating add button
+    //flats
+    ImageButton flatAddBtn;
+
     private TextView flatEmptyListTV;
 
     //ImageButton editbutton;
@@ -95,9 +99,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
 
 
 
-        //floating add button
-        //flats
-        ImageButton flatAddBtn;
+
 
         //retrive full details part
         propertyId = getIntent().getLongExtra(Config.COLUMN_PROPERTY_ID, -1);

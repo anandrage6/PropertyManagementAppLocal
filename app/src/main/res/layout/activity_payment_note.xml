@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaymentNote">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/Heavy_rain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:popupTheme="@style/AppTheme">
+
+            <Button
+                android:id="@+id/paymentNoteCancelButton"
+                android:layout_width="72dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/roundedborder"
+                android:text="CANCEL"
+                android:textColor="@color/green" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/cardview_dark_background"
+                android:textAlignment="center"
+                android:text="Add Note"
+                android:layout_marginStart="80dp"
+                android:textSize="20sp"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="16dp" />
+
+
+            <Button
+                android:id="@+id/paymentNoteSaveButton"
+                android:layout_width="72dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="55dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/roundedborder"
+                android:text="SAVE"
+                android:textColor="@color/green" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/paymentNoteEditTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Enter Your Note Here"
+                android:textAlignment="textStart"
+                android:textStyle="bold"
+                android:gravity="start"
+                android:layout_gravity="start" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

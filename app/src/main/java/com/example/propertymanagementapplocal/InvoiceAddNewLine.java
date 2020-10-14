@@ -36,6 +36,7 @@ public class InvoiceAddNewLine extends AppCompatActivity {
         details.setText(strDetails);
         amount.setText(strAmount);
 
+        //save button
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,6 +49,13 @@ public class InvoiceAddNewLine extends AppCompatActivity {
             }
         });
 
+        //cancel button
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 }

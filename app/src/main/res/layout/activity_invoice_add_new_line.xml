@@ -94,6 +94,7 @@
                 android:layout_marginStart="150dp"
                 android:layout_marginLeft="150dp"
                 android:layout_gravity="end"
+                android:inputType="numberDecimal"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
 
@@ -126,6 +127,7 @@
                 android:layout_marginLeft="150dp"
                 android:gravity="center"
                 android:layout_gravity="end"
+                android:inputType="text"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
 

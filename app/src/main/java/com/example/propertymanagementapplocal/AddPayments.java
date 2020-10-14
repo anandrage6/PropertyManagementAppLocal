@@ -1,9 +1,11 @@
 package com.example.propertymanagementapplocal;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -123,6 +125,18 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
             }
         });
 
+        //notes
+
+        //notes
+        pNotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(AddPayments.this, PaymentNote.class);
+                i.putExtra("CurrentNote", pNotes.getText().toString());
+                startActivityForResult(i, 1);
+
+            }
+        });
 
 
 
@@ -164,5 +178,21 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    //note avtivity results
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                //Bundle b = getIntent().getExtras();
+                String strnote = data.getStringExtra("note");
+
+                //Log.d("StrNote Result : ", strnote);
+                pNotes.setText(strnote);
+
+            }
+        }
     }
 }

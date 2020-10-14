@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class Note extends AppCompatActivity {
 
-    Button saveBtn;
+    Button saveBtn , cancelBtn;
     EditText note;
     Bundle b;
     String notes;
@@ -27,10 +27,13 @@ public class Note extends AppCompatActivity {
         setContentView(R.layout.activity_note);
         note = findViewById(R.id.noteEditTextView);
         saveBtn = findViewById(R.id.noteSaveButton);
+        cancelBtn = findViewById(R.id.noteCancelButton);
 
         Bundle extra = getIntent().getExtras();
          notes = extra.getString("CurrentNote");
          note.setText(notes);
+
+         //save button
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,5 +44,16 @@ public class Note extends AppCompatActivity {
                 finish();
             }
         });
+
+        //cancel button
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
     }
 }

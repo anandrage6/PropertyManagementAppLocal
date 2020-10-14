@@ -9,7 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class InvoiceNote extends AppCompatActivity {
+public class PaymentNote extends AppCompatActivity {
+
     Button saveBtn, cancelBtn;
     EditText note;
     Bundle b;
@@ -19,12 +20,11 @@ public class InvoiceNote extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_invoice_note);
+        setContentView(R.layout.activity_payment_note);
 
-
-        note = findViewById(R.id.invoiceNoteEditTextView);
-        saveBtn = findViewById(R.id.invoiceNoteSaveButton);
-        cancelBtn = findViewById(R.id.invoiceNoteCancelButton);
+        note = findViewById(R.id.paymentNoteEditTextView);
+        saveBtn = findViewById(R.id.paymentNoteSaveButton);
+        cancelBtn = findViewById(R.id.paymentNoteCancelButton);
 
         Bundle extra = getIntent().getExtras();
         notes = extra.getString("CurrentNote");
@@ -42,7 +42,7 @@ public class InvoiceNote extends AppCompatActivity {
             }
         });
 
-        //cancel Button
+        //cancel button
 
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,5 +50,7 @@ public class InvoiceNote extends AppCompatActivity {
                 finish();
             }
         });
+
+
     }
 }

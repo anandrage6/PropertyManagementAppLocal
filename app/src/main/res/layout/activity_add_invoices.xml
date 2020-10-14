@@ -163,6 +163,7 @@
                 android:textSize="20sp"
                 android:layout_marginLeft="40dp"
                 android:gravity="end"
+                android:inputType="numberDecimal"
                 android:layout_gravity="end"
                 tools:ignore="RtlCompat" />
 

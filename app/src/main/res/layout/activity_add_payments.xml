@@ -101,6 +101,7 @@
                     android:textAlignment="textEnd"
                     android:gravity="start"
                     android:layout_gravity="center"
+                    android:inputType="numberDecimal"
                     android:layout_marginStart="150dp"
                     tools:ignore="RtlCompat" />
             </LinearLayout>
@@ -252,7 +253,7 @@
                     android:id="@+id/paymentNotesTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Add"
+                    android:hint="Add"
                     android:textColor="@color/green"
                     android:textSize="20sp"
                     android:textAlignment="center"
