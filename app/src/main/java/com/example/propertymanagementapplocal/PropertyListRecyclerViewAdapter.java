@@ -53,7 +53,7 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
         holder.propertyNameTv.setText(property.getPropertyName());
         holder.propertyTvInfo.setText(property.getPropertyName());
         holder.ownerNameTv.setText(property.getOwnerName());
-        holder.descriptionTv.setText(property.getDescription());
+        holder.addressTv.setText(property.getAddress()+", "+property.getCity()+" "+property.getState()+"-"+property.getZipCode());
        // holder.imageView.setImageURI(Uri.parse(property.getImage()));
         final String imageurl = property.getImage();
         holder.imageView.setVisibility(View.VISIBLE);
@@ -164,7 +164,7 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
-        TextView propertyNameTv,ownerNameTv, descriptionTv;
+        TextView propertyNameTv,ownerNameTv, addressTv;
         TextView propertyTvInfo;
         ImageView imageView;
        TextView optionMenu;
@@ -172,7 +172,7 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
             super(itemView);
             propertyNameTv = itemView.findViewById(R.id.propertyNameTextView);
             ownerNameTv = itemView.findViewById(R.id.ownerNameTextView);
-            descriptionTv = itemView.findViewById(R.id.descriptionTextView);
+            addressTv = itemView.findViewById(R.id.addressTextView);
             imageView = itemView.findViewById(R.id.imageView);
             optionMenu = itemView.findViewById(R.id.textOption);
             propertyTvInfo = itemView.findViewById(R.id.propertyTvInfo);

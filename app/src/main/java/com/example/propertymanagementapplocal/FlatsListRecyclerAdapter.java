@@ -26,7 +26,6 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
     private Context context;
     private List<FlatsModelClass> flatsList;
 
-
     public FlatsListRecyclerAdapter(Context context, List<FlatsModelClass> flatsList) {
         this.context = context;
         this.flatsList = flatsList;
@@ -159,7 +158,8 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
     @Override
     public int getItemCount() {
 
-        return flatsList.size();
+        return flatsList.size() ;
+
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {

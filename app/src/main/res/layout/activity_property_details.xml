@@ -92,7 +92,7 @@
                     android:layout_marginStart="33dp"
                     android:layout_marginTop="20dp"
                     android:hint="location"
-                    android:textSize="20dp"
+                    android:textSize="19dp"
                     android:lines="2"
                     android:textStyle="bold"
                     android:layout_marginLeft="0dp" />
@@ -104,7 +104,7 @@
                     android:layout_marginStart="33dp"
                     android:layout_marginTop="80dp"
                     android:hint="Owner Name"
-                    android:textSize="20dp"
+                    android:textSize="19dp"
                     android:textStyle="bold"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="43dp" />
