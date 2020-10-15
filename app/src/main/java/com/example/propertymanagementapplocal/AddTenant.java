@@ -1,15 +1,15 @@
 package com.example.propertymanagementapplocal;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.FragmentManager;
 import android.content.Intent;
-import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,26 +20,22 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
-import com.orhanobut.logger.Logger;
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 
 import java.util.Calendar;
 
+import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
 
-public class AddTenant extends DialogFragment implements AdapterView.OnItemSelectedListener {
+public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private static long FlatId;
     private static long propertyId;
-    //private static String address;
+    private static String address;
     private static TenantCreateListener tenantCreateListener;
 
     private Toolbar toolbar;
     String note, rentIsPaid;
-    String notes;
 
     EditText edtTenantName, edtPhoneNumber, edtEmail, edtRent, edtSecurityDeposit;
     Spinner spinRentIsPaid;
@@ -47,6 +43,9 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
     Button saveBtn, cancelBtn;
     ImageButton incrementBtn, decrementBtn;
     int count = 0;
+
+    //Awesome Validation
+    AwesomeValidation awesomeValidation;
 
     //default constructor
     public AddTenant() {
@@ -59,90 +58,82 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
         FlatId = refFlatId;
         tenantCreateListener = listener;
         AddTenant addTenant = new AddTenant();
-        addTenant.setStyle(DialogFragment.STYLE_NORMAL, R.style.fullScreenDialogTheme);
         return addTenant;
     }
 
+
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.add_tenant, container, false);
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                //Bundle b = getIntent().getExtras();
+                String strnote = data.getStringExtra("note");
+                Log.d("StrNote Result : ", strnote);
+                tvNotes.setText(strnote);
+            }
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_tenant);
 
         //tool bar
-        toolbar = view.findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
 
 
         //id's
-        edtTenantName = view.findViewById(R.id.tenantNameEditText);
-        edtPhoneNumber = view.findViewById(R.id.tenentPhoneEditText);
-        edtEmail = view.findViewById(R.id.tenantEmailEditText);
-        tvLeaseStart = view.findViewById(R.id.tenantLeaseStart);
-        tvLeaseEnd = view.findViewById(R.id.tenantLeaseEnd);
-        edtRent = view.findViewById(R.id.tenentRentEditText);
-        edtSecurityDeposit = view.findViewById(R.id.tenantSecurityDepositEditText);
-        spinRentIsPaid = view.findViewById(R.id.tenantRentSpin);
-        tvValue = view.findViewById(R.id.tenantTotalOccupantsValueTextView);
-        tvNotes = view.findViewById(R.id.tenantNotesTextView);
-        incrementBtn = view.findViewById(R.id.tenantIncrementBtn);
-        decrementBtn = view.findViewById(R.id.tenantDecrementBtn);
-        saveBtn = view.findViewById(R.id.tenantSaveButton);
-        cancelBtn = view.findViewById(R.id.tenantCancelButton);
+        edtTenantName = findViewById(R.id.tenantNameEditText);
+        edtPhoneNumber = findViewById(R.id.tenentPhoneEditText);
+        edtEmail = findViewById(R.id.tenantEmailEditText);
+        tvLeaseStart = findViewById(R.id.tenantLeaseStart);
+        tvLeaseEnd = findViewById(R.id.tenantLeaseEnd);
+        edtRent = findViewById(R.id.tenentRentEditText);
+        edtSecurityDeposit = findViewById(R.id.tenantSecurityDepositEditText);
+        spinRentIsPaid = findViewById(R.id.tenantRentSpin);
+        tvValue = findViewById(R.id.tenantTotalOccupantsValueTextView);
+        tvNotes = findViewById(R.id.tenantNotesTextView);
+        incrementBtn = findViewById(R.id.tenantIncrementBtn);
+        decrementBtn = findViewById(R.id.tenantDecrementBtn);
+        saveBtn = findViewById(R.id.tenantSaveButton);
+        cancelBtn = findViewById(R.id.tenantCancelButton);
 
-        /*
-        Bundle b = this.getArguments();
-            String strNotes = b.getString("Note");
-            tvNotes.setText(strNotes);
-
-         */
-
-
-        /*
-        tvNotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i= new Intent(getContext(),Note.class);
-                i.putExtra("CurrentNote",tvNotes.getText().toString());
-                getContext().startActivity(i);
-            }
-        });
-
-
-         */
-
-
-
-        tvNotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                /*
-                NoteFragment noteFragment = new NoteFragment();
-                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-                transaction.replace(R.id.noteFragmentId, noteFragment, "NoteFragment");
-                transaction.commit();
-
-
-                 */
-
-           /*
-            NoteDialog noteDialog = new NoteDialog().newInstance(this);
-                noteDialog.show(getChildFragmentManager(), "NoteDialog");
-
-            */
-
-            }
-
-
-        });
-
+       /*
         if (getArguments() != null) {
-            String strNotes = this.getArguments().getString("strNote");
-            Log.d("StrNotes : ==> ", strNotes);
-            notes = strNotes;
-            Log.d("notes : ==> ", notes);
+            String strNotes = this.getArguments().getString("Note");
+            tvNotes.setText(strNotes);
         }
+        */
 
-        tvNotes.setText(notes);
+
+       //Awesome Validation
+
+        awesomeValidation = new AwesomeValidation(BASIC);
+        awesomeValidation.addValidation(AddTenant.this, R.id.tenantNameEditText, "[a-zA-Z\\s]+", R.string.err_tenantName);
+        awesomeValidation.addValidation(AddTenant.this, R.id.tenentPhoneEditText, RegexTemplate.TELEPHONE, R.string.err_telphone);
+        awesomeValidation.addValidation(AddTenant.this, R.id.tenantEmailEditText, android.util.Patterns.EMAIL_ADDRESS, R.string.err_email);
+
+
+        tvNotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(AddTenant.this, Note.class);
+                i.putExtra("CurrentNote", tvNotes.getText().toString());
+                startActivityForResult(i, 1);
+            }
+        });
+
+
+
+        /*
+       Intent  in = getIntent();
+       FlatId = in.getLongExtra("flatId", -1);
+       Log.d("RefFlatId in AddT : ==>", String.valueOf(FlatId));
+
+         */
 
 
 
@@ -168,7 +159,7 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
 
         //spinner part
 
-        ArrayAdapter<CharSequence> rentAdapter = ArrayAdapter.createFromResource(getContext(), R.array.Rent_is_Paid, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> rentAdapter = ArrayAdapter.createFromResource(this, R.array.Rent_is_Paid, android.R.layout.simple_spinner_item);
         rentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinRentIsPaid.setAdapter(rentAdapter);
         spinRentIsPaid.setOnItemSelectedListener(this);
@@ -182,7 +173,7 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
         tvLeaseStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(AddTenant.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         month = month + 1;
@@ -200,7 +191,7 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
         tvLeaseEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(AddTenant.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         month = month + 1;
@@ -219,38 +210,68 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
                 getData();
             }
         });
-        return view;
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
     }
 
 
     private void getData() {
 
-        String name = edtTenantName.getText().toString();
-        String phone = edtPhoneNumber.getText().toString();
-        String email = edtEmail.getText().toString();
-        String leaseStart = tvLeaseStart.getText().toString();
-        String leaseEnd = tvLeaseEnd.getText().toString();
-        String rentisPaid = rentIsPaid;
-        String totalOccupants = tvValue.getText().toString();
-        String notes = tvNotes.getText().toString();
-        String rentAmount = edtRent.getText().toString();
-        String securityDeposit = edtSecurityDeposit.getText().toString();
-        TenantModelClass tenant = new TenantModelClass(-1, name, phone, email, leaseStart, leaseEnd, rentisPaid, totalOccupants, notes, rentAmount, securityDeposit);
+        if(awesomeValidation.validate()) {
+            String name = edtTenantName.getText().toString();
+            String phone = edtPhoneNumber.getText().toString();
+            String email = edtEmail.getText().toString();
+            String leaseStart = tvLeaseStart.getText().toString();
+            String leaseEnd = tvLeaseEnd.getText().toString();
+            String rentisPaid = rentIsPaid;
+            String totalOccupants = tvValue.getText().toString();
+            String notes = tvNotes.getText().toString();
+            String rentAmount = edtRent.getText().toString();
+            String securityDeposit = edtSecurityDeposit.getText().toString();
 
-        DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(getContext());
+            if(phone.length()  == 10) {
+                TenantModelClass tenant = new TenantModelClass(-1, name, phone, email, leaseStart, leaseEnd, rentisPaid, totalOccupants, notes, rentAmount, securityDeposit);
 
-        //Log.d("propertyId", String.valueOf(propertyId));
-        //Log.d("FlatId", String.valueOf(FlatId));
+                DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(this);
 
-        long id = databaseQueryClass.insertTenant(tenant, FlatId);
-        Log.e("Result tenant id : ==> ", String.valueOf(id));
+                //Log.d("propertyId", String.valueOf(propertyId));
+                //Log.d("FlatId", String.valueOf(FlatId));
 
 
-        if (id > 0) {
-            tenant.setTenantId(id);
-            tenantCreateListener.onTenantCreated(tenant);
-            getDialog().dismiss();
+                long id = databaseQueryClass.insertTenant(tenant, FlatId);
+                Log.e("Result tenant id : ==> ", String.valueOf(id));
+
+
+                if (id > 0) {
+                    tenant.setTenantId(id);
+                    tenantCreateListener.onTenantCreated(tenant);
+                    finish();
+                }
+
+        /*
+        FragmentManager fm = getSupportFragmentManager();
+        OverView overView = new OverView();
+        Bundle b = new Bundle();
+        b.putLong("id", id);
+        b.putLong("rFId", FlatId);
+        overView.setArguments(b);
+        fm.beginTransaction().replace(R.id.addTenant, overView).commit();
+
+         */
+                //getSupportFragmentManager().findFragmentById(R.id.addTenant);
+
+
+
+            }else{
+                Toast.makeText(getApplicationContext(), "Please Enter Valid 10 digits Number", Toast.LENGTH_LONG).show();
+            }
         }
+
     }
 
     @Override
@@ -263,19 +284,5 @@ public class AddTenant extends DialogFragment implements AdapterView.OnItemSelec
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Dialog dialog = getDialog();
-        if (dialog != null) {
-            int width = ViewGroup.LayoutParams.MATCH_PARENT;
-            int height = ViewGroup.LayoutParams.MATCH_PARENT;
-            //noinspection ConstantConditions
-            dialog.getWindow().setLayout(width, height);
-        }
-
-    }
-
 
 }

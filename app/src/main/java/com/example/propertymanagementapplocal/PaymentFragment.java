@@ -81,9 +81,16 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
     }
 
     private void openActivityAddTenant() {
+        /*
         Intent i = new Intent(getActivity(), AddPayments.class );
         i.putExtra("flatId", refFlatId);
         getContext().startActivity(i);
+
+         */
+
+        AddPayments addPayments = AddPayments.newInstance(refFlatId, this);
+        Intent intent = new Intent(getActivity(), addPayments.getClass());
+        getContext().startActivity(intent);
 
     }
 

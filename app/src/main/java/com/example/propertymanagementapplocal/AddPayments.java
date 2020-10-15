@@ -36,6 +36,23 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
     String strPaidwith, strTaxStatus;
 
     private static long FlatId;
+    private  static  PaymentsCreateListener paymentsCreateListener;
+
+    //empty Constructor
+    public AddPayments() {
+
+    }
+
+    //new Instance
+    public static AddPayments newInstance(long refFlatId, PaymentsCreateListener paymentsListener) {
+        //Log.d("RefPropertyId : == >", String.valueOf(refPropertyId));
+        //propertyId = refPropertyId;
+        FlatId = refFlatId;
+        paymentsCreateListener = paymentsListener;
+        AddPayments addPayments = new AddPayments();
+        return addPayments;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,10 +122,13 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
         });
 
 
+        /*
         //get flatid
         Intent in = getIntent();
         FlatId = in.getLongExtra("flatId", -1);
         Log.d("RefFlatId in AddT : ==>", String.valueOf(FlatId));
+
+         */
 
         //save data
 
@@ -165,9 +185,9 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
 
         if (id > 0) {
             payment.setPaymentId(id);
-
+            paymentsCreateListener.onPaymentCreated(payment);
+            finish();
         }
-        finish();
     }
 
     @Override

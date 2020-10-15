@@ -21,6 +21,7 @@ import java.util.Calendar;
 public class AddInvoices extends AppCompatActivity {
     private static long FlatId;
     private static long refTenantId;
+    private static InvoiceCreateListener invoiceCreateListener;
 
     EditText rent;
     TextView amount, details, title, paymentdue, invoiceIssued, note, addLine;
@@ -31,6 +32,21 @@ public class AddInvoices extends AppCompatActivity {
 
     double strAmount;
     double strRent;
+
+    //empty Constructor
+    public AddInvoices() {
+
+    }
+
+
+    public static AddInvoices newInstance(long refFlatId, InvoiceCreateListener invoicelistener) {
+        //Log.d("RefPropertyId : == >", String.valueOf(refPropertyId));
+        //propertyId = refPropertyId;
+        FlatId = refFlatId;
+        invoiceCreateListener = invoicelistener;
+        AddInvoices addInvoices = new AddInvoices();
+        return addInvoices;
+    }
 
 
 
@@ -122,10 +138,13 @@ public class AddInvoices extends AppCompatActivity {
             }
         });
 
+        /*
         //get flatid
         Intent in = getIntent();
         FlatId = in.getLongExtra("flatId", -1);
         Log.d("RefFlatId in AddInvoices : ==>", String.valueOf(FlatId));
+
+         */
 
 
         //save data
@@ -221,8 +240,8 @@ public class AddInvoices extends AppCompatActivity {
 
         if (id > 0) {
             invoice.setInvoiceId(id);
-
+            invoiceCreateListener.onInvoiceCreated(invoice);
+            finish();
         }
-        finish();
     }
 }

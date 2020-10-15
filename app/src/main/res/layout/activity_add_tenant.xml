@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="AddTenant">
+    android:id="@+id/addTenant"
+    tools:context=".AddTenant">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -36,6 +37,7 @@
                 android:layout_marginStart="100dp"
                 android:background="@null"
                 android:textAlignment="center"
+                android:inputType="text"
                 android:layout_marginLeft="100dp"
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>
@@ -67,6 +69,7 @@
                 android:textAlignment="center"
                 android:layout_marginStart="100dp"
                 android:layout_marginLeft="100dp"
+                android:inputType="phone"
                 android:layout_gravity="center_horizontal" />
 
         </LinearLayout>
@@ -97,6 +100,7 @@
                 android:textAlignment="center"
                 android:layout_marginStart="100dp"
                 android:layout_marginLeft="100dp"
+                android:inputType="textEmailAddress"
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>
         <LinearLayout
@@ -194,7 +198,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="0dp"
                 android:gravity="center"
-                android:text="Rent is paid "
+                android:text="Rent Frequency "
                 android:textAlignment="center"
                 android:textSize="20dp"
                 android:textStyle="bold"
@@ -340,6 +344,7 @@
                 android:textColorHint="@color/green"
                 android:gravity="center"
                 android:background="@null"
+                android:inputType="numberDecimal"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
         <LinearLayout
@@ -374,6 +379,7 @@
                 android:textColorHint="@color/green"
                 android:gravity="center"
                 android:background="@null"
+                android:inputType="numberDecimal"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
     </RelativeLayout>

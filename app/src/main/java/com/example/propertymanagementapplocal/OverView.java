@@ -1,14 +1,11 @@
 package com.example.propertymanagementapplocal;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -38,6 +36,8 @@ public class OverView extends Fragment implements TenantCreateListener  {
 
     private DatabaseQueryClass databaseQueryClass ;
 
+    private RelativeLayout relativeLayout;
+
     private List<TenantModelClass> tenantList ;
     private Toolbar toolbar;
 
@@ -56,6 +56,7 @@ public class OverView extends Fragment implements TenantCreateListener  {
 
 
 
+        relativeLayout = view.findViewById(R.id.floatingButtonHide);
 
 
         //refFlatId = getArguments().getLong(Config.COLUMN_FLATS_ID, -1);
@@ -102,8 +103,9 @@ public class OverView extends Fragment implements TenantCreateListener  {
         tenantRecyclerView.setAdapter(tenantListRecyclerAdapter);
 
 
-
-
+        //visibility of floating button
+        //btnadd.setVisibility(btnadd.VISIBLE);
+        viewVisibility();
 
         //floating button
         btnadd = view.findViewById(R.id.addbtn);
@@ -121,18 +123,30 @@ public class OverView extends Fragment implements TenantCreateListener  {
     }
 
     private void openActivityAddTenant() {
+        /*
        Intent i = new Intent(getActivity(), AddT.class );
        i.putExtra("flatId", refFlatId);
        getContext().startActivity(i);
+
+         */
+
+        AddTenant addT =  AddTenant.newInstance(refFlatId, this);
+        Intent i = new Intent(getActivity(), addT.getClass());
+        getContext().startActivity(i);
     }
 
 
 
     public void viewVisibility() {
-        if(tenantList.isEmpty())
-            btnadd.setVisibility(View.VISIBLE);
-        else
-            btnadd.setVisibility(View.GONE);
+        try {
+            if ((tenantList.size() > 0)) {
+                relativeLayout.setVisibility(relativeLayout.GONE);
+            } else {
+                relativeLayout.setVisibility(relativeLayout.VISIBLE);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

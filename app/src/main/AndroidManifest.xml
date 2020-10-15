@@ -19,11 +19,10 @@
         <activity android:name=".AddInvoices" />
         <activity android:name=".AddPayments" />
         <activity android:name=".InvoiceFullDetails" />
-        <activity android:name=".AddT" />
+        <activity android:name=".AddTenant" />
         <activity android:name=".TotalTenant" />
         <activity android:name=".Note" />
         <activity android:name=".UpdateProperty" />
-        <activity android:name=".TenantDetails" />
         <activity android:name=".PropertyDetails" />
         <activity android:name=".AddProperty" />
         <activity android:name=".MainActivity">

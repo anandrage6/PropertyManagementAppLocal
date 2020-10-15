@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,12 +32,13 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
     //flats
     ImageButton flatAddBtn;
 
-    private TextView flatEmptyListTV;
-
-    //ImageButton editbutton;
-
+    //private TextView flatEmptyListTV;
+     private LinearLayout linearLayout;
 
     private long refpropertyId;
+
+    //visibility
+    // private TextView emptylist;
 
     private DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(this);
 
@@ -67,8 +70,8 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         //getSupportActionBar().setTitle("");
 
         /*
-        //visibility
-        flatEmptyListTV = findViewById(R.id.flatEmptyListTextView);
+      //visibility of emptylist
+        linearLayout = findViewById(R.id.flatsemptyListHide);
         viewVisibility();
 
          */
@@ -132,7 +135,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         flatsListRecyclerAdapter = new FlatsListRecyclerAdapter(this, flatsList);
         flatsrecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         flatsrecyclerView.setAdapter(flatsListRecyclerAdapter);
-       // viewVisibility();
+
 
 
 
@@ -164,10 +167,18 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         flatsListRecyclerAdapter.notifyDataSetChanged();
 
     }
+    /*
     public void viewVisibility() {
-        if(flatsList.isEmpty())
-            flatEmptyListTV.setVisibility(View.VISIBLE);
-        else
-            flatEmptyListTV.setVisibility(View.GONE);
+        try {
+            if ((flatsList.size() > 0)) {
+                linearLayout.setVisibility(linearLayout.GONE);
+            } else {
+               linearLayout.setVisibility(linearLayout.VISIBLE);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
-}
+
+     */
+    }

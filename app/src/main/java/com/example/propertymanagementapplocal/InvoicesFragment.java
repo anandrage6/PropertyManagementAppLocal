@@ -104,9 +104,16 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
 
          */
 
+        /*
         Intent i = new Intent(getActivity(), AddInvoices.class );
         i.putExtra("flatId", refFlatId);
         getContext().startActivity(i);
+
+         */
+
+        AddInvoices addInvoices = AddInvoices.newInstance(refFlatId, this);
+        Intent intent = new Intent(getActivity(), addInvoices.getClass());
+        getContext().startActivity(intent);
 
     }
 
