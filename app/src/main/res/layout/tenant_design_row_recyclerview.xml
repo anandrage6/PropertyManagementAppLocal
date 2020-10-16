@@ -29,7 +29,7 @@
             <ImageView
                 android:layout_width="57dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_profile" />
+                android:src="@drawable/ic_person" />
             <TextView
                 android:id="@+id/tenantNameTV"
                 android:layout_width="match_parent"

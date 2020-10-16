@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -37,6 +38,7 @@ public class OverView extends Fragment implements TenantCreateListener  {
     private DatabaseQueryClass databaseQueryClass ;
 
     private RelativeLayout relativeLayout;
+    private LinearLayout linearLayout;
 
     private List<TenantModelClass> tenantList ;
     private Toolbar toolbar;
@@ -57,6 +59,7 @@ public class OverView extends Fragment implements TenantCreateListener  {
 
 
         relativeLayout = view.findViewById(R.id.floatingButtonHide);
+        linearLayout = view.findViewById(R.id.tenantListHide);
 
 
         //refFlatId = getArguments().getLong(Config.COLUMN_FLATS_ID, -1);
@@ -103,9 +106,15 @@ public class OverView extends Fragment implements TenantCreateListener  {
         tenantRecyclerView.setAdapter(tenantListRecyclerAdapter);
 
 
+
         //visibility of floating button
         //btnadd.setVisibility(btnadd.VISIBLE);
         viewVisibility();
+
+
+
+        //visibility of list
+        listVisibility();
 
         //floating button
         btnadd = view.findViewById(R.id.addbtn);
@@ -114,7 +123,12 @@ public class OverView extends Fragment implements TenantCreateListener  {
             public void onClick(View view) {
                 //Toast.makeText(Appartments.this, "button clicked", Toast.LENGTH_LONG).show();
                 openActivityAddTenant();
-                // viewVisibility();
+                /*
+                //visibility of floating button
+                //btnadd.setVisibility(btnadd.VISIBLE);
+                viewVisibility();
+
+                 */
 
             }
         });
@@ -148,6 +162,23 @@ public class OverView extends Fragment implements TenantCreateListener  {
             e.printStackTrace();
         }
     }
+
+    //listvisibility
+
+    public void listVisibility() {
+        try {
+            if ((tenantList.size() > 0)) {
+                linearLayout.setVisibility(linearLayout.GONE);
+            } else {
+                linearLayout.setVisibility(linearLayout.VISIBLE);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+
 
 
     /*

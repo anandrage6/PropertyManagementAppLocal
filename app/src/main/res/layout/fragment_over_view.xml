@@ -27,8 +27,23 @@
             android:layout_marginLeft="1dp"
             android:layout_marginTop="1dp"
             android:layout_marginRight="1dp"
-            tools:listitem="@layout/tenant_design_row_recyclerview"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+        <LinearLayout
+            android:id="@+id/tenantListHide"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="170dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Tenant"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textAlignment="center"/>
+        </LinearLayout>
 
     </LinearLayout>
 

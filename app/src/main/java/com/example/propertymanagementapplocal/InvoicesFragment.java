@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -30,6 +31,7 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
     private List<InvoiceModelClass> invoiceList ;
     private long refFlatId;
     private long refTenantId;
+    private LinearLayout emptyListLinearLayout;
 
 
     public InvoicesFragment() {
@@ -42,6 +44,7 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_invoices, container, false);
+        emptyListLinearLayout = v.findViewById(R.id.invoiceListHide);
 
 
         refFlatId = getArguments().getLong("1");
@@ -78,6 +81,9 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
         invoiceRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         invoiceRecyclerView.setAdapter(invoiceListAdapter);
 
+        //listEmptyView Visibility
+       // viewVisibility();
+
 
 
         //floating button
@@ -87,7 +93,7 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
             public void onClick(View view) {
                 //Toast.makeText(Appartments.this, "button clicked", Toast.LENGTH_LONG).show();
                 openActivityAddInvoice();
-                // viewVisibility();
+                 //viewVisibility();
 
             }
         });
@@ -121,7 +127,22 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
     public void onInvoiceCreated(InvoiceModelClass invoice) {
         invoiceList.add(invoice);
         invoiceListAdapter.notifyDataSetChanged();
-        //viewVisibility();
+        viewVisibility();
 
     }
+
+    private void viewVisibility() {
+        try {
+            if (invoiceList.size() > 0) {
+                emptyListLinearLayout.setVisibility(emptyListLinearLayout.GONE);
+            } else {
+                emptyListLinearLayout.setVisibility(emptyListLinearLayout.VISIBLE);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+
 }

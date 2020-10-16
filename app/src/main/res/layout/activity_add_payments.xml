@@ -188,7 +188,7 @@
                     android:id="@+id/paymentReceivedFromEdt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="name"
+                    android:hint="Name"
                     android:textSize="20sp"
                     android:textAlignment="textEnd"
                     android:textColor="@color/green"
@@ -230,7 +230,7 @@
                     android:thumb="@drawable/sw_thumb"
                     android:track="@drawable/rectangle_track"
                     android:showText="true"
-                    tools:ignore="MissingPrefix,RtlCompat" />
+                    tools:ignore="MissingPrefix,RtlCompat,UseSwitchCompatOrMaterialXml" />
             </LinearLayout>
 
             <LinearLayout
