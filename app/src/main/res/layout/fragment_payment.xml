@@ -21,9 +21,24 @@
             android:layout_marginLeft="1dp"
             android:layout_marginTop="1dp"
             android:layout_marginRight="1dp"
-            tools:listitem="@layout/payments_design_row_recyclerview"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/paymentEmptyList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="200dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Payments"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:gravity="center_horizontal" />
     </LinearLayout>
 
     <RelativeLayout

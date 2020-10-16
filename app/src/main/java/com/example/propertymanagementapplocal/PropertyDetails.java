@@ -69,12 +69,12 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         //setSupportActionBar(toolbar);
         //getSupportActionBar().setTitle("");
 
-        /*
+
       //visibility of emptylist
         linearLayout = findViewById(R.id.flatsemptyListHide);
         viewVisibility();
 
-         */
+
 
         editBtn = findViewById(R.id.propertyEditBtn);
 
@@ -166,11 +166,14 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         flatsList.add(flat);
         flatsListRecyclerAdapter.notifyDataSetChanged();
 
+        //flats emptylist
+        viewVisibility();
+
     }
-    /*
+
     public void viewVisibility() {
         try {
-            if ((flatsList.size() > 0)) {
+            if (flatsList.size() > 0) {
                 linearLayout.setVisibility(linearLayout.GONE);
             } else {
                linearLayout.setVisibility(linearLayout.VISIBLE);
@@ -180,5 +183,4 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         }
     }
 
-     */
     }

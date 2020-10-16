@@ -29,13 +29,14 @@
             android:layout_marginRight="1dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
+    </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/tenantListHide"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="170dp">
+    <LinearLayout
+        android:id="@+id/tenantListHide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="200dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,9 +44,8 @@
             android:textSize="20sp"
             android:gravity="center"
             android:textAlignment="center"/>
-        </LinearLayout>
-
     </LinearLayout>
+
 
     <RelativeLayout
         android:id="@+id/floatingButtonHide"

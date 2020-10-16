@@ -2,12 +2,14 @@ package com.example.propertymanagementapplocal;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatRadioButton;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,7 +31,7 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
 
     EditText pAmount, pReceivedfrom;
     Spinner pPaidwith;
-    Switch pTaxstatus;
+    //Switch pTaxstatus;
     TextView pNotes, pDatereceived;
     Button pSave, pCancel;
 
@@ -37,6 +39,8 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
 
     private static long FlatId;
     private  static  PaymentsCreateListener paymentsCreateListener;
+
+    AppCompatRadioButton taxableRadioButton, nontaxableRadioButton;
 
     //empty Constructor
     public AddPayments() {
@@ -68,11 +72,14 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
         pAmount = findViewById(R.id.paymentAmountEdt);
         pReceivedfrom = findViewById(R.id.paymentReceivedFromEdt);
         pDatereceived = findViewById(R.id.paymentDateReceivedTv);
-        pTaxstatus = findViewById(R.id.paymentswitchButton);
+        //pTaxstatus = findViewById(R.id.paymentswitchButton);
         pNotes = findViewById(R.id.paymentNotesTv);
 
         pSave = findViewById(R.id.paymentSaveButton);
         pCancel = findViewById(R.id.paymentCancelButton);
+
+        nontaxableRadioButton = findViewById(R.id.nontaxableRadioButton);
+        taxableRadioButton = findViewById(R.id.taxableRadioButton);
 
 
 
@@ -107,6 +114,7 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
             }
         });
 
+        /*
         //switch
         pTaxstatus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +128,8 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
                 }
             }
         });
+
+         */
 
 
         /*
@@ -159,6 +169,31 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
         });
 
 
+
+    }
+
+    //radio button taxable and nontaxable
+
+    public void onRadioButtonClicked(View v){
+
+        boolean isSelected = ((AppCompatRadioButton)v).isSelected();
+        switch (v.getId()){
+            case R.id.nontaxableRadioButton:
+            if(isSelected){
+                nontaxableRadioButton.setTextColor(Color.WHITE);
+                taxableRadioButton.setTextColor(Color.BLACK);
+                strTaxStatus = nontaxableRadioButton.getText().toString();
+
+            }
+            break;
+            case R.id.taxableRadioButton:
+                if(isSelected){
+                    nontaxableRadioButton.setTextColor(Color.BLACK);
+                    taxableRadioButton.setTextColor(Color.WHITE);
+                    strTaxStatus = taxableRadioButton.getText().toString();
+                }
+            break;
+        }
 
     }
 

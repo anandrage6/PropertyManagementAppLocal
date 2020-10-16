@@ -106,15 +106,13 @@ public class OverView extends Fragment implements TenantCreateListener  {
         tenantRecyclerView.setAdapter(tenantListRecyclerAdapter);
 
 
-
         //visibility of floating button
         //btnadd.setVisibility(btnadd.VISIBLE);
         viewVisibility();
 
-
-
         //visibility of list
         listVisibility();
+
 
         //floating button
         btnadd = view.findViewById(R.id.addbtn);
@@ -167,7 +165,7 @@ public class OverView extends Fragment implements TenantCreateListener  {
 
     public void listVisibility() {
         try {
-            if ((tenantList.size() > 0)) {
+            if (tenantList.size() > 0) {
                 linearLayout.setVisibility(linearLayout.GONE);
             } else {
                 linearLayout.setVisibility(linearLayout.VISIBLE);
@@ -208,7 +206,12 @@ public class OverView extends Fragment implements TenantCreateListener  {
     public void onTenantCreated(TenantModelClass tenant) {
         tenantList.add(tenant);
         tenantListRecyclerAdapter.notifyDataSetChanged();
-        //viewVisibility();
+        //visibility of floating button
+        //btnadd.setVisibility(btnadd.VISIBLE);
+        viewVisibility();
+
+        //visibility of list
+        listVisibility();
 
     }
 

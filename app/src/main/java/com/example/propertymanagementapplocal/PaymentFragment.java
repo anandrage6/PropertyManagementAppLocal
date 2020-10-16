@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -30,6 +31,7 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
     private DatabaseQueryClass databaseQueryClass ;
 
     private List<PaymentsModelClass> paymentList ;
+    private LinearLayout paymentEmptyListLinearLayout;
 
     public PaymentFragment() {
     }
@@ -46,6 +48,11 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
         //Log.d("flatRefFId_in_overView : ==> ", String.valueOf(getArguments().getLong("1")));
 
 
+        //emptyListvisibility
+        paymentEmptyListLinearLayout = v.findViewById(R.id.paymentEmptyList);
+
+
+
         //floating button
         btnadd = v.findViewById(R.id.paymentaddbtn);
         btnadd.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +60,7 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
             public void onClick(View view) {
                 //Toast.makeText(Appartments.this, "button clicked", Toast.LENGTH_LONG).show();
                 openActivityAddTenant();
-                // viewVisibility();
+
 
             }
         });
@@ -74,6 +81,9 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
         paymentListRecyclerViewAdapter = new PaymentListRecyclerView(getContext(), paymentList);
         paymentRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         paymentRecyclerView.setAdapter(paymentListRecyclerViewAdapter);
+
+        //emptylistview
+        listvisibility();
 
 
 
@@ -98,5 +108,23 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
     public void onPaymentCreated(PaymentsModelClass payments) {
         paymentList.add(payments);
         paymentListRecyclerViewAdapter.notifyDataSetChanged();
+
+        //visibility emptylist
+        listvisibility();
     }
-}
+
+    //visibility emptylist
+    private void listvisibility() {
+        try {
+            if (paymentList.size() > 0) {
+                paymentEmptyListLinearLayout.setVisibility(paymentEmptyListLinearLayout.GONE);
+            } else {
+                paymentEmptyListLinearLayout.setVisibility(paymentEmptyListLinearLayout.VISIBLE);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    }
+

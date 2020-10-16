@@ -82,7 +82,7 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
         invoiceRecyclerView.setAdapter(invoiceListAdapter);
 
         //listEmptyView Visibility
-       // viewVisibility();
+        viewVisibility();
 
 
 
