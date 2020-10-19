@@ -214,7 +214,9 @@ public class AddInvoices extends AppCompatActivity {
         String strTitle = title.getText().toString();
         String strDetails = details.getText().toString();
         try {
-            strAmount = Integer.parseInt(amount.getText().toString());
+
+                strAmount = Integer.parseInt(amount.getText().toString());
+
         }catch(Exception e){
             e.printStackTrace();
         }
