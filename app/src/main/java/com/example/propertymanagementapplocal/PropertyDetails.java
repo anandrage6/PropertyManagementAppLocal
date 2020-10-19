@@ -28,6 +28,8 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
     private Toolbar toolbar;
     ImageButton editBtn;
 
+
+
     //floating add button
     //flats
     ImageButton flatAddBtn;
@@ -72,6 +74,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
 
       //visibility of emptylist
         linearLayout = findViewById(R.id.flatsemptyListHide);
+
         viewVisibility();
 
 
@@ -116,13 +119,19 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         strDescription = getIntent().getStringExtra(Config.COLUMN_PROPERTY_DESCRIPTION);
 
         strownerNameTv = getIntent().getStringExtra(Config.COLUMN_PROPERTY_OWNERNAME);
-        stringimage = getIntent().getStringExtra(Config.COLUMN_PROPERTY_IMAGE);
+        try {
+            stringimage = getIntent().getStringExtra(Config.COLUMN_PROPERTY_IMAGE);
+        }catch(Exception e){
 
+        }
 
         propertyNameTv.setText(strPropertyName);
         locationTv.setText(totalAddress);
         ownerNameTv.setText(strownerNameTv);
-        imagetv.setImageURI(Uri.parse(stringimage));
+
+        if(stringimage!= null) {
+            imagetv.setImageURI(Uri.parse(stringimage));
+        }
 
 
         refpropertyId = getIntent().getLongExtra(Config.COLUMN_PROPERTY_ID, -1);
@@ -150,6 +159,20 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
 
             }
         });
+
+
+        //navigation method
+
+        String intentValue = getIntent().getStringExtra("intentPassed");
+
+        /*
+        if(!intentValue.isEmpty()){
+            openActivityAddFlats();
+        }
+
+
+         */
+
     }
 
     private void openActivityAddFlats() {
@@ -167,16 +190,16 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         flatsListRecyclerAdapter.notifyDataSetChanged();
 
         //flats emptylist
-        viewVisibility();
+        //viewVisibility();
 
     }
 
     public void viewVisibility() {
         try {
-            if (flatsList.size() > 0) {
-                linearLayout.setVisibility(linearLayout.GONE);
+            if (flatsList.isEmpty()) {
+                linearLayout.setVisibility(View.GONE);
             } else {
-               linearLayout.setVisibility(linearLayout.VISIBLE);
+               linearLayout.setVisibility(View.VISIBLE);
             }
         }catch (Exception e){
             e.printStackTrace();

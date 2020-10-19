@@ -61,7 +61,7 @@ public class AddFlats extends DialogFragment implements AdapterView.OnItemSelect
         flatfacingSpinner.setAdapter(flatfacingAdapter);
         flatfacingSpinner.setOnItemSelectedListener(this);
 
-        ArrayAdapter<CharSequence> noofbedroomsAdapter = ArrayAdapter.createFromResource(getContext(), R.array.Number_of_Bathrooms, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> noofbedroomsAdapter = ArrayAdapter.createFromResource(getContext(), R.array.Number_of_Bedrooms, android.R.layout.simple_spinner_item);
         noofbedroomsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         noofbedroomsSpinner.setAdapter(noofbedroomsAdapter);
         noofbedroomsSpinner.setOnItemSelectedListener(this);

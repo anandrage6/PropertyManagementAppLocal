@@ -95,11 +95,22 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.property:
                         Toast.makeText(MainActivity.this, "Properties", Toast.LENGTH_SHORT).show();
+                        openActivityAddProperty();
                         break;
-                    case R.id.help:
-                        Toast.makeText(MainActivity.this, "Help", Toast.LENGTH_SHORT).show();
+                    case R.id.invoices:
+                        Toast.makeText(MainActivity.this, "invoices", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(MainActivity.this,PropertyDetails.class);
+                        i.putExtra("intentPassed", "Intent");
+                        startActivity(i);
                         break;
 
+                    case R.id.payments:
+                        Toast.makeText(MainActivity.this, "payments", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case R.id.settings:
+                        Toast.makeText(MainActivity.this, "settings", Toast.LENGTH_SHORT).show();
+                        break;
                 }
                 return true;
             }

@@ -40,7 +40,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
 
     @Override
     public void onBindViewHolder(@NonNull final CustomViewHolder holder, final int position) {
-        final int listPosition = position;
+        final int itemPosition = position;
         final PropertyModelClass property = new PropertyModelClass();
         final FlatsModelClass flats = flatsList.get(position);
         final long flatId = flats.getFlatId();
@@ -96,7 +96,18 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
 
                         switch (menuItem.getItemId()){
                             case R.id.menu_item_Edit:
-                                Toast.makeText(context, "Edit", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(context, "Edit", Toast.LENGTH_LONG).show();
+
+                                UpdateFlat updateFlat = UpdateFlat.newInstance(flats.getFlatId(), itemPosition, new FlatUpdateListener() {
+
+                                    @Override
+                                    public void onFlatInfoUpdated(FlatsModelClass flat, int position) {
+                                        flatsList.set(position, flat);
+                                        notifyDataSetChanged();
+                                    }
+                                });
+                                Intent i = new Intent(context, updateFlat.getClass());
+                                context.startActivity(i);
                                 break;
                             case R.id.menu_item_delete:
                                 //Toast.makeText(context, "delete", Toast.LENGTH_LONG).show();

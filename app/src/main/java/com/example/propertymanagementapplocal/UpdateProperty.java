@@ -383,8 +383,6 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
 
                 }
 
-
-
             }
         }
 

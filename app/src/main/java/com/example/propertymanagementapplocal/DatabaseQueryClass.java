@@ -53,7 +53,7 @@ public class DatabaseQueryClass {
         return id;
     }
 
-    //get all property
+    //get all property (retrive)
     public List<PropertyModelClass> getAllProperty() {
 
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
@@ -107,7 +107,7 @@ public class DatabaseQueryClass {
         return Collections.emptyList();
     }
 
-    //get property by id
+    //get property by id (update)
     public PropertyModelClass getPropertyById(long id) {
 
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
@@ -237,7 +237,7 @@ public class DatabaseQueryClass {
         return rowId;
     }
 
-    //get flat by id
+    //get flat by id (update purpose)
     public FlatsModelClass getFlatsById(long flatsId) {
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
@@ -270,8 +270,36 @@ public class DatabaseQueryClass {
         return flats;
     }
 
+    //update flat
+    public long updateFlatInfo(FlatsModelClass flat){
 
-    //get All flats by id
+        long rowCount = 0;
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Config.COLUMN_FLATS_FLOOR, flat.getFloor());
+        contentValues.put(Config.COLUMN_FLATS_FLATNO, flat.getFlaNo());
+        contentValues.put(Config.COLUMN_FLATS_FLATFACING, flat.getFaltfacing());
+        contentValues.put(Config.COLUMN_FLATS_NOOFBEDROOMS, flat.getNoofbedrooms());
+
+
+        try {
+            rowCount = sqLiteDatabase.update(Config.TABLE_FLATS, contentValues,
+                    Config.COLUMN_FLATS_ID + " = ? ",
+                    new String[] {String.valueOf(flat.getFlatId())});
+        } catch (SQLiteException e){
+            Logger.d("Exception: " + e.getMessage());
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            sqLiteDatabase.close();
+        }
+
+        return rowCount;
+    }
+
+
+    //get All flats by id (retrive)
     public List<FlatsModelClass> getAllFlatsByPFId(long pfId){
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
@@ -308,6 +336,10 @@ public class DatabaseQueryClass {
 
         return flatsList;
     }
+
+
+
+
 
     //single delete
     public boolean deleteFlatById(long flatId) {

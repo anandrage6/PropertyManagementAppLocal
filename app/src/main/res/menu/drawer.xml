@@ -3,12 +3,20 @@
     <item android:title="">
         <menu>
             <item android:id="@+id/property"
-                android:title="properties"
+                android:title="Add Properties"
                 android:icon="@drawable/ic_home"/>
 
-            <item android:id="@+id/help"
-                android:title="help"
-                android:icon="@drawable/ic_help"/>
+            <item android:id="@+id/invoices"
+                android:title="Add Invoices"
+                android:icon="@drawable/ic_invoice"/>
+
+            <item android:id="@+id/payments"
+                android:title="Add Payments"
+                android:icon="@drawable/ic_payment"/>
+
+            <item android:id="@+id/settings"
+                android:title="Settings"
+                android:icon="@drawable/ic_settings"/>
         </menu>
     </item>
 </menu>
