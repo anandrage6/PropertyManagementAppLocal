@@ -114,7 +114,18 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
                                     Toast.makeText(context, "Cannot delete!", Toast.LENGTH_SHORT).show();
                                 break;
                             case R.id.menu_item_seeDetails:
-                                Toast.makeText(context, "see details", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(context, "see details", Toast.LENGTH_LONG).show();
+
+                                Intent intent = new Intent(context,TotalTenant.class);
+
+                                intent.putExtra(Config.COLUMN_FLATS_ID, flats.getFlatId());
+                                intent.putExtra(Config.COLUMN_FLATS_FLOOR, flats.getFloor());
+                                intent.putExtra(Config.COLUMN_FLATS_FLATNO, flats.getFlaNo());
+                                intent.putExtra(Config.COLUMN_FLATS_FLATFACING, flats.getFaltfacing());
+                                intent.putExtra(Config.COLUMN_FLATS_NOOFBEDROOMS, flats.getNoofbedrooms());
+
+                                context.startActivity(intent);
+
                                 break;
                             default:
                                 break;
