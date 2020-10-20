@@ -14,26 +14,28 @@
         <LinearLayout
             android:id="@+id/firstlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
-            android:layout_marginBottom="2dp">
+            android:layout_marginBottom="1dp">
 
             <TextView
                 android:layout_width="107dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Name"
-                android:textAlignment="center"
-                android:textSize="20dp"
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_marginTop="0dp"
-                android:textStyle="bold"
                 tools:ignore="RtlCompat" />
             <EditText
                 android:id="@+id/tenantNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Name"
+                android:textSize="15dp"
                 android:layout_marginStart="100dp"
                 android:background="@null"
                 android:textAlignment="center"
@@ -45,26 +47,28 @@
         <LinearLayout
             android:id="@+id/secondlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_below="@id/firstlinear"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
-            android:layout_marginBottom="2dp">
+            android:layout_marginBottom="1dp">
             <TextView
                 android:layout_width="107dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Phone"
-                android:textAlignment="center"
-                android:textSize="20dp"
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="0dp"
-                android:textStyle="bold"
                 tools:ignore="RtlCompat" />
             <EditText
                 android:id="@+id/tenentPhoneEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="phone"
+                android:hint="Phone"
+                android:textSize="15dp"
                 android:background="@null"
                 android:textAlignment="center"
                 android:layout_marginStart="100dp"
@@ -77,25 +81,28 @@
         <LinearLayout
             android:id="@+id/thirdlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50sp"
             android:layout_below="@id/secondlinear"
             android:background="@color/cardview_light_background"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="1dp">
             <TextView
                 android:layout_width="107dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Email"
-                android:textAlignment="center"
-                android:textSize="20dp"
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="0dp"
-                android:textStyle="bold"
                 tools:ignore="RtlCompat" />
             <EditText
                 android:id="@+id/tenantEmailEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="email"
+                android:hint="Email"
+                android:textSize="15dp"
                 android:background="@null"
                 android:textAlignment="center"
                 android:layout_marginStart="100dp"
@@ -106,19 +113,22 @@
         <LinearLayout
             android:id="@+id/fourthlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50sp"
             android:layout_below="@id/thirdlinear"
             android:background="@color/feblink"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:layout_marginTop="8dp"
-                android:gravity="start"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
                 android:text="Lease Details"
                 android:textAlignment="center"
                 android:textSize="20dp"
+                android:layout_gravity="center"
+
+                android:textColor="@color/Black"
                 android:textStyle="normal"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
@@ -126,7 +136,7 @@
         <LinearLayout
             android:id="@+id/fifthlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50sp"
             android:layout_below="@id/fourthlinear"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
@@ -138,15 +148,17 @@
                 android:layout_marginTop="0dp"
                 android:gravity="center"
                 android:text="Lease Start "
-                android:textAlignment="center"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorPrimaryDark"
                 tools:ignore="RtlCompat" />
             <TextView
                 android:id="@+id/tenantLeaseStart"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:hint=" Select date"
+                android:textSize="15dp"
                 android:textColor="@color/green"
                 android:textColorHint="@color/green"
                 android:layout_marginStart="110dp"
@@ -157,7 +169,7 @@
         <LinearLayout
             android:id="@+id/sixthlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50sp"
             android:layout_below="@id/fifthlinear"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
@@ -169,15 +181,17 @@
                 android:layout_marginTop="0dp"
                 android:gravity="center"
                 android:text="Lease Ends "
-                android:textAlignment="center"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginStart="10dp"
                 tools:ignore="RtlCompat" />
             <TextView
                 android:id="@+id/tenantLeaseEnd"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:hint=" Select date"
+                android:textSize="15dp"
                 android:textColor="@color/green"
                 android:textColorHint="@color/green"
                 android:gravity="center"
@@ -187,7 +201,7 @@
         <LinearLayout
             android:id="@+id/seventhlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50sp"
             android:layout_below="@id/sixthlinear"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
@@ -199,15 +213,17 @@
                 android:layout_marginTop="0dp"
                 android:gravity="center"
                 android:text="Rent Frequency "
-                android:textAlignment="center"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorPrimaryDark"
                 tools:ignore="RtlCompat" />
             <Spinner
                 android:id="@+id/tenantRentSpin"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:hint=" Select date"
+                android:textSize="15dp"
                 android:textColor="@color/green"
                 android:textColorHint="@color/green"
                 android:layout_marginStart="110dp"
@@ -217,7 +233,7 @@
         <LinearLayout
             android:id="@+id/eightlinear"
             android:layout_width="match_parent"
-            android:layout_height="53dp"
+            android:layout_height="50dp"
             android:layout_below="@id/seventhlinear"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
@@ -228,10 +244,11 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="0dp"
                 android:gravity="center"
-                android:text="   Total occupants "
-                android:textAlignment="center"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:text="Total occupants "
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+               android:textColor="@color/colorPrimaryDark"
                 tools:ignore="RtlCompat" />
 
             <TextView
@@ -245,8 +262,7 @@
                 android:gravity="center_horizontal"
                 android:hint="0"
                 android:textAlignment="center"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textSize="15dp" />
 
             <LinearLayout
                 android:layout_width="114dp"
@@ -259,7 +275,7 @@
                 <ImageButton
                     android:id="@+id/tenantDecrementBtn"
                     android:layout_width="49dp"
-                    android:layout_height="40dp"
+                    android:layout_height="35dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="100dp"
                     android:background="@drawable/roundedborder"
@@ -269,7 +285,7 @@
                 <ImageButton
                     android:id="@+id/tenantIncrementBtn"
                     android:layout_width="47dp"
-                    android:layout_height="40dp"
+                    android:layout_height="35dp"
                     android:layout_marginStart="0dp"
                     android:layout_marginLeft="0dp"
                     android:layout_marginTop="1dp"
@@ -281,7 +297,7 @@
         <LinearLayout
             android:id="@+id/ninthinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50sp"
             android:layout_below="@id/eightlinear"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
@@ -289,13 +305,14 @@
 
             <TextView
                 android:layout_width="125dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_marginTop="0dp"
                 android:gravity="center"
                 android:text="Notes "
-                android:textAlignment="center"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:textAlignment="textStart"
+                android:layout_marginStart="10dp"
+                android:textSize="15dp"
+              android:textColor="@color/colorPrimaryDark"
                 tools:ignore="RtlCompat" />
 
             <TextView
@@ -305,6 +322,7 @@
                 android:layout_marginStart="140dp"
                 android:layout_marginLeft="100dp"
                 android:hint=" Add"
+                android:textSize="15dp"
                 android:lines="1"
                 android:textAlignment="center"
                 android:textColor="@color/green"
@@ -315,7 +333,7 @@
         <LinearLayout
             android:id="@+id/tenthinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50sp"
             android:layout_below="@id/ninthinear"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
@@ -323,13 +341,14 @@
 
             <TextView
                 android:layout_width="116dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_marginTop="0dp"
                 android:gravity="center"
                 android:text="Rent "
-                android:textAlignment="center"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+               android:textColor="@color/colorPrimaryDark"
                 tools:ignore="RtlCompat" />
 
             <EditText
@@ -339,6 +358,7 @@
                 android:layout_marginStart="150dp"
                 android:layout_marginLeft="100dp"
                 android:hint="0.00"
+                android:textSize="15dp"
                 android:textAlignment="center"
                 android:textColor="@color/green"
                 android:textColorHint="@color/green"
@@ -350,7 +370,7 @@
         <LinearLayout
             android:id="@+id/eleveninear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50sp"
             android:layout_below="@id/tenthinear"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
@@ -358,13 +378,14 @@
 
             <TextView
                 android:layout_width="217dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_marginTop="0dp"
                 android:gravity="center"
                 android:text="Security Deposit "
-                android:textAlignment="center"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorPrimaryDark"
                 tools:ignore="RtlCompat" />
 
             <EditText
@@ -374,6 +395,7 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginLeft="100dp"
                 android:hint="0.00"
+                android:textSize="15dp"
                 android:textAlignment="center"
                 android:textColor="@color/green"
                 android:textColorHint="@color/green"
@@ -390,7 +412,7 @@
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/otherPurple"
+        android:background="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -419,7 +441,8 @@
                 android:textColor="@color/cardview_light_background"
                 android:textAlignment="center"
                 android:text="Add Tenant"
-                android:layout_marginStart="80dp"
+                android:textStyle="bold"
+                android:layout_marginStart="83dp"
                 android:textSize="20sp"
                 android:gravity="center_horizontal"
                 android:layout_marginLeft="16dp" />
@@ -429,7 +452,7 @@
                 android:id="@+id/tenantSaveButton"
                 android:layout_width="72dp"
                 android:layout_height="33dp"
-                android:layout_marginStart="55dp"
+                android:layout_marginStart="65dp"
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"

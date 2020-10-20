@@ -128,8 +128,8 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
         edtDescription.setText(mPropertyModelClass.getDescription());
 
         //image update get and set
-        final String imageuri = mPropertyModelClass.getImage();
-        imageButton.setImageURI(Uri.parse(imageuri));
+        imageUri = Uri.parse(mPropertyModelClass.getImage());
+        imageButton.setImageURI(imageUri);
 
         //state Spinner
         String cState = mPropertyModelClass.getState();
@@ -162,6 +162,7 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
                 city = edtCity.getText().toString();
                 zipcode = edtZipCode.getText().toString();
                 description = edtDescription.getText().toString();
+
                 image = imageUri.toString();
 
                 mPropertyModelClass.setPropertyName(propertyName);

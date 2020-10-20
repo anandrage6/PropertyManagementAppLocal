@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:background="@color/Heavy_rain"
+        android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -37,10 +37,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="@color/cardview_dark_background"
+                android:textColor="@color/cardview_light_background"
                 android:textAlignment="center"
                 android:text="Add Flat"
-                android:layout_marginStart="80dp"
+                android:textStyle="bold"
+                android:layout_marginStart="100dp"
                 android:textSize="20sp"
                 android:gravity="center_horizontal"
                 android:layout_marginLeft="16dp" />
@@ -50,7 +51,7 @@
                 android:id="@+id/flatsaveBtn"
                 android:layout_width="72dp"
                 android:layout_height="33dp"
-                android:layout_marginStart="85dp"
+                android:layout_marginStart="75dp"
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
@@ -68,20 +69,21 @@
         <LinearLayout
             android:id="@+id/firstlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@color/cardview_light_background"
             android:layout_marginTop="0dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="1dp">
 
             <TextView
                 android:layout_width="129dp"
-                android:layout_height="60dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:gravity="center"
                 android:text="Floor"
                 android:textAlignment="textStart"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="15sp"
+              android:textColor="@color/colorPrimaryDark"
                 tools:ignore="RtlCompat" />
 
             <EditText
@@ -95,6 +97,7 @@
                 android:layout_marginEnd="10dp"
                 android:gravity="center"
                 android:background="@null"
+                android:textSize="15dp"
                 android:layout_marginLeft="150dp"
                 android:layout_marginRight="10dp" />
 
@@ -103,21 +106,22 @@
         <LinearLayout
             android:id="@+id/secondlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_below="@id/firstlinear"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="0dp"
             android:background="@color/cardview_light_background"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="1dp">
 
             <TextView
                 android:layout_width="129dp"
-                android:layout_height="60dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:gravity="center"
                 android:text="Flat Number"
                 android:textAlignment="textStart"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimaryDark"
                 tools:ignore="RtlCompat" />
 
             <EditText
@@ -131,6 +135,7 @@
                 android:layout_marginEnd="10dp"
                 android:gravity="center"
                 android:background="@null"
+                android:textSize="15dp"
                 android:layout_marginLeft="150dp"
                 android:layout_marginRight="10dp" />
 
@@ -139,21 +144,22 @@
         <LinearLayout
             android:id="@+id/thirdlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_below="@id/secondlinear"
             android:background="@color/cardview_light_background"
-            android:layout_marginTop="3dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="1dp">
 
             <TextView
                 android:layout_width="129dp"
-                android:layout_height="60dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:gravity="center"
                 android:text="Flat Facing"
                 android:textAlignment="textStart"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimaryDark"
                 tools:ignore="RtlCompat" />
 
             <Spinner
@@ -166,6 +172,7 @@
                 android:layout_marginStart="100dp"
                 android:layout_marginEnd="10dp"
                 android:gravity="center"
+                android:textSize="15dp"
                 android:layout_marginLeft="150dp"
                 android:layout_marginRight="10dp" />
 
@@ -174,21 +181,22 @@
         <LinearLayout
             android:id="@+id/fourthlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_below="@id/thirdlinear"
             android:background="@color/cardview_light_background"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="1dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:gravity="center"
                 android:text="Number of Bedrooms"
                 android:textAlignment="textStart"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="15sp"
+               android:textColor="@color/colorPrimaryDark"
                 tools:ignore="RtlCompat" />
 
             <Spinner
@@ -197,8 +205,9 @@
                 android:layout_height="match_parent"
                 android:hint="Floor"
                 android:textAlignment="center"
+                android:textSize="15dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="86dp"
                 android:layout_marginEnd="10dp"
                 android:gravity="center"
                 android:layout_marginLeft="150dp"

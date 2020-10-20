@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/Heavy_rain"
+        android:background="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -38,9 +38,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="@color/cardview_dark_background"
+                android:textColor="@color/cardview_light_background"
                 android:textAlignment="center"
                 android:text="Add Payment"
+                android:textStyle="bold"
                 android:layout_marginStart="80dp"
                 android:textSize="20sp"
                 android:gravity="center_horizontal"

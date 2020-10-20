@@ -291,7 +291,7 @@
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/Heavy_rain"
+        android:background="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -324,8 +324,9 @@
                 android:layout_marginLeft="16dp"
                 android:gravity="center_horizontal"
                 android:text="Update Property"
+                android:textStyle="bold"
                 android:textAlignment="center"
-                android:textColor="@color/cardview_dark_background"
+                android:textColor="@color/cardview_light_background"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

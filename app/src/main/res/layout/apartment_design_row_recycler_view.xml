@@ -26,16 +26,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_marginStart="5dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp">
                 <TextView
                     android:id="@+id/propertyTvInfo"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="information"
+                    android:layout_height="match_parent"
+                    android:hint="Property Name"
                     android:textColor="@color/cardview_light_background"
                     android:textSize="25sp"
+                    android:textAlignment="textStart"
+                    android:gravity="center"
                     android:textStyle="bold"
-                    android:layout_margin="5dp"/>
+                    android:layout_marginLeft="10dp"
+                    tools:ignore="RtlCompat" />
 
 
 
@@ -82,13 +87,13 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
-                            android:layout_marginTop="25dp"
+                            android:layout_marginTop="15dp"
                             android:src="@drawable/ic_owner" />
 
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
-                            android:layout_marginTop="20dp"
+                            android:layout_marginTop="15dp"
                             android:src="@drawable/ic_location" />
 
                     </LinearLayout>
@@ -116,25 +121,25 @@
                         android:layout_width="160dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="0dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="11dp"
                         android:layout_marginRight="0dp"
                         android:layout_marginStart="35dp"
                         android:hint="Owner Name:"
                         android:inputType="text"
                         android:minLines="3"
                         android:textSize="15dp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/Black" />
 
                     <TextView
                         android:id="@+id/addressTextView"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="33dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="11dp"
                         android:hint="location"
                         android:textSize="15dp"
-                        android:lines="2"
-                        android:textStyle="bold"
+                        android:lines="4"
+                       android:textColor="@color/Black"
                         android:layout_marginLeft="0dp" />
                     </LinearLayout>
                     <TextView

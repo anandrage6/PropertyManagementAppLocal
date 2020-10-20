@@ -6,14 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="0dp">
 
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
-        tools:ignore="MissingConstraints">
-
-
         <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,20 +16,22 @@
             android:layout_height="wrap_content"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
-            android:layout_marginBottom="2dp">
+            android:layout_marginBottom="1dp">
 
             <ImageView
                 android:layout_width="57dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/ic_person" />
             <TextView
                 android:id="@+id/tenantNameTV"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:hint="Name"
-                android:textSize="25sp"
+                android:textSize="15sp"
+               android:textColor="@color/Black"
                 android:textAlignment="textStart"
-                android:gravity="start"
+                android:gravity="center"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
@@ -50,22 +44,24 @@
             android:layout_height="wrap_content"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="1dp"
             android:layout_below="@id/firstlinear"
-            android:layout_marginBottom="2dp">
+            android:layout_marginBottom="1dp">
 
             <ImageView
                 android:layout_width="57dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/ic_email" />
             <TextView
                 android:id="@+id/tenantEmailTV"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:hint="Email"
-                android:textSize="25sp"
+                android:textSize="15sp"
+                android:textColor="@color/Black"
                 android:textAlignment="textStart"
-                android:gravity="start"
+                android:gravity="center"
                 android:layout_gravity="start"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
@@ -80,44 +76,48 @@
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
             android:layout_below="@id/secondlinear"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="2dp">
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp">
 
             <ImageView
                 android:layout_width="57dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/ic_call" />
             <TextView
                 android:id="@+id/tenantPhoneTV"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:hint="Phone"
-                android:textSize="25sp"
+                android:textSize="15sp"
+                android:textColor="@color/Black"
                 android:textAlignment="textStart"
-                android:gravity="start"
+                android:gravity="center"
                 android:layout_gravity="start"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                tools:ignore="RtlCompat" />
         </LinearLayout>
 
 
         <LinearLayout
             android:id="@+id/fourthlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:orientation="horizontal"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="1dp"
             android:background="@color/feblink"
             android:layout_below="@id/Thirdlinear"
-            android:layout_marginBottom="2dp">
+            android:layout_marginBottom="1dp">
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Rental Information"
-                android:textSize="25sp"
+                android:layout_height="match_parent"
+                android:text="Rental Information"
+                android:textSize="18sp"
                 android:textAlignment="center"
-                android:gravity="start"
+                android:gravity="center"
+                android:textStyle="bold"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
@@ -128,31 +128,33 @@
         <LinearLayout
             android:id="@+id/fifthlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="1dp"
             android:layout_below="@id/fourthlinear"
-            android:layout_marginBottom="2dp">
+            android:layout_marginBottom="1dp">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="LeaseStart : "
-                android:textSize="25sp"
-                android:textAlignment="textStart"
-                android:gravity="start"
+                android:layout_height="match_parent"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="Lease Start : "
+                android:textAlignment="textStart"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp" />
             <TextView
                 android:id="@+id/leaseStartTextView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="LeaseStart "
-                android:textSize="25sp"
+                android:layout_height="match_parent"
+                android:hint="Lease Start "
+                android:textSize="15sp"
+                android:textColor="@color/Black"
                 android:textAlignment="textEnd"
-                android:gravity="start"
+                android:gravity="center"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
@@ -164,67 +166,71 @@
         <LinearLayout
             android:id="@+id/sixthlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="1dp"
             android:layout_below="@id/fifthlinear"
-            android:layout_marginBottom="2dp">
+            android:layout_marginBottom="1dp">
 
             <TextView
                 android:layout_width="140dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
-                android:gravity="start"
-                android:text="LeaseEnd : "
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="Lease End : "
                 android:textAlignment="textStart"
-                android:textSize="25sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/leaseEndTextView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
-                android:gravity="start"
-                android:hint="LeaseEnd "
+                android:gravity="center"
+                android:textColor="@color/Black"
+                android:hint="Lease End "
                 android:textAlignment="textEnd"
                 android:layout_marginEnd="10dp"
-                android:textSize="25sp"
+                android:textSize="15sp"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/seventhlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="1dp"
             android:layout_below="@id/sixthlinear"
-            android:layout_marginBottom="2dp">
+            android:layout_marginBottom="1dp">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="Rent Frequency : "
-                android:textSize="25sp"
+                android:textSize="15sp"
                 android:textAlignment="textStart"
-                android:gravity="start"
+                android:textColor="@color/colorPrimaryDark"
+                android:gravity="center"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp" />
             <TextView
                 android:id="@+id/rentIsPaidTextView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Rent is paid "
-                android:textSize="25sp"
+                android:layout_height="match_parent"
+                android:hint="Rent Frequency "
+                android:textSize="15sp"
                 android:textAlignment="textEnd"
-                android:gravity="start"
+                android:gravity="center"
+                android:textColor="@color/Black"
                 android:layout_gravity="start"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="10dp"
@@ -236,31 +242,33 @@
         <LinearLayout
             android:id="@+id/eightlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="1dp"
             android:layout_below="@id/seventhlinear"
-            android:layout_marginBottom="2dp">
+            android:layout_marginBottom="1dp">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="Total Occupants : "
-                android:textSize="25sp"
+                android:textSize="15sp"
                 android:textAlignment="textStart"
-                android:gravity="start"
+                android:textColor="@color/colorPrimaryDark"
+                android:gravity="center"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp" />
             <TextView
                 android:id="@+id/totaloccupantsTextView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="occupants "
-                android:textSize="25sp"
+                android:textSize="15sp"
                 android:textAlignment="textEnd"
-                android:gravity="start"
+                android:gravity="center"
+                android:textColor="@color/Black"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
@@ -272,31 +280,35 @@
         <LinearLayout
             android:id="@+id/ninelinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="90dp"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="1dp"
             android:layout_below="@id/eightlinear"
-            android:layout_marginBottom="2dp">
+            android:layout_marginBottom="1dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Notes : "
-                android:textSize="25sp"
-                android:textAlignment="textStart"
-                android:gravity="start"
                 android:layout_gravity="start"
+                android:layout_marginTop="20sp"
                 android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:gravity="start"
+                android:text="Notes : "
+                android:textAlignment="textStart"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/notesTextView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="Notes "
-                android:textSize="25sp"
+                android:textSize="15sp"
+                android:textColor="@color/Black"
                 android:lines="4"
-                android:textAlignment="textStart"
+                android:textAlignment="textEnd"
                 android:gravity="start"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
@@ -309,31 +321,33 @@
         <LinearLayout
             android:id="@+id/tenthlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="1dp"
             android:layout_below="@id/ninelinear"
-            android:layout_marginBottom="2dp">
+            android:layout_marginBottom="1dp">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="Rent Amount : "
-                android:textSize="25sp"
+                android:textSize="15sp"
                 android:textAlignment="textStart"
-                android:gravity="start"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp" />
             <TextView
                 android:id="@+id/rentAmountTextView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="Rent "
-                android:textSize="25sp"
+                android:textSize="15sp"
+                android:textColor="@color/Black"
                 android:textAlignment="textEnd"
-                android:gravity="start"
+                android:gravity="center"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
@@ -345,39 +359,39 @@
         <LinearLayout
             android:id="@+id/elevenlinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="1dp"
             android:layout_below="@id/tenthlinear"
-            android:layout_marginBottom="2dp">
+            android:layout_marginBottom="1dp">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="SecurityDeposit : "
-                android:textSize="25sp"
+                android:layout_height="match_parent"
+                android:text="Security Deposit : "
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimaryDark"
                 android:textAlignment="textStart"
-                android:gravity="start"
+                android:gravity="center"
                 android:layout_gravity="start"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp" />
             <TextView
                 android:id="@+id/depositTextView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Deposit "
-                android:textSize="25sp"
+                android:layout_height="match_parent"
+                android:hint="Security Deposit "
+                android:textSize="15sp"
+                android:textColor="@color/Black"
                 android:textAlignment="textEnd"
-                android:gravity="start"
+                android:gravity="center"
                 android:layout_gravity="start"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginEnd="10dp"
                 tools:ignore="RtlCompat" />
 
         </LinearLayout>
     </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

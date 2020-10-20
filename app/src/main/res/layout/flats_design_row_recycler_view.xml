@@ -32,10 +32,10 @@
 
                 <ImageView
                     android:layout_width="50dp"
-                    android:layout_height="30dp"
+                    android:layout_height="20dp"
                     android:layout_marginStart="0dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="11dp"
                     android:src="@drawable/ic_floor" />
 
                 <TextView
@@ -46,26 +46,26 @@
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
-                    android:minLines="3"
+                    android:textColor="@color/colorPrimaryDark"
                     android:text=" Floor :"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/floorTextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginStart="125dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginEnd="15dp"
                     android:hint=" Floor"
                     android:inputType="text"
-                    android:minLines="3"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textAlignment="textEnd"
+                    android:textSize="15dp"
+                    android:textColor="@color/Black"
+                    android:gravity="end" />
 
 
             </LinearLayout>
@@ -79,10 +79,10 @@
 
                 <ImageView
                     android:layout_width="50dp"
-                    android:layout_height="30dp"
+                    android:layout_height="20dp"
                     android:layout_marginStart="0dp"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="11dp"
                     android:src="@drawable/ic_flat" />
 
                 <TextView
@@ -93,26 +93,27 @@
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
-                    android:minLines="3"
+
                     android:text=" Flat No :"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textSize="15dp"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:id="@+id/flatNoTextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginStart="105dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="85dp"
+                    android:layout_marginEnd="15dp"
                     android:hint=" FlatNo"
                     android:inputType="text"
-                    android:minLines="3"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textSize="15dp"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/Black"
+                    android:gravity="end" />
 
             </LinearLayout>
 
@@ -125,10 +126,10 @@
 
                 <ImageView
                     android:layout_width="50dp"
-                    android:layout_height="30dp"
+                    android:layout_height="20dp"
                     android:layout_marginStart="0dp"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="11dp"
                     android:src="@drawable/ic_flatfacing" />
 
                 <TextView
@@ -139,26 +140,26 @@
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
-                    android:minLines="3"
                     android:text=" Flat Facing :"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textSize="15dp"
+                    android:textColor="@color/colorPrimaryDark"/>
 
                 <TextView
                     android:id="@+id/flatfacingTextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginStart="70dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginEnd="15dp"
                     android:hint=" FlatFacing"
                     android:inputType="text"
-                    android:minLines="3"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textSize="15dp"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/Black"
+                    android:gravity="end" />
 
             </LinearLayout>
 
@@ -171,10 +172,10 @@
 
                 <ImageView
                     android:layout_width="50dp"
-                    android:layout_height="30dp"
+                    android:layout_height="20dp"
                     android:layout_marginStart="0dp"
                     android:layout_marginLeft="40dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="11dp"
                     android:src="@drawable/ic_bed" />
 
                 <TextView
@@ -185,26 +186,26 @@
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
-                    android:minLines="3"
                     android:text=" No of Bedrooms :"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textSize="15dp"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:id="@+id/noofbedroomsTextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginStart="21dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="15dp"
                     android:hint=" Bedroom"
                     android:inputType="text"
-                    android:minLines="3"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textSize="15dp"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/Black"
+                    android:gravity="end" />
 
             </LinearLayout>
         </LinearLayout>
