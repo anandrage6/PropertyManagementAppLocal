@@ -12,20 +12,25 @@
         tools:ignore="MissingConstraints">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50sp"
                 android:orientation="vertical">
                 <TextView
                     android:id="@+id/paymentReceivedFromTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="30dp"
                     android:hint="Received from"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textAlignment="textStart"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp" />
+                    android:layout_marginLeft="5dp"
+                    tools:ignore="RtlCompat" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -36,8 +41,9 @@
                         android:id="@+id/invoiceissuedDateTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:hint="Date Received"
+                        android:text="Date Received"
                         android:textSize="15dp"
+                        android:textColor="@color/colorPrimaryDark"
                         android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp" />
 
@@ -47,6 +53,7 @@
                         android:layout_height="match_parent"
                         android:hint="DD/MM/Year"
                         android:textSize="15dp"
+                        android:textColor="@color/colorPrimaryDark"
                         android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp" />
                 </LinearLayout>
@@ -59,7 +66,8 @@
                 android:layout_marginStart="70dp"
                 android:layout_marginEnd="10sp"
                 android:text="0.00"
-                android:textSize="20sp"
+                android:textSize="15sp"
+                android:textColor="@color/Black"
                 android:layout_gravity="end"
                 android:textAlignment="textEnd"
                 android:gravity="center"

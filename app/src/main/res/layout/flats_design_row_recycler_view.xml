@@ -47,7 +47,7 @@
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
                     android:textColor="@color/colorPrimaryDark"
-                    android:text=" Floor :"
+                    android:text="Floor"
                     android:textSize="15dp" />
 
                 <TextView
@@ -94,7 +94,7 @@
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
 
-                    android:text=" Flat No :"
+                    android:text="Flat No"
                     android:textSize="15dp"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -140,7 +140,7 @@
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
-                    android:text=" Flat Facing :"
+                    android:text="Flat Facing"
                     android:textSize="15dp"
                     android:textColor="@color/colorPrimaryDark"/>
 
@@ -186,7 +186,7 @@
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
-                    android:text=" No of Bedrooms :"
+                    android:text="No of Bedrooms"
                     android:textSize="15dp"
                     android:textColor="@color/colorPrimaryDark" />
 

@@ -70,10 +70,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="57dp">
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -81,14 +77,17 @@
                 android:id="@+id/firstlinear"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@color/cardview_light_background"
+                android:layout_marginBottom="1dp">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="Amount"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:gravity="start"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_gravity="center"
                     android:layout_marginStart="8dp"
                     tools:ignore="RtlCompat" />
@@ -98,9 +97,10 @@
                     android:layout_height="wrap_content"
                     android:hint="Amount"
                     android:textColor="@color/green"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textAlignment="textEnd"
                     android:gravity="start"
+                    android:layout_marginEnd="10dp"
                     android:layout_gravity="center"
                     android:inputType="numberDecimal"
                     android:layout_marginStart="150dp"
@@ -112,14 +112,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@id/firstlinear"
-                android:orientation="horizontal">
+                android:background="@color/cardview_light_background"
+                android:orientation="horizontal"
+                android:layout_marginBottom="1dp">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="Paid with"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:gravity="start"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_gravity="center"
                     android:layout_marginStart="8dp"
                     tools:ignore="RtlCompat" />
@@ -132,9 +135,10 @@
                     android:layout_marginStart="140dp"
                     android:gravity="start"
                     android:text="paid with"
+                    android:layout_marginEnd="10dp"
                     android:textColor="@color/green"
                     android:textAlignment="textEnd"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     tools:ignore="RtlCompat" />
             </LinearLayout>
 
@@ -143,14 +147,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@id/secondlinear"
-                android:orientation="horizontal">
+                android:background="@color/cardview_light_background"
+                android:orientation="horizontal"
+                android:layout_marginBottom="1dp">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="Date received"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:gravity="start"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_gravity="center"
                     android:layout_marginStart="8dp"
                     tools:ignore="RtlCompat" />
@@ -164,8 +171,9 @@
                     android:gravity="center"
                     android:textColor="@color/green"
                     android:text="Select Date"
+                    android:layout_marginEnd="10dp"
                     android:textAlignment="textEnd"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     tools:ignore="RtlCompat" />
             </LinearLayout>
 
@@ -174,14 +182,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@id/thirdlinear"
-                android:orientation="horizontal">
+                android:background="@color/cardview_light_background"
+                android:orientation="horizontal"
+                android:layout_marginBottom="1dp">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="Received from"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:gravity="start"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_gravity="center"
                     android:layout_marginStart="8dp"
                     tools:ignore="RtlCompat" />
@@ -190,10 +201,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Name"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textAlignment="textEnd"
                     android:textColor="@color/green"
                     android:gravity="start"
+                    android:layout_marginEnd="10dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="100dp"
                     tools:ignore="RtlCompat" />
@@ -204,14 +216,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@id/fourthlinear"
-                android:orientation="horizontal">
+                android:background="@color/cardview_light_background"
+                android:orientation="horizontal"
+                android:layout_marginBottom="1dp">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="Tax status"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:gravity="start"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_gravity="center"
                     android:layout_marginStart="8dp"
                     tools:ignore="RtlCompat" />
@@ -219,7 +234,7 @@
                 <LinearLayout
                     android:layout_width="196dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="110sp"
+                    android:layout_marginStart="130sp"
                     android:layout_marginLeft="50sp"
                     android:layout_marginEnd="10sp"
                     android:layout_marginRight="10sp"
@@ -239,7 +254,7 @@
                         <androidx.appcompat.widget.AppCompatRadioButton
                             android:id="@+id/nontaxableRadioButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="40dp"
+                            android:layout_height="30dp"
                             android:layout_weight="1"
                             android:background="@drawable/radio_button_selector"
                             android:button="@color/cardview_light_background"
@@ -248,12 +263,12 @@
                             android:onClick="onRadioButtonClicked"
                             android:text="NonTaxable"
                             android:textColor="@color/cardview_dark_background"
-                            android:textSize="20sp" />
+                            android:textSize="15sp" />
 
                         <androidx.appcompat.widget.AppCompatRadioButton
                             android:id="@+id/taxableRadioButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="40dp"
+                            android:layout_height="30dp"
                             android:layout_weight="1"
                             android:background="@drawable/radio_button_right_selector"
                             android:button="@color/cardview_light_background"
@@ -261,7 +276,7 @@
                             android:onClick="onRadioButtonClicked"
                             android:text="Taxable"
                             android:textColor="@color/cardview_dark_background"
-                            android:textSize="20sp" />
+                            android:textSize="15sp" />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -272,14 +287,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@id/fifthlinear"
-                android:orientation="horizontal">
+                android:background="@color/cardview_light_background"
+                android:orientation="horizontal"
+                android:layout_marginBottom="1dp">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="Notes"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:gravity="start"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_gravity="center"
                     android:layout_marginStart="8dp"
                     tools:ignore="RtlCompat" />
@@ -289,16 +307,17 @@
                     android:layout_height="match_parent"
                     android:hint="Add"
                     android:textColor="@color/green"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textAlignment="center"
                     android:gravity="center"
                     android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginStart="170dp"
                     tools:ignore="RtlCompat" />
             </LinearLayout>
 
         </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
