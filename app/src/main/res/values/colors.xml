@@ -9,5 +9,7 @@
     <color name="skyblue">#a1c4fd</color>
     <color name="everlastingsky">#fdfcfb</color>
     <color name="mountainrock">#868f96</color>
+    <color name="purple">#CC8899</color>
+    <color name="otherPurple">#8C489F</color>
 
 </resources>

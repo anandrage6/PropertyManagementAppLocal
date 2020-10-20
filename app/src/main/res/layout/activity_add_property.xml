@@ -57,7 +57,8 @@
                     android:layout_marginTop="0dp"
                     android:gravity="center"
                     android:text="Property Type"
-                    android:textAlignment="center"
+                    android:layout_marginStart="10sp"
+                    android:textAlignment="textStart"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     tools:ignore="RtlCompat" />
@@ -87,7 +88,8 @@
                     android:layout_marginTop="0dp"
                     android:gravity="center"
                     android:text="Property Name"
-                    android:textAlignment="center"
+                    android:layout_marginStart="10sp"
+                    android:textAlignment="textStart"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     tools:ignore="RtlCompat" />
@@ -117,7 +119,8 @@
                     android:layout_marginTop="0dp"
                     android:gravity="center"
                     android:text="Owner Name"
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
+                    android:layout_marginStart="10sp"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     tools:ignore="RtlCompat" />
@@ -147,7 +150,8 @@
                     android:layout_marginTop="0dp"
                     android:gravity="center"
                     android:text="Address"
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
+                    android:layout_marginStart="10sp"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     tools:ignore="RtlCompat" />
@@ -178,7 +182,8 @@
                     android:layout_marginTop="0dp"
                     android:gravity="center"
                     android:text="City"
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
+                    android:layout_marginStart="10sp"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     tools:ignore="RtlCompat" />
@@ -208,7 +213,8 @@
                     android:layout_marginTop="0dp"
                     android:gravity="center"
                     android:text="State"
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
+                    android:layout_marginStart="10sp"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     tools:ignore="RtlCompat" />
@@ -238,7 +244,8 @@
                     android:layout_marginTop="0dp"
                     android:gravity="center"
                     android:text="Zip Code"
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
+                    android:layout_marginStart="10sp"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     tools:ignore="RtlCompat" />
@@ -267,7 +274,8 @@
                     android:layout_marginTop="0dp"
                     android:gravity="center"
                     android:text="Description"
-                    android:textAlignment="center"
+                    android:textAlignment="textStart"
+                    android:layout_marginStart="10sp"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     tools:ignore="RtlCompat" />
@@ -293,7 +301,7 @@
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/Heavy_rain"
+        android:background="@color/otherPurple"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -327,7 +335,7 @@
                 android:gravity="center_horizontal"
                 android:text="Add Property"
                 android:textAlignment="center"
-                android:textColor="@color/cardview_dark_background"
+                android:textColor="@color/cardview_light_background"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
