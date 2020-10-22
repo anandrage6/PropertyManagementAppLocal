@@ -41,7 +41,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
     @Override
     public void onBindViewHolder(@NonNull final CustomViewHolder holder, final int position) {
         final int itemPosition = position;
-        final PropertyModelClass property = new PropertyModelClass();
+        //final PropertyModelClass property = new PropertyModelClass();
         final FlatsModelClass flats = flatsList.get(position);
         final long flatId = flats.getFlatId();
         holder.flatNo.setText(flats.getFlaNo());

@@ -47,8 +47,8 @@
 
                     <ImageView
                         android:layout_width="54dp"
-                        android:layout_height="35dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
                         android:src="@drawable/ic_roundminus" />
 
                     <LinearLayout
@@ -63,14 +63,15 @@
                             android:gravity="center_horizontal"
                             android:hint="Title"
                             android:textStyle="bold"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textAlignment="textStart"
-                            android:textSize="20dp"
+                            android:textSize="15dp"
                             tools:ignore="RtlCompat" />
                         <TextView
                             android:id="@+id/detailsTv"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="details"
+                            android:hint="Details"
                             android:textAlignment="textStart"
                             android:lines="1"
                             android:layout_marginTop="5dp"
@@ -83,7 +84,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="0dp"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
+                        android:textColor="@color/Black"
                         android:hint="Amount"
                         android:textAlignment="textEnd"
                         android:layout_marginLeft="30dp"
@@ -106,16 +108,16 @@
 
                 <ImageView
                     android:layout_width="54dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="11dp"
                     android:src="@drawable/ic_roundminus" />
 
                 <TextView
                     android:layout_width="156dp"
                     android:layout_height="match_parent"
                     android:text="Rent"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
+                    android:textSize="15dp"
+                  android:textColor="@color/colorPrimaryDark"
                     android:textAlignment="textStart"
                     android:gravity="center"
                     tools:ignore="RtlCompat" />
@@ -126,7 +128,8 @@
                     android:hint="0.00"
                     android:layout_marginStart="40dp"
                     android:textAlignment="textEnd"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
+                    android:textColor="@color/Black"
                     android:layout_marginLeft="40dp"
                     android:gravity="center"
                     android:layout_gravity="end"
@@ -150,10 +153,11 @@
                     android:layout_width="239dp"
                     android:layout_height="50dp"
                     android:gravity="center"
-                    android:hint="   Invoice Issued"
+                    android:text="Invoice Issued"
                     android:textAlignment="textStart"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorPrimaryDark"
                     tools:ignore="RtlCompat" />
                 <TextView
                     android:id="@+id/invoiceissuedDateTv"
@@ -163,8 +167,9 @@
                     android:gravity="center"
                     android:layout_marginStart="0dp"
                     android:textAlignment="textEnd"
-                    android:hint="sele date"
-                    android:textSize="20sp"
+                    android:hint="Select Date"
+                    android:textColor="@color/Black"
+                    android:textSize="15sp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginLeft="0dp"
                     tools:ignore="RtlCompat">
@@ -187,10 +192,11 @@
                     android:layout_width="239dp"
                     android:layout_height="50dp"
                     android:gravity="center"
-                    android:hint="   Payment due"
+                    android:text="Payment due"
                     android:textAlignment="textStart"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorPrimaryDark"
                     tools:ignore="RtlCompat" />
                 <TextView
                     android:id="@+id/paymentdueDateTv"
@@ -200,9 +206,10 @@
                     android:gravity="center"
                     android:layout_marginStart="0dp"
                     android:textAlignment="textEnd"
-                    android:hint="sele date"
+                    android:hint="Select Date"
                     android:layout_marginEnd="10dp"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
+                    android:textColor="@color/Black"
                     android:layout_marginLeft="0dp"
                     tools:ignore="RtlCompat">
                 </TextView>
@@ -222,10 +229,11 @@
                     android:layout_width="182dp"
                     android:layout_height="50dp"
                     android:gravity="center"
-                    android:hint="   Notes"
+                    android:text="Notes"
                     android:textAlignment="textStart"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorPrimaryDark"
                     tools:ignore="RtlCompat" />
 
                 <TextView
@@ -237,8 +245,9 @@
                     android:layout_marginLeft="0dp"
                     android:gravity="center"
                     android:hint="Note"
+                    android:textColor="@color/Black"
                     android:layout_marginEnd="10dp"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textAlignment="textEnd"
                     tools:ignore="RtlCompat">
                 </TextView>

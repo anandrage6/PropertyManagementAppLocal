@@ -118,8 +118,9 @@ public class UpdateFlat extends AppCompatActivity implements AdapterView.OnItemS
                 if(id>0){
                     flatUpdateListener.onFlatInfoUpdated(mflatsModelClass, flatItemPosition);
                     //getDialog().dismiss();
-                    Intent i = new Intent(UpdateFlat.this, PropertyDetails.class);
-                    startActivity(i);
+                    //Intent i = new Intent(UpdateFlat.this, PropertyDetails.class);
+                    //startActivity(i);
+                    finish();
                 }
 
 

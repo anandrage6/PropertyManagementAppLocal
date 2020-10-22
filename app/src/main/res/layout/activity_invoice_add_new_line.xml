@@ -82,8 +82,9 @@
                 android:layout_marginLeft="5dp"
                 android:gravity="center"
                 android:text="Amount"
+                android:textColor="@color/colorPrimaryDark"
                 android:textAlignment="textStart"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 tools:ignore="RtlCompat" />
             <EditText
                 android:id="@+id/addLineAmountEditText"
@@ -95,6 +96,7 @@
                 android:layout_marginStart="150dp"
                 android:layout_marginLeft="150dp"
                 android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
                 android:inputType="numberDecimal"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
@@ -115,18 +117,20 @@
                 android:layout_marginLeft="5dp"
                 android:gravity="center"
                 android:text="Title"
+                android:textColor="@color/colorPrimaryDark"
                 android:textAlignment="textStart"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 tools:ignore="RtlCompat" />
             <EditText
                 android:id="@+id/addLineTitleEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="title"
+                android:hint="Title"
                 android:textAlignment="textEnd"
                 android:layout_marginStart="70dp"
                 android:layout_marginLeft="150dp"
                 android:gravity="center"
+                android:layout_marginEnd="10dp"
                 android:layout_gravity="end"
                 android:inputType="text"
                 tools:ignore="RtlCompat" />
@@ -148,19 +152,21 @@
                 android:layout_marginLeft="5dp"
                 android:gravity="center"
                 android:text="Details"
+                android:textColor="@color/colorPrimaryDark"
                 android:textAlignment="textStart"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 tools:ignore="RtlCompat" />
             <EditText
                 android:id="@+id/addLineDetailsEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="details"
+                android:hint="Details"
                 android:textAlignment="textEnd"
                 android:layout_gravity="end"
                 android:layout_marginStart="70dp"
                 android:layout_marginLeft="150dp"
                 android:gravity="center"
+                android:layout_marginEnd="10dp"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
 

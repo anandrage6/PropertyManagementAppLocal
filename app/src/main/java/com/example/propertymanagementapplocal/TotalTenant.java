@@ -20,6 +20,7 @@ public class TotalTenant extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private long refFlatId;
+    ViePageAdapter viePageAdapter;
     private long refTenantId;
     Bundle bundle;
 
