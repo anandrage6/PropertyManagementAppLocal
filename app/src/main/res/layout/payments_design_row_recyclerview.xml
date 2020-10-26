@@ -65,7 +65,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="70dp"
                 android:layout_marginEnd="10sp"
-                android:text="0.00"
+                android:hint="0.00"
                 android:textSize="15sp"
                 android:textColor="@color/Black"
                 android:layout_gravity="end"
