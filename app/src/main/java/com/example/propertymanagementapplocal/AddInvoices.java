@@ -109,6 +109,11 @@ public class AddInvoices extends AppCompatActivity {
         addLine = findViewById(R.id.addlineTextview);
 
 
+        //navigation part
+
+        //String intentValue = getIntent().getStringExtra("intentPassed");
+
+
 
         linearLayout.setVisibility(linearLayout.GONE);
 

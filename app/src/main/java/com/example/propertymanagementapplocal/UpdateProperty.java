@@ -190,7 +190,25 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
         updateCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(UpdateProperty.this);
+                alertDialogBuilder.setTitle("Confirm Exit...!!");
+                alertDialogBuilder.setMessage("Are you sure you want to exit");
+                alertDialogBuilder.setCancelable(false);
+                alertDialogBuilder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                });
+                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(UpdateProperty.this, "You Clicked on Cancel", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
         });
 

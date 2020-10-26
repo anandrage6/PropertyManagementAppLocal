@@ -27,6 +27,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
     String strLocationTv, strCity, strState, strZipCode, strownerNameTv, stringimage, totalAddress, strPropertyName, strPropertyType, strDescription;
     private Toolbar toolbar;
     ImageButton editBtn;
+    int itemPosition;
 
 
 
@@ -97,6 +98,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
                 intent.putExtra("STATE",strState);
                 intent.putExtra("ZIPCODE",strZipCode);
                 intent.putExtra("DESCRIPTION",strDescription);
+                intent.putExtra("itemPosition", itemPosition);
                 startActivity(intent);
 
 
@@ -117,6 +119,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         strPropertyName = getIntent().getStringExtra(Config.COLUMN_PROPERTY_PROPERTYNAME);
         strPropertyType = getIntent().getStringExtra(Config.COLUMN_PROPERTY_PROPERTYTYPE);
         strDescription = getIntent().getStringExtra(Config.COLUMN_PROPERTY_DESCRIPTION);
+//        itemPosition = Integer.parseInt(getIntent().getStringExtra("itemPosition"));
 
         strownerNameTv = getIntent().getStringExtra(Config.COLUMN_PROPERTY_OWNERNAME);
         try {
@@ -162,14 +165,18 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
 
 
         //navigation method
-
         String intentValue = getIntent().getStringExtra("intentPassed");
+//        Log.e("intentValue : ==> ", intentValue);
 
         /*
-        if(!intentValue.isEmpty()){
-            openActivityAddFlats();
+        if(intentValue== null){
+        }else{
+            FlatsCreateListener flatsCreateListener = this;
+            long propertyId = refpropertyId;
+            Log.d("propertyIdResult ===> ", String.valueOf(propertyId));
+            AddFlats addFlats = AddFlats.newInstance(propertyId, flatsCreateListener);
+            addFlats.show(getSupportFragmentManager(), Config.CREATE_FLAT);
         }
-
 
          */
 

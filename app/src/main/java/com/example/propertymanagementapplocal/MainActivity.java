@@ -2,6 +2,7 @@ package com.example.propertymanagementapplocal;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -9,10 +10,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
@@ -97,6 +99,11 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Properties", Toast.LENGTH_SHORT).show();
                         openActivityAddProperty();
                         break;
+
+                    case R.id.flats:
+                        Toast.makeText(MainActivity.this, "Flats", Toast.LENGTH_SHORT).show();
+                        break;
+
                     case R.id.invoices:
                         Toast.makeText(MainActivity.this, "invoices", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(MainActivity.this,PropertyDetails.class);
@@ -182,5 +189,47 @@ public class MainActivity extends AppCompatActivity {
             propertyListEmptyTextView.setVisibility(View.VISIBLE);
         else
             propertyListEmptyTextView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.delete, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId()==R.id.action_delete){
+
+            androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(this);
+            alertDialogBuilder.setMessage("Are you sure, You wanted to delete all Properties?");
+            alertDialogBuilder.setPositiveButton("Yes",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            boolean isAllDeleted = databaseQueryClass.deleteAllProperties();
+                            if(isAllDeleted){
+                                propertyList.clear();
+                                propertyListRecyclerViewAdapter.notifyDataSetChanged();
+                                viewVisibility();
+                            }
+                        }
+                    });
+
+            alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

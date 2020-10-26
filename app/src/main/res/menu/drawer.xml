@@ -6,6 +6,10 @@
                 android:title="Add Properties"
                 android:icon="@drawable/ic_home"/>
 
+            <item android:id="@+id/flats"
+                android:title="Add Flats"
+                android:icon="@drawable/ic_home"/>
+
             <item android:id="@+id/invoices"
                 android:title="Add Invoices"
                 android:icon="@drawable/ic_invoice"/>

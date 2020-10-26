@@ -76,9 +76,9 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
                 intent.putExtra(Config.COLUMN_PROPERTY_ZIPCODE, property.getZipCode());
                 intent.putExtra(Config.COLUMN_PROPERTY_DESCRIPTION, property.getDescription());
                 intent.putExtra(Config.COLUMN_PROPERTY_PROPERTYTYPE, property.getPropertyType());
+                //intent.putExtra("itemPosition", itemPosition);
 
                 //intent.putExtra("RECORD_ID", id );
-
 
                 context.startActivity(intent);
             }

@@ -3,6 +3,7 @@ package com.example.propertymanagementapplocal;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
@@ -155,7 +156,7 @@ public class DatabaseQueryClass {
         return property;
     }
 
-    //update proprty
+    //update property
     public long updatePropertyInfo(PropertyModelClass property){
 
         long rowCount = 0;
@@ -205,6 +206,34 @@ public class DatabaseQueryClass {
         }
 
         return deletedRowCount;
+    }
+
+    //delete all property
+
+    //delete all items
+    public boolean deleteAllProperties(){
+        boolean deleteStatus = false;
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        try {
+            //for "1" delete() method returns number of deleted rows
+            //if you don't want row count just use delete(TABLE_NAME, null, null)
+            sqLiteDatabase.delete(Config.TABLE_PROPERTY, null, null);
+
+            long count = DatabaseUtils.queryNumEntries(sqLiteDatabase, Config.TABLE_PROPERTY);
+
+            if(count==0)
+                deleteStatus = true;
+
+        } catch (SQLiteException e){
+            Logger.d("Exception: " + e.getMessage());
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            sqLiteDatabase.close();
+        }
+
+        return deleteStatus;
     }
 
 
