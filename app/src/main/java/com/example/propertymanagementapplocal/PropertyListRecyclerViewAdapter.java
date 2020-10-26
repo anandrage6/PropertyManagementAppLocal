@@ -118,7 +118,7 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
                                 if(count>0){
                                     propertyList.remove(position);
                                     notifyDataSetChanged();
-                                    //((MainActivity) context).viewVisibility();
+                                    ((MainActivity) context).viewVisibility();
                                     Toast.makeText(context, "Property deleted successfully", Toast.LENGTH_LONG).show();
                                 } else
                                     Toast.makeText(context, "Property not deleted. Something wrong!", Toast.LENGTH_LONG).show();

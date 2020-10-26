@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PropertyDetails extends AppCompatActivity implements FlatsCreateListener {
@@ -36,7 +37,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
     ImageButton flatAddBtn;
 
     //private TextView flatEmptyListTV;
-     private LinearLayout linearLayout;
+     private TextView textViewEmptyList;
 
     private long refpropertyId;
 
@@ -47,6 +48,9 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
 
 
     private List<FlatsModelClass> flatsList = new ArrayList<>();
+
+    //tenantList
+    //private List<TenantModelClass> tenantList = new ArrayList<>();
 
     private RecyclerView flatsrecyclerView;
     private FlatsListRecyclerAdapter flatsListRecyclerAdapter;
@@ -67,6 +71,9 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
 
         flatsrecyclerView = findViewById(R.id.flatsRecyclerViewid);
 
+
+
+
         //tool bar
         toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
@@ -74,9 +81,9 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
 
 
       //visibility of emptylist
-        linearLayout = findViewById(R.id.flatsemptyListHide);
+       // linearLayout = findViewById(R.id.flatsemptyListHide);
 
-        viewVisibility();
+
 
 
 
@@ -143,13 +150,29 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         flatsList.addAll(databaseQueryClass.getAllFlatsByPFId(refpropertyId));
         Log.d("FlatList : ==> ", String.valueOf(flatsList.size()));
 
+
         //flats part
         flatsListRecyclerAdapter = new FlatsListRecyclerAdapter(this, flatsList);
         flatsrecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         flatsrecyclerView.setAdapter(flatsListRecyclerAdapter);
 
+        /*
+        //display tenant name in flat card
 
+        List<FlatsModelClass> flatsall = new ArrayList<>();
+        for(FlatsModelClass f : flatsList){
+             f.getFlatId();
+            flatsall.addAll(Collections.singleton(f));
+        }
 
+        //TenantList
+        tenantList.addAll(databaseQueryClass.getAllTenantsByFId(flatsall.size()));
+
+        if(tenantList.size() > 0){
+
+        }
+
+         */
 
         //flats button click
         flatAddBtn = findViewById(R.id.flatAddbtn);
@@ -165,8 +188,8 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
 
 
         //navigation method
-        String intentValue = getIntent().getStringExtra("intentPassed");
-//        Log.e("intentValue : ==> ", intentValue);
+        //String intentValue = getIntent().getStringExtra("intentPassed");
+       //Log.e("intentValue : ==> ", intentValue);
 
         /*
         if(intentValue== null){
@@ -179,6 +202,11 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         }
 
          */
+
+        textViewEmptyList = findViewById(R.id.flatsemptyListHide);
+        //textViewEmptyList.setVisibility(View.VISIBLE);
+        viewVisibility();
+
 
     }
 
@@ -197,16 +225,17 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         flatsListRecyclerAdapter.notifyDataSetChanged();
 
         //flats emptylist
-        //viewVisibility();
+        viewVisibility();
+
 
     }
 
     public void viewVisibility() {
         try {
             if (flatsList.isEmpty()) {
-                linearLayout.setVisibility(View.GONE);
+                textViewEmptyList.setVisibility(View.VISIBLE);
             } else {
-               linearLayout.setVisibility(View.VISIBLE);
+                textViewEmptyList.setVisibility(View.GONE);
             }
         }catch (Exception e){
             e.printStackTrace();

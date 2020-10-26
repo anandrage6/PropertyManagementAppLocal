@@ -237,6 +237,32 @@ public class DatabaseQueryClass {
     }
 
 
+    ////Update Property2
+
+    public boolean updateProperty2(long id, String propertyType, String propertyName,
+                                  String ownerName, String address, String city, String state, String zipcode, String description, String image){
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Config.COLUMN_PROPERTY_ID, id);
+        contentValues.put(Config.COLUMN_PROPERTY_PROPERTYTYPE, propertyType);
+        contentValues.put(Config.COLUMN_PROPERTY_PROPERTYNAME, propertyName);
+        contentValues.put(Config.COLUMN_PROPERTY_OWNERNAME, ownerName);
+        contentValues.put(Config.COLUMN_PROPERTY_ADDRESS, address);
+        contentValues.put(Config.COLUMN_PROPERTY_CITY, city);
+        contentValues.put(Config.COLUMN_PROPERTY_STATE, state);
+        contentValues.put(Config.COLUMN_PROPERTY_ZIPCODE, zipcode);
+        contentValues.put(Config.COLUMN_PROPERTY_DESCRIPTION, description);
+        contentValues.put(Config.COLUMN_PROPERTY_IMAGE, image);
+
+        sqLiteDatabase.update(Config.TABLE_PROPERTY,contentValues,Config.COLUMN_PROPERTY_ID + " =? ",new String[] {String.valueOf(id)});
+        //sqLiteDatabase.update(Config.TABLE_PROPERTY, contentValues,Config.COLUMN_PROPERTY_ID + " = ? ",new String[] {String.valueOf(property.getId())});
+
+        return  true;
+    }
+
+
     //flats part
 
     //insert flats

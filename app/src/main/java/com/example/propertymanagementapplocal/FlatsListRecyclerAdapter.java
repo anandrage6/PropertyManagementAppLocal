@@ -26,6 +26,8 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
     private Context context;
     private List<FlatsModelClass> flatsList;
 
+    private List<TenantModelClass> tenatList;
+
     public FlatsListRecyclerAdapter(Context context, List<FlatsModelClass> flatsList) {
         this.context = context;
         this.flatsList = flatsList;
@@ -120,6 +122,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
                                     flatsList.remove(mflat);
                                     notifyDataSetChanged();
                                    // ((SubjectListActivity) context).viewVisibility();
+                                    ((PropertyDetails) context).viewVisibility();
                                     Toast.makeText(context, " deleted ", Toast.LENGTH_SHORT).show();
                                 } else
                                     Toast.makeText(context, "Cannot delete!", Toast.LENGTH_SHORT).show();
@@ -187,7 +190,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
     public class CustomViewHolder extends RecyclerView.ViewHolder {
 
         TextView flatNo, floor, flatfacing, noOfBedrooms ;
-        TextView optionMenu;
+        TextView optionMenu, tenantInfoUpdate;
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
             flatNo = itemView.findViewById(R.id.flatNoTextView);
@@ -195,6 +198,8 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
             flatfacing = itemView.findViewById(R.id.flatfacingTextView);
             noOfBedrooms = itemView.findViewById(R.id.noofbedroomsTextView);
             optionMenu = itemView.findViewById(R.id.textOption);
+            //tenantInfoUpdate = itemView.findViewById(R.id.tenantInfoUpdate);
+
 
         }
     }

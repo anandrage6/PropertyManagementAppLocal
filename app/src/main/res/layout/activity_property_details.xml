@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="33dp"
                     android:layout_marginTop="15dp"
-                    android:hint="location"
+                    android:hint="Location"
                     android:textSize="15dp"
                     android:lines="4"
                     android:layout_marginEnd="10dp"
@@ -148,7 +148,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="30dp"
             android:background="#FFFFFF"
             android:orientation="vertical">
@@ -166,27 +166,18 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/flatsemptyListHide"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="0dp"
-            android:background="@color/cardview_light_background"
-            android:orientation="vertical">
-
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/flatsemptyListHide"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="80dp"
                 android:layout_marginBottom="50dp"
                 android:text="Add Flat"
                 android:textAlignment="center"
+                android:visibility="gone"
+                tools:visibility="visible"
                 android:textSize="20sp" />
-
-        </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>

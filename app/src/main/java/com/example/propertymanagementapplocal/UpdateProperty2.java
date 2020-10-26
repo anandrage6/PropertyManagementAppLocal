@@ -12,6 +12,7 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -100,7 +101,7 @@ public class UpdateProperty2 extends AppCompatActivity implements AdapterView.On
         image = getIntent().getStringExtra("IMAGE");
        // itemPosition = Integer.parseInt(getIntent().getStringExtra("itemPosition"));
 
-        databaseQueryClass = new DatabaseQueryClass(getApplicationContext());
+        databaseQueryClass = new DatabaseQueryClass(this);
 
         //set values
 
@@ -140,22 +141,23 @@ public class UpdateProperty2 extends AppCompatActivity implements AdapterView.On
         updateSavebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-/*
-                edtPropertyName.setText(propertyName);
-                edtOwnerName.setText(ownerName);
-                edtAddress.setText(address);
-                edtCity.setText(city);
-                edtZipCode.setText(zipcode);
-                edtDescription.setText(description);
 
-                PropertyModelClass id = databaseQueryClass.getPropertyById(propertyId);
+                //str
+                long id = propertyId;
+                String strPropertyType = propertyType;
+                String strPropertyName = edtPropertyName.getText().toString();
+                String strOwnerName = edtOwnerName.getText().toString();
+                String strAddress = edtAddress.getText().toString();
+                String strCity = edtCity.getText().toString();
+                String strState = state;
+                String strZipCode = edtZipCode.getText().toString();
+                String strDescription = edtDescription.getText().toString();
+                String strImage = imageUri.toString();
 
-                   // propertyUpdateListener.onPropertyInfoUpdated(mPropertyModelClass, propertyItemPosition);
-                    //getDialog().dismiss();
-                    Intent i = new Intent(UpdateProperty2.this, MainActivity.class);
-                    startActivity(i);
+                Boolean updatedata = databaseQueryClass.updateProperty2(id, strPropertyType, strPropertyName, strOwnerName, strAddress,
+                        strCity, strState, strZipCode, strDescription, strImage);
 
- */
+                finish();
             }
         });
 

@@ -102,13 +102,13 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.flats:
                         Toast.makeText(MainActivity.this, "Flats", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(MainActivity.this,PropertyDetails.class);
+                       // i.putExtra("intentPassed", "Intent");
+                        startActivity(i);
                         break;
 
                     case R.id.invoices:
                         Toast.makeText(MainActivity.this, "invoices", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(MainActivity.this,PropertyDetails.class);
-                        i.putExtra("intentPassed", "Intent");
-                        startActivity(i);
                         break;
 
                     case R.id.payments:

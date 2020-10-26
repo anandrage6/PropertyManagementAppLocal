@@ -4,7 +4,7 @@
         <menu>
             <item android:id="@+id/property"
                 android:title="Add Properties"
-                android:icon="@drawable/ic_home"/>
+                android:icon="@drawable/ic_apartment"/>
 
             <item android:id="@+id/flats"
                 android:title="Add Flats"

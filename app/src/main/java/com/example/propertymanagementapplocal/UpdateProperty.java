@@ -177,7 +177,6 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
                 long id = databaseQueryClass.updatePropertyInfo(mPropertyModelClass);
                 if(id>0){
                     propertyUpdateListener.onPropertyInfoUpdated(mPropertyModelClass, propertyItemPosition);
-                    //getDialog().dismiss();
                     Intent i = new Intent(UpdateProperty.this, MainActivity.class);
                     startActivity(i);
                 }
