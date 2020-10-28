@@ -40,7 +40,7 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
     private static long FlatId;
     private  static  PaymentsCreateListener paymentsCreateListener;
 
-    AppCompatRadioButton taxableRadioButton, nontaxableRadioButton;
+    AppCompatRadioButton taxableRadioBtn, nontaxableRadioBtn;
 
     //empty Constructor
     public AddPayments() {
@@ -78,8 +78,8 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
         pSave = findViewById(R.id.paymentSaveButton);
         pCancel = findViewById(R.id.paymentCancelButton);
 
-        nontaxableRadioButton = findViewById(R.id.nontaxableRadioButton);
-        taxableRadioButton = findViewById(R.id.taxableRadioButton);
+        nontaxableRadioBtn = findViewById(R.id.nontaxableRadioButton);
+        taxableRadioBtn = findViewById(R.id.taxableRadioButton);
 
 
 
@@ -169,28 +169,32 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
         });
 
 
-
     }
 
     //radio button taxable and nontaxable
 
+    @SuppressLint("LongLogTag")
     public void onRadioButtonClicked(View v){
 
-        boolean isSelected = ((AppCompatRadioButton)v).isSelected();
+        boolean isSelected = ((AppCompatRadioButton)v).isChecked();
         switch (v.getId()){
             case R.id.nontaxableRadioButton:
             if(isSelected){
-                nontaxableRadioButton.setTextColor(Color.WHITE);
-                taxableRadioButton.setTextColor(Color.BLACK);
-                strTaxStatus = nontaxableRadioButton.getText().toString();
+                nontaxableRadioBtn.setTextColor(Color.WHITE);
+                taxableRadioBtn.setTextColor(Color.BLACK);
+                strTaxStatus = nontaxableRadioBtn.getText().toString();
+                //Log.e("StrTaxstatus_nontax : ==> ", strTaxStatus);
+                //Toast.makeText(AddPayments.this, "nonTax: ==> "+strTaxStatus, Toast.LENGTH_LONG).show();
 
             }
             break;
             case R.id.taxableRadioButton:
                 if(isSelected){
-                    nontaxableRadioButton.setTextColor(Color.BLACK);
-                    taxableRadioButton.setTextColor(Color.WHITE);
-                    strTaxStatus = taxableRadioButton.getText().toString();
+                    nontaxableRadioBtn.setTextColor(Color.BLACK);
+                    taxableRadioBtn.setTextColor(Color.WHITE);
+                    strTaxStatus = taxableRadioBtn.getText().toString();
+                    //Log.e("StrTaxstatus tax : ==> ", strTaxStatus);
+                    //Toast.makeText(AddPayments.this, "Tax: ==> "+strTaxStatus, Toast.LENGTH_LONG).show();
                 }
             break;
         }

@@ -1,6 +1,7 @@
 package com.example.propertymanagementapplocal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,24 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
         holder.amount.setText(payment.getAmount());
         holder.receivedfrom.setText(payment.getReceivedfrom());
         holder.dateReceived.setText(payment.getDatereceived());
+
+        //itemview
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, PaymentDetails.class);
+                intent.putExtra(Config.COLUMN_PAYMENT_ID, payment.getPaymentId());
+                intent.putExtra(Config.COLUMN_PAYMENT_AMOUNT, payment.getAmount());
+                intent.putExtra(Config.COLUMN_PAYMENT_PAIDWITH, payment.getPaidwith());
+                intent.putExtra(Config.COLUMN_PAYMENT_DATERECEIVED, payment.getDatereceived());
+                intent.putExtra(Config.COLUMN_PAYMENT_RECEIVEDFROM, payment.getReceivedfrom());
+                intent.putExtra(Config.COLUMN_PAYMENT_TAXSTATUS, payment.getTaxstatus());
+                intent.putExtra(Config.COLUMN_PAYMENT_NOTES, payment.getNotes());
+
+                context.startActivity(intent);
+            }
+        });
 
 
     }
