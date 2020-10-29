@@ -7,9 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,21 +42,65 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
 
     @SuppressLint("LongLogTag")
     @Override
-    public void onBindViewHolder(@NonNull tenantCustomViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final tenantCustomViewHolder holder, int position) {
         final int tenantlistPosition = position;
         final TenantModelClass tenants = tenantList.get(position);
         final long tenantId = tenants.getTenantId();
 
+        holder.tenantExtraname.setText(tenants.getTenantName());
         holder.name.setText(tenants.getTenantName());
-        holder.email.setText(tenants.getTenantEmail());
         holder.phone.setText(tenants.getTenantphone());
-        holder.leaseStart.setText(tenants.getLeaseStart());
-        holder.leaseEnd.setText(tenants.getLeaseEnd());
-        holder.rentIsPaid.setText(tenants.getRentIsPaid());
-        holder.totalOccupants.setText(tenants.getTotalOccupants());
-        holder.notes.setText(tenants.getNotes());
-        holder.rentAmount.setText(tenants.getRentAmount());
-        holder.securityDeposit.setText(tenants.getSecurityDeposit());
+        holder.email.setText(tenants.getTenantEmail());
+
+        //item view
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, TenantFullDetails.class);
+                intent.putExtra(Config.COLUMN_TENANTS_NAME, tenants.getTenantName());
+                intent.putExtra(Config.COLUMN_TENANTS_PHONE, tenants.getTenantphone());
+                intent.putExtra(Config.COLUMN_TENANTS_EMAIL, tenants.getTenantEmail());
+                intent.putExtra(Config.COLUMN_TENANTS_LEASESTART, tenants.getLeaseStart());
+                intent.putExtra(Config.COLUMN_TENANTS_LEASEEND, tenants.getLeaseEnd());
+                intent.putExtra(Config.COLUMN_TENANTS_RENTISPAID, tenants.getRentIsPaid());
+                intent.putExtra(Config.COLUMN_TENANTS_TOTALOCCUPANTS, tenants.getTotalOccupants());
+                intent.putExtra(Config.COLUMN_TENANTS_NOTES, tenants.getNotes());
+                intent.putExtra(Config.COLUMN_TENANTS_RENT, tenants.getRentAmount());
+                intent.putExtra(Config.COLUMN_TENANTS_SECURITYDEPOSIT, tenants.getSecurityDeposit());
+               // intent.putExtra(Config.COLUMN_TENANTS_NAME, tenants.getTenantName());
+                context.startActivity(intent);
+
+            }
+        });
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+
+                PopupMenu popupMenu = new PopupMenu(context, holder.itemView);
+                popupMenu.inflate(R.menu.long_click_menu);
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.long_update:
+                                Toast.makeText(context, "long update", Toast.LENGTH_LONG).show();
+                                break;
+                            case R.id.long_delete:
+                                Toast.makeText(context, "long delete", Toast.LENGTH_LONG).show();
+
+                        }
+                        return false;
+                    }
+
+                });
+                popupMenu.show();
+                return true;
+            }
+
+        });
 
 
 
@@ -94,18 +142,16 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
     public class tenantCustomViewHolder extends RecyclerView.ViewHolder {
 
         TextView name,email,phone,leaseStart,leaseEnd,rentIsPaid,totalOccupants,notes,rentAmount,securityDeposit;
+        TextView tenantExtraname;
         public tenantCustomViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.tenantNameTV);
-            email = itemView.findViewById(R.id.tenantEmailTV);
-            phone = itemView.findViewById(R.id.tenantPhoneTV);
-            leaseStart = itemView.findViewById(R.id.leaseStartTextView);
-            leaseEnd = itemView.findViewById(R.id.leaseEndTextView);
-            rentIsPaid = itemView.findViewById(R.id.rentIsPaidTextView);
-            totalOccupants = itemView.findViewById(R.id.totaloccupantsTextView);
-            notes = itemView.findViewById(R.id.notesTextView);
-            rentAmount = itemView.findViewById(R.id.rentAmountTextView);
-            securityDeposit = itemView.findViewById(R.id.depositTextView);
+
+            tenantExtraname = itemView.findViewById(R.id.tenantExtraName);
+            name = itemView.findViewById(R.id.tenantName);
+            email = itemView.findViewById(R.id.tenantEmail);
+            phone = itemView.findViewById(R.id.tenantPhone);
+
+
 
 
         }

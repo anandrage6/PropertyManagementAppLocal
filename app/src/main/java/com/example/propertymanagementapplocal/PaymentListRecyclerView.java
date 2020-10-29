@@ -3,9 +3,12 @@ package com.example.propertymanagementapplocal;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,7 +32,7 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PaymentListRecyclerView.PaymentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final PaymentListRecyclerView.PaymentViewHolder holder, int position) {
 
         final int paymentListPosition = position;
         final PaymentsModelClass payment = paymentList.get(position);
@@ -54,6 +57,34 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
                 intent.putExtra(Config.COLUMN_PAYMENT_NOTES, payment.getNotes());
 
                 context.startActivity(intent);
+            }
+        });
+
+        //longPress on item view
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(context, holder.itemView);
+                popupMenu.inflate(R.menu.long_click_menu);
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.long_update:
+                                Toast.makeText(context, "long update", Toast.LENGTH_LONG).show();
+                                break;
+                            case R.id.long_delete:
+                                Toast.makeText(context, "long delete", Toast.LENGTH_LONG).show();
+
+                        }
+                        return false;
+                    }
+
+                });
+                popupMenu.show();
+                //Toast.makeText(context, "You have long clicked", Toast.LENGTH_LONG).show();
+                return true;
             }
         });
 

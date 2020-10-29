@@ -4,9 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,7 +35,7 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull invoiceCustomViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final invoiceCustomViewHolder holder, int position) {
         final int invoiceListPosition = position;
         final InvoiceModelClass invoice = invoiceList.get(position);
         final long invoiceId = invoice.getInvoiceId();
@@ -50,7 +55,7 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
 
         //list details
 
-        holder.invoiceIdTv.setText(" # "+id);
+        holder.invoiceIdTv.setText(" #"+id);
         holder.invoiceissuedDateTv.setText(invoice.getInvoiceIssued());
         holder.paymentduedateTv.setText(invoice.getPaymentDue());
         holder.rentTextView.setText(invoice.getRent());
@@ -71,6 +76,34 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
 
                 context.startActivity(intent);
 
+            }
+        });
+
+        //long click
+        holder.itemView.setOnLongClickListener(new OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+                PopupMenu popupMenu = new PopupMenu(context, holder.itemView);
+                popupMenu.inflate(R.menu.long_click_menu);
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.long_update:
+                                Toast.makeText(context, "long update", Toast.LENGTH_LONG).show();
+                                break;
+                            case R.id.long_delete:
+                                Toast.makeText(context, "long delete", Toast.LENGTH_LONG).show();
+
+                        }
+                        return false;
+                    }
+
+                });
+                popupMenu.show();
+                //Toast.makeText(context, "You have long clicked", Toast.LENGTH_LONG).show();
+                return true;
             }
         });
 

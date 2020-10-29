@@ -18,18 +18,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50sp"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/paymentReceivedFromTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:hint="Received from"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textAlignment="textStart"
-                    android:gravity="center"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:hint="Received from"
+                    android:textAlignment="textStart"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     tools:ignore="RtlCompat" />
 
                 <LinearLayout
@@ -43,7 +43,6 @@
                         android:layout_height="match_parent"
                         android:text="Date Received"
                         android:textSize="15dp"
-                        android:textColor="@color/colorPrimaryDark"
                         android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp" />
 
@@ -53,7 +52,6 @@
                         android:layout_height="match_parent"
                         android:hint="DD/MM/Year"
                         android:textSize="15dp"
-                        android:textColor="@color/colorPrimaryDark"
                         android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp" />
                 </LinearLayout>

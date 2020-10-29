@@ -48,7 +48,7 @@ public class TotalTenant extends AppCompatActivity {
 
 
         setSupportActionBar(mytoolbar);
-        getSupportActionBar().setTitle("Tenant");
+        getSupportActionBar().setTitle("Details");
         //((AppCompatActivity)getApplicationContext()).setSupportActionBar(mytoolbar);
 
         setupViewPager(viewPager);
@@ -73,7 +73,7 @@ public class TotalTenant extends AppCompatActivity {
         //OverView Pass data
         OverView oV = new OverView();
         oV.setArguments(bundle);
-        viePageAdapter.addFragnment(oV, "OverView");
+        viePageAdapter.addFragnment(oV, "Tenant");
 
         //Invoices Pass Data
         InvoicesFragment IF = new InvoicesFragment();

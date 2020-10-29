@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_weight="2"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="180dp"
         android:background="?attr/colorButtonNormal"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
@@ -58,7 +58,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="0dp"
                 android:orientation="horizontal">
 
 
@@ -78,7 +78,6 @@
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
-                    android:textColor="@color/colorPrimaryDark"
                     android:text="Floor"
                     android:textSize="15dp" />
 
@@ -90,11 +89,11 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginStart="100dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="170dp"
+                    android:layout_marginEnd="0dp"
                     android:hint=" Floor"
                     android:inputType="text"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="textStart"
                     android:textSize="15dp"
                     android:textColor="@color/Black"
                     android:gravity="end" />
@@ -105,7 +104,7 @@
             <LinearLayout
                 android:layout_width="332dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="0dp"
                 android:orientation="horizontal">
 
 
@@ -127,8 +126,7 @@
                     android:inputType="text"
 
                     android:text="Flat No"
-                    android:textSize="15dp"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/flatNoTextView"
@@ -138,12 +136,12 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginStart="85dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="155dp"
+                    android:layout_marginEnd="0dp"
                     android:hint=" FlatNo"
                     android:inputType="text"
                     android:textSize="15dp"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="textStart"
                     android:textColor="@color/Black"
                     android:gravity="end" />
 
@@ -152,7 +150,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="0dp"
                 android:orientation="horizontal">
 
 
@@ -173,8 +171,7 @@
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
                     android:text="Flat Facing"
-                    android:textSize="15dp"
-                    android:textColor="@color/colorPrimaryDark"/>
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/flatfacingTextView"
@@ -184,12 +181,12 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginStart="60dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="130dp"
+                    android:layout_marginEnd="0dp"
                     android:hint=" FlatFacing"
                     android:inputType="text"
                     android:textSize="15dp"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="textStart"
                     android:textColor="@color/Black"
                     android:gravity="end" />
 
@@ -198,7 +195,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="0dp"
                 android:orientation="horizontal">
 
 
@@ -219,8 +216,7 @@
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
                     android:text="No of Bedrooms"
-                    android:textSize="15dp"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/noofbedroomsTextView"
@@ -230,12 +226,12 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="93dp"
+                    android:layout_marginEnd="0dp"
                     android:hint=" Bedroom"
                     android:inputType="text"
                     android:textSize="15dp"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="textStart"
                     android:textColor="@color/Black"
                     android:gravity="end" />
 
