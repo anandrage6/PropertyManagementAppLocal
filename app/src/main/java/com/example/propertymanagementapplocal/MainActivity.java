@@ -146,6 +146,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
        // showRecord();
+        propertyList.clear();
+        propertyList.addAll(databaseQueryClass.getAllProperty());
+
+        propertyListRecyclerViewAdapter = new PropertyListRecyclerViewAdapter(this, propertyList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(propertyListRecyclerViewAdapter);
+
+        //viewVisibility
+
+        propertyListEmptyTextView = findViewById(R.id.emptyListTextView);
+        viewVisibility();
     }
 
     @Override

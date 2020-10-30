@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateTenantDetails">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="58dp">
+        <LinearLayout
+            android:id="@+id/firstlinear"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal"
+            android:layout_marginBottom="1dp">
+
+            <TextView
+                android:layout_width="107dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Name"
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginTop="0dp"
+                tools:ignore="RtlCompat" />
+            <EditText
+                android:id="@+id/tenantNameEditTextUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Name"
+                android:textSize="15dp"
+                android:layout_marginStart="100dp"
+                android:background="@null"
+                android:textAlignment="center"
+                android:inputType="text"
+                android:layout_marginLeft="100dp"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondlinear"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/firstlinear"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal"
+            android:layout_marginBottom="1dp">
+            <TextView
+                android:layout_width="107dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Phone"
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"
+                tools:ignore="RtlCompat" />
+            <EditText
+                android:id="@+id/tenentPhoneEditTextUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Phone"
+                android:textSize="15dp"
+                android:background="@null"
+                android:textAlignment="center"
+                android:layout_marginStart="100dp"
+                android:layout_marginLeft="100dp"
+                android:inputType="phone"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/thirdlinear"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_below="@id/secondlinear"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal"
+            android:layout_marginBottom="1dp">
+            <TextView
+                android:layout_width="107dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Email"
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"
+                tools:ignore="RtlCompat" />
+            <EditText
+                android:id="@+id/tenantEmailEditTextUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Email"
+                android:textSize="15dp"
+                android:background="@null"
+                android:textAlignment="center"
+                android:layout_marginStart="100dp"
+                android:layout_marginLeft="100dp"
+                android:inputType="textEmailAddress"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/fourthlinear"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_below="@id/thirdlinear"
+            android:background="@color/feblink"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="Lease Details"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:layout_gravity="center"
+
+                android:textColor="@color/Black"
+                android:textStyle="normal"
+                tools:ignore="RtlCompat" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fifthlinear"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_below="@id/fourthlinear"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:layout_width="169dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="Lease Start "
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                tools:ignore="RtlCompat" />
+            <TextView
+                android:id="@+id/tenantLeaseStartUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint=" Select date"
+                android:textSize="15dp"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
+                android:layout_marginStart="110dp"
+                android:gravity="center"
+                android:layout_marginLeft="100dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sixthlinear"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_below="@id/fifthlinear"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:layout_width="169dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="Lease Ends "
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginStart="10dp"
+                tools:ignore="RtlCompat" />
+            <TextView
+                android:id="@+id/tenantLeaseEndUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint=" Select date"
+                android:textSize="15dp"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
+                android:gravity="center"
+                android:layout_marginStart="110dp"
+                android:layout_marginLeft="100dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/seventhlinear"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_below="@id/sixthlinear"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:layout_width="169dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="Rent Frequency "
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                tools:ignore="RtlCompat" />
+            <Spinner
+                android:id="@+id/tenantRentSpinUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint=" Select date"
+                android:textSize="15dp"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
+                android:layout_marginStart="110dp"
+                android:layout_marginLeft="100dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/eightlinear"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/seventhlinear"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:layout_width="195dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="Total occupants "
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                tools:ignore="RtlCompat" />
+
+            <TextView
+                android:id="@+id/tenantTotalOccupantsValueTextViewUpdate"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_horizontal"
+                android:hint="0"
+                android:textAlignment="center"
+                android:textSize="15dp" />
+
+            <LinearLayout
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="5dp">
+
+                <ImageButton
+                    android:id="@+id/tenantDecrementBtnUpdate"
+                    android:layout_width="55dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/roundedborder"
+                    android:src="@drawable/ic_sub1" />
+
+                <ImageButton
+                    android:id="@+id/tenantIncrementBtnUpdate"
+                    android:layout_width="47dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/roundedborder"
+                    android:src="@drawable/ic_add1" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ninthinear"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_below="@id/eightlinear"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:layout_width="125dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="Notes "
+                android:textAlignment="textStart"
+                android:layout_marginStart="10dp"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                tools:ignore="RtlCompat" />
+
+            <TextView
+                android:id="@+id/tenantNotesTextViewUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="140dp"
+                android:layout_marginLeft="100dp"
+                android:hint=" Add"
+                android:textSize="15dp"
+                android:lines="1"
+                android:textAlignment="center"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
+                android:gravity="center"
+                tools:ignore="RtlCompat" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/tenthinear"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_below="@id/ninthinear"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:layout_width="116dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="Rent "
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                tools:ignore="RtlCompat" />
+
+            <EditText
+                android:id="@+id/tenentRentEditTextUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="150dp"
+                android:layout_marginLeft="100dp"
+                android:hint="0.00"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
+                android:gravity="center"
+                android:background="@null"
+                android:inputType="numberDecimal"
+                tools:ignore="RtlCompat" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/eleveninear"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_below="@id/tenthinear"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:layout_width="217dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="Security Deposit "
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                tools:ignore="RtlCompat" />
+
+            <EditText
+                android:id="@+id/tenantSecurityDepositEditTextUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="100dp"
+                android:hint="0.00"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
+                android:gravity="center"
+                android:background="@null"
+                android:inputType="numberDecimal"
+                tools:ignore="RtlCompat" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:popupTheme="@style/AppTheme">
+
+            <Button
+                android:id="@+id/tenantCancelButtonUpdate"
+                android:layout_width="72dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/roundedborder"
+                android:text="CANCEL"
+                android:textColor="@color/green" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/cardview_light_background"
+                android:textAlignment="center"
+                android:text="Update Tenant"
+                android:textStyle="bold"
+                android:layout_marginStart="73dp"
+                android:textSize="20sp"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="16dp" />
+
+
+            <Button
+                android:id="@+id/tenantSaveButtonUpdate"
+                android:layout_width="72dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="41dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/roundedborder"
+                android:text="SAVE"
+                android:textColor="@color/green" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

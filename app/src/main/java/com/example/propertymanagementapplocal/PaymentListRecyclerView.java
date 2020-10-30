@@ -18,10 +18,12 @@ import java.util.List;
 public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRecyclerView.PaymentViewHolder> {
     private Context context;
     private List<PaymentsModelClass> paymentList;
+    private DatabaseQueryClass databaseQueryClass;
 
     public PaymentListRecyclerView(Context context, List<PaymentsModelClass> paymentList) {
         this.context = context;
         this.paymentList = paymentList;
+        databaseQueryClass = new DatabaseQueryClass(context);
     }
 
     @NonNull
@@ -32,7 +34,7 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final PaymentListRecyclerView.PaymentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final PaymentListRecyclerView.PaymentViewHolder holder, final int position) {
 
         final int paymentListPosition = position;
         final PaymentsModelClass payment = paymentList.get(position);
@@ -75,7 +77,19 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
                                 Toast.makeText(context, "long update", Toast.LENGTH_LONG).show();
                                 break;
                             case R.id.long_delete:
-                                Toast.makeText(context, "long delete", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(context, "long delete", Toast.LENGTH_LONG).show();
+                                PaymentsModelClass mPayment = paymentList.get(position);
+                                long count = databaseQueryClass.deletePaymentsById(mPayment.getPaymentId());
+
+                                if(count>0){
+                                    paymentList.remove(position);
+                                    notifyDataSetChanged();
+                                    // ((TotalTenant) context);
+                                    Toast.makeText(context, "Tenant deleted successfully", Toast.LENGTH_LONG).show();
+                                } else
+                                    Toast.makeText(context, "Property not deleted. Something wrong!", Toast.LENGTH_LONG).show();
+
+                                break;
 
                         }
                         return false;

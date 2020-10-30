@@ -488,6 +488,102 @@ public class DatabaseQueryClass {
 
     }
 
+    //get tenant by id(update purpose)
+
+    public TenantModelClass getTenantById(long tenantId) {
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
+
+        TenantModelClass tenant = null;
+
+        Cursor cursor = null;
+
+        try {
+            cursor = sqLiteDatabase.query(Config.TABLE_TENANTS, null,
+                    Config.COLUMN_TENANTS_ID + " = ? ", new String[]{String.valueOf(tenantId)},
+                    null, null, null);
+
+            if (cursor != null && cursor.moveToFirst()) {
+                String name = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_NAME));
+                String phone = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_PHONE));
+                String email = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_EMAIL));
+                String leaseStart = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_LEASESTART));
+                String leaseEnd = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_LEASEEND));
+                String rentIsPaid = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_RENTISPAID));
+                String totalOccupants = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_TOTALOCCUPANTS));
+                String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_NOTES));
+                String rent = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_RENT));
+                String securityDeposit = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_SECURITYDEPOSIT));
+
+                tenant = new TenantModelClass(tenantId, name, phone, email, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rent, securityDeposit);
+
+            }
+        } catch (SQLiteException e) {
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            if (cursor != null)
+                cursor.close();
+            sqLiteDatabase.close();
+        }
+
+        return tenant;
+    }
+
+    //Update data Info
+
+    public long updateTenantInfo(TenantModelClass tenant){
+
+        long rowCount = 0;
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Config.COLUMN_TENANTS_NAME, tenant.getTenantName());
+        contentValues.put(Config.COLUMN_TENANTS_PHONE, tenant.getTenantphone());
+        contentValues.put(Config.COLUMN_TENANTS_EMAIL, tenant.getTenantEmail());
+        contentValues.put(Config.COLUMN_TENANTS_LEASESTART, tenant.getLeaseStart());
+        contentValues.put(Config.COLUMN_TENANTS_LEASEEND, tenant.getLeaseEnd());
+        contentValues.put(Config.COLUMN_TENANTS_RENTISPAID, tenant.getRentIsPaid());
+        contentValues.put(Config.COLUMN_TENANTS_TOTALOCCUPANTS, tenant.getTotalOccupants());
+        contentValues.put(Config.COLUMN_TENANTS_NOTES, tenant.getNotes());
+        contentValues.put(Config.COLUMN_TENANTS_RENT, tenant.getRentAmount());
+        contentValues.put(Config.COLUMN_TENANTS_SECURITYDEPOSIT, tenant.getSecurityDeposit());
+
+
+        try {
+            rowCount = sqLiteDatabase.update(Config.TABLE_TENANTS, contentValues,
+                    Config.COLUMN_TENANTS_ID + " = ? ",
+                    new String[] {String.valueOf(tenant.getTenantId())});
+        } catch (SQLiteException e){
+            Logger.d("Exception: " + e.getMessage());
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            sqLiteDatabase.close();
+        }
+
+        return rowCount;
+    }
+
+    //delete record tenant
+
+    public long deleteTenantById(long tenantId) {
+        long deletedRowCount = -1;
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        try {
+            deletedRowCount = sqLiteDatabase.delete(Config.TABLE_TENANTS,
+                    Config.COLUMN_TENANTS_ID + " = ? ",
+                    new String[]{ String.valueOf(tenantId)});
+        } catch (SQLiteException e){
+            Logger.d("Exception: " + e.getMessage());
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            sqLiteDatabase.close();
+        }
+
+        return deletedRowCount;
+    }
 
     //insert Invoice
 
@@ -566,6 +662,27 @@ public class DatabaseQueryClass {
 
     }
 
+    //delete Invoice
+
+    public long deleteInvoiceById(long invoiceId) {
+        long deletedRowCount = -1;
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        try {
+            deletedRowCount = sqLiteDatabase.delete(Config.TABLE_INVOICE,
+                    Config.COLUMN_INVOICE_ID + " = ? ",
+                    new String[]{ String.valueOf(invoiceId)});
+        } catch (SQLiteException e){
+            Logger.d("Exception: " + e.getMessage());
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            sqLiteDatabase.close();
+        }
+
+        return deletedRowCount;
+    }
+
 
 
     //insert payments
@@ -641,6 +758,28 @@ public class DatabaseQueryClass {
             return paymentsList;
 
         }
+
+        //delete payments
+
+    public long deletePaymentsById(long paymentId) {
+        long deletedRowCount = -1;
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        try {
+            deletedRowCount = sqLiteDatabase.delete(Config.TABLE_PAYMENTS,
+                    Config.COLUMN_PAYMENT_ID + " = ? ",
+                    new String[]{ String.valueOf(paymentId)});
+        } catch (SQLiteException e){
+            Logger.d("Exception: " + e.getMessage());
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            sqLiteDatabase.close();
+        }
+
+        return deletedRowCount;
+    }
+
 
 }
 

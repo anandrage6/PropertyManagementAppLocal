@@ -37,8 +37,9 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
     ImageButton flatAddBtn;
 
     //private TextView flatEmptyListTV;
-     private TextView textViewEmptyList;
+    private TextView textViewEmptyList;
 
+    PropertyModelClass propertyModelClass;
     private long refpropertyId;
 
     //visibility
@@ -80,8 +81,8 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         //getSupportActionBar().setTitle("");
 
 
-      //visibility of emptylist
-       // linearLayout = findViewById(R.id.flatsemptyListHide);
+        //visibility of emptylist
+        // linearLayout = findViewById(R.id.flatsemptyListHide);
 
 
 
@@ -113,29 +114,42 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         });
 
 
+    }
 
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
         //retrive full details part
         propertyId = getIntent().getLongExtra(Config.COLUMN_PROPERTY_ID, -1);
-        strLocationTv = getIntent().getStringExtra(Config.COLUMN_PROPERTY_ADDRESS);
-        strCity = getIntent().getStringExtra(Config.COLUMN_PROPERTY_CITY);
-        strState = getIntent().getStringExtra(Config.COLUMN_PROPERTY_STATE);
-        strZipCode = getIntent().getStringExtra(Config.COLUMN_PROPERTY_ZIPCODE);
+        propertyModelClass = databaseQueryClass.getPropertyById(propertyId);
+        strLocationTv = propertyModelClass.getAddress();
+//        strLocationTv = getIntent().getStringExtra(Config.COLUMN_PROPERTY_ADDRESS);
+        strCity = propertyModelClass.getCity();
+//        strCity = getIntent().getStringExtra(Config.COLUMN_PROPERTY_CITY);
+        strState = propertyModelClass.getState();
+//        strState = getIntent().getStringExtra(Config.COLUMN_PROPERTY_STATE);
+        strZipCode = propertyModelClass.getZipCode();
+//        strZipCode = getIntent().getStringExtra(Config.COLUMN_PROPERTY_ZIPCODE);
         totalAddress = strLocationTv+","+strCity+""+strState+"-"+strZipCode;
-        strPropertyName = getIntent().getStringExtra(Config.COLUMN_PROPERTY_PROPERTYNAME);
-        strPropertyType = getIntent().getStringExtra(Config.COLUMN_PROPERTY_PROPERTYTYPE);
-        strDescription = getIntent().getStringExtra(Config.COLUMN_PROPERTY_DESCRIPTION);
+        strPropertyName = propertyModelClass.getPropertyName();
+//        strPropertyName = getIntent().getStringExtra(Config.COLUMN_PROPERTY_PROPERTYNAME);
+        strPropertyType = propertyModelClass.getPropertyType();
+//        strPropertyType = getIntent().getStringExtra(Config.COLUMN_PROPERTY_PROPERTYTYPE);
+        strDescription = propertyModelClass.getDescription();
+//        strDescription = getIntent().getStringExtra(Config.COLUMN_PROPERTY_DESCRIPTION);
 //        itemPosition = Integer.parseInt(getIntent().getStringExtra("itemPosition"));
 
-        strownerNameTv = getIntent().getStringExtra(Config.COLUMN_PROPERTY_OWNERNAME);
+        strownerNameTv = propertyModelClass.getOwnerName();
+//        strownerNameTv = getIntent().getStringExtra(Config.COLUMN_PROPERTY_OWNERNAME);
         try {
-            stringimage = getIntent().getStringExtra(Config.COLUMN_PROPERTY_IMAGE);
+            stringimage = propertyModelClass.getImage();
+//            stringimage = getIntent().getStringExtra(Config.COLUMN_PROPERTY_IMAGE);
         }catch(Exception e){
 
         }
 
-        propertyNameTv.setText(strPropertyName);
+        propertyModelClass = databaseQueryClass.getPropertyById(propertyId);
+        propertyNameTv.setText(propertyModelClass.getPropertyName());
         locationTv.setText(totalAddress);
         ownerNameTv.setText(strownerNameTv);
 
@@ -189,7 +203,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
 
         //navigation method
         //String intentValue = getIntent().getStringExtra("intentPassed");
-       //Log.e("intentValue : ==> ", intentValue);
+        //Log.e("intentValue : ==> ", intentValue);
 
         /*
         if(intentValue== null){
@@ -206,8 +220,6 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         textViewEmptyList = findViewById(R.id.flatsemptyListHide);
         //textViewEmptyList.setVisibility(View.VISIBLE);
         viewVisibility();
-
-
     }
 
     private void openActivityAddFlats() {
@@ -242,4 +254,4 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         }
     }
 
-    }
+}

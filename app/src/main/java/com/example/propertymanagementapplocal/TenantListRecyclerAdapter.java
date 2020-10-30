@@ -23,14 +23,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import static android.os.Build.VERSION_CODES.O;
+
 public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRecyclerAdapter.tenantCustomViewHolder> {
 
     private Context context;
     private List<TenantModelClass> tenantList;
+    private DatabaseQueryClass databaseQueryClass;
 
     public TenantListRecyclerAdapter(Context context, List<TenantModelClass> tenantList) {
         this.context = context;
         this.tenantList = tenantList;
+        databaseQueryClass = new DatabaseQueryClass(context);
     }
 
     @NonNull
@@ -42,7 +46,7 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
 
     @SuppressLint("LongLogTag")
     @Override
-    public void onBindViewHolder(@NonNull final tenantCustomViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final tenantCustomViewHolder holder, final int position) {
         final int tenantlistPosition = position;
         final TenantModelClass tenants = tenantList.get(position);
         final long tenantId = tenants.getTenantId();
@@ -86,10 +90,33 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
                             case R.id.long_update:
-                                Toast.makeText(context, "long update", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(context, "long update", Toast.LENGTH_LONG).show();
+                                UpdateTenantDetails updateTenant = UpdateTenantDetails.newInstance(tenants.getTenantId(), tenantlistPosition, new TenantUpdateListener() {
+                                    @Override
+                                    public void onTenantInfoUpdated(TenantModelClass tenant, int position) {
+                                        tenantList.set(position, tenant);
+                                        notifyDataSetChanged();
+                                    }
+                                });
+
+                                Intent i = new Intent(context, updateTenant.getClass());
+                                context.startActivity(i);
                                 break;
                             case R.id.long_delete:
-                                Toast.makeText(context, "long delete", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(context, "long delete", Toast.LENGTH_LONG).show();
+
+                                TenantModelClass mTenant = tenantList.get(position);
+                                long count = databaseQueryClass.deleteTenantById(mTenant.getTenantId());
+
+                                if(count>0){
+                                    tenantList.remove(position);
+                                    notifyDataSetChanged();
+                                   // ((TotalTenant) context);
+                                    Toast.makeText(context, "Tenant deleted successfully", Toast.LENGTH_LONG).show();
+                                } else
+                                    Toast.makeText(context, "Property not deleted. Something wrong!", Toast.LENGTH_LONG).show();
+
+                                break;
 
                         }
                         return false;
