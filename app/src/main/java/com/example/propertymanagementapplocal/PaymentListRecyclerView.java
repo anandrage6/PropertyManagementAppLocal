@@ -62,6 +62,7 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
             }
         });
 
+        /*
         //longPress on item view
 
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -102,6 +103,67 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
             }
         });
 
+         */
+
+        //option menu on card
+
+        holder.optionMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(context, holder.optionMenu);
+                popupMenu.inflate(R.menu.option_menu);
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+
+                            //edit case
+                            case R.id.menu_item_Edit:
+                                //Toast.makeText(context, "long update", Toast.LENGTH_LONG).show();
+
+                                break;
+
+                            //delete case
+                            case R.id.menu_item_delete:
+
+                                //Toast.makeText(context, "long delete", Toast.LENGTH_LONG).show();
+
+                                PaymentsModelClass mPayment = paymentList.get(position);
+                                long count = databaseQueryClass.deletePaymentsById(mPayment.getPaymentId());
+
+                                if(count>0){
+                                    paymentList.remove(position);
+                                    notifyDataSetChanged();
+                                    // ((TotalTenant) context);
+                                    Toast.makeText(context, "Tenant deleted successfully", Toast.LENGTH_LONG).show();
+                                } else
+                                    Toast.makeText(context, "Property not deleted. Something wrong!", Toast.LENGTH_LONG).show();
+
+                                break;
+
+
+                            //see details
+                            case R.id.menu_item_seeDetails:
+
+                                Intent intent = new Intent(context, PaymentDetails.class);
+                                intent.putExtra(Config.COLUMN_PAYMENT_ID, payment.getPaymentId());
+                                intent.putExtra(Config.COLUMN_PAYMENT_AMOUNT, payment.getAmount());
+                                intent.putExtra(Config.COLUMN_PAYMENT_PAIDWITH, payment.getPaidwith());
+                                intent.putExtra(Config.COLUMN_PAYMENT_DATERECEIVED, payment.getDatereceived());
+                                intent.putExtra(Config.COLUMN_PAYMENT_RECEIVEDFROM, payment.getReceivedfrom());
+                                intent.putExtra(Config.COLUMN_PAYMENT_TAXSTATUS, payment.getTaxstatus());
+                                intent.putExtra(Config.COLUMN_PAYMENT_NOTES, payment.getNotes());
+
+                                context.startActivity(intent);
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
+
 
     }
 
@@ -113,11 +175,14 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
     public class PaymentViewHolder extends RecyclerView.ViewHolder {
 
         TextView receivedfrom, dateReceived, amount;
+        TextView optionMenu;
         public PaymentViewHolder(@NonNull View itemView) {
             super(itemView);
             receivedfrom = itemView.findViewById(R.id.paymentReceivedFromTextView);
             dateReceived = itemView.findViewById(R.id.paymentDateReceivedTextView);
             amount = itemView.findViewById(R.id.paymentAmountTextView);
+            optionMenu = itemView.findViewById(R.id.textOption);
+
         }
     }
 }

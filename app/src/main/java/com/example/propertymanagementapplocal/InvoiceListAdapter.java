@@ -81,6 +81,7 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
             }
         });
 
+        /*
         //long click
         holder.itemView.setOnLongClickListener(new OnLongClickListener() {
             @Override
@@ -122,6 +123,63 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
             }
         });
 
+         */
+
+        //option menu on card
+        holder.optionMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(context, holder.optionMenu);
+                popupMenu.inflate(R.menu.option_menu);
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+
+                            //Edit case
+                            case R.id.menu_item_Edit:
+                               break;
+
+
+                            //delete case
+                            case R.id.menu_item_delete:
+
+                                //Toast.makeText(context, "long delete", Toast.LENGTH_LONG).show();
+                                InvoiceModelClass mInvoice = invoiceList.get(position);
+                                long count = databaseQueryClass.deleteInvoiceById(mInvoice.getInvoiceId());
+
+                                if(count>0){
+                                    invoiceList.remove(position);
+                                    notifyDataSetChanged();
+                                    // ((TotalTenant) context);
+                                    Toast.makeText(context, "Tenant deleted successfully", Toast.LENGTH_LONG).show();
+                                } else
+                                    Toast.makeText(context, "Property not deleted. Something wrong!", Toast.LENGTH_LONG).show();
+
+                                break;
+
+                            //see details
+                            case R.id.menu_item_seeDetails:
+                                Intent intent = new Intent(context, InvoiceFullDetails.class);
+                                intent.putExtra(Config.COLUMN_INVOICE_ID, invoice.getInvoiceId());
+                                intent.putExtra(Config.COLUMN_INVOICE_TITLE, invoice.getTitle());
+                                intent.putExtra(Config.COLUMN_INVOICE_DETAILS, invoice.getDetails());
+                                intent.putExtra(Config.COLUMN_INVOICE_AMOUNT, invoice.getAmount());
+                                intent.putExtra(Config.COLUMN_INVOICE_RENT, invoice.getRent());
+                                intent.putExtra(Config.COLUMN_INVOICE_INVOICE_ISSUED, invoice.getInvoiceIssued());
+                                intent.putExtra(Config.COLUMN_INVOICE_PaymentDue, invoice.getPaymentDue());
+                                intent.putExtra(Config.COLUMN_INVOICE_Notes, invoice.getNotes());
+
+                                context.startActivity(intent);
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
+
         /*
         InvoicesFragment fragmentB=new InvoicesFragment();
         Bundle bundle=new Bundle();
@@ -141,6 +199,7 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
     public class invoiceCustomViewHolder extends RecyclerView.ViewHolder {
 
         TextView invoiceissuedDateTv, paymentduedateTv, rentTextView, invoiceIdTv;
+        TextView optionMenu;
 
         public invoiceCustomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -151,6 +210,7 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
             paymentduedateTv = itemView.findViewById(R.id.paymentdueTextView);
             rentTextView = itemView.findViewById(R.id.rentTextView);
             invoiceIdTv = itemView.findViewById(R.id.invoiceId);
+            optionMenu = itemView.findViewById(R.id.textOption);
 
         }
     }
