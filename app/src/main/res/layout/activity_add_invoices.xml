@@ -104,7 +104,7 @@
                         android:textStyle="bold"
                         android:textAlignment="textStart"
                         android:textSize="15dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/Black"
                         tools:ignore="RtlCompat" />
                     <TextView
                         android:id="@+id/invoiceDetailsTextView"
@@ -112,7 +112,7 @@
                         android:layout_height="match_parent"
                         android:hint="details"
                         android:textAlignment="textStart"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/Black"
                         android:lines="1"
                         android:layout_marginTop="5dp"
                         android:gravity="center_horizontal"
@@ -130,6 +130,7 @@
                     android:textAlignment="center"
                     android:layout_marginLeft="30dp"
                     android:gravity="center"
+                    android:textColor="@color/Black"
                     android:layout_marginRight="5dp" />
 
             </LinearLayout>
@@ -156,7 +157,7 @@
                 android:layout_height="match_parent"
                 android:text="Rent"
                 android:textSize="15dp"
-               android:textColor="@color/colorPrimaryDark"
+               android:textColor="@color/Black"
                 android:textAlignment="textStart"
                 android:gravity="center"
                 tools:ignore="RtlCompat" />
@@ -171,6 +172,7 @@
                 android:textSize="15sp"
                 android:layout_marginLeft="40dp"
                 android:gravity="end"
+                android:textColor="@color/Black"
                 android:inputType="numberDecimal"
                 android:layout_gravity="end"
                 tools:ignore="RtlCompat" />
@@ -199,7 +201,7 @@
                 android:layout_height="match_parent"
                 android:text="Add new line"
                 android:textSize="15dp"
-               android:textColor="@color/colorPrimaryDark"
+               android:textColor="@color/Black"
                 android:textAlignment="textStart"
                 android:gravity="center"
                 tools:ignore="RtlCompat" />
@@ -223,7 +225,7 @@
                 android:textAlignment="textStart"
                 android:layout_marginStart="10sp"
                 android:textSize="15dp"
-               android:textColor="@color/colorPrimaryDark"
+               android:textColor="@color/Black"
                 tools:ignore="RtlCompat" />
             <TextView
                 android:id="@+id/invoiceIssuedSelectDate"
@@ -236,6 +238,7 @@
                 android:hint="Select Date"
                 android:layout_marginEnd="5dp"
                 android:textSize="15sp"
+                android:textColor="@color/Black"
                 android:layout_marginLeft="0dp"
                 tools:ignore="RtlCompat">
 
@@ -261,7 +264,7 @@
                 android:textAlignment="textStart"
                 android:layout_marginStart="10sp"
                 android:textSize="15dp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/Black"
                 tools:ignore="RtlCompat" />
             <TextView
                 android:id="@+id/invoicePaymentdueSelectDate"
@@ -274,6 +277,7 @@
                 android:textAlignment="center"
                 android:hint="Select Date"
                 android:textSize="15sp"
+                android:textColor="@color/Black"
                 android:layout_marginLeft="0dp"
                 tools:ignore="RtlCompat">
             </TextView>
@@ -297,7 +301,7 @@
                 android:text="Notes"
                 android:textAlignment="textStart"
                 android:textSize="15dp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/Black"
                 tools:ignore="RtlCompat" />
 
             <TextView
@@ -311,6 +315,7 @@
                 android:gravity="center"
                 android:hint="            Add Note"
                 android:textSize="15sp"
+                android:textColor="@color/Black"
                 android:textAlignment="center"
                 tools:ignore="RtlCompat">
 

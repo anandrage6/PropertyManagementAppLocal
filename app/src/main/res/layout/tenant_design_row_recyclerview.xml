@@ -65,6 +65,7 @@
                     android:layout_marginStart="10dp"
                     android:hint="Name"
                     android:textSize="15dp"
+                    android:textColor="@color/Black"
                     android:textAlignment="textStart"
                     android:layout_gravity="center"
                     android:gravity="center"
@@ -92,6 +93,7 @@
                     android:layout_marginStart="10dp"
                     android:hint="Phone"
                     android:textSize="15dp"
+                    android:textColor="@color/Black"
                     android:textAlignment="textStart"
                     android:layout_gravity="center"
                     android:gravity="center"
@@ -121,6 +123,7 @@
                     android:layout_marginStart="10dp"
                     android:hint="Email"
                     android:textSize="15dp"
+                    android:textColor="@color/Black"
                     android:textAlignment="textStart"
                     android:layout_gravity="center"
                     android:gravity="center"
@@ -138,6 +141,7 @@
                     android:layout_marginStart="8dp"
                     android:background="@color/cardview_light_background"
                     android:text="&#8942;"
+                    android:textColor="@color/Black"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:layout_marginLeft="210dp" />
             </LinearLayout>

@@ -58,7 +58,7 @@
                         android:layout_marginStart="10sp"
                         android:textAlignment="textStart"
                         android:textSize="15dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/Black"
                         tools:ignore="RtlCompat" />
 
                     <Spinner
@@ -70,6 +70,7 @@
                         android:layout_marginLeft="0dp"
                         android:layout_marginEnd="0dp"
                         android:hint="PropertyType"
+                        android:textColor="@color/Black"
                         android:textSize="15dp"
                         android:paddingStart="10dp"
                         android:textAlignment="textEnd"
@@ -97,13 +98,14 @@
                         android:layout_marginStart="10sp"
                         android:textAlignment="textStart"
                         android:textSize="15dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/Black"
                         tools:ignore="RtlCompat" />
                     <EditText
                         android:id="@+id/updatePropertyNameEditText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Property Name"
+                        android:textColor="@color/Black"
                         android:background="@null"
                         android:textSize="15dp"
                         android:textAlignment="textEnd"
@@ -134,13 +136,14 @@
                         android:textAlignment="textStart"
                         android:layout_marginStart="10sp"
                         android:textSize="15dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/Black"
                         tools:ignore="RtlCompat" />
                     <EditText
                         android:id="@+id/updateOwnerNameEditText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Owner Name"
+                        android:textColor="@color/Black"
                         android:background="@null"
                         android:textSize="15dp"
                         android:textAlignment="textEnd"
@@ -171,7 +174,7 @@
                         android:textAlignment="textStart"
                         android:layout_marginStart="10sp"
                         android:textSize="15dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/Black"
                         tools:ignore="RtlCompat" />
 
                     <EditText
@@ -184,6 +187,7 @@
                         android:background="@null"
                         android:textSize="15dp"
                         android:hint="Address"
+                        android:textColor="@color/Black"
                         android:textAlignment="textEnd"
                         android:gravity="center"
                         android:layout_marginEnd="10dp"
@@ -208,13 +212,14 @@
                         android:textAlignment="textStart"
                         android:layout_marginStart="10sp"
                         android:textSize="15dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/Black"
                         tools:ignore="RtlCompat" />
                     <EditText
                         android:id="@+id/updateCityEditText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="City"
+                        android:textColor="@color/Black"
                         android:background="@null"
                         android:textSize="15dp"
                         android:gravity="center"
@@ -244,7 +249,7 @@
                         android:textAlignment="textStart"
                         android:layout_marginStart="10sp"
                         android:textSize="15dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/Black"
                         tools:ignore="RtlCompat" />
 
                     <Spinner
@@ -255,6 +260,7 @@
                         android:layout_marginStart="58dp"
                         android:layout_marginLeft="100dp"
                         android:hint="state"
+                        android:textColor="@color/Black"
                         android:textSize="15dp"
                         android:layout_marginEnd="0dp"
                         android:paddingStart="10dp"
@@ -281,7 +287,7 @@
                         android:textAlignment="textStart"
                         android:layout_marginStart="10sp"
                         android:textSize="15dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/Black"
                         tools:ignore="RtlCompat" />
                     <EditText
                         android:id="@+id/updateZipCodeEditText"
@@ -296,6 +302,7 @@
                         android:layout_marginStart="55dp"
                         android:layout_marginLeft="100dp"
                         android:textSize="15dp"
+                        android:textColor="@color/Black"
                         android:layout_gravity="center_horizontal" />
                 </LinearLayout>
                 <LinearLayout
@@ -316,7 +323,7 @@
                         android:textAlignment="textStart"
                         android:layout_marginStart="10sp"
                         android:textSize="15dp"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/Black"
                         tools:ignore="RtlCompat" />
 
                     <EditText
@@ -332,6 +339,7 @@
                         android:textAlignment="textEnd"
                         android:gravity="center"
                         android:layout_marginEnd="10dp"
+                        android:textColor="@color/Black"
                         android:layout_marginRight="10dp"/>
                 </LinearLayout>
             </RelativeLayout>

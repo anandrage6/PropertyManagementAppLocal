@@ -82,7 +82,7 @@
                 android:layout_marginLeft="5dp"
                 android:gravity="center"
                 android:text="Amount"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/Black"
                 android:textAlignment="textStart"
                 android:textSize="15sp"
                 tools:ignore="RtlCompat" />
@@ -97,6 +97,7 @@
                 android:layout_marginLeft="150dp"
                 android:layout_gravity="end"
                 android:layout_marginEnd="10dp"
+                android:textColor="@color/Black"
                 android:inputType="numberDecimal"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
@@ -117,7 +118,7 @@
                 android:layout_marginLeft="5dp"
                 android:gravity="center"
                 android:text="Title"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/Black"
                 android:textAlignment="textStart"
                 android:textSize="15sp"
                 tools:ignore="RtlCompat" />
@@ -133,6 +134,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_gravity="end"
                 android:inputType="text"
+                android:textColor="@color/Black"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
 
@@ -152,7 +154,7 @@
                 android:layout_marginLeft="5dp"
                 android:gravity="center"
                 android:text="Details"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/Black"
                 android:textAlignment="textStart"
                 android:textSize="15sp"
                 tools:ignore="RtlCompat" />
@@ -167,6 +169,7 @@
                 android:layout_marginLeft="150dp"
                 android:gravity="center"
                 android:layout_marginEnd="10dp"
+                android:textColor="@color/Black"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
 

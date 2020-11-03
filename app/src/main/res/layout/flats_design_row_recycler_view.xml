@@ -79,6 +79,7 @@
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
                     android:text="Floor"
+                    android:textColor="@color/Black"
                     android:textSize="15dp" />
 
                 <TextView
@@ -92,10 +93,10 @@
                     android:layout_marginStart="170dp"
                     android:layout_marginEnd="0dp"
                     android:hint=" Floor"
+                    android:textColor="@color/Black"
                     android:inputType="text"
                     android:textAlignment="textStart"
                     android:textSize="15dp"
-                    android:textColor="@color/Black"
                     android:gravity="end" />
 
 
@@ -124,7 +125,7 @@
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
-
+                    android:textColor="@color/Black"
                     android:text="Flat No"
                     android:textSize="15dp" />
 
@@ -139,10 +140,10 @@
                     android:layout_marginStart="155dp"
                     android:layout_marginEnd="0dp"
                     android:hint=" FlatNo"
+                    android:textColor="@color/Black"
                     android:inputType="text"
                     android:textSize="15dp"
                     android:textAlignment="textStart"
-                    android:textColor="@color/Black"
                     android:gravity="end" />
 
             </LinearLayout>
@@ -170,6 +171,7 @@
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
+                    android:textColor="@color/Black"
                     android:text="Flat Facing"
                     android:textSize="15dp" />
 
@@ -185,9 +187,9 @@
                     android:layout_marginEnd="0dp"
                     android:hint=" FlatFacing"
                     android:inputType="text"
+                    android:textColor="@color/Black"
                     android:textSize="15dp"
                     android:textAlignment="textStart"
-                    android:textColor="@color/Black"
                     android:gravity="end" />
 
             </LinearLayout>
@@ -215,6 +217,7 @@
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
+                    android:textColor="@color/Black"
                     android:text="No of Bedrooms"
                     android:textSize="15dp" />
 
@@ -247,6 +250,7 @@
             android:layout_marginTop="25dp"
             android:background="@color/cardview_light_background"
             android:text="&#8942;"
+            android:textColor="@color/Black"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     </LinearLayout>

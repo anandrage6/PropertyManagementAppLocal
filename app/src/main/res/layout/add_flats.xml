@@ -83,7 +83,7 @@
                 android:text="Floor"
                 android:textAlignment="textStart"
                 android:textSize="15sp"
-              android:textColor="@color/colorPrimaryDark"
+              android:textColor="@color/Black"
                 tools:ignore="RtlCompat" />
 
             <EditText
@@ -98,6 +98,7 @@
                 android:gravity="center"
                 android:background="@null"
                 android:textSize="15dp"
+                android:textColor="@color/Black"
                 android:layout_marginLeft="150dp"
                 android:layout_marginRight="10dp" />
 
@@ -121,7 +122,7 @@
                 android:text="Flat Number"
                 android:textAlignment="textStart"
                 android:textSize="15sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/Black"
                 tools:ignore="RtlCompat" />
 
             <EditText
@@ -136,6 +137,7 @@
                 android:gravity="center"
                 android:background="@null"
                 android:textSize="15dp"
+                android:textColor="@color/Black"
                 android:layout_marginLeft="150dp"
                 android:layout_marginRight="10dp" />
 
@@ -159,7 +161,7 @@
                 android:text="Flat Facing"
                 android:textAlignment="textStart"
                 android:textSize="15sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/Black"
                 tools:ignore="RtlCompat" />
 
             <Spinner
@@ -174,6 +176,7 @@
                 android:gravity="center"
                 android:textSize="15dp"
                 android:paddingStart="10dp"
+                android:textColor="@color/Black"
                 android:layout_marginLeft="150dp"
                 android:layout_marginRight="10dp" />
 
@@ -197,7 +200,7 @@
                 android:text="Number of Bedrooms"
                 android:textAlignment="textStart"
                 android:textSize="15sp"
-               android:textColor="@color/colorPrimaryDark"
+               android:textColor="@color/Black"
                 tools:ignore="RtlCompat" />
 
             <Spinner
@@ -212,6 +215,7 @@
                 android:layout_marginEnd="0dp"
                 android:gravity="center"
                 android:paddingStart="10dp"
+                android:textColor="@color/Black"
                 android:layout_marginLeft="150dp"
                 android:layout_marginRight="10dp" />
 
