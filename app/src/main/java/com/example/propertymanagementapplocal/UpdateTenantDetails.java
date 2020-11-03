@@ -145,7 +145,7 @@ public class UpdateTenantDetails extends AppCompatActivity implements AdapterVie
         rentIsPaidList = new ArrayList<>();
         rentIsPaidList.add(strRentispaid);
         List<String> Listrentispaid =  Arrays.asList(getResources().getStringArray(R.array.Rent_is_Paid));
-        rentIsPaidAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, rentIsPaidList);
+        rentIsPaidAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, rentIsPaidList);
         spinRentIsPaid.setAdapter(rentIsPaidAdapter);
         rentIsPaidAdapter.addAll(Listrentispaid);
         spinRentIsPaid.setOnItemSelectedListener(this);

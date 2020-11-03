@@ -53,7 +53,7 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
         holder.propertyNameTv.setText(property.getPropertyName());
         holder.propertyTvInfo.setText(property.getPropertyName());
         holder.ownerNameTv.setText(property.getOwnerName());
-        holder.addressTv.setText(property.getAddress()+", "+property.getCity()+" "+property.getState()+"-"+property.getZipCode());
+        holder.addressTv.setText(property.getAddress()+", "+property.getCity()+" "+property.getState()+" - "+property.getZipCode());
        // holder.imageView.setImageURI(Uri.parse(property.getImage()));
         final String imageurl = property.getImage();
         holder.imageView.setVisibility(View.VISIBLE);

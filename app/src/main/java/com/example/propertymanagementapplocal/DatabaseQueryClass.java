@@ -662,6 +662,76 @@ public class DatabaseQueryClass {
 
     }
 
+    //update Invoices By id(update purpose)
+
+    public InvoiceModelClass getInvoiceById(long invoiceId) {
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
+
+        InvoiceModelClass invoice = null;
+
+        Cursor cursor = null;
+
+        try {
+            cursor = sqLiteDatabase.query(Config.TABLE_INVOICE, null,
+                    Config.COLUMN_INVOICE_ID + " = ? ", new String[]{String.valueOf(invoiceId)},
+                    null, null, null);
+
+            if (cursor != null && cursor.moveToFirst()) {
+                String title = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_TITLE));
+                String details = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_DETAILS));
+                String amount = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_AMOUNT));
+                String rent = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_RENT));
+                String invoiceIssued = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_INVOICE_ISSUED));
+                String paymentDue = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_PaymentDue));
+                String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_Notes));
+
+                invoice = new InvoiceModelClass(invoiceId, title, details, amount, rent, invoiceIssued, paymentDue, notes);
+
+            }
+        } catch (SQLiteException e) {
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            if (cursor != null)
+                cursor.close();
+            sqLiteDatabase.close();
+        }
+
+        return invoice;
+    }
+
+    //update invoices Info
+
+    public long updateInvoiceInfo(InvoiceModelClass invoice){
+
+        long rowCount = 0;
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Config.COLUMN_INVOICE_TITLE, invoice.getTitle());
+        contentValues.put(Config.COLUMN_INVOICE_DETAILS, invoice.getDetails());
+        contentValues.put(Config.COLUMN_INVOICE_AMOUNT, invoice.getAmount());
+        contentValues.put(Config.COLUMN_INVOICE_RENT, invoice.getRent());
+        contentValues.put(Config.COLUMN_INVOICE_INVOICE_ISSUED, invoice.getInvoiceIssued());
+        contentValues.put(Config.COLUMN_INVOICE_PaymentDue, invoice.getPaymentDue());
+        contentValues.put(Config.COLUMN_INVOICE_Notes, invoice.getNotes());
+
+        try {
+            rowCount = sqLiteDatabase.update(Config.TABLE_INVOICE, contentValues,
+                    Config.COLUMN_INVOICE_ID + " = ? ",
+                    new String[] {String.valueOf(invoice.getInvoiceId())});
+        } catch (SQLiteException e){
+            Logger.d("Exception: " + e.getMessage());
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            sqLiteDatabase.close();
+        }
+
+        return rowCount;
+    }
+
+
     //delete Invoice
 
     public long deleteInvoiceById(long invoiceId) {

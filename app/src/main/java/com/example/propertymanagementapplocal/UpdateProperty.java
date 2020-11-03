@@ -136,7 +136,7 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
         cstates = new ArrayList<String>();
         cstates.add(cState);
         List<String> allStates =  Arrays.asList(getResources().getStringArray(R.array.States));
-        stateAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, cstates);
+        stateAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, cstates);
         stateSpin.setAdapter(stateAdapter);
         stateAdapter.addAll(allStates);
         stateSpin.setOnItemSelectedListener(this);
@@ -146,7 +146,7 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
         cPropertyTypes = new ArrayList<>();
         cPropertyTypes.add(cPropertyType);
         List<String> allPropertyTypes = Arrays.asList(getResources().getStringArray(R.array.Property_Types));
-        propertyTypeAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, cPropertyTypes);
+        propertyTypeAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, cPropertyTypes);
         propertyTypeSpin.setAdapter(propertyTypeAdapter);
         propertyTypeAdapter.addAll(allPropertyTypes);
         propertyTypeSpin.setOnItemSelectedListener(this);

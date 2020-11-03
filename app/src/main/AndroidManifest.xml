@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateTenantDetails"></activity>
+        <activity android:name=".UpdateInvoiceDetails"></activity>
+        <activity android:name=".UpdatePaymentDetails" />
+        <activity android:name=".UpdateTenantDetails" />
         <activity android:name=".TenantFullDetails" />
         <activity android:name=".PaymentDetails" />
         <activity android:name=".UpdateFlat" />

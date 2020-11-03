@@ -137,7 +137,9 @@
                         android:layout_marginTop="15dp"
                         android:hint="location"
                         android:textSize="15dp"
-                        android:layout_marginLeft="0dp" />
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="20dp" />
                     </LinearLayout>
                     <TextView
                         android:id="@+id/textOption"

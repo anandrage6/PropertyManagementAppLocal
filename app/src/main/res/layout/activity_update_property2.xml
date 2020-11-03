@@ -31,13 +31,15 @@
                         android:id="@+id/updateProperty2ImageButton"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginEnd="20dp"
+                        android:layout_marginEnd="15dp"
                         android:background="@color/design_default_color_background"
                         android:scaleType="fitXY"
 
-                        android:src="@drawable/imageplsceholder" />
+                        android:src="@drawable/imageplsceholder"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -55,9 +57,9 @@
                         android:layout_marginTop="0dp"
                         android:gravity="center"
                         android:text="Property Type"
-                        android:textAlignment="center"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
+                        android:layout_marginStart="10dp"
+                        android:textAlignment="textStart"
+                        android:textSize="15dp"
                         tools:ignore="RtlCompat" />
 
                     <Spinner
@@ -65,12 +67,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="30dp"
+                        android:layout_marginStart="58dp"
                         android:layout_marginLeft="0dp"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="0dp"
                         android:hint="PropertyType"
+                        android:paddingStart="10dp"
                         android:textAlignment="center"
-                        android:layout_marginRight="10dp" />
+                        android:layout_marginRight="10dp"
+                        android:paddingLeft="10dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -79,17 +83,18 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/secondlinear"
                     android:background="@color/cardview_light_background"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="2dp">
 
                     <TextView
-                        android:layout_width="181dp"
+                        android:layout_width="171dp"
                         android:layout_height="50dp"
                         android:layout_marginTop="0dp"
                         android:gravity="center"
                         android:text="Property Name"
-                        android:textAlignment="center"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        android:layout_marginStart="10dp"
+                        android:textSize="15dp"
                         tools:ignore="RtlCompat" />
                     <EditText
                         android:id="@+id/updateProperty2NameEditText"
@@ -97,10 +102,13 @@
                         android:layout_height="match_parent"
                         android:hint="Property Name"
                         android:background="@null"
-                        android:textAlignment="center"
-                        android:layout_marginStart="0dp"
+                        android:textAlignment="textEnd"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:textSize="15dp"
                         android:layout_marginLeft="100dp"
-                        android:layout_gravity="center_horizontal" />
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginRight="10dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -109,7 +117,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/thirdlinear"
                     android:background="@color/cardview_light_background"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="2dp">
 
                     <TextView
                         android:layout_width="160dp"
@@ -117,9 +126,9 @@
                         android:layout_marginTop="0dp"
                         android:gravity="center"
                         android:text="Owner Name"
-                        android:textAlignment="center"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        android:textSize="15dp"
+                        android:layout_marginStart="10dp"
                         tools:ignore="RtlCompat" />
                     <EditText
                         android:id="@+id/updateProperty2OwnerNameEditText"
@@ -127,8 +136,10 @@
                         android:layout_height="match_parent"
                         android:hint="Owner Name"
                         android:background="@null"
-                        android:textAlignment="center"
-                        android:layout_marginStart="0dp"
+                        android:textAlignment="textEnd"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:textSize="15dp"
                         android:layout_marginLeft="100dp"
                         android:layout_gravity="center_horizontal" />
                 </LinearLayout>
@@ -139,7 +150,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/fourthlinear"
                     android:background="@color/cardview_light_background"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="2dp">
 
                     <TextView
                         android:layout_width="126dp"
@@ -147,21 +159,23 @@
                         android:layout_marginTop="0dp"
                         android:gravity="center"
                         android:text="Address"
-                        android:textAlignment="center"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        android:textSize="15dp"
+                        android:layout_marginStart="10dp"
                         tools:ignore="RtlCompat" />
 
                     <EditText
                         android:id="@+id/updateProperty2AddressEditText"
-                        android:layout_width="262dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginLeft="100dp"
+                        android:layout_marginStart="65dp"
+                        android:layout_marginEnd="10dp"
                         android:background="@null"
                         android:hint="Address"
-                        android:textAlignment="center" />
+                        android:textSize="15dp"
+                        android:textAlignment="textEnd"
+                        android:layout_marginLeft="95dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -170,7 +184,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/fifthlinear"
                     android:background="@color/cardview_light_background"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="2dp">
 
                     <TextView
                         android:layout_width="126dp"
@@ -178,9 +193,9 @@
                         android:layout_marginTop="0dp"
                         android:gravity="center"
                         android:text="City"
-                        android:textAlignment="center"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        android:textSize="15dp"
+                        android:layout_marginStart="10dp"
                         tools:ignore="RtlCompat" />
                     <EditText
                         android:id="@+id/updateProperty2CityEditText"
@@ -188,9 +203,11 @@
                         android:layout_height="match_parent"
                         android:hint="City"
                         android:background="@null"
-                        android:textAlignment="center"
-                        android:layout_marginStart="15dp"
+                        android:textAlignment="textEnd"
+                        android:layout_marginStart="65dp"
                         android:layout_marginLeft="100dp"
+                        android:layout_marginEnd="10dp"
+                        android:textSize="15dp"
                         android:layout_gravity="center_horizontal" />
                 </LinearLayout>
 
@@ -200,7 +217,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/sixthlinear"
                     android:background="@color/cardview_light_background"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="2dp">
 
                     <TextView
                         android:layout_width="126dp"
@@ -208,9 +226,9 @@
                         android:layout_marginTop="0dp"
                         android:gravity="center"
                         android:text="State"
-                        android:textAlignment="center"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        android:textSize="15dp"
+                        android:layout_marginStart="10dp"
                         tools:ignore="RtlCompat" />
 
                     <Spinner
@@ -218,10 +236,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="60dp"
+                        android:layout_marginStart="63dp"
                         android:layout_marginLeft="100dp"
                         android:hint="state"
-                        android:textAlignment="center" />
+                        android:textSize="15dp"
+                        android:paddingStart="10dp"
+                        android:textAlignment="center"
+                        android:paddingLeft="10dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -230,7 +251,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/seventhlinear"
                     android:background="@color/cardview_light_background"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="2dp">
 
                     <TextView
                         android:layout_width="126dp"
@@ -238,9 +260,9 @@
                         android:layout_marginTop="0dp"
                         android:gravity="center"
                         android:text="Zip Code"
-                        android:textAlignment="center"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        android:textSize="15dp"
+                        android:layout_marginStart="10dp"
                         tools:ignore="RtlCompat" />
                     <EditText
                         android:id="@+id/updateProperty2ZipCodeEditText"
@@ -248,9 +270,11 @@
                         android:layout_height="match_parent"
                         android:hint="Zip Code"
                         android:background="@null"
-                        android:textAlignment="center"
-                        android:layout_marginStart="15dp"
+                        android:textAlignment="textEnd"
+                        android:textSize="15dp"
+                        android:layout_marginStart="60dp"
                         android:layout_marginLeft="100dp"
+                        android:layout_marginEnd="10dp"
                         android:layout_gravity="center_horizontal" />
                 </LinearLayout>
                 <LinearLayout
@@ -259,7 +283,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/eightlinear"
                     android:background="@color/cardview_light_background"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="2dp">
 
                     <TextView
                         android:layout_width="147dp"
@@ -267,21 +292,23 @@
                         android:layout_marginTop="0dp"
                         android:gravity="center"
                         android:text="Description"
-                        android:textAlignment="center"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
+                        android:textAlignment="textStart"
+                        android:textSize="15dp"
+                        android:layout_marginStart="10dp"
                         tools:ignore="RtlCompat" />
 
                     <EditText
                         android:id="@+id/updateProperty2DescriptionEditText"
-                        android:layout_width="257dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="0dp"
+                        android:layout_marginStart="40dp"
                         android:layout_marginLeft="100dp"
                         android:background="@null"
                         android:hint="Description"
-                        android:textAlignment="center" />
+                        android:textSize="15dp"
+                        android:layout_marginEnd="10dp"
+                        android:textAlignment="textEnd" />
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>

@@ -89,7 +89,7 @@ public class UpdateFlat extends AppCompatActivity implements AdapterView.OnItemS
         flatFacingList = new ArrayList<String>();
         flatFacingList.add(strfaltFacing);
         List<String> ListFlatFacing =  Arrays.asList(getResources().getStringArray(R.array.Flat_Facing));
-        flatFacingAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, flatFacingList);
+        flatFacingAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, flatFacingList);
         flatFacing.setAdapter(flatFacingAdapter);
         flatFacingAdapter.addAll(ListFlatFacing);
         flatFacing.setOnItemSelectedListener(this);
@@ -99,7 +99,7 @@ public class UpdateFlat extends AppCompatActivity implements AdapterView.OnItemS
         noOfBedroomsList = new ArrayList<String>();
         noOfBedroomsList.add(strNoOfBedrooms);
         List<String> ListNoOfBedrooms =  Arrays.asList(getResources().getStringArray(R.array.Number_of_Bedrooms));
-        noOfBedroomsAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, noOfBedroomsList);
+        noOfBedroomsAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, noOfBedroomsList);
         noOfBedrooms.setAdapter(noOfBedroomsAdapter);
         noOfBedroomsAdapter.addAll(ListNoOfBedrooms);
         noOfBedrooms.setOnItemSelectedListener(this);

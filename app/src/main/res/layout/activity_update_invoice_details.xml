@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="AddInvoice">
+    tools:context=".UpdateInvoiceDetails">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/Heavy_rain"
+        android:background="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -24,7 +24,7 @@
             app:popupTheme="@style/AppTheme">
 
             <Button
-                android:id="@+id/invoiceCancelButton"
+                android:id="@+id/invoiceCancelButtonUpdate"
                 android:layout_width="72dp"
                 android:layout_height="33dp"
                 android:layout_marginStart="1dp"
@@ -38,20 +38,21 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="@color/cardview_dark_background"
+                android:textColor="@color/cardview_light_background"
                 android:textAlignment="center"
-                android:text="New Invoice"
-                android:layout_marginStart="80dp"
+                android:text="Update Invoice"
+                android:textStyle="bold"
+                android:layout_marginStart="65dp"
                 android:textSize="20sp"
                 android:gravity="center_horizontal"
                 android:layout_marginLeft="16dp" />
 
 
             <Button
-                android:id="@+id/invoiceSaveButton"
+                android:id="@+id/invoiceSaveButtonUpdate"
                 android:layout_width="72dp"
                 android:layout_height="33dp"
-                android:layout_marginStart="55dp"
+                android:layout_marginStart="50dp"
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
@@ -71,20 +72,22 @@
         android:layout_height="match_parent"
         android:layout_marginTop="58dp">
         <LinearLayout
-            android:id="@+id/firstlinear"
+            android:id="@+id/invoicefirstlinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/cardview_light_background"
+
             android:orientation="vertical">
             <LinearLayout
+                android:id="@+id/hidelayout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="54dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="12dp"
                     android:src="@drawable/ic_roundminus" />
 
                 <LinearLayout
@@ -93,21 +96,23 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/invoicetitleTextView"
+                        android:id="@+id/invoicetitleTextViewUpdate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:hint="Title"
                         android:textStyle="bold"
                         android:textAlignment="textStart"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
+                        android:textColor="@color/colorPrimaryDark"
                         tools:ignore="RtlCompat" />
                     <TextView
-                        android:id="@+id/invoiceDetailsTextView"
+                        android:id="@+id/invoiceDetailsTextViewUpdate"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="details"
                         android:textAlignment="textStart"
+                        android:textColor="@color/colorPrimaryDark"
                         android:lines="1"
                         android:layout_marginTop="5dp"
                         android:gravity="center_horizontal"
@@ -115,15 +120,17 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/invoiceAmountTextView"
+                    android:id="@+id/invoiceAmountTextViewUpdate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="0dp"
-                    android:textSize="10dp"
+                    android:textSize="15dp"
                     android:hint="Amount"
+                    android:layout_marginEnd="5dp"
                     android:textAlignment="center"
                     android:layout_marginLeft="30dp"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:layout_marginRight="5dp" />
 
             </LinearLayout>
 
@@ -133,36 +140,38 @@
             android:id="@+id/secondlinear"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_below="@id/firstlinear"
+            android:layout_below="@id/invoicefirstlinear"
             android:layout_marginTop="2dp"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="54dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="5dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="12dp"
                 android:src="@drawable/ic_roundminus" />
 
             <TextView
                 android:layout_width="156dp"
                 android:layout_height="match_parent"
                 android:text="Rent"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:textAlignment="textStart"
                 android:gravity="center"
                 tools:ignore="RtlCompat" />
             <EditText
-                android:id="@+id/invoiceRentEditText"
+                android:id="@+id/invoiceRentEditTextUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="0.00"
                 android:layout_marginStart="40dp"
+                android:layout_marginEnd="5dp"
                 android:textAlignment="center"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:layout_marginLeft="40dp"
                 android:gravity="end"
+                android:inputType="numberDecimal"
                 android:layout_gravity="end"
                 tools:ignore="RtlCompat" />
 
@@ -180,16 +189,17 @@
 
             <ImageView
                 android:layout_width="54dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="5dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="12dp"
                 android:src="@drawable/ic_roundplus" />
 
             <TextView
+                android:id="@+id/addlineTextviewUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Add new line"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:text="Add new line"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:textAlignment="textStart"
                 android:gravity="center"
                 tools:ignore="RtlCompat" />
@@ -209,20 +219,23 @@
                 android:layout_width="239dp"
                 android:layout_height="50dp"
                 android:gravity="center"
-                android:hint="   Invoice Issued"
+                android:text="Invoice Issued"
                 android:textAlignment="textStart"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:layout_marginStart="10sp"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
                 tools:ignore="RtlCompat" />
             <TextView
-                android:id="@+id/invoiceIssuedSelectDate"
+                android:id="@+id/invoiceIssuedSelectDateUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_marginStart="0dp"
                 android:textAlignment="center"
-                android:hint="sele date"
+                android:hint="Select Date"
+                android:layout_marginEnd="5dp"
+                android:textSize="15sp"
                 android:layout_marginLeft="0dp"
                 tools:ignore="RtlCompat">
 
@@ -244,20 +257,23 @@
                 android:layout_width="239dp"
                 android:layout_height="50dp"
                 android:gravity="center"
-                android:hint="   Payment due"
+                android:text="Payment due"
                 android:textAlignment="textStart"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:layout_marginStart="10sp"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
                 tools:ignore="RtlCompat" />
             <TextView
-                android:id="@+id/invoicePaymentdueSelectDate"
+                android:id="@+id/invoicePaymentdueSelectDateUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_marginStart="0dp"
+                android:layout_marginEnd="5dp"
                 android:textAlignment="center"
-                android:hint="sele date"
+                android:hint="Select Date"
+                android:textSize="15sp"
                 android:layout_marginLeft="0dp"
                 tools:ignore="RtlCompat">
             </TextView>
@@ -274,32 +290,33 @@
 
 
             <TextView
-                android:layout_width="182dp"
+                android:layout_width="187dp"
                 android:layout_height="50dp"
+                android:layout_marginStart="10sp"
                 android:gravity="center"
-                android:hint="   Notes"
+                android:text="Notes"
                 android:textAlignment="textStart"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
                 tools:ignore="RtlCompat" />
 
-            <EditText
-                android:id="@+id/invoiceNoteEditText"
+            <TextView
+                android:id="@+id/invoiceNoteTextViewUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginStart="0dp"
+                android:layout_marginEnd="5dp"
                 android:layout_marginLeft="0dp"
                 android:gravity="center"
-                android:hint="Add Note"
+                android:hint="            Add Note"
+                android:textSize="15sp"
                 android:textAlignment="center"
                 tools:ignore="RtlCompat">
 
-            </EditText>
+            </TextView>
 
         </LinearLayout>
-
-
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

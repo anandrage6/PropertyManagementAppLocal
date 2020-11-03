@@ -138,9 +138,17 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
 
                             //Edit case
                             case R.id.menu_item_Edit:
+
+                                UpdateInvoiceDetails updateInvoiceDetails = UpdateInvoiceDetails.newInstance(invoice.getInvoiceId(), invoiceListPosition, new InvoiceUpdateListener() {
+                                    @Override
+                                    public void onInvoiceInfoUpdated(InvoiceModelClass invoice, int position) {
+                                        invoiceList.set(position, invoice);
+                                        notifyDataSetChanged();
+                                    }
+                                });
+                                Intent i = new Intent(context, updateInvoiceDetails.getClass());
+                                context.startActivity(i);
                                break;
-
-
                             //delete case
                             case R.id.menu_item_delete:
 
