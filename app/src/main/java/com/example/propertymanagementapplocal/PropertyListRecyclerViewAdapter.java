@@ -109,6 +109,8 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
                                 context.startActivity(i);
                                 //updateProperty.show(((MainActivity) context).getSupportFragmentManager(), Config.UPDATE_PROPERTY);
                                     break;
+
+                                    //delete case
                             case R.id.menu_item_delete:
                                 //Toast.makeText(context, "Deleted", Toast.LENGTH_LONG).show();
 
@@ -124,6 +126,8 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
                                     Toast.makeText(context, "Property not deleted. Something wrong!", Toast.LENGTH_LONG).show();
 
                                 break;
+
+                                //see details case
                             case R.id.menu_item_seeDetails:
                                 Intent intent = new Intent(context, PropertyDetails.class);
                                 intent.putExtra(Config.COLUMN_PROPERTY_ID, property.getId());

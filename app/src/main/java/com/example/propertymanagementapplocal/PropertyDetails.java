@@ -73,8 +73,6 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         flatsrecyclerView = findViewById(R.id.flatsRecyclerViewid);
 
 
-
-
         //tool bar
         toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
@@ -83,9 +81,6 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
 
         //visibility of emptylist
         // linearLayout = findViewById(R.id.flatsemptyListHide);
-
-
-
 
 
         editBtn = findViewById(R.id.propertyEditBtn);
@@ -113,51 +108,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
             }
         });
 
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //retrive full details part
-        propertyId = getIntent().getLongExtra(Config.COLUMN_PROPERTY_ID, -1);
-        propertyModelClass = databaseQueryClass.getPropertyById(propertyId);
-        strLocationTv = propertyModelClass.getAddress();
-//        strLocationTv = getIntent().getStringExtra(Config.COLUMN_PROPERTY_ADDRESS);
-        strCity = propertyModelClass.getCity();
-//        strCity = getIntent().getStringExtra(Config.COLUMN_PROPERTY_CITY);
-        strState = propertyModelClass.getState();
-//        strState = getIntent().getStringExtra(Config.COLUMN_PROPERTY_STATE);
-        strZipCode = propertyModelClass.getZipCode();
-//        strZipCode = getIntent().getStringExtra(Config.COLUMN_PROPERTY_ZIPCODE);
-        totalAddress = strLocationTv+","+strCity+""+strState+"-"+strZipCode;
-        strPropertyName = propertyModelClass.getPropertyName();
-//        strPropertyName = getIntent().getStringExtra(Config.COLUMN_PROPERTY_PROPERTYNAME);
-        strPropertyType = propertyModelClass.getPropertyType();
-//        strPropertyType = getIntent().getStringExtra(Config.COLUMN_PROPERTY_PROPERTYTYPE);
-        strDescription = propertyModelClass.getDescription();
-//        strDescription = getIntent().getStringExtra(Config.COLUMN_PROPERTY_DESCRIPTION);
-//        itemPosition = Integer.parseInt(getIntent().getStringExtra("itemPosition"));
-
-        strownerNameTv = propertyModelClass.getOwnerName();
-//        strownerNameTv = getIntent().getStringExtra(Config.COLUMN_PROPERTY_OWNERNAME);
-        try {
-            stringimage = propertyModelClass.getImage();
-//            stringimage = getIntent().getStringExtra(Config.COLUMN_PROPERTY_IMAGE);
-        }catch(Exception e){
-
-        }
-
-        propertyModelClass = databaseQueryClass.getPropertyById(propertyId);
-        propertyNameTv.setText(propertyModelClass.getPropertyName());
-        locationTv.setText(totalAddress);
-        ownerNameTv.setText(strownerNameTv);
-
-        if(stringimage!= null) {
-            imagetv.setImageURI(Uri.parse(stringimage));
-        }
-
-
+        //
         refpropertyId = getIntent().getLongExtra(Config.COLUMN_PROPERTY_ID, -1);
         Log.d("PropertyDetRefId : ==> ", String.valueOf(refpropertyId));
 
@@ -170,23 +121,6 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         flatsrecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         flatsrecyclerView.setAdapter(flatsListRecyclerAdapter);
 
-        /*
-        //display tenant name in flat card
-
-        List<FlatsModelClass> flatsall = new ArrayList<>();
-        for(FlatsModelClass f : flatsList){
-             f.getFlatId();
-            flatsall.addAll(Collections.singleton(f));
-        }
-
-        //TenantList
-        tenantList.addAll(databaseQueryClass.getAllTenantsByFId(flatsall.size()));
-
-        if(tenantList.size() > 0){
-
-        }
-
-         */
 
         //flats button click
         flatAddBtn = findViewById(R.id.flatAddbtn);
@@ -220,6 +154,122 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         textViewEmptyList = findViewById(R.id.flatsemptyListHide);
         //textViewEmptyList.setVisibility(View.VISIBLE);
         viewVisibility();
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //retrive full details part
+        propertyId = getIntent().getLongExtra(Config.COLUMN_PROPERTY_ID, -1);
+        propertyModelClass = databaseQueryClass.getPropertyById(propertyId);
+        strLocationTv = propertyModelClass.getAddress();
+//        strLocationTv = getIntent().getStringExtra(Config.COLUMN_PROPERTY_ADDRESS);
+        strCity = propertyModelClass.getCity();
+//        strCity = getIntent().getStringExtra(Config.COLUMN_PROPERTY_CITY);
+        strState = propertyModelClass.getState();
+//        strState = getIntent().getStringExtra(Config.COLUMN_PROPERTY_STATE);
+        strZipCode = propertyModelClass.getZipCode();
+//        strZipCode = getIntent().getStringExtra(Config.COLUMN_PROPERTY_ZIPCODE);
+        totalAddress = strLocationTv+", "+strCity+" "+strState+" - "+strZipCode;
+        strPropertyName = propertyModelClass.getPropertyName();
+//        strPropertyName = getIntent().getStringExtra(Config.COLUMN_PROPERTY_PROPERTYNAME);
+        strPropertyType = propertyModelClass.getPropertyType();
+//        strPropertyType = getIntent().getStringExtra(Config.COLUMN_PROPERTY_PROPERTYTYPE);
+        strDescription = propertyModelClass.getDescription();
+//        strDescription = getIntent().getStringExtra(Config.COLUMN_PROPERTY_DESCRIPTION);
+//        itemPosition = Integer.parseInt(getIntent().getStringExtra("itemPosition"));
+
+        strownerNameTv = propertyModelClass.getOwnerName();
+//        strownerNameTv = getIntent().getStringExtra(Config.COLUMN_PROPERTY_OWNERNAME);
+        try {
+            stringimage = propertyModelClass.getImage();
+//            stringimage = getIntent().getStringExtra(Config.COLUMN_PROPERTY_IMAGE);
+        }catch(Exception e){
+
+        }
+
+        propertyModelClass = databaseQueryClass.getPropertyById(propertyId);
+        propertyNameTv.setText(propertyModelClass.getPropertyName());
+        locationTv.setText(totalAddress);
+        ownerNameTv.setText(strownerNameTv);
+
+        if(stringimage!= null) {
+            imagetv.setImageURI(Uri.parse(stringimage));
+        }
+
+
+        /*
+        refpropertyId = getIntent().getLongExtra(Config.COLUMN_PROPERTY_ID, -1);
+        Log.d("PropertyDetRefId : ==> ", String.valueOf(refpropertyId));
+
+        flatsList.addAll(databaseQueryClass.getAllFlatsByPFId(refpropertyId));
+        Log.d("FlatList : ==> ", String.valueOf(flatsList.size()));
+
+
+        //flats part
+        flatsListRecyclerAdapter = new FlatsListRecyclerAdapter(this, flatsList);
+        flatsrecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        flatsrecyclerView.setAdapter(flatsListRecyclerAdapter);
+
+        /*
+        //display tenant name in flat card
+
+        List<FlatsModelClass> flatsall = new ArrayList<>();
+        for(FlatsModelClass f : flatsList){
+             f.getFlatId();
+            flatsall.addAll(Collections.singleton(f));
+        }
+
+        //TenantList
+        tenantList.addAll(databaseQueryClass.getAllTenantsByFId(flatsall.size()));
+
+        if(tenantList.size() > 0){
+
+        }
+
+         */
+
+        //
+        /*
+        //flats button click
+        flatAddBtn = findViewById(R.id.flatAddbtn);
+        flatAddBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //Toast.makeText(Appartments.this, "button clicked", Toast.LENGTH_LONG).show();
+                openActivityAddFlats();
+
+            }
+        });
+
+         */
+
+        //navigation method
+        //String intentValue = getIntent().getStringExtra("intentPassed");
+        //Log.e("intentValue : ==> ", intentValue);
+
+        /*
+        if(intentValue== null){
+        }else{
+            FlatsCreateListener flatsCreateListener = this;
+            long propertyId = refpropertyId;
+            Log.d("propertyIdResult ===> ", String.valueOf(propertyId));
+            AddFlats addFlats = AddFlats.newInstance(propertyId, flatsCreateListener);
+            addFlats.show(getSupportFragmentManager(), Config.CREATE_FLAT);
+        }
+
+         */
+
+        //
+        /*
+        textViewEmptyList = findViewById(R.id.flatsemptyListHide);
+        //textViewEmptyList.setVisibility(View.VISIBLE);
+        viewVisibility();
+
+        */
     }
 
     private void openActivityAddFlats() {

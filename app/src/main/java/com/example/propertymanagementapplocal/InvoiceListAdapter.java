@@ -22,10 +22,12 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
     private Context context;
     private List<InvoiceModelClass> invoiceList;
     private DatabaseQueryClass databaseQueryClass;
+    InvoicesFragment invoicesFragment;
 
-    public InvoiceListAdapter(Context context, List<InvoiceModelClass> invoiceList) {
+    public InvoiceListAdapter(Context context, List<InvoiceModelClass> invoiceList, InvoicesFragment invoicesFragment) {
         this.context = context;
         this.invoiceList = invoiceList;
+        this.invoicesFragment = invoicesFragment;
         databaseQueryClass = new DatabaseQueryClass(context);
     }
 
@@ -160,6 +162,7 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
                                     invoiceList.remove(position);
                                     notifyDataSetChanged();
                                     // ((TotalTenant) context);
+                                    ((InvoicesFragment)invoicesFragment).viewVisibility();
                                     Toast.makeText(context, "Tenant deleted successfully", Toast.LENGTH_LONG).show();
                                 } else
                                     Toast.makeText(context, "Property not deleted. Something wrong!", Toast.LENGTH_LONG).show();

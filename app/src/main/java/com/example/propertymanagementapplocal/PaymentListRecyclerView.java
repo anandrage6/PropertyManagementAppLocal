@@ -19,10 +19,12 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
     private Context context;
     private List<PaymentsModelClass> paymentList;
     private DatabaseQueryClass databaseQueryClass;
+    PaymentFragment paymentFragment;
 
-    public PaymentListRecyclerView(Context context, List<PaymentsModelClass> paymentList) {
+    public PaymentListRecyclerView(Context context, List<PaymentsModelClass> paymentList, PaymentFragment paymentFragment) {
         this.context = context;
         this.paymentList = paymentList;
+        this.paymentFragment = paymentFragment;
         databaseQueryClass = new DatabaseQueryClass(context);
     }
 
@@ -135,6 +137,8 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
                                     paymentList.remove(position);
                                     notifyDataSetChanged();
                                     // ((TotalTenant) context);
+
+                                    ((PaymentFragment)paymentFragment).listvisibility();
                                     Toast.makeText(context, "Tenant deleted successfully", Toast.LENGTH_LONG).show();
                                 } else
                                     Toast.makeText(context, "Property not deleted. Something wrong!", Toast.LENGTH_LONG).show();

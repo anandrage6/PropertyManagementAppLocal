@@ -38,11 +38,14 @@
                 android:textSize="15dp"
                 android:layout_marginStart="100dp"
                 android:background="@null"
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
                 android:inputType="text"
+                android:gravity="center"
+                android:layout_marginEnd="10dp"
                 android:layout_marginLeft="100dp"
                 android:textColor="@color/Black"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="10dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -70,8 +73,10 @@
                 android:layout_height="match_parent"
                 android:hint="Phone"
                 android:textSize="15dp"
+                android:gravity="center"
+                android:layout_marginEnd="10dp"
                 android:background="@null"
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
                 android:layout_marginStart="100dp"
                 android:layout_marginLeft="100dp"
                 android:inputType="phone"
@@ -105,8 +110,10 @@
                 android:layout_height="match_parent"
                 android:hint="Email"
                 android:textSize="15dp"
+                android:layout_marginEnd="10dp"
                 android:background="@null"
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
+                android:gravity="center"
                 android:layout_marginStart="100dp"
                 android:layout_marginLeft="100dp"
                 android:inputType="textEmailAddress"
@@ -165,7 +172,9 @@
                 android:textColor="@color/green"
                 android:textColorHint="@color/green"
                 android:layout_marginStart="110dp"
+                android:layout_marginEnd="10dp"
                 android:gravity="center"
+                android:textAlignment="textEnd"
                 android:layout_marginLeft="100dp" />
         </LinearLayout>
 
@@ -199,6 +208,8 @@
                 android:textColorHint="@color/green"
                 android:gravity="center"
                 android:layout_marginStart="110dp"
+                android:layout_marginEnd="10dp"
+                android:textAlignment="textEnd"
                 android:layout_marginLeft="100dp" />
         </LinearLayout>
         <LinearLayout
@@ -227,10 +238,13 @@
                 android:layout_height="match_parent"
                 android:hint=" Select date"
                 android:textSize="15dp"
+                android:textAlignment="textEnd"
                 android:textColor="@color/green"
                 android:textColorHint="@color/green"
+                android:layout_marginEnd="0dp"
                 android:layout_marginStart="110dp"
-                android:layout_marginLeft="100dp" />
+                android:layout_marginLeft="100dp"
+                android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -257,10 +271,10 @@
             <TextView
                 android:id="@+id/tenantTotalOccupantsValueTextView"
                 android:layout_width="40dp"
-                android:layout_height="match_parent"
+                android:layout_height="25dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_horizontal"
                 android:hint="0"
@@ -327,7 +341,8 @@
                 android:hint=" Add"
                 android:textSize="15dp"
                 android:lines="1"
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
+                android:layout_marginEnd="10dp"
                 android:textColor="@color/green"
                 android:textColorHint="@color/green"
                 android:gravity="center"
@@ -362,11 +377,12 @@
                 android:layout_marginLeft="100dp"
                 android:hint="0.00"
                 android:textSize="15dp"
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
                 android:textColor="@color/green"
                 android:textColorHint="@color/green"
                 android:gravity="center"
                 android:background="@null"
+                android:layout_marginEnd="10dp"
                 android:inputType="numberDecimal"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
@@ -399,10 +415,11 @@
                 android:layout_marginLeft="100dp"
                 android:hint="0.00"
                 android:textSize="15dp"
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
                 android:textColor="@color/green"
                 android:textColorHint="@color/green"
                 android:gravity="center"
+                android:layout_marginEnd="10dp"
                 android:background="@null"
                 android:inputType="numberDecimal"
                 tools:ignore="RtlCompat" />

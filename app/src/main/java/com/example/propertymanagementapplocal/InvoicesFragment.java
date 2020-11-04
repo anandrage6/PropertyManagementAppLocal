@@ -77,7 +77,7 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
         //Log.d("InvoiceList : ==> ", String.valueOf(invoiceList.size()));
         //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
 
-         invoiceListAdapter = new InvoiceListAdapter(getContext(), invoiceList);
+         invoiceListAdapter = new InvoiceListAdapter(getContext(), invoiceList, InvoicesFragment.this);
         invoiceRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         invoiceRecyclerView.setAdapter(invoiceListAdapter);
 
@@ -131,7 +131,7 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
 
     }
 
-    private void viewVisibility() {
+    public void viewVisibility() {
         try {
             if (invoiceList.size() > 0) {
                 emptyListLinearLayout.setVisibility(emptyListLinearLayout.GONE);
@@ -142,7 +142,5 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
             e.printStackTrace();
         }
     }
-
-
 
 }

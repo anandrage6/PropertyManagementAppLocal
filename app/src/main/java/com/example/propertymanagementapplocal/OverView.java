@@ -101,7 +101,7 @@ public class OverView extends Fragment implements TenantCreateListener  {
         //Log.d("TenantList : ==> ", String.valueOf(tenantList.size()));
         //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
 
-        tenantListRecyclerAdapter = new TenantListRecyclerAdapter(getContext(), tenantList);
+        tenantListRecyclerAdapter = new TenantListRecyclerAdapter(getContext(), tenantList, OverView.this);
         tenantRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         tenantRecyclerView.setAdapter(tenantListRecyclerAdapter);
 
@@ -133,6 +133,8 @@ public class OverView extends Fragment implements TenantCreateListener  {
 
         return view;
     }
+
+
 
     private void openActivityAddTenant() {
         /*

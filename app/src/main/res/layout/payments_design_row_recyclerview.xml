@@ -73,6 +73,7 @@
                 android:layout_gravity="end"
                 android:textAlignment="textEnd"
                 android:gravity="center"
+                android:background="@null"
                 android:inputType="numberDecimal"
                 android:layout_marginLeft="70dp"
                 tools:ignore="RtlCompat" />

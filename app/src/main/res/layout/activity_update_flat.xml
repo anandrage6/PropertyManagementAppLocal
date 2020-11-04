@@ -96,6 +96,7 @@
                 android:layout_marginStart="100dp"
                 android:layout_marginEnd="10dp"
                 android:gravity="center"
+
                 android:textColor="@color/Black"
                 android:background="@null"
                 android:layout_marginLeft="150dp"
@@ -166,7 +167,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Floor"
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="146dp"
                 android:layout_marginEnd="0dp"
@@ -204,7 +205,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Floor"
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="129dp"
                 android:layout_marginEnd="0dp"
@@ -212,7 +213,8 @@
                 android:textColor="@color/Black"
                 android:paddingStart="10dp"
                 android:layout_marginLeft="150dp"
-                android:layout_marginRight="10dp" />
+                android:layout_marginRight="10dp"
+                tools:ignore="RtlCompat" />
 
         </LinearLayout>
 

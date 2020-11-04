@@ -30,10 +30,12 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
     private Context context;
     private List<TenantModelClass> tenantList;
     private DatabaseQueryClass databaseQueryClass;
+    OverView overView;
 
-    public TenantListRecyclerAdapter(Context context, List<TenantModelClass> tenantList) {
+    public TenantListRecyclerAdapter(Context context, List<TenantModelClass> tenantList, OverView overView) {
         this.context = context;
         this.tenantList = tenantList;
+        this.overView = overView;
         databaseQueryClass = new DatabaseQueryClass(context);
     }
 
@@ -112,12 +114,16 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
                                if(count>0){
                                    tenantList.remove(position);
                                    notifyDataSetChanged();
-                                   // ((TotalTenant) context);
+
+                                   ((OverView)overView).viewVisibility();
+                                   ((OverView)overView).listVisibility();
+
                                    Toast.makeText(context, "Tenant deleted successfully", Toast.LENGTH_LONG).show();
                                } else
                                    Toast.makeText(context, "Property not deleted. Something wrong!", Toast.LENGTH_LONG).show();
 
                                break;
+
 
                                //see details
                            case R.id.menu_item_seeDetails:

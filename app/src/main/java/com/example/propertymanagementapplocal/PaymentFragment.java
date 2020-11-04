@@ -78,7 +78,7 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
         //Log.d("InvoiceList : ==> ", String.valueOf(invoiceList.size()));
         //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
 
-        paymentListRecyclerViewAdapter = new PaymentListRecyclerView(getContext(), paymentList);
+        paymentListRecyclerViewAdapter = new PaymentListRecyclerView(getContext(), paymentList, PaymentFragment.this);
         paymentRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         paymentRecyclerView.setAdapter(paymentListRecyclerViewAdapter);
 
@@ -114,7 +114,7 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
     }
 
     //visibility emptylist
-    private void listvisibility() {
+    public void listvisibility() {
         try {
             if (paymentList.size() > 0) {
                 paymentEmptyListLinearLayout.setVisibility(paymentEmptyListLinearLayout.GONE);
