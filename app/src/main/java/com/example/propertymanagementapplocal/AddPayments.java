@@ -37,7 +37,7 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
 
     String strPaidwith, strTaxStatus;
 
-    private static long FlatId;
+    private static long reftenantId;
     private  static  PaymentsCreateListener paymentsCreateListener;
 
     AppCompatRadioButton taxableRadioBtn, nontaxableRadioBtn;
@@ -48,10 +48,12 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
     }
 
     //new Instance
-    public static AddPayments newInstance(long refFlatId, PaymentsCreateListener paymentsListener) {
+    @SuppressLint("LongLogTag")
+    public static AddPayments newInstance(long tenantId, PaymentsCreateListener paymentsListener) {
         //Log.d("RefPropertyId : == >", String.valueOf(refPropertyId));
         //propertyId = refPropertyId;
-        FlatId = refFlatId;
+        reftenantId = tenantId;
+        Log.d("refTenantId in Payments : == >", String.valueOf(reftenantId));
         paymentsCreateListener = paymentsListener;
         AddPayments addPayments = new AddPayments();
         return addPayments;
@@ -218,7 +220,7 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
         //Log.d("FlatId", String.valueOf(FlatId));
 
 
-        long id = databaseQueryClass.insertPayments(payment, FlatId);
+        long id = databaseQueryClass.insertPayments(payment, reftenantId);
         Log.e("Result Payment id : ==> ", String.valueOf(id));
 
 

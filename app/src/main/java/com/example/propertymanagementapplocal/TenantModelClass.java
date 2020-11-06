@@ -3,8 +3,22 @@ package com.example.propertymanagementapplocal;
 public class TenantModelClass {
  private long tenantId;
  private String tenantName, tenantphone, tenantEmail, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rentAmount, securityDeposit;
+ long fTId;
+
 
     public TenantModelClass() {
+    }
+
+    public TenantModelClass(long fTId) {
+        this.fTId = fTId;
+    }
+
+    public long getfTId() {
+        return fTId;
+    }
+
+    public void setfTId(long fTId) {
+        this.fTId = fTId;
     }
 
     public TenantModelClass(long tenantId, String tenantName, String tenantphone, String tenantEmail, String leaseStart, String leaseEnd, String rentIsPaid, String totalOccupants, String notes, String rentAmount, String securityDeposit) {

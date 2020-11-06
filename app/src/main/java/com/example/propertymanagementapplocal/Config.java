@@ -3,7 +3,7 @@ package com.example.propertymanagementapplocal;
 public class Config {
 
     // Database name
-    public static final String DATABASE_NAME = "propertyManagement-db3";
+    public static final String DATABASE_NAME = "propertyManagement-db4";
 
     //column names of student table
     public static final String TABLE_PROPERTY = "properties";
@@ -56,8 +56,9 @@ public class Config {
     public static final String COLUMN_INVOICE_INVOICE_ISSUED = "Invoice_issued";
     public static final String COLUMN_INVOICE_PaymentDue = "Payment_due";
     public static final String COLUMN_INVOICE_Notes = "Notes";
-    public static final String COLUMN_FI_ID = "flat_fk_id";
-    public static final String INVOICE_SUB_CONSTRAINT = "flat_sub_unique";
+    //public static final String COLUMN_FI_ID = "flat_fk_id";
+    public static final String COLUMN_TI_ID = "tenant_fk_id";
+    public static final String INVOICE_SUB_CONSTRAINT = "tenant_sub_unique";
 
     //Columns names of Payments
 
@@ -69,8 +70,8 @@ public class Config {
     public static final String COLUMN_PAYMENT_RECEIVEDFROM = "Received_From";
     public static final String COLUMN_PAYMENT_TAXSTATUS = "Tax_status";
     public static final String COLUMN_PAYMENT_NOTES = "Notes";
-    public static final String COLUMN_FPY_ID = "flat_fk_id";
-    public static final String PAYMENTS_SUB_CONSTRAINT = "flat_sub_unique";
+    public static final String COLUMN_TP_ID = "tenant_fk_id";
+    public static final String PAYMENTS_SUB_CONSTRAINT = "tenant_sub_unique";
 
 
 

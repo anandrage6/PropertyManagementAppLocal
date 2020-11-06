@@ -31,7 +31,11 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
     private List<InvoiceModelClass> invoiceList ;
     private long refFlatId;
     private long refTenantId;
+    private long tenantId;
     private LinearLayout emptyListLinearLayout;
+
+    private TenantModelClass mtenantModelClass;
+
 
 
     public InvoicesFragment() {
@@ -51,6 +55,24 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
         Log.d("flatRefFId_in_invoices: ==> ", String.valueOf(refFlatId));
         //Log.d("flatRefFId_in_overView : ==> ", String.valueOf(getArguments().getLong("1")));
 
+        tenantId = getArguments().getLong("2");
+        Log.e("tenantId in Invoices ====> ", String.valueOf(tenantId));
+
+        /*
+        //getting values by flatid
+
+        try {
+            mtenantModelClass = databaseQueryClass.getTenantIdByFlatId(refFlatId);
+            tenantId = mtenantModelClass.getTenantId();
+            Log.e("tenantId  in invoices ========> ", String.valueOf(tenantId));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+         */
+
+
+
         //fragment
 
         /*
@@ -67,13 +89,14 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
 
 
 
+
         //retrive full details part
         invoiceRecyclerView = v.findViewById(R.id.invoiceRecyclerId);
 
         databaseQueryClass = new DatabaseQueryClass(getContext());
         invoiceList = new ArrayList<>();
         //Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllInvoicebyId(refFlatId)));
-        invoiceList.addAll(databaseQueryClass.getAllInvoicebyId(refFlatId));
+        invoiceList.addAll(databaseQueryClass.getAllInvoicebyId(tenantId));
         //Log.d("InvoiceList : ==> ", String.valueOf(invoiceList.size()));
         //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
 
@@ -99,6 +122,7 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
         });
 
 
+
         return v;
 
     }
@@ -117,7 +141,7 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
 
          */
 
-        AddInvoices addInvoices = AddInvoices.newInstance(refFlatId, this);
+        AddInvoices addInvoices = AddInvoices.newInstance(tenantId, this);
         Intent intent = new Intent(getActivity(), addInvoices.getClass());
         getContext().startActivity(intent);
 

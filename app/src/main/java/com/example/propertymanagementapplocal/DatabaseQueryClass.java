@@ -311,8 +311,10 @@ public class DatabaseQueryClass {
                 String flatNo = cursor.getString(cursor.getColumnIndex(Config.COLUMN_FLATS_FLATNO));
                 String flatFacing = cursor.getString(cursor.getColumnIndex(Config.COLUMN_FLATS_FLATFACING));
                 String noofBedrooms = cursor.getString(cursor.getColumnIndex(Config.COLUMN_FLATS_NOOFBEDROOMS));
+                long  pFId = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_PF_ID));
 
                 flats = new FlatsModelClass(flatsId, floor, flatNo, flatFacing, noofBedrooms);
+                flats.setpFId(pFId);
             }
         } catch (SQLiteException e) {
             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
@@ -587,7 +589,7 @@ public class DatabaseQueryClass {
 
     //insert Invoice
 
-    public long insertInvoice(InvoiceModelClass invoice, long flatId) {
+    public long insertInvoice(InvoiceModelClass invoice, long tenantId) {
         long rowId = -1;
 
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
@@ -602,7 +604,7 @@ public class DatabaseQueryClass {
         contentValues.put(Config.COLUMN_INVOICE_PaymentDue, invoice.getPaymentDue());
         contentValues.put(Config.COLUMN_INVOICE_Notes, invoice.getNotes());
         //contentValues.put(Config.COLUMN_PT_ID, id);
-        contentValues.put(Config.COLUMN_FI_ID, flatId);
+        contentValues.put(Config.COLUMN_TI_ID, tenantId);
 
         try {
             rowId = sqLiteDatabase.insertOrThrow(Config.TABLE_INVOICE, null, contentValues);
@@ -619,7 +621,7 @@ public class DatabaseQueryClass {
 
 
     //get All invoice by id
-    public List<InvoiceModelClass> getAllInvoicebyId(long fId){
+    public List<InvoiceModelClass> getAllInvoicebyId(long tenantId){
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
 
@@ -630,8 +632,8 @@ public class DatabaseQueryClass {
                     new String[] {Config.COLUMN_INVOICE_ID, Config.COLUMN_INVOICE_TITLE,
                             Config.COLUMN_INVOICE_DETAILS, Config.COLUMN_INVOICE_AMOUNT, Config.COLUMN_INVOICE_RENT, Config.COLUMN_INVOICE_INVOICE_ISSUED, Config.COLUMN_INVOICE_PaymentDue,
                             Config.COLUMN_INVOICE_Notes},
-                    Config.COLUMN_FI_ID + " = ? ",
-                    new String[] {String.valueOf(fId)},
+                    Config.COLUMN_TI_ID + " = ? ",
+                    new String[] {String.valueOf(tenantId)},
                     null, null, null);
 
             if(cursor!=null && cursor.moveToFirst()){
@@ -753,11 +755,62 @@ public class DatabaseQueryClass {
         return deletedRowCount;
     }
 
+    //to get tenantid by flatid to ivoices
+
+    public TenantModelClass getTenantIdByFlatId(long flatId) {
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
+
+        TenantModelClass tenant = null;
+
+        Cursor cursor = null;
+
+        try {
+            cursor = sqLiteDatabase.query(Config.TABLE_TENANTS, null,
+                    Config.COLUMN_FT_ID + " = ? ", new String[]{String.valueOf(flatId)},
+                    null, null, null);
+
+            if (cursor != null && cursor.moveToFirst()) {
+                long tenantId = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_TENANTS_ID));
+                String name = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_NAME));
+                String phone = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_PHONE));
+                String email = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_EMAIL));
+                String leaseStart = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_LEASESTART));
+                String leaseEnd = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_LEASEEND));
+                String rentIsPaid = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_RENTISPAID));
+                String totalOccupants = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_TOTALOCCUPANTS));
+                String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_NOTES));
+                String rent = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_RENT));
+                String securityDeposit = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_SECURITYDEPOSIT));
+               // long fTId = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_FT_ID));
+
+
+                tenant = new TenantModelClass(tenantId, name, phone, email, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rent, securityDeposit);
+                //tenant.setfTId(flatId);
+                tenant.getfTId();
+
+
+            }
+        } catch (SQLiteException e) {
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            if (cursor != null)
+                cursor.close();
+            sqLiteDatabase.close();
+        }
+
+        return tenant;
+    }
+
+
+
+
+
 
 
     //insert payments
 
-    public long insertPayments(PaymentsModelClass payment, long flatId) {
+    public long insertPayments(PaymentsModelClass payment, long tenantId) {
         long rowId = -1;
 
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
@@ -770,7 +823,7 @@ public class DatabaseQueryClass {
         contentValues.put(Config.COLUMN_PAYMENT_RECEIVEDFROM, payment.getReceivedfrom());
         contentValues.put(Config.COLUMN_PAYMENT_TAXSTATUS, payment.getTaxstatus());
         contentValues.put(Config.COLUMN_PAYMENT_NOTES, payment.getNotes());
-        contentValues.put(Config.COLUMN_FPY_ID, flatId);
+        contentValues.put(Config.COLUMN_TP_ID, tenantId);
 
         try {
             rowId = sqLiteDatabase.insertOrThrow(Config.TABLE_PAYMENTS, null, contentValues);
@@ -786,7 +839,7 @@ public class DatabaseQueryClass {
 
 
     //get All payments by id
-    public List<PaymentsModelClass> getAllPaymentsbyId(long fId){
+    public List<PaymentsModelClass> getAllPaymentsbyId(long tenantId){
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
 
@@ -797,8 +850,8 @@ public class DatabaseQueryClass {
                     new String[] {Config.COLUMN_PAYMENT_ID, Config.COLUMN_PAYMENT_AMOUNT,
                             Config.COLUMN_PAYMENT_PAIDWITH, Config.COLUMN_PAYMENT_DATERECEIVED, Config.COLUMN_PAYMENT_RECEIVEDFROM, Config.COLUMN_PAYMENT_TAXSTATUS,
                             Config.COLUMN_PAYMENT_NOTES},
-                            Config.COLUMN_FPY_ID + " = ? ",
-                            new String[] {String.valueOf(fId)},
+                            Config.COLUMN_TP_ID + " = ? ",
+                            new String[] {String.valueOf(tenantId)},
                             null, null, null);
 
             if(cursor!=null && cursor.moveToFirst()){

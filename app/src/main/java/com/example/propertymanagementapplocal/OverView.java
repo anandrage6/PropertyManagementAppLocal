@@ -73,6 +73,9 @@ public class OverView extends Fragment implements TenantCreateListener  {
         Log.d("flatRefFId_in_overView : ==> ", String.valueOf(refFlatId));
         //Log.d("flatRefFId_in_overView : ==> ", String.valueOf(getArguments().getLong("1")));
 
+        refTenantId = getArguments().getLong("2");
+        Log.e("TenantId in OverView ====> ", String.valueOf(refTenantId));
+
         //
         /*
         if(getArguments()!=null)

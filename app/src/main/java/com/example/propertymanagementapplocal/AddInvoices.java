@@ -19,7 +19,7 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 public class AddInvoices extends AppCompatActivity {
-    private static long FlatId;
+   // private static long FlatId;
     private static long refTenantId;
     private static InvoiceCreateListener invoiceCreateListener;
 
@@ -39,10 +39,11 @@ public class AddInvoices extends AppCompatActivity {
     }
 
 
-    public static AddInvoices newInstance(long refFlatId, InvoiceCreateListener invoicelistener) {
+    public static AddInvoices newInstance(long tenantId, InvoiceCreateListener invoicelistener) {
         //Log.d("RefPropertyId : == >", String.valueOf(refPropertyId));
         //propertyId = refPropertyId;
-        FlatId = refFlatId;
+        refTenantId = tenantId;
+        Log.d("ReTenantId : == >", String.valueOf(refTenantId));
         invoiceCreateListener = invoicelistener;
         AddInvoices addInvoices = new AddInvoices();
         return addInvoices;
@@ -241,7 +242,7 @@ public class AddInvoices extends AppCompatActivity {
         //Log.d("propertyId", String.valueOf(propertyId));
         //Log.d("FlatId", String.valueOf(FlatId));
 
-        long id = databaseQueryClass.insertInvoice(invoice, FlatId);
+        long id = databaseQueryClass.insertInvoice(invoice, refTenantId);
         Log.e("Result Invoice id : ==> ", String.valueOf(id));
 
 

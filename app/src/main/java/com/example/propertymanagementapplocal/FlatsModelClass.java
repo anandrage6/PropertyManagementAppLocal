@@ -7,6 +7,19 @@ public class FlatsModelClass {
     private String flaNo;
     private String faltfacing;
     private String noofbedrooms;
+    private long pFId;
+
+    public long getpFId() {
+        return pFId;
+    }
+
+    public void setpFId(long pFId) {
+        this.pFId = pFId;
+    }
+
+    public FlatsModelClass(long pFId) {
+        this.pFId = pFId;
+    }
 
     public FlatsModelClass() {
     }

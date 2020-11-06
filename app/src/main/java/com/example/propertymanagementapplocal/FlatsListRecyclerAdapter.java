@@ -26,6 +26,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
     private Context context;
     private List<FlatsModelClass> flatsList;
 
+
     private List<TenantModelClass> tenatList;
 
     public FlatsListRecyclerAdapter(Context context, List<FlatsModelClass> flatsList) {
@@ -50,6 +51,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
         holder.floor.setText(flats.getFloor());
         holder.flatfacing.setText(flats.getFaltfacing());
         holder.noOfBedrooms.setText(flats.getNoofbedrooms());
+
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 public class Documents extends Fragment {
     private long refFlatId;
+    private long refTenantId;
 
 
     public Documents() {
@@ -27,6 +28,9 @@ public class Documents extends Fragment {
 
         refFlatId = getArguments().getLong("1");
         Log.d("flatRefFId_in_Documents: ==> ", String.valueOf(refFlatId));
+
+        refTenantId = getArguments().getLong("2");
+        Log.e("TenantId in Documents ===> ", String.valueOf(refTenantId));
         return view;
     }
 }

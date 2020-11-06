@@ -21,8 +21,13 @@ public class TotalTenant extends AppCompatActivity {
     private ViewPager viewPager;
     private long refFlatId;
     ViePageAdapter viePageAdapter;
-    private long refTenantId;
+    private long tenantId;
     Bundle bundle;
+
+    private DatabaseQueryClass databaseQueryClass;
+    private FlatsModelClass mflatsModelClass;
+    private PropertyModelClass mpropertyModelClass;
+    private TenantModelClass mtenantModelClass;
 
 
     @SuppressLint("LongLogTag")
@@ -40,15 +45,37 @@ public class TotalTenant extends AppCompatActivity {
         refFlatId = getIntent().getLongExtra(Config.COLUMN_FLATS_ID, -1);
         Log.d("flatRefFId in Total Tenant:==>", String.valueOf(refFlatId));
 
+        databaseQueryClass = new DatabaseQueryClass(getApplicationContext());
 
-        //refTenantId = getIntent().getExtras().getLong("2");
-       // Log.d("Tenant in Total Tenant:==>", String.valueOf(refTenantId));
+        //getting values by faltid
+            mflatsModelClass = databaseQueryClass.getFlatsById(refFlatId);
+            Log.e("flat.no ==> ", String.valueOf(mflatsModelClass.getFlaNo()));
+
+           String flatNo = mflatsModelClass.getFlaNo();
+          long pfId =  mflatsModelClass.getpFId();
+          Log.e("pFId ===> ", String.valueOf(pfId));
+
+          //getting values by PfId
+        mpropertyModelClass = databaseQueryClass.getPropertyById(pfId);
+        String propertyName = mpropertyModelClass.getPropertyName();
+        Log.e("propertyName =====> ", String.valueOf(propertyName));
+
+        //getting values by flatid
+
+
+        try {
+            mtenantModelClass = databaseQueryClass.getTenantIdByFlatId(refFlatId);
+            tenantId = mtenantModelClass.getTenantId();
+            Log.e("tenantId ========> ", String.valueOf(tenantId));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 
 
 
         setSupportActionBar(mytoolbar);
-        getSupportActionBar().setTitle("Details");
+        getSupportActionBar().setTitle(propertyName+" / FlatNo : "+flatNo);
         //((AppCompatActivity)getApplicationContext()).setSupportActionBar(mytoolbar);
 
         setupViewPager(viewPager);
@@ -63,6 +90,7 @@ public class TotalTenant extends AppCompatActivity {
 
         bundle = new Bundle();
         bundle.putLong("1", refFlatId);
+        bundle.putLong("2", tenantId);
         Log.d("flatRefFId in bundle Tenant:==>", String.valueOf(bundle));
 
 

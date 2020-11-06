@@ -33,6 +33,9 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
     private List<PaymentsModelClass> paymentList ;
     private LinearLayout paymentEmptyListLinearLayout;
 
+    private TenantModelClass mtenantModelClass;
+    private long tenantId;
+
     public PaymentFragment() {
     }
 
@@ -46,6 +49,22 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
         refFlatId = getArguments().getLong("1");
         Log.d("flatRefFId_in_payments : ==> ", String.valueOf(refFlatId));
         //Log.d("flatRefFId_in_overView : ==> ", String.valueOf(getArguments().getLong("1")));
+
+        tenantId = getArguments().getLong("2");
+        Log.e("tenantId in Payments ===== > ", String.valueOf(tenantId));
+
+/*
+        try {
+            mtenantModelClass = databaseQueryClass.getTenantIdByFlatId(refFlatId);
+            tenantId = mtenantModelClass.getTenantId();
+            Log.e("tenantId  in payments ========> ", String.valueOf(tenantId));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+ */
+
+
 
 
         //emptyListvisibility
@@ -74,7 +93,7 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
         databaseQueryClass = new DatabaseQueryClass(getContext());
         paymentList = new ArrayList<>();
         //Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllInvoicebyId(refFlatId)));
-        paymentList.addAll(databaseQueryClass.getAllPaymentsbyId(refFlatId));
+        paymentList.addAll(databaseQueryClass.getAllPaymentsbyId(tenantId));
         //Log.d("InvoiceList : ==> ", String.valueOf(invoiceList.size()));
         //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
 
@@ -98,7 +117,7 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
 
          */
 
-        AddPayments addPayments = AddPayments.newInstance(refFlatId, this);
+        AddPayments addPayments = AddPayments.newInstance(tenantId, this);
         Intent intent = new Intent(getActivity(), addPayments.getClass());
         getContext().startActivity(intent);
 
@@ -126,5 +145,5 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
         }
     }
 
-    }
+}
 
