@@ -26,12 +26,13 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
     private Context context;
     private List<FlatsModelClass> flatsList;
 
-
-    private List<TenantModelClass> tenatList;
+    //DatabaseQueryClass databaseQueryClass;
+    //TenantModelClass tenantModelClass;
 
     public FlatsListRecyclerAdapter(Context context, List<FlatsModelClass> flatsList) {
         this.context = context;
         this.flatsList = flatsList;
+        //databaseQueryClass = new DatabaseQueryClass(context);
     }
 
     @NonNull
@@ -51,6 +52,15 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
         holder.floor.setText(flats.getFloor());
         holder.flatfacing.setText(flats.getFaltfacing());
         holder.noOfBedrooms.setText(flats.getNoofbedrooms());
+
+
+        /*
+        tenantModelClass = databaseQueryClass.getTenantIdByFlatId(flatId);
+        String tenantName = tenantModelClass.getTenantName();
+
+        holder.tenantInfoUpdate.setText(tenantName);
+
+         */
 
 
 
@@ -85,6 +95,8 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
 
             }
         });
+
+        //tenant status show
 
 
             //update/see details/ delete
@@ -155,30 +167,6 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
         });
 
     }
-/*
-    private void fragmentJump(FlatsModelClass mflats) {
-
-        OverView overView = new OverView();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("item_selected_Key", (Parcelable) mflats);
-        overView.setArguments(bundle);
-        switchContent(R.id.list, overView);
-
-    }
-
-    private void switchContent(int list, OverView overView) {
-        if(context == null){
-            return;
-            if(context instanceof TotalTenant){
-                TotalTenant totalTenant = context;
-                Fragment frag = overView;
-                totalTenant.switchContent(list, frag);
-            }
-
-        }
-    }
-
- */
 
 
 
@@ -191,6 +179,8 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
 
+        DatabaseQueryClass databaseQueryClass;
+
         TextView flatNo, floor, flatfacing, noOfBedrooms ;
         TextView optionMenu, tenantInfoUpdate;
         public CustomViewHolder(@NonNull View itemView) {
@@ -200,8 +190,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
             flatfacing = itemView.findViewById(R.id.flatfacingTextView);
             noOfBedrooms = itemView.findViewById(R.id.noofbedroomsTextView);
             optionMenu = itemView.findViewById(R.id.textOption);
-            //tenantInfoUpdate = itemView.findViewById(R.id.tenantInfoUpdate);
-
+            //tenantInfoUpdate = itemView.findViewById(R.id.AddTenantId);
 
         }
     }

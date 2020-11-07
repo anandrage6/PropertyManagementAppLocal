@@ -35,9 +35,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Payments"
+            android:text="@string/addpaymentsempty"
             android:textAlignment="center"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:gravity="center_horizontal" />
     </LinearLayout>
 

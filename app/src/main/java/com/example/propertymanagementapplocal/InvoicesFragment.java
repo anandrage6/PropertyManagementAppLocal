@@ -58,6 +58,15 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
         tenantId = getArguments().getLong("2");
         Log.e("tenantId in Invoices ====> ", String.valueOf(tenantId));
 
+
+        try {
+            mtenantModelClass = databaseQueryClass.getTenantIdByFlatId(refFlatId);
+            tenantId = mtenantModelClass.getTenantId();
+            Log.e("tenantId on resume in invoices ========> ", String.valueOf(tenantId));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         /*
         //getting values by flatid
 

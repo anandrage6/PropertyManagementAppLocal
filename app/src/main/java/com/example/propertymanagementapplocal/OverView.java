@@ -30,12 +30,13 @@ public class OverView extends Fragment implements TenantCreateListener  {
     String strName, strPhone, strEmail;
     private long refFlatId;
     private long refTenantId;
-    private long refPropertyId;
+    private long tenantId;
     // private String address;
     private RecyclerView tenantRecyclerView;
     private TenantListRecyclerAdapter tenantListRecyclerAdapter;
 
     private DatabaseQueryClass databaseQueryClass ;
+    private TenantModelClass mtenantModelClass;
 
     private RelativeLayout relativeLayout;
     private LinearLayout linearLayout;
@@ -76,15 +77,15 @@ public class OverView extends Fragment implements TenantCreateListener  {
         refTenantId = getArguments().getLong("2");
         Log.e("TenantId in OverView ====> ", String.valueOf(refTenantId));
 
-        //
-        /*
-        if(getArguments()!=null)
-        {
-            refTenantId = getArguments().getInt("2", 0);
-            Log.d("TenantRefId_in_OverView : ==> ", String.valueOf(refTenantId));
+        try {
+            mtenantModelClass = databaseQueryClass.getTenantIdByFlatId(refFlatId);
+            tenantId = mtenantModelClass.getTenantId();
+            Log.e("tenantId on resume in OverView ========> ", String.valueOf(tenantId));
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
-         */
+        /*
 
         if(getArguments()!=null)
         {
@@ -92,6 +93,8 @@ public class OverView extends Fragment implements TenantCreateListener  {
             //Log.d("Tenanid :", "No Id");
             Log.d("TenantRefId_in_OverView : ==> ", String.valueOf(refTenantId));
         }
+
+         */
 
 
         //retrive full details part
@@ -179,32 +182,6 @@ public class OverView extends Fragment implements TenantCreateListener  {
             e.printStackTrace();
         }
     }
-
-
-
-
-
-    /*
-    private void openActivityAddTenant() {
-        //AddTenantsFragment addTenant = AddTenantsFragment.newInstance(refFlatId, this);
-        FragmentTransaction fr = getChildFragmentManager().beginTransaction();
-       fr.replace(R.id.frag1, new AddTenantsFragment());
-        fr.commit();
-    }
-
-     */
-
-
-/*
-    private void openActivityAddTenant() {
-
-
-        AddTenant addTenant = AddTenant.newInstance(refFlatId, this);
-        addTenant.show(getChildFragmentManager(), Config.CREATE_TENANT);
-        }
-
-
- */
 
 
     @Override

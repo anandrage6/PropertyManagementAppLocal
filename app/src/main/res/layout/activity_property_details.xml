@@ -194,11 +194,11 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="80dp"
                 android:layout_marginBottom="50dp"
-                android:text="Add Flat"
+                android:text="@string/addflatempty"
                 android:textAlignment="center"
                 android:visibility="gone"
                 tools:visibility="visible"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
 
 
     </androidx.cardview.widget.CardView>

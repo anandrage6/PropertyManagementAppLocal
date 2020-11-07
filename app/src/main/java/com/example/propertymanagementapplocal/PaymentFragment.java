@@ -53,16 +53,17 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
         tenantId = getArguments().getLong("2");
         Log.e("tenantId in Payments ===== > ", String.valueOf(tenantId));
 
-/*
+
+
         try {
             mtenantModelClass = databaseQueryClass.getTenantIdByFlatId(refFlatId);
             tenantId = mtenantModelClass.getTenantId();
-            Log.e("tenantId  in payments ========> ", String.valueOf(tenantId));
+            Log.e("tenantId on resume in Payments ========> ", String.valueOf(tenantId));
         }catch (Exception e){
             e.printStackTrace();
         }
 
- */
+
 
 
 
