@@ -53,8 +53,8 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
         holder.propertyNameTv.setText(property.getPropertyName());
         holder.propertyTvInfo.setText(property.getPropertyName());
         holder.ownerNameTv.setText(property.getOwnerName());
-        holder.addressTv.setText(property.getAddress()+", "+property.getCity()+" "+property.getState()+" - "+property.getZipCode());
-       // holder.imageView.setImageURI(Uri.parse(property.getImage()));
+        holder.addressTv.setText(property.getAddress() + ", " + property.getCity() + " " + property.getState() + " - " + property.getZipCode());
+        // holder.imageView.setImageURI(Uri.parse(property.getImage()));
         final String imageurl = property.getImage();
         holder.imageView.setVisibility(View.VISIBLE);
         Picasso.get().load(imageurl).into(holder.imageView);
@@ -64,7 +64,7 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
             @Override
             public void onClick(View view) {
 
-               Intent intent = new Intent(context, PropertyDetails.class);
+                Intent intent = new Intent(context, PropertyDetails.class);
                 intent.putExtra(Config.COLUMN_PROPERTY_ID, property.getId());
                 intent.putExtra(Config.COLUMN_PROPERTY_PROPERTYTYPE, property.getPropertyType());
                 intent.putExtra(Config.COLUMN_PROPERTY_PROPERTYNAME, property.getPropertyName());
@@ -108,16 +108,16 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
                                 Intent i = new Intent(context, updateProperty.getClass());
                                 context.startActivity(i);
                                 //updateProperty.show(((MainActivity) context).getSupportFragmentManager(), Config.UPDATE_PROPERTY);
-                                    break;
+                                break;
 
-                                    //delete case
+                            //delete case
                             case R.id.menu_item_delete:
                                 //Toast.makeText(context, "Deleted", Toast.LENGTH_LONG).show();
 
                                 PropertyModelClass mproperty = propertyList.get(position);
                                 long count = databaseQueryClass.deletePropertyById(mproperty.getId());
 
-                                if(count>0){
+                                if (count > 0) {
                                     propertyList.remove(position);
                                     notifyDataSetChanged();
                                     ((MainActivity) context).viewVisibility();
@@ -127,7 +127,7 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
 
                                 break;
 
-                                //see details case
+                            //see details case
                             case R.id.menu_item_seeDetails:
                                 Intent intent = new Intent(context, PropertyDetails.class);
                                 intent.putExtra(Config.COLUMN_PROPERTY_ID, property.getId());
@@ -160,18 +160,17 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
     }
 
 
-
-
     @Override
     public int getItemCount() {
         return propertyList.size();
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
-        TextView propertyNameTv,ownerNameTv, addressTv;
+        TextView propertyNameTv, ownerNameTv, addressTv;
         TextView propertyTvInfo;
         ImageView imageView;
-       TextView optionMenu;
+        TextView optionMenu;
+
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
             propertyNameTv = itemView.findViewById(R.id.propertyNameTextView);

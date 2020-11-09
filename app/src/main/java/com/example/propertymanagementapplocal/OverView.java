@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class OverView extends Fragment implements TenantCreateListener  {
+public class OverView extends Fragment implements TenantCreateListener {
 
     FloatingActionButton btnadd;
     TextView name, phone, email;
@@ -35,13 +35,13 @@ public class OverView extends Fragment implements TenantCreateListener  {
     private RecyclerView tenantRecyclerView;
     private TenantListRecyclerAdapter tenantListRecyclerAdapter;
 
-    private DatabaseQueryClass databaseQueryClass ;
+    private DatabaseQueryClass databaseQueryClass;
     private TenantModelClass mtenantModelClass;
 
     private RelativeLayout relativeLayout;
     private LinearLayout linearLayout;
 
-    private List<TenantModelClass> tenantList ;
+    private List<TenantModelClass> tenantList;
     private Toolbar toolbar;
 
     private long rFid;
@@ -58,16 +58,14 @@ public class OverView extends Fragment implements TenantCreateListener  {
         View view = inflater.inflate(R.layout.fragment_over_view, container, false);
 
 
-
         relativeLayout = view.findViewById(R.id.floatingButtonHide);
         linearLayout = view.findViewById(R.id.tenantListHide);
 
 
         //refFlatId = getArguments().getLong(Config.COLUMN_FLATS_ID, -1);
 
-         // rFid= getArguments().getLong("rFId");
+        // rFid= getArguments().getLong("rFId");
         //Log.d("rFid : ==> ", String.valueOf(rFid));
-
 
 
         refFlatId = getArguments().getLong("1");
@@ -81,7 +79,7 @@ public class OverView extends Fragment implements TenantCreateListener  {
             mtenantModelClass = databaseQueryClass.getTenantIdByFlatId(refFlatId);
             tenantId = mtenantModelClass.getTenantId();
             Log.e("tenantId on resume in OverView ========> ", String.valueOf(tenantId));
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -102,7 +100,7 @@ public class OverView extends Fragment implements TenantCreateListener  {
 
         databaseQueryClass = new DatabaseQueryClass(getContext());
         tenantList = new ArrayList<>();
-       // Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllTenantsByFId(refFlatId)));
+        // Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllTenantsByFId(refFlatId)));
         tenantList.addAll(databaseQueryClass.getAllTenantsByFId(refFlatId));
         //Log.d("TenantList : ==> ", String.valueOf(tenantList.size()));
         //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
@@ -141,7 +139,6 @@ public class OverView extends Fragment implements TenantCreateListener  {
     }
 
 
-
     private void openActivityAddTenant() {
         /*
        Intent i = new Intent(getActivity(), AddT.class );
@@ -150,11 +147,10 @@ public class OverView extends Fragment implements TenantCreateListener  {
 
          */
 
-        AddTenant addT =  AddTenant.newInstance(refFlatId, this);
+        AddTenant addT = AddTenant.newInstance(refFlatId, this);
         Intent i = new Intent(getActivity(), addT.getClass());
         getContext().startActivity(i);
     }
-
 
 
     public void viewVisibility() {
@@ -164,7 +160,7 @@ public class OverView extends Fragment implements TenantCreateListener  {
             } else {
                 relativeLayout.setVisibility(relativeLayout.VISIBLE);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -178,7 +174,7 @@ public class OverView extends Fragment implements TenantCreateListener  {
             } else {
                 linearLayout.setVisibility(linearLayout.VISIBLE);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

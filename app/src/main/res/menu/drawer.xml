@@ -6,18 +6,6 @@
                 android:title="Add Properties"
                 android:icon="@drawable/ic_apartment"/>
 
-            <item android:id="@+id/flats"
-                android:title="Add Flats"
-                android:icon="@drawable/ic_home"/>
-
-            <item android:id="@+id/invoices"
-                android:title="Add Invoices"
-                android:icon="@drawable/ic_invoice"/>
-
-            <item android:id="@+id/payments"
-                android:title="Add Payments"
-                android:icon="@drawable/ic_payment"/>
-
             <item android:id="@+id/settings"
                 android:title="Settings"
                 android:icon="@drawable/ic_settings"/>

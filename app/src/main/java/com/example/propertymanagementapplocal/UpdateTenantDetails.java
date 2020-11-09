@@ -144,7 +144,7 @@ public class UpdateTenantDetails extends AppCompatActivity implements AdapterVie
         final String strRentispaid = tenantModelClass.getRentIsPaid();
         rentIsPaidList = new ArrayList<>();
         rentIsPaidList.add(strRentispaid);
-        List<String> Listrentispaid =  Arrays.asList(getResources().getStringArray(R.array.Rent_is_Paid));
+        List<String> Listrentispaid = Arrays.asList(getResources().getStringArray(R.array.Rent_is_Paid));
         rentIsPaidAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, rentIsPaidList);
         spinRentIsPaid.setAdapter(rentIsPaidAdapter);
         rentIsPaidAdapter.addAll(Listrentispaid);
@@ -177,7 +177,7 @@ public class UpdateTenantDetails extends AppCompatActivity implements AdapterVie
         tvNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(UpdateTenantDetails.this, Note.class);
+                Intent i = new Intent(UpdateTenantDetails.this, Note.class);
                 i.putExtra("CurrentNote", tvNotes.getText().toString());
                 startActivityForResult(i, 1);
             }
@@ -211,11 +211,11 @@ public class UpdateTenantDetails extends AppCompatActivity implements AdapterVie
 
 
                 long id = databaseQueryClass.updateTenantInfo(tenantModelClass);
-                if(id>0){
+                if (id > 0) {
                     tenantUpdateListener.onTenantInfoUpdated(tenantModelClass, tenantItemPosition);
                     //getDialog().dismiss();
                     //Intent i = new Intent(UpdateTenantDetails.this, TenantFullDetails.class);
-                   // startActivity(i);
+                    // startActivity(i);
                     finish();
                 }
 
@@ -274,7 +274,7 @@ public class UpdateTenantDetails extends AppCompatActivity implements AdapterVie
         }
     }
 
-    public void onBackPressed(){
+    public void onBackPressed() {
         android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Confirm Exit...!!");
         alertDialogBuilder.setMessage("Are you sure you want to exit");

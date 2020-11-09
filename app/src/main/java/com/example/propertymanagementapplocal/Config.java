@@ -39,7 +39,7 @@ public class Config {
     public static final String COLUMN_TENANTS_LEASEEND = "LeaseEnd";
     public static final String COLUMN_TENANTS_RENTISPAID = "RentisPaid";
     public static final String COLUMN_TENANTS_TOTALOCCUPANTS = "TotalOccupants";
-    public static final String COLUMN_TENANTS_NOTES= "Notes";
+    public static final String COLUMN_TENANTS_NOTES = "Notes";
     public static final String COLUMN_TENANTS_RENT = "Rent";
     public static final String COLUMN_TENANTS_SECURITYDEPOSIT = "SecurityDeposit";
     //public static final String COLUMN_PT_ID = "property_fk_id";
@@ -72,7 +72,6 @@ public class Config {
     public static final String COLUMN_PAYMENT_NOTES = "Notes";
     public static final String COLUMN_TP_ID = "tenant_fk_id";
     public static final String PAYMENTS_SUB_CONSTRAINT = "tenant_sub_unique";
-
 
 
     //others for general purpose key-value pair data

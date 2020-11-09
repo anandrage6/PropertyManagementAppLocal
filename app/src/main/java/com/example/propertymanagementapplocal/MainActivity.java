@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
-    private TextView name,email;
+    private TextView name, email;
     private Toolbar toolbar;
     DatabaseHelper databaseHelper;
     FloatingActionButton btnadd;
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Property Management");
 
-        toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -94,27 +94,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 drawerLayout.closeDrawer(GravityCompat.START);
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
+
+                    //add Property
                     case R.id.property:
                         Toast.makeText(MainActivity.this, "Properties", Toast.LENGTH_SHORT).show();
                         openActivityAddProperty();
                         break;
 
-                    case R.id.flats:
-                        Toast.makeText(MainActivity.this, "Flats", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(MainActivity.this,PropertyDetails.class);
-                       // i.putExtra("intentPassed", "Intent");
-                        startActivity(i);
-                        break;
-
-                    case R.id.invoices:
-                        Toast.makeText(MainActivity.this, "invoices", Toast.LENGTH_SHORT).show();
-                        break;
-
-                    case R.id.payments:
-                        Toast.makeText(MainActivity.this, "payments", Toast.LENGTH_SHORT).show();
-                        break;
-
+                    //settings
                     case R.id.settings:
                         Toast.makeText(MainActivity.this, "settings", Toast.LENGTH_SHORT).show();
                         break;
@@ -123,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        View hView =  navigationView.getHeaderView(0);
+        View hView = navigationView.getHeaderView(0);
         name = hView.findViewById(R.id.name);
         email = hView.findViewById(R.id.email);
         name.setText("Anand");
@@ -141,11 +129,10 @@ public class MainActivity extends AppCompatActivity {
      */
 
 
-
     @Override
     protected void onResume() {
         super.onResume();
-       // showRecord();
+        // showRecord();
         propertyList.clear();
         propertyList.addAll(databaseQueryClass.getAllProperty());
 
@@ -190,13 +177,14 @@ public class MainActivity extends AppCompatActivity {
 
          */
     }
-    public void openActivityAddProperty(){
+
+    public void openActivityAddProperty() {
         Intent i = new Intent(this, AddProperty.class);
         startActivity(i);
     }
 
     public void viewVisibility() {
-        if(propertyList.isEmpty())
+        if (propertyList.isEmpty())
             propertyListEmptyTextView.setVisibility(View.VISIBLE);
         else
             propertyListEmptyTextView.setVisibility(View.GONE);
@@ -213,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(item.getItemId()==R.id.action_delete){
+        if (item.getItemId() == R.id.action_delete) {
 
             androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(this);
             alertDialogBuilder.setMessage("Are you sure, You wanted to delete all Properties?");
@@ -222,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface arg0, int arg1) {
                             boolean isAllDeleted = databaseQueryClass.deleteAllProperties();
-                            if(isAllDeleted){
+                            if (isAllDeleted) {
                                 propertyList.clear();
                                 propertyListRecyclerViewAdapter.notifyDataSetChanged();
                                 viewVisibility();
@@ -230,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
 
-            alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+            alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();

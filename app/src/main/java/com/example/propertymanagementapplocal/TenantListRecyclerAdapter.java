@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -74,80 +75,80 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
                 intent.putExtra(Config.COLUMN_TENANTS_NOTES, tenants.getNotes());
                 intent.putExtra(Config.COLUMN_TENANTS_RENT, tenants.getRentAmount());
                 intent.putExtra(Config.COLUMN_TENANTS_SECURITYDEPOSIT, tenants.getSecurityDeposit());
-               // intent.putExtra(Config.COLUMN_TENANTS_NAME, tenants.getTenantName());
+                // intent.putExtra(Config.COLUMN_TENANTS_NAME, tenants.getTenantName());
                 context.startActivity(intent);
 
             }
         });
 
-       holder.optionMenu.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               PopupMenu popupMenu = new PopupMenu(context, holder.optionMenu);
-               popupMenu.inflate(R.menu.option_menu);
-               popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                   @Override
-                   public boolean onMenuItemClick(MenuItem menuItem) {
-                       switch (menuItem.getItemId()) {
-                           case R.id.menu_item_Edit:
-                               //Toast.makeText(context, "long update", Toast.LENGTH_LONG).show();
-                               UpdateTenantDetails updateTenant = UpdateTenantDetails.newInstance(tenants.getTenantId(), tenantlistPosition, new TenantUpdateListener() {
-                                   @Override
-                                   public void onTenantInfoUpdated(TenantModelClass tenant, int position) {
-                                       tenantList.set(position, tenant);
-                                       notifyDataSetChanged();
-                                   }
-                               });
+        holder.optionMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(context, holder.optionMenu);
+                popupMenu.inflate(R.menu.option_menu);
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.menu_item_Edit:
+                                //Toast.makeText(context, "long update", Toast.LENGTH_LONG).show();
+                                UpdateTenantDetails updateTenant = UpdateTenantDetails.newInstance(tenants.getTenantId(), tenantlistPosition, new TenantUpdateListener() {
+                                    @Override
+                                    public void onTenantInfoUpdated(TenantModelClass tenant, int position) {
+                                        tenantList.set(position, tenant);
+                                        notifyDataSetChanged();
+                                    }
+                                });
 
-                               Intent i = new Intent(context, updateTenant.getClass());
-                               context.startActivity(i);
-                               break;
+                                Intent i = new Intent(context, updateTenant.getClass());
+                                context.startActivity(i);
+                                break;
 
-                               //delete case
-                           case R.id.menu_item_delete:
+                            //delete case
+                            case R.id.menu_item_delete:
 
-                               //Toast.makeText(context, "long delete", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(context, "long delete", Toast.LENGTH_LONG).show();
 
-                               TenantModelClass mTenant = tenantList.get(position);
-                               long count = databaseQueryClass.deleteTenantById(mTenant.getTenantId());
+                                TenantModelClass mTenant = tenantList.get(position);
+                                long count = databaseQueryClass.deleteTenantById(mTenant.getTenantId());
 
-                               if(count>0){
-                                   tenantList.remove(position);
-                                   notifyDataSetChanged();
+                                if (count > 0) {
+                                    tenantList.remove(position);
+                                    notifyDataSetChanged();
 
-                                   ((OverView)overView).viewVisibility();
-                                   ((OverView)overView).listVisibility();
+                                    ((OverView) overView).viewVisibility();
+                                    ((OverView) overView).listVisibility();
 
-                                   Toast.makeText(context, "Tenant deleted successfully", Toast.LENGTH_LONG).show();
-                               } else
-                                   Toast.makeText(context, "Property not deleted. Something wrong!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(context, "Tenant deleted successfully", Toast.LENGTH_LONG).show();
+                                } else
+                                    Toast.makeText(context, "Property not deleted. Something wrong!", Toast.LENGTH_LONG).show();
 
-                               break;
+                                break;
 
 
-                               //see details
-                           case R.id.menu_item_seeDetails:
-                               Intent intent = new Intent(context, TenantFullDetails.class);
-                               intent.putExtra(Config.COLUMN_TENANTS_NAME, tenants.getTenantName());
-                               intent.putExtra(Config.COLUMN_TENANTS_PHONE, tenants.getTenantphone());
-                               intent.putExtra(Config.COLUMN_TENANTS_EMAIL, tenants.getTenantEmail());
-                               intent.putExtra(Config.COLUMN_TENANTS_LEASESTART, tenants.getLeaseStart());
-                               intent.putExtra(Config.COLUMN_TENANTS_LEASEEND, tenants.getLeaseEnd());
-                               intent.putExtra(Config.COLUMN_TENANTS_RENTISPAID, tenants.getRentIsPaid());
-                               intent.putExtra(Config.COLUMN_TENANTS_TOTALOCCUPANTS, tenants.getTotalOccupants());
-                               intent.putExtra(Config.COLUMN_TENANTS_NOTES, tenants.getNotes());
-                               intent.putExtra(Config.COLUMN_TENANTS_RENT, tenants.getRentAmount());
-                               intent.putExtra(Config.COLUMN_TENANTS_SECURITYDEPOSIT, tenants.getSecurityDeposit());
-                               // intent.putExtra(Config.COLUMN_TENANTS_NAME, tenants.getTenantName());
-                               context.startActivity(intent);
-                               break;
-                       }
-                       return false;
-                   }
-               });
-               popupMenu.show();
-           }
-       });
+                            //see details
+                            case R.id.menu_item_seeDetails:
+                                Intent intent = new Intent(context, TenantFullDetails.class);
+                                intent.putExtra(Config.COLUMN_TENANTS_NAME, tenants.getTenantName());
+                                intent.putExtra(Config.COLUMN_TENANTS_PHONE, tenants.getTenantphone());
+                                intent.putExtra(Config.COLUMN_TENANTS_EMAIL, tenants.getTenantEmail());
+                                intent.putExtra(Config.COLUMN_TENANTS_LEASESTART, tenants.getLeaseStart());
+                                intent.putExtra(Config.COLUMN_TENANTS_LEASEEND, tenants.getLeaseEnd());
+                                intent.putExtra(Config.COLUMN_TENANTS_RENTISPAID, tenants.getRentIsPaid());
+                                intent.putExtra(Config.COLUMN_TENANTS_TOTALOCCUPANTS, tenants.getTotalOccupants());
+                                intent.putExtra(Config.COLUMN_TENANTS_NOTES, tenants.getNotes());
+                                intent.putExtra(Config.COLUMN_TENANTS_RENT, tenants.getRentAmount());
+                                intent.putExtra(Config.COLUMN_TENANTS_SECURITYDEPOSIT, tenants.getSecurityDeposit());
+                                // intent.putExtra(Config.COLUMN_TENANTS_NAME, tenants.getTenantName());
+                                context.startActivity(intent);
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
 
 
         /*
@@ -187,9 +188,10 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
 
     public class tenantCustomViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name,email,phone,leaseStart,leaseEnd,rentIsPaid,totalOccupants,notes,rentAmount,securityDeposit;
+        TextView name, email, phone, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rentAmount, securityDeposit;
         TextView tenantExtraname;
         TextView optionMenu;
+
         public tenantCustomViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -197,9 +199,8 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
             name = itemView.findViewById(R.id.tenantName);
             email = itemView.findViewById(R.id.tenantEmail);
             phone = itemView.findViewById(R.id.tenantPhone);
+            //phone.setMovementMethod(LinkMovementMethod.getInstance());
             optionMenu = itemView.findViewById(R.id.textOption);
-
-
 
 
         }

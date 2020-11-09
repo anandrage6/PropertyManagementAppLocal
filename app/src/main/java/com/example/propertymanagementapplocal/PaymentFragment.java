@@ -28,9 +28,9 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
     private RecyclerView paymentRecyclerView;
     private PaymentListRecyclerView paymentListRecyclerViewAdapter;
 
-    private DatabaseQueryClass databaseQueryClass ;
+    private DatabaseQueryClass databaseQueryClass;
 
-    private List<PaymentsModelClass> paymentList ;
+    private List<PaymentsModelClass> paymentList;
     private LinearLayout paymentEmptyListLinearLayout;
 
     private TenantModelClass mtenantModelClass;
@@ -44,7 +44,7 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v =  inflater.inflate(R.layout.fragment_payment, container, false);
+        View v = inflater.inflate(R.layout.fragment_payment, container, false);
 
         refFlatId = getArguments().getLong("1");
         Log.d("flatRefFId_in_payments : ==> ", String.valueOf(refFlatId));
@@ -54,23 +54,17 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
         Log.e("tenantId in Payments ===== > ", String.valueOf(tenantId));
 
 
-
         try {
             mtenantModelClass = databaseQueryClass.getTenantIdByFlatId(refFlatId);
             tenantId = mtenantModelClass.getTenantId();
             Log.e("tenantId on resume in Payments ========> ", String.valueOf(tenantId));
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-
-
-
-
         //emptyListvisibility
         paymentEmptyListLinearLayout = v.findViewById(R.id.paymentEmptyList);
-
 
 
         //floating button
@@ -106,8 +100,7 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
         listvisibility();
 
 
-
-        return  v;
+        return v;
     }
 
     private void openActivityAddTenant() {
@@ -141,7 +134,7 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
             } else {
                 paymentEmptyListLinearLayout.setVisibility(paymentEmptyListLinearLayout.VISIBLE);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

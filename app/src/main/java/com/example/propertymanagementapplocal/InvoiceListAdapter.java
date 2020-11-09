@@ -59,7 +59,7 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
 
         //list details
 
-        holder.invoiceIdTv.setText(" #"+id);
+        holder.invoiceIdTv.setText(" #" + id);
         holder.invoiceissuedDateTv.setText(invoice.getInvoiceIssued());
         holder.paymentduedateTv.setText(invoice.getPaymentDue());
         holder.rentTextView.setText(invoice.getRent());
@@ -150,7 +150,7 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
                                 });
                                 Intent i = new Intent(context, updateInvoiceDetails.getClass());
                                 context.startActivity(i);
-                               break;
+                                break;
                             //delete case
                             case R.id.menu_item_delete:
 
@@ -158,11 +158,11 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
                                 InvoiceModelClass mInvoice = invoiceList.get(position);
                                 long count = databaseQueryClass.deleteInvoiceById(mInvoice.getInvoiceId());
 
-                                if(count>0){
+                                if (count > 0) {
                                     invoiceList.remove(position);
                                     notifyDataSetChanged();
                                     // ((TotalTenant) context);
-                                    ((InvoicesFragment)invoicesFragment).viewVisibility();
+                                    ((InvoicesFragment) invoicesFragment).viewVisibility();
                                     Toast.makeText(context, "Tenant deleted successfully", Toast.LENGTH_LONG).show();
                                 } else
                                     Toast.makeText(context, "Property not deleted. Something wrong!", Toast.LENGTH_LONG).show();
@@ -214,7 +214,6 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
 
         public invoiceCustomViewHolder(@NonNull View itemView) {
             super(itemView);
-
 
 
             invoiceissuedDateTv = itemView.findViewById(R.id.invoiceissuedDateTextView);

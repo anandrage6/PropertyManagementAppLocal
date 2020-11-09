@@ -19,7 +19,7 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 public class AddInvoices extends AppCompatActivity {
-   // private static long FlatId;
+    // private static long FlatId;
     private static long refTenantId;
     private static InvoiceCreateListener invoiceCreateListener;
 
@@ -50,8 +50,7 @@ public class AddInvoices extends AppCompatActivity {
     }
 
 
-
-//notes activity result
+    //notes activity result
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -69,17 +68,17 @@ public class AddInvoices extends AppCompatActivity {
 
         if (requestCode == 2) {
             if (resultCode == Activity.RESULT_OK) {
-                 Title = data.getStringExtra("title");
-                 Details = data.getStringExtra("details");
-                 Amount = data.getStringExtra("amount");
+                Title = data.getStringExtra("title");
+                Details = data.getStringExtra("details");
+                Amount = data.getStringExtra("amount");
 
                 amount.setText(Amount);
                 details.setText(Details);
                 title.setText(Title);
 
-                if(!Amount.isEmpty() && !Details.isEmpty() && !Title.isEmpty()){
+                if (!Amount.isEmpty() && !Details.isEmpty() && !Title.isEmpty()) {
                     linearLayout.setVisibility(linearLayout.VISIBLE);
-                }else{
+                } else {
                     linearLayout.setVisibility(linearLayout.GONE);
 
                 }
@@ -88,7 +87,6 @@ public class AddInvoices extends AppCompatActivity {
 
         }
     }
-
 
 
     @SuppressLint("LongLogTag")
@@ -115,16 +113,14 @@ public class AddInvoices extends AppCompatActivity {
         //String intentValue = getIntent().getStringExtra("intentPassed");
 
 
-
         linearLayout.setVisibility(linearLayout.GONE);
-
 
 
         //notes
         note.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(AddInvoices.this, InvoiceNote.class);
+                Intent i = new Intent(AddInvoices.this, InvoiceNote.class);
                 i.putExtra("CurrentNote", note.getText().toString());
                 startActivityForResult(i, 1);
 
@@ -135,7 +131,7 @@ public class AddInvoices extends AppCompatActivity {
         addLine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(AddInvoices.this, InvoiceAddNewLine.class);
+                Intent i = new Intent(AddInvoices.this, InvoiceAddNewLine.class);
                 i.putExtra("CurrentTitle", title.getText().toString());
                 i.putExtra("CurrentDetails", details.getText().toString());
                 i.putExtra("CurrentAmount", amount.getText().toString());
@@ -221,9 +217,9 @@ public class AddInvoices extends AppCompatActivity {
         String strDetails = details.getText().toString();
         try {
 
-                strAmount = Integer.parseInt(amount.getText().toString());
+            strAmount = Integer.parseInt(amount.getText().toString());
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         strRent = Integer.parseInt(rent.getText().toString());
@@ -231,11 +227,11 @@ public class AddInvoices extends AppCompatActivity {
         String strpaymentdue = paymentdue.getText().toString();
         String strNote = note.getText().toString();
         String Amount = amount.getText().toString();
-            String totalrent = String.valueOf(strRent - strAmount);
-            Log.d("totalrent : ==> ", totalrent);
+        String totalrent = String.valueOf(strRent - strAmount);
+        Log.d("totalrent : ==> ", totalrent);
 
 
-        InvoiceModelClass invoice = new InvoiceModelClass(-1, strTitle, strDetails, Amount, totalrent, strInvoiceIssued, strpaymentdue, strNote );
+        InvoiceModelClass invoice = new InvoiceModelClass(-1, strTitle, strDetails, Amount, totalrent, strInvoiceIssued, strpaymentdue, strNote);
 
         DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(this);
 

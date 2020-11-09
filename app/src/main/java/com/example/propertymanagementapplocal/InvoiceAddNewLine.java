@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 public class InvoiceAddNewLine extends AppCompatActivity {
 
-    EditText title,details,amount;
+    EditText title, details, amount;
     Button save, cancel;
     String strTitle, strDetails, strAmount;
 

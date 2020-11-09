@@ -38,7 +38,7 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
     String strPaidwith, strTaxStatus;
 
     private static long reftenantId;
-    private  static  PaymentsCreateListener paymentsCreateListener;
+    private static PaymentsCreateListener paymentsCreateListener;
 
     AppCompatRadioButton taxableRadioBtn, nontaxableRadioBtn;
 
@@ -67,7 +67,7 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
 
         //tool bar
         toolbar = findViewById(R.id.toolbar);
-       // setSupportActionBar(toolbar);
+        // setSupportActionBar(toolbar);
         //getSupportActionBar().setTitle("Add Payments");
 
 
@@ -82,8 +82,6 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
 
         nontaxableRadioBtn = findViewById(R.id.nontaxableRadioButton);
         taxableRadioBtn = findViewById(R.id.taxableRadioButton);
-
-
 
 
         //spinner for paid with
@@ -163,7 +161,7 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
         pNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(AddPayments.this, PaymentNote.class);
+                Intent i = new Intent(AddPayments.this, PaymentNote.class);
                 i.putExtra("CurrentNote", pNotes.getText().toString());
                 startActivityForResult(i, 1);
 
@@ -176,29 +174,29 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
     //radio button taxable and nontaxable
 
     @SuppressLint("LongLogTag")
-    public void onRadioButtonClicked(View v){
+    public void onRadioButtonClicked(View v) {
 
-        boolean isSelected = ((AppCompatRadioButton)v).isChecked();
-        switch (v.getId()){
+        boolean isSelected = ((AppCompatRadioButton) v).isChecked();
+        switch (v.getId()) {
             case R.id.nontaxableRadioButton:
-            if(isSelected){
-                nontaxableRadioBtn.setTextColor(Color.WHITE);
-                taxableRadioBtn.setTextColor(Color.BLACK);
-                strTaxStatus = nontaxableRadioBtn.getText().toString();
-                //Log.e("StrTaxstatus_nontax : ==> ", strTaxStatus);
-                //Toast.makeText(AddPayments.this, "nonTax: ==> "+strTaxStatus, Toast.LENGTH_LONG).show();
+                if (isSelected) {
+                    nontaxableRadioBtn.setTextColor(Color.WHITE);
+                    taxableRadioBtn.setTextColor(Color.BLACK);
+                    strTaxStatus = nontaxableRadioBtn.getText().toString();
+                    //Log.e("StrTaxstatus_nontax : ==> ", strTaxStatus);
+                    //Toast.makeText(AddPayments.this, "nonTax: ==> "+strTaxStatus, Toast.LENGTH_LONG).show();
 
-            }
-            break;
+                }
+                break;
             case R.id.taxableRadioButton:
-                if(isSelected){
+                if (isSelected) {
                     nontaxableRadioBtn.setTextColor(Color.BLACK);
                     taxableRadioBtn.setTextColor(Color.WHITE);
                     strTaxStatus = taxableRadioBtn.getText().toString();
                     //Log.e("StrTaxstatus tax : ==> ", strTaxStatus);
                     //Toast.makeText(AddPayments.this, "Tax: ==> "+strTaxStatus, Toast.LENGTH_LONG).show();
                 }
-            break;
+                break;
         }
 
     }
@@ -233,7 +231,7 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-            strPaidwith = ""+adapterView.getItemAtPosition(i).toString();
+        strPaidwith = "" + adapterView.getItemAtPosition(i).toString();
     }
 
     @Override

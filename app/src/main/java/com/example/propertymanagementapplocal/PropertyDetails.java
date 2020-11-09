@@ -22,14 +22,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class PropertyDetails extends AppCompatActivity implements FlatsCreateListener {
-    TextView locationTv,ownerNameTv, propertyNameTv;
+    TextView locationTv, ownerNameTv, propertyNameTv;
     ImageView imagetv;
     private long propertyId;
     String strLocationTv, strCity, strState, strZipCode, strownerNameTv, stringimage, totalAddress, strPropertyName, strPropertyType, strDescription;
     private Toolbar toolbar;
     ImageButton editBtn;
     int itemPosition;
-
 
 
     //floating add button
@@ -55,9 +54,6 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
 
     private RecyclerView flatsrecyclerView;
     private FlatsListRecyclerAdapter flatsListRecyclerAdapter;
-
-
-
 
 
     @Override
@@ -91,16 +87,16 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
                 //Toast.makeText(getApplicationContext(),"Edit", Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(PropertyDetails.this, UpdateProperty2.class);
-                intent.putExtra("PROPERTYID",propertyId);
-                intent.putExtra("IMAGE",stringimage);
-                intent.putExtra("PROPERTYTYPE",strPropertyType);
-                intent.putExtra("PROPERTYNAME",strPropertyName);
-                intent.putExtra("OWNERNAME",strownerNameTv);
-                intent.putExtra("ADDRESS",strLocationTv);
-                intent.putExtra("CITY",strCity);
-                intent.putExtra("STATE",strState);
-                intent.putExtra("ZIPCODE",strZipCode);
-                intent.putExtra("DESCRIPTION",strDescription);
+                intent.putExtra("PROPERTYID", propertyId);
+                intent.putExtra("IMAGE", stringimage);
+                intent.putExtra("PROPERTYTYPE", strPropertyType);
+                intent.putExtra("PROPERTYNAME", strPropertyName);
+                intent.putExtra("OWNERNAME", strownerNameTv);
+                intent.putExtra("ADDRESS", strLocationTv);
+                intent.putExtra("CITY", strCity);
+                intent.putExtra("STATE", strState);
+                intent.putExtra("ZIPCODE", strZipCode);
+                intent.putExtra("DESCRIPTION", strDescription);
                 intent.putExtra("itemPosition", itemPosition);
                 startActivity(intent);
 
@@ -172,7 +168,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
 //        strState = getIntent().getStringExtra(Config.COLUMN_PROPERTY_STATE);
         strZipCode = propertyModelClass.getZipCode();
 //        strZipCode = getIntent().getStringExtra(Config.COLUMN_PROPERTY_ZIPCODE);
-        totalAddress = strLocationTv+", "+strCity+" "+strState+" - "+strZipCode;
+        totalAddress = strLocationTv + ", " + strCity + " " + strState + " - " + strZipCode;
         strPropertyName = propertyModelClass.getPropertyName();
 //        strPropertyName = getIntent().getStringExtra(Config.COLUMN_PROPERTY_PROPERTYNAME);
         strPropertyType = propertyModelClass.getPropertyType();
@@ -186,7 +182,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         try {
             stringimage = propertyModelClass.getImage();
 //            stringimage = getIntent().getStringExtra(Config.COLUMN_PROPERTY_IMAGE);
-        }catch(Exception e){
+        } catch (Exception e) {
 
         }
 
@@ -195,7 +191,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         locationTv.setText(totalAddress);
         ownerNameTv.setText(strownerNameTv);
 
-        if(stringimage!= null) {
+        if (stringimage != null) {
             imagetv.setImageURI(Uri.parse(stringimage));
         }
 
@@ -299,7 +295,7 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
             } else {
                 textViewEmptyList.setVisibility(View.GONE);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

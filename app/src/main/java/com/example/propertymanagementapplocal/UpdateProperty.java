@@ -48,16 +48,16 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
     private Uri imageUri;
 
     // permission constants
-    private   static  final  int CAMERA_REQUEST_CODE = 100;
-    private   static  final  int STORAGE_REQUEST_CODE = 101;
+    private static final int CAMERA_REQUEST_CODE = 100;
+    private static final int STORAGE_REQUEST_CODE = 101;
 
     //image pick constants
-    private   static  final  int IMAGE_PICK_CAMERA_CODE = 102;
-    private   static  final  int IMAGE_PICK_GALLERY_CODE = 103;
+    private static final int IMAGE_PICK_CAMERA_CODE = 102;
+    private static final int IMAGE_PICK_GALLERY_CODE = 103;
 
     //array of permissions
-    private  String[] cameraPermissions;
-    private  String[] storagePermissions;
+    private String[] cameraPermissions;
+    private String[] storagePermissions;
 
 
     private String propertyName = "", ownerName = "", address = "", city = "", zipcode = "", description = "", state = "", propertyType = "", image = "";
@@ -90,7 +90,6 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
         return updateProperty;
 
     }
-
 
 
     @Override
@@ -135,7 +134,7 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
         String cState = mPropertyModelClass.getState();
         cstates = new ArrayList<String>();
         cstates.add(cState);
-        List<String> allStates =  Arrays.asList(getResources().getStringArray(R.array.States));
+        List<String> allStates = Arrays.asList(getResources().getStringArray(R.array.States));
         stateAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, cstates);
         stateSpin.setAdapter(stateAdapter);
         stateAdapter.addAll(allStates);
@@ -150,7 +149,6 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
         propertyTypeSpin.setAdapter(propertyTypeAdapter);
         propertyTypeAdapter.addAll(allPropertyTypes);
         propertyTypeSpin.setOnItemSelectedListener(this);
-
 
 
         updateSavebutton.setOnClickListener(new View.OnClickListener() {
@@ -175,7 +173,7 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
                 mPropertyModelClass.setImage(image);
 
                 long id = databaseQueryClass.updatePropertyInfo(mPropertyModelClass);
-                if(id>0){
+                if (id > 0) {
                     propertyUpdateListener.onPropertyInfoUpdated(mPropertyModelClass, propertyItemPosition);
                     Intent i = new Intent(UpdateProperty.this, MainActivity.class);
                     startActivity(i);
@@ -212,7 +210,7 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
         });
 
 
-        cameraPermissions = new  String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
         //imageButton
@@ -228,10 +226,10 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        if(adapterView == stateSpin) {
+        if (adapterView == stateSpin) {
             state = adapterView.getItemAtPosition(i).toString();
-        }else if(adapterView == propertyTypeSpin){
-            propertyType =  adapterView.getItemAtPosition(i).toString();
+        } else if (adapterView == propertyTypeSpin) {
+            propertyType = adapterView.getItemAtPosition(i).toString();
         }
 
     }
@@ -241,7 +239,7 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
 
     }
 
-    public void onBackPressed(){
+    public void onBackPressed() {
         android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Confirm Exit...!!");
         alertDialogBuilder.setMessage("Are you sure you want to exit");
@@ -272,20 +270,18 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                if ( i == 0){
+                if (i == 0) {
                     //if 0 then open the camera
-                    if(!checkCameraPermission()){
+                    if (!checkCameraPermission()) {
                         requestCameraPermission();
-                    }
-                    else {
+                    } else {
                         pickFormCamera();
                     }
-                }
-                else if(i == 1){
+                } else if (i == 1) {
                     //if 1 then open the camera
-                    if(!checkStoragePermission()){
+                    if (!checkStoragePermission()) {
                         requestStoragePermission();
-                    }else{
+                    } else {
                         pickFromStorage();
                     }
                 }
@@ -297,7 +293,7 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
 
     private void pickFromStorage() {
         //get image from gallery
-        Intent galleryIntent =  new Intent(Intent.ACTION_PICK);
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK);
         galleryIntent.setType("image/*");
         startActivityForResult(galleryIntent, IMAGE_PICK_GALLERY_CODE);
 
@@ -310,32 +306,33 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
         values.put(MediaStore.Images.Media.DESCRIPTION, "Image description");
 
         imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-        Intent cameraIntent =  new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
         startActivityForResult(cameraIntent, IMAGE_PICK_CAMERA_CODE);
 
     }
 
 
-    private  Boolean checkStoragePermission(){
+    private Boolean checkStoragePermission() {
         boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                ==(PackageManager.PERMISSION_GRANTED);
+                == (PackageManager.PERMISSION_GRANTED);
         return result;
     }
 
-    private void  requestStoragePermission(){
+    private void requestStoragePermission() {
         ActivityCompat.requestPermissions(this, storagePermissions, STORAGE_REQUEST_CODE);
     }
 
-    private boolean checkCameraPermission(){
-        boolean result = ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA)
-                ==(PackageManager.PERMISSION_GRANTED);
+    private boolean checkCameraPermission() {
+        boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                == (PackageManager.PERMISSION_GRANTED);
         boolean result1 = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                ==(PackageManager.PERMISSION_GRANTED);
+                == (PackageManager.PERMISSION_GRANTED);
         return result && result1;
 
     }
-    public void requestCameraPermission(){
+
+    public void requestCameraPermission() {
         ActivityCompat.requestPermissions(this, cameraPermissions, CAMERA_REQUEST_CODE);
     }
 
@@ -343,28 +340,28 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        switch (requestCode){
+        switch (requestCode) {
             case CAMERA_REQUEST_CODE: {
-                if(grantResults.length>0){
+                if (grantResults.length > 0) {
 
                     boolean cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     boolean storageAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-                    if(cameraAccepted && storageAccepted){
+                    if (cameraAccepted && storageAccepted) {
                         pickFormCamera();
-                    }else {
+                    } else {
                         Toast.makeText(this, "Camera permission required!", Toast.LENGTH_LONG).show();
                     }
 
                 }
             }
             break;
-            case  STORAGE_REQUEST_CODE: {
-                if(grantResults.length>0){
+            case STORAGE_REQUEST_CODE: {
+                if (grantResults.length > 0) {
                     boolean storageAccepetd = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                    if(storageAccepetd){
+                    if (storageAccepetd) {
                         pickFromStorage();
 
-                    }else {
+                    } else {
                         Toast.makeText(this, "Storage permission required!", Toast.LENGTH_LONG).show();
                     }
 
@@ -377,27 +374,27 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
-        if(resultCode == RESULT_OK){
-            if(requestCode == IMAGE_PICK_GALLERY_CODE){
+        if (resultCode == RESULT_OK) {
+            if (requestCode == IMAGE_PICK_GALLERY_CODE) {
                 CropImage.activity(data.getData())
                         .setGuidelines(CropImageView.Guidelines.ON)
-                        .setAspectRatio(1,1)
+                        .setAspectRatio(1, 1)
                         .start(this);
-            }else if(requestCode == IMAGE_PICK_CAMERA_CODE){
+            } else if (requestCode == IMAGE_PICK_CAMERA_CODE) {
                 CropImage.activity(imageUri)
                         .setGuidelines(CropImageView.Guidelines.ON)
-                        .setAspectRatio(1,1)
+                        .setAspectRatio(1, 1)
                         .start(this);
 
-            }else if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+            } else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
                 CropImage.ActivityResult result = CropImage.getActivityResult(data);
-                if(resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     Uri resultUri = result.getUri();
                     imageUri = resultUri;
                     imageButton.setImageURI(resultUri);
-                }else if(resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
+                } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                     Exception error = result.getError();
-                    Toast.makeText(this, ""+error, Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "" + error, Toast.LENGTH_LONG).show();
 
                 }
 
@@ -406,7 +403,6 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
 
         super.onActivityResult(requestCode, resultCode, data);
     }
-
 
 
 }

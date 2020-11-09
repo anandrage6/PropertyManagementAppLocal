@@ -88,7 +88,7 @@ public class UpdateFlat extends AppCompatActivity implements AdapterView.OnItemS
         final String strfaltFacing = mflatsModelClass.getFaltfacing();
         flatFacingList = new ArrayList<String>();
         flatFacingList.add(strfaltFacing);
-        List<String> ListFlatFacing =  Arrays.asList(getResources().getStringArray(R.array.Flat_Facing));
+        List<String> ListFlatFacing = Arrays.asList(getResources().getStringArray(R.array.Flat_Facing));
         flatFacingAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, flatFacingList);
         flatFacing.setAdapter(flatFacingAdapter);
         flatFacingAdapter.addAll(ListFlatFacing);
@@ -98,7 +98,7 @@ public class UpdateFlat extends AppCompatActivity implements AdapterView.OnItemS
         String strNoOfBedrooms = mflatsModelClass.getNoofbedrooms();
         noOfBedroomsList = new ArrayList<String>();
         noOfBedroomsList.add(strNoOfBedrooms);
-        List<String> ListNoOfBedrooms =  Arrays.asList(getResources().getStringArray(R.array.Number_of_Bedrooms));
+        List<String> ListNoOfBedrooms = Arrays.asList(getResources().getStringArray(R.array.Number_of_Bedrooms));
         noOfBedroomsAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, noOfBedroomsList);
         noOfBedrooms.setAdapter(noOfBedroomsAdapter);
         noOfBedroomsAdapter.addAll(ListNoOfBedrooms);
@@ -118,7 +118,7 @@ public class UpdateFlat extends AppCompatActivity implements AdapterView.OnItemS
                 mflatsModelClass.setNoofbedrooms(noOfBedroomsStr);
 
                 long id = databaseQueryClass.updateFlatInfo(mflatsModelClass);
-                if(id>0){
+                if (id > 0) {
                     flatUpdateListener.onFlatInfoUpdated(mflatsModelClass, flatItemPosition);
                     //getDialog().dismiss();
                     //Intent i = new Intent(UpdateFlat.this, PropertyDetails.class);
@@ -158,10 +158,10 @@ public class UpdateFlat extends AppCompatActivity implements AdapterView.OnItemS
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        if(adapterView == flatFacing) {
+        if (adapterView == flatFacing) {
             flaFacingStr = adapterView.getItemAtPosition(i).toString();
-        }else if(adapterView == noOfBedrooms){
-            noOfBedroomsStr =  adapterView.getItemAtPosition(i).toString();
+        } else if (adapterView == noOfBedrooms) {
+            noOfBedroomsStr = adapterView.getItemAtPosition(i).toString();
         }
 
     }
@@ -171,7 +171,7 @@ public class UpdateFlat extends AppCompatActivity implements AdapterView.OnItemS
 
     }
 
-    public void onBackPressed(){
+    public void onBackPressed() {
         android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Confirm Exit...!!");
         alertDialogBuilder.setMessage("Are you sure you want to exit");

@@ -133,12 +133,12 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
                                 PaymentsModelClass mPayment = paymentList.get(position);
                                 long count = databaseQueryClass.deletePaymentsById(mPayment.getPaymentId());
 
-                                if(count>0){
+                                if (count > 0) {
                                     paymentList.remove(position);
                                     notifyDataSetChanged();
                                     // ((TotalTenant) context);
 
-                                    ((PaymentFragment)paymentFragment).listvisibility();
+                                    ((PaymentFragment) paymentFragment).listvisibility();
                                     Toast.makeText(context, "Tenant deleted successfully", Toast.LENGTH_LONG).show();
                                 } else
                                     Toast.makeText(context, "Property not deleted. Something wrong!", Toast.LENGTH_LONG).show();
@@ -180,6 +180,7 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
 
         TextView receivedfrom, dateReceived, amount;
         TextView optionMenu;
+
         public PaymentViewHolder(@NonNull View itemView) {
             super(itemView);
             receivedfrom = itemView.findViewById(R.id.paymentReceivedFromTextView);

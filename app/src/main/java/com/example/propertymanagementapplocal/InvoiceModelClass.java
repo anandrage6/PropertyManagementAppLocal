@@ -3,7 +3,7 @@ package com.example.propertymanagementapplocal;
 public class InvoiceModelClass {
 
     private long invoiceId;
-    private  String title, details, amount, rent, invoiceIssued, paymentDue, notes;
+    private String title, details, amount, rent, invoiceIssued, paymentDue, notes;
 
     //empty Constructor
     public InvoiceModelClass() {

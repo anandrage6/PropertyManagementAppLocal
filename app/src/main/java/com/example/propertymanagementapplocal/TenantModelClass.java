@@ -1,9 +1,9 @@
 package com.example.propertymanagementapplocal;
 
 public class TenantModelClass {
- private long tenantId;
- private String tenantName, tenantphone, tenantEmail, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rentAmount, securityDeposit;
- long fTId;
+    private long tenantId;
+    private String tenantName, tenantphone, tenantEmail, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rentAmount, securityDeposit;
+    long fTId;
 
 
     public TenantModelClass() {

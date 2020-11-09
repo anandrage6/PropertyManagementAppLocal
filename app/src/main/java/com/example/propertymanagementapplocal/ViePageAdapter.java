@@ -22,7 +22,7 @@ public class ViePageAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-       return fragmentList.get(position);
+        return fragmentList.get(position);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class ViePageAdapter extends FragmentPagerAdapter {
         return fragmentList.size();
     }
 
-    public  void  addFragnment(Fragment fragment, String title){
+    public void addFragnment(Fragment fragment, String title) {
         fragmentList.add(fragment);
         fragmentTitle.add(title);
     }

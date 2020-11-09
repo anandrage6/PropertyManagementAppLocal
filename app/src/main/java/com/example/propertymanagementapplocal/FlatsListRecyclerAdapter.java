@@ -63,7 +63,6 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
          */
 
 
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,7 +81,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
                 //fragmentJump(flats);
 
 
-                Intent intent = new Intent(context,TotalTenant.class);
+                Intent intent = new Intent(context, TotalTenant.class);
 
                 intent.putExtra(Config.COLUMN_FLATS_ID, flats.getFlatId());
                 intent.putExtra(Config.COLUMN_FLATS_FLOOR, flats.getFloor());
@@ -99,7 +98,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
         //tenant status show
 
 
-            //update/see details/ delete
+        //update/see details/ delete
         holder.optionMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,7 +109,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
 
-                        switch (menuItem.getItemId()){
+                        switch (menuItem.getItemId()) {
                             case R.id.menu_item_Edit:
                                 //Toast.makeText(context, "Edit", Toast.LENGTH_LONG).show();
 
@@ -132,10 +131,10 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
                                 DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(context);
                                 boolean isDeleted = databaseQueryClass.deleteFlatById(mflat.getFlatId());
 
-                                if(isDeleted) {
+                                if (isDeleted) {
                                     flatsList.remove(mflat);
                                     notifyDataSetChanged();
-                                   // ((SubjectListActivity) context).viewVisibility();
+                                    // ((SubjectListActivity) context).viewVisibility();
                                     ((PropertyDetails) context).viewVisibility();
                                     Toast.makeText(context, " deleted ", Toast.LENGTH_SHORT).show();
                                 } else
@@ -144,7 +143,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
                             case R.id.menu_item_seeDetails:
                                 //Toast.makeText(context, "see details", Toast.LENGTH_LONG).show();
 
-                                Intent intent = new Intent(context,TotalTenant.class);
+                                Intent intent = new Intent(context, TotalTenant.class);
 
                                 intent.putExtra(Config.COLUMN_FLATS_ID, flats.getFlatId());
                                 intent.putExtra(Config.COLUMN_FLATS_FLOOR, flats.getFloor());
@@ -169,11 +168,10 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
     }
 
 
-
     @Override
     public int getItemCount() {
 
-        return flatsList.size() ;
+        return flatsList.size();
 
     }
 
@@ -181,8 +179,9 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
 
         DatabaseQueryClass databaseQueryClass;
 
-        TextView flatNo, floor, flatfacing, noOfBedrooms ;
+        TextView flatNo, floor, flatfacing, noOfBedrooms;
         TextView optionMenu, tenantInfoUpdate;
+
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
             flatNo = itemView.findViewById(R.id.flatNoTextView);

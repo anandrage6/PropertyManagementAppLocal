@@ -23,7 +23,10 @@ import android.widget.Toast;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
 
@@ -44,6 +47,11 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
     ImageButton incrementBtn, decrementBtn;
     int count = 0;
 
+    String strDate1 = "00/00/0000";
+    String strDate2 = "00/00/0000";
+
+    Date date1, date2;
+
     //Awesome Validation
     AwesomeValidation awesomeValidation;
 
@@ -60,7 +68,6 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
         AddTenant addTenant = new AddTenant();
         return addTenant;
     }
-
 
 
     @Override
@@ -109,7 +116,7 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
         */
 
 
-       //Awesome Validation
+        //Awesome Validation
 
         awesomeValidation = new AwesomeValidation(BASIC);
         awesomeValidation.addValidation(AddTenant.this, R.id.tenantNameEditText, "[a-zA-Z\\s]+", R.string.err_tenantName);
@@ -120,7 +127,7 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
         tvNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(AddTenant.this, Note.class);
+                Intent i = new Intent(AddTenant.this, Note.class);
                 i.putExtra("CurrentNote", tvNotes.getText().toString());
                 startActivityForResult(i, 1);
             }
@@ -134,7 +141,6 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
        Log.d("RefFlatId in AddT : ==>", String.valueOf(FlatId));
 
          */
-
 
 
         //increment value part
@@ -173,16 +179,34 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
         tvLeaseStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(AddTenant.this, new DatePickerDialog.OnDateSetListener() {
+                final DatePickerDialog datePickerDialog = new DatePickerDialog(AddTenant.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         month = month + 1;
-                        String date = day + "/" + month + "/" + year;
-                        tvLeaseStart.setText(date);
+                        strDate1 = day + "/" + month + "/" + year;
 
+                        //tvLeaseStart.setText(strDate1);
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
+                        try {
+                            date1 = simpleDateFormat.parse(strDate1);
+                            date2 = simpleDateFormat.parse(strDate2);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        if(date1.compareTo(date2) > 0){
+                            tvLeaseStart.setText(strDate1);
+                        }else if(date1.compareTo(date2) == 0){
+                            tvLeaseStart.setText(strDate1);
+                        }else{
+                            Toast.makeText(getApplicationContext(), "Lease Start is less than Lease End", Toast.LENGTH_LONG).show();
+                        }
 
                     }
                 }, year, month, day);
+
+                //disable future date
+                //datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+
                 datePickerDialog.show();
             }
         });
@@ -195,10 +219,28 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         month = month + 1;
-                        String date = day + "/" + month + "/" + year;
-                        tvLeaseEnd.setText(date);
+                         strDate2 = day + "/" + month + "/" + year;
+
+                       SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
+                        try {
+                            date1 = simpleDateFormat.parse(strDate1);
+                            date2 = simpleDateFormat.parse(strDate2);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        if(date1.compareTo(date2) < 0){
+                            tvLeaseEnd.setText(strDate2);
+                        }else if(date1.compareTo(date2) ==0){
+                            tvLeaseEnd.setText(strDate2);
+                        }else{
+                            Toast.makeText(getApplicationContext(), "Lease End is less than Lease Start", Toast.LENGTH_LONG).show();
+                        }
+
                     }
                 }, year, month, day);
+
+                //disable past date
+               // datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
             }
         });
@@ -222,7 +264,7 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
 
     private void getData() {
 
-        if(awesomeValidation.validate()) {
+        if (awesomeValidation.validate()) {
             String name = edtTenantName.getText().toString();
             String phone = edtPhoneNumber.getText().toString();
             String email = edtEmail.getText().toString();
@@ -234,7 +276,7 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
             String rentAmount = edtRent.getText().toString();
             String securityDeposit = edtSecurityDeposit.getText().toString();
 
-            if(phone.length()  == 10) {
+            if (phone.length() == 10) {
                 TenantModelClass tenant = new TenantModelClass(-1, name, phone, email, leaseStart, leaseEnd, rentisPaid, totalOccupants, notes, rentAmount, securityDeposit);
 
                 DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(this);
@@ -253,21 +295,7 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
                     finish();
                 }
 
-        /*
-        FragmentManager fm = getSupportFragmentManager();
-        OverView overView = new OverView();
-        Bundle b = new Bundle();
-        b.putLong("id", id);
-        b.putLong("rFId", FlatId);
-        overView.setArguments(b);
-        fm.beginTransaction().replace(R.id.addTenant, overView).commit();
-
-         */
-                //getSupportFragmentManager().findFragmentById(R.id.addTenant);
-
-
-
-            }else{
+            } else {
                 Toast.makeText(getApplicationContext(), "Please Enter Valid 10 digits Number", Toast.LENGTH_LONG).show();
             }
         }

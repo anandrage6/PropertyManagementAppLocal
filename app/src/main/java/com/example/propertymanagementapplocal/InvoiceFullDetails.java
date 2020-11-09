@@ -31,7 +31,7 @@ public class InvoiceFullDetails extends AppCompatActivity {
         invoiceIssued = findViewById(R.id.invoiceissuedDateTv);
         paymentdue = findViewById(R.id.paymentdueDateTv);
         note = findViewById(R.id.noteTv);
-        linearLayout =findViewById(R.id.invoiceFullDetailsHide);
+        linearLayout = findViewById(R.id.invoiceFullDetailsHide);
 
         strTitle = getIntent().getStringExtra(Config.COLUMN_INVOICE_TITLE);
         strDetails = getIntent().getStringExtra(Config.COLUMN_INVOICE_DETAILS);
@@ -52,9 +52,9 @@ public class InvoiceFullDetails extends AppCompatActivity {
         //show and hide layout
         //linearLayout.setVisibility(linearLayout.GONE);
 
-        if(!title.getText().toString().isEmpty() && !details.getText().toString().isEmpty() && !amount.getText().toString().isEmpty()){
+        if (!title.getText().toString().isEmpty() && !details.getText().toString().isEmpty() && !amount.getText().toString().isEmpty()) {
             linearLayout.setVisibility(linearLayout.VISIBLE);
-        }else{
+        } else {
             linearLayout.setVisibility(linearLayout.GONE);
         }
 

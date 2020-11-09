@@ -26,16 +26,15 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
     private RecyclerView invoiceRecyclerView;
     private InvoiceListAdapter invoiceListAdapter;
 
-    private DatabaseQueryClass databaseQueryClass ;
+    private DatabaseQueryClass databaseQueryClass;
 
-    private List<InvoiceModelClass> invoiceList ;
+    private List<InvoiceModelClass> invoiceList;
     private long refFlatId;
     private long refTenantId;
     private long tenantId;
     private LinearLayout emptyListLinearLayout;
 
     private TenantModelClass mtenantModelClass;
-
 
 
     public InvoicesFragment() {
@@ -63,7 +62,7 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
             mtenantModelClass = databaseQueryClass.getTenantIdByFlatId(refFlatId);
             tenantId = mtenantModelClass.getTenantId();
             Log.e("tenantId on resume in invoices ========> ", String.valueOf(tenantId));
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -81,7 +80,6 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
          */
 
 
-
         //fragment
 
         /*
@@ -95,10 +93,6 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
          */
 
 
-
-
-
-
         //retrive full details part
         invoiceRecyclerView = v.findViewById(R.id.invoiceRecyclerId);
 
@@ -109,13 +103,12 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
         //Log.d("InvoiceList : ==> ", String.valueOf(invoiceList.size()));
         //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
 
-         invoiceListAdapter = new InvoiceListAdapter(getContext(), invoiceList, InvoicesFragment.this);
+        invoiceListAdapter = new InvoiceListAdapter(getContext(), invoiceList, InvoicesFragment.this);
         invoiceRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         invoiceRecyclerView.setAdapter(invoiceListAdapter);
 
         //listEmptyView Visibility
         viewVisibility();
-
 
 
         //floating button
@@ -125,11 +118,10 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
             public void onClick(View view) {
                 //Toast.makeText(Appartments.this, "button clicked", Toast.LENGTH_LONG).show();
                 openActivityAddInvoice();
-                 //viewVisibility();
+                //viewVisibility();
 
             }
         });
-
 
 
         return v;
@@ -171,7 +163,7 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
             } else {
                 emptyListLinearLayout.setVisibility(emptyListLinearLayout.VISIBLE);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

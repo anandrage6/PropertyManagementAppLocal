@@ -8,10 +8,11 @@ import android.widget.TextView;
 
 public class TenantFullDetails extends AppCompatActivity {
 
-    TextView name,email,phone,leaseStart,leaseEnd,rentIsPaid,totalOccupants,notes,rentAmount,securityDeposit;
+    TextView name, email, phone, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rentAmount, securityDeposit;
     String strName, strPhone, strEmail, strleaseStart, strLeaseEnd, strRentIsPaid, strTotalOccupants, strNotes, strRentAmount, strSecurityDeposit;
 
     private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,8 +22,6 @@ public class TenantFullDetails extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Tenant Details");
-
-
 
 
         //id's
@@ -59,7 +58,6 @@ public class TenantFullDetails extends AppCompatActivity {
         notes.setText(strNotes);
         rentAmount.setText(strRentAmount);
         securityDeposit.setText(strSecurityDeposit);
-
 
 
     }

@@ -89,9 +89,9 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
                 details.setText(Details);
                 title.setText(Title);
 
-                if(!Amount.isEmpty() && !Details.isEmpty() && !Title.isEmpty()){
+                if (!Amount.isEmpty() && !Details.isEmpty() && !Title.isEmpty()) {
                     linearLayout.setVisibility(linearLayout.VISIBLE);
-                }else{
+                } else {
                     linearLayout.setVisibility(linearLayout.GONE);
 
                 }
@@ -120,7 +120,6 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
         addLine = findViewById(R.id.addlineTextviewUpdate);
 
 
-
         databaseQueryClass = new DatabaseQueryClass(getApplicationContext());
 
         mInvoiceModelClass = databaseQueryClass.getInvoiceById(invoiceId);
@@ -138,7 +137,7 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
         note.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(UpdateInvoiceDetails.this, InvoiceNote.class);
+                Intent i = new Intent(UpdateInvoiceDetails.this, InvoiceNote.class);
                 i.putExtra("CurrentNote", note.getText().toString());
                 startActivityForResult(i, 1);
 
@@ -149,7 +148,7 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
         addLine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(UpdateInvoiceDetails.this, InvoiceAddNewLine.class);
+                Intent i = new Intent(UpdateInvoiceDetails.this, InvoiceAddNewLine.class);
                 i.putExtra("CurrentTitle", title.getText().toString());
                 i.putExtra("CurrentDetails", details.getText().toString());
                 i.putExtra("CurrentAmount", amount.getText().toString());
@@ -201,9 +200,9 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
         });
 
         //hidelayout addnewine
-        if(!title.getText().toString().isEmpty() && !details.getText().toString().isEmpty() && !amount.getText().toString().isEmpty()){
+        if (!title.getText().toString().isEmpty() && !details.getText().toString().isEmpty() && !amount.getText().toString().isEmpty()) {
             linearLayout.setVisibility(linearLayout.VISIBLE);
-        }else{
+        } else {
             linearLayout.setVisibility(linearLayout.GONE);
         }
 
@@ -212,14 +211,14 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 strtitle = title.getText().toString();
-                 strDetails = details.getText().toString();
+                strtitle = title.getText().toString();
+                strDetails = details.getText().toString();
 
                 try {
-                     strAmount = Double.parseDouble(amount.getText().toString());
+                    strAmount = Double.parseDouble(amount.getText().toString());
 
 
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -237,7 +236,7 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
                 mInvoiceModelClass.setNotes(strNotes);
 
                 long id = databaseQueryClass.updateInvoiceInfo(mInvoiceModelClass);
-                if(id>0){
+                if (id > 0) {
                     invoiceUpdateListener.onInvoiceInfoUpdated(mInvoiceModelClass, invoiceItemPosition);
                     //getDialog().dismiss();
                     //Intent i = new Intent(UpdateFlat.this, PropertyDetails.class);
@@ -278,7 +277,7 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
 
     }
 
-    public void onBackPressed(){
+    public void onBackPressed() {
         android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Confirm Exit...!!");
         alertDialogBuilder.setMessage("Are you sure you want to exit");

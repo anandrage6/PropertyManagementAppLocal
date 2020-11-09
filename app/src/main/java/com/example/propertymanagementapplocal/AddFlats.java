@@ -19,7 +19,7 @@ public class AddFlats extends DialogFragment implements AdapterView.OnItemSelect
     private static FlatsCreateListener flatsCreateListener;
 
 
-    EditText edtfloor, edtFlatNo ;
+    EditText edtfloor, edtFlatNo;
     Spinner flatfacingSpinner, noofbedroomsSpinner;
     Button flatsave, flatCancel;
 
@@ -83,7 +83,6 @@ public class AddFlats extends DialogFragment implements AdapterView.OnItemSelect
         return view;
 
 
-
     }
 
     private void getData() {
@@ -91,13 +90,13 @@ public class AddFlats extends DialogFragment implements AdapterView.OnItemSelect
         String floor = edtfloor.getText().toString();
         String flatNo = edtFlatNo.getText().toString();
 
-        FlatsModelClass flats = new FlatsModelClass(-1, floor, flatNo, flatfacing, noofbedrooms );
+        FlatsModelClass flats = new FlatsModelClass(-1, floor, flatNo, flatfacing, noofbedrooms);
 
         DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(getContext());
 
         long id = databaseQueryClass.insertFlats(flats, propertyId);
 
-        if(id>0){
+        if (id > 0) {
             flats.setFlatId(id);
             flatsCreateListener.onFlatsCreated(flats);
             getDialog().dismiss();
@@ -120,10 +119,10 @@ public class AddFlats extends DialogFragment implements AdapterView.OnItemSelect
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        if(adapterView == flatfacingSpinner){
-            flatfacing = ""+adapterView.getItemAtPosition(i).toString();
-        }else if(adapterView == noofbedroomsSpinner){
-            noofbedrooms = ""+adapterView.getItemAtPosition(i).toString();
+        if (adapterView == flatfacingSpinner) {
+            flatfacing = "" + adapterView.getItemAtPosition(i).toString();
+        } else if (adapterView == noofbedroomsSpinner) {
+            noofbedrooms = "" + adapterView.getItemAtPosition(i).toString();
 
         }
     }

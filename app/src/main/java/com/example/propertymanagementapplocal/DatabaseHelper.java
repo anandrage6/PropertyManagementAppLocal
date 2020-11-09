@@ -28,22 +28,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public static DatabaseHelper getInstance(Context context) {
-        if(databaseHelper==null){
+        if (databaseHelper == null) {
             synchronized (DatabaseHelper.class) {
-                if(databaseHelper==null)
+                if (databaseHelper == null)
                     databaseHelper = new DatabaseHelper(context);
             }
         }
         return databaseHelper;
     }
 
-/*
-    public DatabaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
-    }
+    /*
+        public DatabaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+            super(context, name, factory, version);
+        }
 
 
- */
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         // create properties sql function
@@ -121,7 +121,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + "FOREIGN KEY (" + Config.COLUMN_TP_ID + ") REFERENCES " + Config.TABLE_TENANTS + "(" + Config.COLUMN_TENANTS_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, "
                 + "CONSTRAINT " + Config.PAYMENTS_SUB_CONSTRAINT + " UNIQUE (" + Config.COLUMN_PAYMENT_ID + ")"
                 + ")";
-
 
 
         db.execSQL(CREATE_PROPERTIES_TABLE);

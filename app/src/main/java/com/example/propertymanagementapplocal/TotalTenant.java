@@ -36,10 +36,9 @@ public class TotalTenant extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_total_tenant);
 
-       mytoolbar = findViewById(R.id.myToolBar);
-        tabLayout =  findViewById(R.id.tabLayout);
-        viewPager =  findViewById(R.id.myViewPager);
-
+        mytoolbar = findViewById(R.id.myToolBar);
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager = findViewById(R.id.myViewPager);
 
 
         refFlatId = getIntent().getLongExtra(Config.COLUMN_FLATS_ID, -1);
@@ -48,14 +47,14 @@ public class TotalTenant extends AppCompatActivity {
         databaseQueryClass = new DatabaseQueryClass(getApplicationContext());
 
         //getting values by faltid
-            mflatsModelClass = databaseQueryClass.getFlatsById(refFlatId);
-            Log.e("flat.no ==> ", String.valueOf(mflatsModelClass.getFlaNo()));
+        mflatsModelClass = databaseQueryClass.getFlatsById(refFlatId);
+        Log.e("flat.no ==> ", String.valueOf(mflatsModelClass.getFlaNo()));
 
-           String flatNo = mflatsModelClass.getFlaNo();
-          long pfId =  mflatsModelClass.getpFId();
-          Log.e("pFId ===> ", String.valueOf(pfId));
+        String flatNo = mflatsModelClass.getFlaNo();
+        long pfId = mflatsModelClass.getpFId();
+        Log.e("pFId ===> ", String.valueOf(pfId));
 
-          //getting values by PfId
+        //getting values by PfId
         mpropertyModelClass = databaseQueryClass.getPropertyById(pfId);
         String propertyName = mpropertyModelClass.getPropertyName();
         Log.e("propertyName =====> ", String.valueOf(propertyName));
@@ -67,15 +66,14 @@ public class TotalTenant extends AppCompatActivity {
             mtenantModelClass = databaseQueryClass.getTenantIdByFlatId(refFlatId);
             tenantId = mtenantModelClass.getTenantId();
             Log.e("tenantId ========> ", String.valueOf(tenantId));
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-
-
         setSupportActionBar(mytoolbar);
-        getSupportActionBar().setTitle(propertyName+" / FlatNo : "+flatNo);
+        getSupportActionBar().setTitle(propertyName + " / " + getResources().getString(R.string.flatno) + " " + flatNo);
+
         //((AppCompatActivity)getApplicationContext()).setSupportActionBar(mytoolbar);
 
         setupViewPager(viewPager);
@@ -84,7 +82,7 @@ public class TotalTenant extends AppCompatActivity {
     }
 
     @SuppressLint("LongLogTag")
-    private void setupViewPager(ViewPager viewPager){
+    private void setupViewPager(ViewPager viewPager) {
         ViePageAdapter viePageAdapter = new ViePageAdapter(getSupportFragmentManager());
         //viePageAdapter.addFragnment(new OverView(),"OverView");
 
@@ -94,7 +92,7 @@ public class TotalTenant extends AppCompatActivity {
         Log.d("flatRefFId in bundle Tenant:==>", String.valueOf(bundle));
 
 
-       //refTenantId = getIntent().getLongExtra("TId", -1);
+        //refTenantId = getIntent().getLongExtra("TId", -1);
         //Log.d("TenantId in  TotalTenant:==>", String.valueOf(refTenantId));
 
 
