@@ -26,13 +26,14 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
     private Context context;
     private List<FlatsModelClass> flatsList;
 
-    //DatabaseQueryClass databaseQueryClass;
-    //TenantModelClass tenantModelClass;
+    DatabaseQueryClass databaseQueryClass;
+    TenantModelClass tenantModelClass;
 
     public FlatsListRecyclerAdapter(Context context, List<FlatsModelClass> flatsList) {
         this.context = context;
         this.flatsList = flatsList;
-        //databaseQueryClass = new DatabaseQueryClass(context);
+        databaseQueryClass = new DatabaseQueryClass(context);
+
     }
 
     @NonNull
@@ -54,13 +55,14 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
         holder.noOfBedrooms.setText(flats.getNoofbedrooms());
 
 
-        /*
-        tenantModelClass = databaseQueryClass.getTenantIdByFlatId(flatId);
-        String tenantName = tenantModelClass.getTenantName();
+        try {
+            tenantModelClass = databaseQueryClass.getTenantIdByFlatId(flatId);
+            String tenantName = tenantModelClass.getTenantName();
+            holder.tenantInfoUpdate.setText(tenantName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        holder.tenantInfoUpdate.setText(tenantName);
-
-         */
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -165,7 +167,18 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
             }
         });
 
+        /*
+        try {
+            notifyItemChanged(position, holder.getAdapterPosition());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+         */
+
     }
+
+
 
 
     @Override
@@ -189,8 +202,10 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
             flatfacing = itemView.findViewById(R.id.flatfacingTextView);
             noOfBedrooms = itemView.findViewById(R.id.noofbedroomsTextView);
             optionMenu = itemView.findViewById(R.id.textOption);
-            //tenantInfoUpdate = itemView.findViewById(R.id.AddTenantId);
+            tenantInfoUpdate = itemView.findViewById(R.id.AddTenantId);
+
 
         }
+
     }
 }

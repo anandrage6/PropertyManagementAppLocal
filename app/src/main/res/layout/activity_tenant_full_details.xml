@@ -165,6 +165,7 @@
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
                     android:text="Lease Start"
+                    android:textColor="@color/Black"
                     android:textAlignment="textStart"
                     android:textSize="15sp" />
                 <TextView
@@ -202,6 +203,7 @@
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
                     android:text="Lease End"
+                    android:textColor="@color/Black"
                     android:textAlignment="textStart"
                     android:textSize="15sp" />
 
@@ -237,6 +239,7 @@
                     android:text="Rent Frequency"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
+                    android:textColor="@color/Black"
                     android:gravity="center"
                     android:layout_gravity="start"
                     android:layout_marginStart="10dp"
@@ -274,6 +277,7 @@
                     android:text="Total Occupants"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
+                    android:textColor="@color/Black"
                     android:gravity="center"
                     android:layout_gravity="start"
                     android:layout_marginStart="10dp"
@@ -312,6 +316,7 @@
                     android:text="Rent Amount"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
+                    android:textColor="@color/Black"
                     android:gravity="center"
                     android:layout_gravity="start"
                     android:layout_marginStart="10dp"
@@ -349,6 +354,7 @@
                     android:text="Security Deposit"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
+                    android:textColor="@color/Black"
                     android:gravity="center"
                     android:layout_gravity="start"
                     android:layout_marginStart="10dp"
@@ -389,6 +395,7 @@
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
                     android:text="Notes"
+                    android:textColor="@color/Black"
                     android:textAlignment="textStart"
                     android:textSize="15sp" />
 
