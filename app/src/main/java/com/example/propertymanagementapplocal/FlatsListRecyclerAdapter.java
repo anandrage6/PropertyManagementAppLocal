@@ -34,6 +34,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
         this.flatsList = flatsList;
         databaseQueryClass = new DatabaseQueryClass(context);
 
+
     }
 
     @NonNull
@@ -41,6 +42,8 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.flats_design_row_recycler_view, parent, false);
         return new CustomViewHolder(view);
+
+
     }
 
     @Override
@@ -186,6 +189,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
 
         return flatsList.size();
 
+
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
@@ -204,8 +208,9 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
             optionMenu = itemView.findViewById(R.id.textOption);
             tenantInfoUpdate = itemView.findViewById(R.id.AddTenantId);
 
-
         }
 
     }
+
+
 }

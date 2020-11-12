@@ -4,6 +4,19 @@ public class InvoiceModelClass {
 
     private long invoiceId;
     private String title, details, amount, rent, invoiceIssued, paymentDue, notes;
+    long tIId;
+
+    public InvoiceModelClass(long invoiceId) {
+        this.invoiceId = invoiceId;
+    }
+
+    public long gettIId() {
+        return tIId;
+    }
+
+    public void settIId(long tIId) {
+        this.tIId = tIId;
+    }
 
     //empty Constructor
     public InvoiceModelClass() {

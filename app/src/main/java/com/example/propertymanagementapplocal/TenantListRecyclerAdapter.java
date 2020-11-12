@@ -1,9 +1,12 @@
 package com.example.propertymanagementapplocal;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -18,6 +21,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +36,8 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
     private Context context;
     private List<TenantModelClass> tenantList;
     private DatabaseQueryClass databaseQueryClass;
+    private static final int REQUEST_PHONE_CALL = 1;
+
     OverView overView;
 
     public TenantListRecyclerAdapter(Context context, List<TenantModelClass> tenantList, OverView overView) {
@@ -80,6 +87,59 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
 
             }
         });
+
+        //phone click
+
+        holder.phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String Phone = holder.phone.getText().toString();
+                if (Phone.isEmpty()) {
+                    Toast.makeText(context, "No Number", Toast.LENGTH_SHORT).show();
+                } else {
+                    String s = "tel:" + Phone;
+                    Intent intent = new Intent(Intent.ACTION_CALL);
+                    intent.setData(Uri.parse(s));
+                    if (ContextCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.CALL_PHONE},REQUEST_PHONE_CALL);
+
+                        return;
+                    }
+                    context.startActivity(intent);
+
+                }
+
+
+            }
+        });
+
+        //email click
+
+        holder.email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String Email = holder.email.getText().toString().trim();
+                if (Email.isEmpty()){
+                    Toast.makeText(context, "Please Add EmailId", Toast.LENGTH_SHORT).show();
+
+                }else {
+                    Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+                    intent.setData(Uri.parse("mailto:"));
+                    intent.setType("plain/text");
+                    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{Email});
+                    try {
+                        context.startActivity(Intent.createChooser(intent,"Choose an Email Client"));
+
+                    }catch (Exception E){
+                        Toast.makeText(context,E.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+            }
+        });
+
+
 
         holder.optionMenu.setOnClickListener(new View.OnClickListener() {
             @Override

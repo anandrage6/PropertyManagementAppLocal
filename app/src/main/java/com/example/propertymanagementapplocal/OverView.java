@@ -35,6 +35,9 @@ public class OverView extends Fragment implements TenantCreateListener {
     private RecyclerView tenantRecyclerView;
     private TenantListRecyclerAdapter tenantListRecyclerAdapter;
 
+    private RecyclerView balanceRecyclerView;
+    private BalancesListRecyclerView balancesListRecyclerView;
+
     private DatabaseQueryClass databaseQueryClass;
     private TenantModelClass mtenantModelClass;
 
@@ -57,9 +60,12 @@ public class OverView extends Fragment implements TenantCreateListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_over_view, container, false);
 
+        balanceRecyclerView = view.findViewById(R.id.recyclerViewBalances);
+
 
         relativeLayout = view.findViewById(R.id.floatingButtonHide);
         linearLayout = view.findViewById(R.id.tenantListHide);
+
 
 
         //refFlatId = getArguments().getLong(Config.COLUMN_FLATS_ID, -1);
@@ -193,5 +199,36 @@ public class OverView extends Fragment implements TenantCreateListener {
 
     }
 
+    @SuppressLint("LongLogTag")
+    @Override
+    public void onResume() {
+        super.onResume();
 
+
+        //tenant part
+        databaseQueryClass = new DatabaseQueryClass(getContext());
+        tenantList = new ArrayList<>();
+        // Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllTenantsByFId(refFlatId)));
+        tenantList.addAll(databaseQueryClass.getAllTenantsByFId(refFlatId));
+        //Log.d("TenantList : ==> ", String.valueOf(tenantList.size()));
+        //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
+
+        tenantListRecyclerAdapter = new TenantListRecyclerAdapter(getContext(), tenantList, OverView.this);
+        tenantRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        tenantRecyclerView.setAdapter(tenantListRecyclerAdapter);
+
+
+        //balance part
+
+        databaseQueryClass = new DatabaseQueryClass(getContext());
+        tenantList = new ArrayList<>();
+        // Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllTenantsByFId(refFlatId)));
+        tenantList.addAll(databaseQueryClass.getAllTenantsByFId(refFlatId));
+        //Log.d("TenantList : ==> ", String.valueOf(tenantList.size()));
+        //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
+
+        balancesListRecyclerView = new BalancesListRecyclerView(getContext(), tenantList, OverView.this);
+        balanceRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        balanceRecyclerView.setAdapter(balancesListRecyclerView);
+    }
 }

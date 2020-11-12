@@ -584,6 +584,55 @@ public class DatabaseQueryClass {
         return deletedRowCount;
     }
 
+
+    //to get tenantid by flatid to ivoices
+
+    public TenantModelClass getTenantIdByFlatId(long flatId) {
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
+
+        TenantModelClass tenant = null;
+
+        Cursor cursor = null;
+
+        try {
+            cursor = sqLiteDatabase.query(Config.TABLE_TENANTS, null,
+                    Config.COLUMN_FT_ID + " = ? ", new String[]{String.valueOf(flatId)},
+                    null, null, null);
+
+            if (cursor != null && cursor.moveToFirst()) {
+                long tenantId = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_TENANTS_ID));
+                String name = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_NAME));
+                String phone = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_PHONE));
+                String email = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_EMAIL));
+                String leaseStart = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_LEASESTART));
+                String leaseEnd = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_LEASEEND));
+                String rentIsPaid = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_RENTISPAID));
+                String totalOccupants = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_TOTALOCCUPANTS));
+                String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_NOTES));
+                String rent = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_RENT));
+                String securityDeposit = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_SECURITYDEPOSIT));
+                // long fTId = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_FT_ID));
+
+
+                tenant = new TenantModelClass(tenantId, name, phone, email, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rent, securityDeposit);
+                //tenant.setfTId(flatId);
+                tenant.getfTId();
+
+
+            }
+        } catch (SQLiteException e) {
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            if (cursor != null)
+                cursor.close();
+            sqLiteDatabase.close();
+        }
+
+        return tenant;
+    }
+
+
     //insert Invoice
 
     public long insertInvoice(InvoiceModelClass invoice, long tenantId) {
@@ -751,39 +800,35 @@ public class DatabaseQueryClass {
         return deletedRowCount;
     }
 
-    //to get tenantid by flatid to ivoices
+    //get Invoice By tenantId
 
-    public TenantModelClass getTenantIdByFlatId(long flatId) {
+    public InvoiceModelClass getIvoiceIdByTenantId(long tenantId) {
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
 
-        TenantModelClass tenant = null;
+        InvoiceModelClass invoice = null;
 
         Cursor cursor = null;
 
         try {
-            cursor = sqLiteDatabase.query(Config.TABLE_TENANTS, null,
-                    Config.COLUMN_FT_ID + " = ? ", new String[]{String.valueOf(flatId)},
+            cursor = sqLiteDatabase.query(Config.TABLE_INVOICE, null,
+                    Config.COLUMN_TI_ID + " = ? ", new String[]{String.valueOf(tenantId)},
                     null, null, null);
 
             if (cursor != null && cursor.moveToFirst()) {
-                long tenantId = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_TENANTS_ID));
-                String name = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_NAME));
-                String phone = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_PHONE));
-                String email = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_EMAIL));
-                String leaseStart = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_LEASESTART));
-                String leaseEnd = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_LEASEEND));
-                String rentIsPaid = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_RENTISPAID));
-                String totalOccupants = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_TOTALOCCUPANTS));
-                String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_NOTES));
-                String rent = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_RENT));
-                String securityDeposit = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_SECURITYDEPOSIT));
-                // long fTId = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_FT_ID));
+                long invoiceId = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_INVOICE_ID));
+                String title = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_TITLE));
+                String details = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_DETAILS));
+                String amount = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_AMOUNT));
+                String rent = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_RENT));
+                String invoiceIssued = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_INVOICE_ISSUED));
+                String paymentDue = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_PaymentDue));
+                String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_Notes));
 
 
-                tenant = new TenantModelClass(tenantId, name, phone, email, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rent, securityDeposit);
+                invoice = new InvoiceModelClass(invoiceId, title, details, amount, rent, invoiceIssued, paymentDue, notes);
                 //tenant.setfTId(flatId);
-                tenant.getfTId();
+                invoice.gettIId();
 
 
             }
@@ -795,9 +840,8 @@ public class DatabaseQueryClass {
             sqLiteDatabase.close();
         }
 
-        return tenant;
+        return invoice;
     }
-
 
     //insert payments
 

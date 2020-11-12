@@ -5,6 +5,20 @@ public class PaymentsModelClass {
     private long paymentId;
     private String amount, paidwith, datereceived, receivedfrom, taxstatus, notes;
 
+    long tPId;
+
+    public PaymentsModelClass(long paymentId) {
+        this.paymentId = paymentId;
+    }
+
+    public long gettPId() {
+        return tPId;
+    }
+
+    public void settPId(long tPId) {
+        this.tPId = tPId;
+    }
+
     public PaymentsModelClass() {
     }
 

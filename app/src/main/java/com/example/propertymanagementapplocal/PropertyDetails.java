@@ -117,6 +117,9 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         flatsrecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         flatsrecyclerView.setAdapter(flatsListRecyclerAdapter);
 
+        //flatsListRecyclerAdapter.notifyItemChanged(flatsList);
+        //flatsListRecyclerAdapter.notifyDataSetChanged();
+
 
         //flats button click
         flatAddBtn = findViewById(R.id.flatAddbtn);
