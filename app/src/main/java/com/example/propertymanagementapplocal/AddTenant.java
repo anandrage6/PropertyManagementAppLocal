@@ -47,8 +47,8 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
     ImageButton incrementBtn, decrementBtn;
     int count = 0;
 
-    String strDate1 = "00/00/0000";
-    String strDate2 = "00/00/0000";
+    String strDate1 = "01/01/0001";
+    String strDate2 = "01/02/00002";
 
     Date date1, date2;
 
@@ -193,12 +193,15 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
-                        if(date1.compareTo(date2) > 0){
-                            tvLeaseStart.setText(strDate1);
+                        if(date1.compareTo(date2) < 0){
+
+                            Toast.makeText(getApplicationContext(), "Lease Start is greater than Lease End", Toast.LENGTH_LONG).show();
+                            //tvLeaseStart.setText(strDate1);
                         }else if(date1.compareTo(date2) == 0){
                             tvLeaseStart.setText(strDate1);
                         }else{
-                            Toast.makeText(getApplicationContext(), "Lease Start is less than Lease End", Toast.LENGTH_LONG).show();
+                            tvLeaseStart.setText(strDate1);
+                            //Toast.makeText(getApplicationContext(), "Lease Start is greater than Lease End", Toast.LENGTH_LONG).show();
                         }
 
                     }

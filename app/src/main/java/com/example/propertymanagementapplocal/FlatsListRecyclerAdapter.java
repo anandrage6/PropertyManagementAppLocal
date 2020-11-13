@@ -100,8 +100,6 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
             }
         });
 
-        //tenant status show
-
 
         //update/see details/ delete
         holder.optionMenu.setOnClickListener(new View.OnClickListener() {
@@ -211,6 +209,5 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
         }
 
     }
-
 
 }

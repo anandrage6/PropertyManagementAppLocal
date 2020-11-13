@@ -206,6 +206,8 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
         flatsList.addAll(databaseQueryClass.getAllFlatsByPFId(refpropertyId));
         Log.d("FlatList : ==> ", String.valueOf(flatsList.size()));
 
+         */
+
 
         //flats part
         flatsListRecyclerAdapter = new FlatsListRecyclerAdapter(this, flatsList);
@@ -302,5 +304,6 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
             e.printStackTrace();
         }
     }
+
 
 }
