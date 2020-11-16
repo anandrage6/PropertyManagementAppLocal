@@ -101,6 +101,11 @@ public class TotalTenant extends AppCompatActivity {
         oV.setArguments(bundle);
         viePageAdapter.addFragnment(oV, "Tenant");
 
+        // Balances
+        Balances balances = new Balances();
+        balances.setArguments(bundle);
+        viePageAdapter.addFragnment(balances, "Balances");
+
         //Invoices Pass Data
         InvoicesFragment IF = new InvoicesFragment();
         IF.setArguments(bundle);

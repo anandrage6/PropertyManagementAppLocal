@@ -59,5 +59,7 @@ dependencies {
     //Awesome Validation
     implementation 'com.basgeekball:awesome-validation:4.2'
 
+    //json
+    implementation 'com.google.code.gson:gson:2.8.2'
 
 }

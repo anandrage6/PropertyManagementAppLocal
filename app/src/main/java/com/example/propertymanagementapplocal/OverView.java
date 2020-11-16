@@ -36,7 +36,7 @@ public class OverView extends Fragment implements TenantCreateListener {
     private TenantListRecyclerAdapter tenantListRecyclerAdapter;
 
     private RecyclerView balanceRecyclerView;
-    private BalancesListRecyclerView balancesListRecyclerView;
+
 
     private DatabaseQueryClass databaseQueryClass;
     private TenantModelClass mtenantModelClass;
@@ -218,6 +218,7 @@ public class OverView extends Fragment implements TenantCreateListener {
         tenantRecyclerView.setAdapter(tenantListRecyclerAdapter);
 
 
+        /*
         //balance part
 
         databaseQueryClass = new DatabaseQueryClass(getContext());
@@ -230,5 +231,7 @@ public class OverView extends Fragment implements TenantCreateListener {
         balancesListRecyclerView = new BalancesListRecyclerView(getContext(), tenantList, OverView.this);
         balanceRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         balanceRecyclerView.setAdapter(balancesListRecyclerView);
+
+         */
     }
 }

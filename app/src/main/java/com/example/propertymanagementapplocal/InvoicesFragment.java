@@ -58,6 +58,7 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
         Log.e("tenantId in Invoices ====> ", String.valueOf(tenantId));
 
 
+        //getting values by flatid
         try {
             mtenantModelClass = databaseQueryClass.getTenantIdByFlatId(refFlatId);
             tenantId = mtenantModelClass.getTenantId();
@@ -66,31 +67,6 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
             e.printStackTrace();
         }
 
-        /*
-        //getting values by flatid
-
-        try {
-            mtenantModelClass = databaseQueryClass.getTenantIdByFlatId(refFlatId);
-            tenantId = mtenantModelClass.getTenantId();
-            Log.e("tenantId  in invoices ========> ", String.valueOf(tenantId));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-         */
-
-
-        //fragment
-
-        /*
-        if(getArguments()!=null)
-        {
-            refTenantId = getArguments().getLong("TenantId");
-            //Log.d("Tenanid :", "No Id");
-            Log.d("TenantRefId_in_Invoice : ==> ", String.valueOf(refTenantId));
-        }
-
-         */
 
 
         //retrive full details part

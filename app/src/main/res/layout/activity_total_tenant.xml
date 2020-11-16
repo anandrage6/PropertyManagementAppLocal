@@ -29,7 +29,8 @@
             app:tabTextColor="@color/design_default_color_primary_dark"
             app:tabIndicator="@color/cardview_dark_background"
             app:tabIndicatorHeight="4dp"
-            app:tabGravity="fill"/>
+            app:tabGravity="fill"
+            app:tabMode="scrollable"/>
         
     </com.google.android.material.appbar.AppBarLayout>
 
