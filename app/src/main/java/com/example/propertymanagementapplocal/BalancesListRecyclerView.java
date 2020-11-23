@@ -5,116 +5,121 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class BalancesListRecyclerView extends RecyclerView.Adapter {
-
-
+public class BalancesListRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
-    private List<PaymentsModelClass> paymentList;
-    private List<InvoiceModelClass> invoiceList;
+    private List<BalancesModel> balancesList;
 
-    public BalancesListRecyclerView(Context context, List<PaymentsModelClass> paymentList, List<InvoiceModelClass> invoiceList) {
+    public BalancesListRecyclerView(Context context, List<BalancesModel> balancesList) {
         this.context = context;
-        this.paymentList = paymentList;
-        this.invoiceList = invoiceList;
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        if (!invoiceList.isEmpty()) {
-            return 0;
-        }
-        if(!paymentList.isEmpty()){
-            return 1;
-        }
-        return Integer.parseInt(null);
+        this.balancesList = balancesList;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view;
+
         if(viewType == 0){
-            view = layoutInflater.inflate(R.layout.invoice_design_row_recyclerview, parent, false);
-            return new InvoiceViewHolderOne(view);
+            return new InvoiceHolder(
+                    LayoutInflater.from(parent.getContext()).inflate(
+                            R.layout.balances_invoice_design_row_recyclerview,
+                            parent,
+                            false
+                    )
+            );
+        } else {
+            return new PaymentsHolder(
+                    LayoutInflater.from(parent.getContext()).inflate(
+                            R.layout.balances_payments_design_row_recyclerview,
+                            parent,
+                            false
+                    )
+            );
         }
-        if(viewType == 1){
-            view = layoutInflater.inflate(R.layout.payments_design_row_recyclerview, parent, false);
-            return new PayementsViewHolderTwo(view);
-        }
-        return null;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        try {
 
 
-                final int invoiceListPosition = position;
-                final InvoiceModelClass invoice = invoiceList.get(position);
-                final long invoiceId = invoice.getInvoiceId();
+            if (getItemViewType(position) == 0) {
+                Log.e("BalancesList ===> ", String.valueOf(balancesList.size()));
 
-                InvoiceViewHolderOne invoiceViewHolderOne = (InvoiceViewHolderOne) holder;
-                invoiceViewHolderOne.invoiceIdTv.setText(String.valueOf(invoiceId));
-                invoiceViewHolderOne.invoiceissuedDateTv.setText(invoice.getInvoiceIssued());
-                invoiceViewHolderOne.paymentduedateTv.setText(invoice.getPaymentDue());
-                invoiceViewHolderOne.rentTextView.setText(invoice.getRent());
+                InvoiceModelClass invoiceModelClass = (InvoiceModelClass) balancesList.get(position);
 
+                ((InvoiceHolder) holder).setInvoiceData(invoiceModelClass);
 
-                PayementsViewHolderTwo payementsViewHolderTwo = (PayementsViewHolderTwo) holder;
-                payementsViewHolderTwo.amount.setText(paymentList.get(position).getAmount());
-                payementsViewHolderTwo.receivedfrom.setText(paymentList.get(position).getReceivedfrom());
-                payementsViewHolderTwo.dateReceived.setText(paymentList.get(position).getDatereceived());
+            } else if (getItemViewType(position) == 1) {
+                PaymentsModelClass paymentsModelClass = (PaymentsModelClass) balancesList.get(position);
+                ((PaymentsHolder) holder).setPaymentsData(paymentsModelClass);
+            }
 
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
 
     }
 
     @Override
     public int getItemCount() {
-        return invoiceList.size() + paymentList.size();
+        return balancesList.size();
     }
 
-    //invoice view Holder
-    class InvoiceViewHolderOne extends RecyclerView.ViewHolder{
+    @Override
+    public int getItemViewType(int position) {
+        return balancesList.get(position).getType();
+    }
 
-        TextView invoiceissuedDateTv, paymentduedateTv, rentTextView, invoiceIdTv;
+    // invoice part adapter
+    static class InvoiceHolder extends RecyclerView.ViewHolder{
 
-        public InvoiceViewHolderOne(@NonNull View itemView) {
+       private TextView invoiceissuedDateTv, paymentduedateTv, rentTextView, invoiceIdTv;
+
+        InvoiceHolder(@NonNull View itemView) {
             super(itemView);
 
-            invoiceissuedDateTv = itemView.findViewById(R.id.invoiceissuedDateTextView);
-            paymentduedateTv = itemView.findViewById(R.id.paymentdueTextView);
-            rentTextView = itemView.findViewById(R.id.rentTextView);
-            invoiceIdTv = itemView.findViewById(R.id.invoiceId);
+            invoiceissuedDateTv = itemView.findViewById(R.id.invoiceissuedDateTextViewBalances);
+            paymentduedateTv = itemView.findViewById(R.id.paymentdueTextViewBalances);
+            rentTextView = itemView.findViewById(R.id.rentTextViewBalances);
+            invoiceIdTv = itemView.findViewById(R.id.invoiceIdBalances);
+        }
+
+        void setInvoiceData(InvoiceModelClass invoiceModelClass){
+            invoiceissuedDateTv.setText(invoiceModelClass.getInvoiceIssued());
+            paymentduedateTv.setText(invoiceModelClass.getPaymentDue());
+            rentTextView.setText(invoiceModelClass.getRent());
+            invoiceIdTv.setText(String.valueOf( invoiceModelClass.getInvoiceId()));
+
+
         }
     }
 
-    //Payements View Holder
-    class PayementsViewHolderTwo extends RecyclerView.ViewHolder{
+    //payments part Adapter
 
-        TextView receivedfrom, dateReceived, amount;
-        TextView optionMenu;
+    static class PaymentsHolder extends RecyclerView.ViewHolder{
 
-        public PayementsViewHolderTwo(@NonNull View itemView) {
+         private TextView receivedfrom, dateReceived, amount;
+
+            PaymentsHolder(@NonNull View itemView) {
             super(itemView);
 
-            receivedfrom = itemView.findViewById(R.id.paymentReceivedFromTextView);
-            dateReceived = itemView.findViewById(R.id.paymentDateReceivedTextView);
-            amount = itemView.findViewById(R.id.paymentAmountTextView);
+            receivedfrom = itemView.findViewById(R.id.paymentReceivedFromTextViewBalance);
+            dateReceived = itemView.findViewById(R.id.paymentDateReceivedTextViewBalance);
+            amount = itemView.findViewById(R.id.paymentAmountTextViewBalance);
+        }
+
+        void setPaymentsData(PaymentsModelClass paymentsModelClass){
+            receivedfrom.setText(paymentsModelClass.getReceivedfrom());
+            dateReceived.setText(paymentsModelClass.getDatereceived());
+            amount.setText(paymentsModelClass.getAmount());
         }
     }
 }

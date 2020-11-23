@@ -45,6 +45,7 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_payment, container, false);
+        databaseQueryClass = new DatabaseQueryClass(getContext());
 
         refFlatId = getArguments().getLong("1");
         Log.d("flatRefFId_in_payments : ==> ", String.valueOf(refFlatId));
@@ -85,11 +86,11 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
         //retrive full details part
         paymentRecyclerView = v.findViewById(R.id.paymentRecyclerId);
 
-        databaseQueryClass = new DatabaseQueryClass(getContext());
+
         paymentList = new ArrayList<>();
         //Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllInvoicebyId(refFlatId)));
         paymentList.addAll(databaseQueryClass.getAllPaymentsbyId(tenantId));
-        //Log.d("InvoiceList : ==> ", String.valueOf(invoiceList.size()));
+        Log.e("PaymentList : ==> ", String.valueOf(paymentList.size()));
         //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
 
         paymentListRecyclerViewAdapter = new PaymentListRecyclerView(getContext(), paymentList, PaymentFragment.this);

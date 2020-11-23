@@ -59,6 +59,7 @@ public class OverView extends Fragment implements TenantCreateListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_over_view, container, false);
+        databaseQueryClass = new DatabaseQueryClass(getContext());
 
         balanceRecyclerView = view.findViewById(R.id.recyclerViewBalances);
 
@@ -104,7 +105,7 @@ public class OverView extends Fragment implements TenantCreateListener {
         //retrive full details part
         tenantRecyclerView = view.findViewById(R.id.tenantRecyclerId);
 
-        databaseQueryClass = new DatabaseQueryClass(getContext());
+
         tenantList = new ArrayList<>();
         // Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllTenantsByFId(refFlatId)));
         tenantList.addAll(databaseQueryClass.getAllTenantsByFId(refFlatId));

@@ -23,6 +23,7 @@ public class TotalTenant extends AppCompatActivity {
     ViePageAdapter viePageAdapter;
     private long tenantId;
     Bundle bundle;
+    int selectedTabPosition = 0;
 
     private DatabaseQueryClass databaseQueryClass;
     private FlatsModelClass mflatsModelClass;
@@ -76,9 +77,7 @@ public class TotalTenant extends AppCompatActivity {
 
         //((AppCompatActivity)getApplicationContext()).setSupportActionBar(mytoolbar);
 
-        setupViewPager(viewPager);
 
-        tabLayout.setupWithViewPager(viewPager);
     }
 
     @SuppressLint("LongLogTag")
@@ -126,5 +125,31 @@ public class TotalTenant extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        setupViewPager(viewPager);
+
+        tabLayout.setupWithViewPager(viewPager);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                 selectedTabPosition = position;
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+
+            }
+        });
+        viewPager.setCurrentItem(selectedTabPosition);
+    }
 }

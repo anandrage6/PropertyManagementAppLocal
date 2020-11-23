@@ -47,6 +47,7 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_invoices, container, false);
+        databaseQueryClass = new DatabaseQueryClass(getContext());
         emptyListLinearLayout = v.findViewById(R.id.invoiceListHide);
 
 
@@ -72,7 +73,7 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
         //retrive full details part
         invoiceRecyclerView = v.findViewById(R.id.invoiceRecyclerId);
 
-        databaseQueryClass = new DatabaseQueryClass(getContext());
+
         invoiceList = new ArrayList<>();
         //Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllInvoicebyId(refFlatId)));
         invoiceList.addAll(databaseQueryClass.getAllInvoicebyId(tenantId));

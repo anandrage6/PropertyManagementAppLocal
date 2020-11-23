@@ -13,27 +13,29 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Balances extends Fragment {
-    private long refFlatId;
-    private long refTenantId;
+    long refFlatId;
+    long refTenantId;
 
-    private List<String> balancesList;
-    private BalancesListRecyclerView balancesListRecyclerView;
+    List<BalancesModel> balancesList;
+    BalancesListRecyclerView balancesListRecyclerViewAdapter;
 
 
     //invoice part
-    private RecyclerView balancesRecyclerView;
-    private DatabaseQueryClass databaseQueryClass;
-    private List<InvoiceModelClass> invoiceList;
-    private long tenantId;
-    private TenantModelClass mtenantModelClass;
+    RecyclerView balancesRecyclerView;
+    DatabaseQueryClass databaseQueryClass;
+    List<InvoiceModelClass> invoiceList;
+    long tenantId;
+    TenantModelClass mtenantModelClass;
 
     //payments part
 
-    private List<PaymentsModelClass> paymentList;
+    List<PaymentsModelClass> paymentList;
 
 
     // payments part
@@ -49,12 +51,23 @@ public class Balances extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_balances, container, false);
+        databaseQueryClass = new DatabaseQueryClass(getContext());
 
         refFlatId = getArguments().getLong("1");
         Log.d("flatRefFId_in_Documents: ==> ", String.valueOf(refFlatId));
 
         refTenantId = getArguments().getLong("2");
         Log.e("TenantId in Documents ===> ", String.valueOf(refTenantId));
+
+
+
+       RecyclerView balancesRecyclerView = view.findViewById(R.id.recyclerViewBalances);
+        //List<BalancesModel> balancesList = new ArrayList<>(Arrays.asList((new BalancesModel(0, invoiceList))));
+       List<BalancesModel> balancesList = new ArrayList<>();
+
+        //invoices part
+
+
 
         // to get tenant_Id by flat_id
         try {
@@ -64,35 +77,65 @@ public class Balances extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
+       // Log.d("InvoiceListSize : ==> ", String.valueOf(invoiceList.size()));
 
-        balancesRecyclerView = view.findViewById(R.id.recyclerViewBalances);
-        balancesList = new ArrayList<String>();
 
-        //invoices part
-        databaseQueryClass = new DatabaseQueryClass(getContext());
+
+// invoice part
         invoiceList = new ArrayList<>();
         //Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllInvoicebyId(refFlatId)));
         invoiceList.addAll(databaseQueryClass.getAllInvoicebyId(tenantId));
-        //Log.d("InvoiceList : ==> ", String.valueOf(invoiceList.size()));
         //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
 
 
         //payments part
-        databaseQueryClass = new DatabaseQueryClass(getContext());
         paymentList = new ArrayList<>();
         //Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllInvoicebyId(refFlatId)));
         paymentList.addAll(databaseQueryClass.getAllPaymentsbyId(tenantId));
         //Log.d("InvoiceList : ==> ", String.valueOf(invoiceList.size()));
         //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
+        //balancesList.add(new BalancesModel(0, invoiceList));
+       // balancesList.add(new BalancesModel(1, paymentList));
+
+        for (InvoiceModelClass invoiceModelClass : invoiceList){
+            invoiceModelClass.setType(0);
+        }
+
+        for (PaymentsModelClass paymentsModelClass : paymentList){
+            paymentsModelClass.setType(1);
+
+        }
+
+        balancesList.addAll(invoiceList);
+        balancesList.addAll(paymentList);
+        Collections.sort(balancesList, new Comparator<BalancesModel>() {
+            @Override
+            public int compare(BalancesModel balancesModel, BalancesModel t1) {
+              return t1.getEntryDate().compareTo(balancesModel.getEntryDate());
+
+            }
+
+        });
+
+
+        Log.d("InvoiceListSize=== > ", String.valueOf(invoiceList.size()));
+        Log.d("PaymentListSize ===> ", String.valueOf(paymentList.size()));
+
+        Log.d("BalanceListSize ===>", String.valueOf(balancesList.size()));
+        // balancesList = Arrays.asList(new BalancesModel(0, invoiceList), new BalancesModel(1, paymentList));
+       // balancesList = Arrays.asList(new BalancesModel(1, paymentList));
+
+      // balancesRecyclerView.setAdapter(new BalancesListRecyclerView(balancesList));
 
 
         //balance part
        // balancesList.add(new List<InvoiceModelClass> invoiceList );
        // balancesList.add(Collections.singleton(paymentList.toString()));
 
-        balancesListRecyclerView = new BalancesListRecyclerView(getContext(), paymentList, invoiceList);
+
+        balancesListRecyclerViewAdapter = new BalancesListRecyclerView(getContext(), balancesList);
         balancesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        balancesRecyclerView.setAdapter(balancesListRecyclerView);
+        balancesRecyclerView.setAdapter(balancesListRecyclerViewAdapter);
 
         return view;
     }

@@ -1,6 +1,6 @@
 package com.example.propertymanagementapplocal;
 
-public class InvoiceModelClass {
+public class InvoiceModelClass extends BalancesModel {
 
     private long invoiceId;
     private String title, details, amount, rent, invoiceIssued, paymentDue, notes;

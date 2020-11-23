@@ -14,6 +14,7 @@ import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class DatabaseQueryClass {
@@ -649,6 +650,7 @@ public class DatabaseQueryClass {
         contentValues.put(Config.COLUMN_INVOICE_INVOICE_ISSUED, invoice.getInvoiceIssued());
         contentValues.put(Config.COLUMN_INVOICE_PaymentDue, invoice.getPaymentDue());
         contentValues.put(Config.COLUMN_INVOICE_Notes, invoice.getNotes());
+        contentValues.put(Config.COLUMN_INVOICE_ENTRYDATE, new Date().getTime());
         //contentValues.put(Config.COLUMN_PT_ID, id);
         contentValues.put(Config.COLUMN_TI_ID, tenantId);
 
@@ -676,7 +678,7 @@ public class DatabaseQueryClass {
             cursor = sqLiteDatabase.query(Config.TABLE_INVOICE,
                     new String[]{Config.COLUMN_INVOICE_ID, Config.COLUMN_INVOICE_TITLE,
                             Config.COLUMN_INVOICE_DETAILS, Config.COLUMN_INVOICE_AMOUNT, Config.COLUMN_INVOICE_RENT, Config.COLUMN_INVOICE_INVOICE_ISSUED, Config.COLUMN_INVOICE_PaymentDue,
-                            Config.COLUMN_INVOICE_Notes},
+                            Config.COLUMN_INVOICE_Notes, Config.COLUMN_INVOICE_ENTRYDATE},
                     Config.COLUMN_TI_ID + " = ? ",
                     new String[]{String.valueOf(tenantId)},
                     null, null, null);
@@ -692,8 +694,11 @@ public class DatabaseQueryClass {
                     String invoiceIssued = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_INVOICE_ISSUED));
                     String paymentDue = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_PaymentDue));
                     String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_Notes));
+                    long EntryDate = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_INVOICE_ENTRYDATE));
 
-                    invoiceList.add(new InvoiceModelClass(id, title, details, amount, rent, invoiceIssued, paymentDue, notes));
+                    InvoiceModelClass invoiceModelClass = new InvoiceModelClass(id, title, details, amount, rent, invoiceIssued, paymentDue, notes);
+                    invoiceModelClass.setEntryDate(new Date(EntryDate));
+                    invoiceList.add(invoiceModelClass);
                     // Log.d("TotalInvoiceList : ==> ", String.valueOf(invoiceList.size()));
                 } while (cursor.moveToNext());
             }
@@ -826,6 +831,7 @@ public class DatabaseQueryClass {
                 String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_Notes));
 
 
+
                 invoice = new InvoiceModelClass(invoiceId, title, details, amount, rent, invoiceIssued, paymentDue, notes);
                 //tenant.setfTId(flatId);
                 invoice.gettIId();
@@ -895,6 +901,7 @@ public class DatabaseQueryClass {
         contentValues.put(Config.COLUMN_PAYMENT_RECEIVEDFROM, payment.getReceivedfrom());
         contentValues.put(Config.COLUMN_PAYMENT_TAXSTATUS, payment.getTaxstatus());
         contentValues.put(Config.COLUMN_PAYMENT_NOTES, payment.getNotes());
+        contentValues.put(Config.COLUMN_PAYMENT_ENTRYDATE, new Date().getTime());
         contentValues.put(Config.COLUMN_TP_ID, tenantId);
 
         try {
@@ -920,7 +927,7 @@ public class DatabaseQueryClass {
         try {
             cursor = sqLiteDatabase.query(Config.TABLE_PAYMENTS,
                     new String[]{Config.COLUMN_PAYMENT_ID, Config.COLUMN_PAYMENT_AMOUNT,
-                            Config.COLUMN_PAYMENT_PAIDWITH, Config.COLUMN_PAYMENT_DATERECEIVED, Config.COLUMN_PAYMENT_RECEIVEDFROM, Config.COLUMN_PAYMENT_TAXSTATUS,
+                            Config.COLUMN_PAYMENT_PAIDWITH, Config.COLUMN_PAYMENT_DATERECEIVED, Config.COLUMN_PAYMENT_RECEIVEDFROM, Config.COLUMN_PAYMENT_TAXSTATUS, Config.COLUMN_PAYMENT_ENTRYDATE,
                             Config.COLUMN_PAYMENT_NOTES},
                     Config.COLUMN_TP_ID + " = ? ",
                     new String[]{String.valueOf(tenantId)},
@@ -936,9 +943,10 @@ public class DatabaseQueryClass {
                     String receivedfrom = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_RECEIVEDFROM));
                     String taxstatus = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_TAXSTATUS));
                     String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_NOTES));
-
-
-                    paymentsList.add(new PaymentsModelClass(id, amount, paidwith, datereceived, receivedfrom, taxstatus, notes));
+                    long EntryDate = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_PAYMENT_ENTRYDATE));
+                    PaymentsModelClass paymentsModelClass = new PaymentsModelClass(id, amount, paidwith, datereceived, receivedfrom, taxstatus, notes);
+                    paymentsModelClass.setEntryDate(new Date(EntryDate));
+                    paymentsList.add(paymentsModelClass);
                     // Log.d("TotalInvoiceList : ==> ", String.valueOf(invoiceList.size()));
                 } while (cursor.moveToNext());
             }

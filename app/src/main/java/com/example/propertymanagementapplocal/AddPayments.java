@@ -36,9 +36,12 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
     Button pSave, pCancel;
 
     String strPaidwith, strTaxStatus;
+    String tenantName;
 
     private static long reftenantId;
     private static PaymentsCreateListener paymentsCreateListener;
+    private DatabaseQueryClass databaseQueryClass;
+    private TenantModelClass mtenantModelClass;
 
     AppCompatRadioButton taxableRadioBtn, nontaxableRadioBtn;
 
@@ -82,6 +85,12 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
 
         nontaxableRadioBtn = findViewById(R.id.nontaxableRadioButton);
         taxableRadioBtn = findViewById(R.id.taxableRadioButton);
+
+        // querying tenantname through tenant id
+        databaseQueryClass = new DatabaseQueryClass(AddPayments.this);
+        mtenantModelClass = databaseQueryClass.getTenantById(reftenantId);
+        tenantName = mtenantModelClass.getTenantName();
+        pReceivedfrom.setText(tenantName);
 
 
         //spinner for paid with

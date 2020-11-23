@@ -1,6 +1,6 @@
 package com.example.propertymanagementapplocal;
 
-public class PaymentsModelClass {
+public class PaymentsModelClass extends BalancesModel {
 
     private long paymentId;
     private String amount, paidwith, datereceived, receivedfrom, taxstatus, notes;
