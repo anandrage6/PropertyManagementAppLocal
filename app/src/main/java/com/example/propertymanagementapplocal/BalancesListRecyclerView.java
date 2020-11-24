@@ -37,10 +37,18 @@ public class BalancesListRecyclerView extends RecyclerView.Adapter<RecyclerView.
                             false
                     )
             );
-        } else {
+        } else if(viewType == 1) {
             return new PaymentsHolder(
                     LayoutInflater.from(parent.getContext()).inflate(
                             R.layout.balances_payments_design_row_recyclerview,
+                            parent,
+                            false
+                    )
+            );
+        }else  {
+            return new titleHolder(
+                    LayoutInflater.from(parent.getContext()).inflate(
+                            R.layout.balances_title_row_recyclerview,
                             parent,
                             false
                     )
@@ -63,6 +71,10 @@ public class BalancesListRecyclerView extends RecyclerView.Adapter<RecyclerView.
             } else if (getItemViewType(position) == 1) {
                 PaymentsModelClass paymentsModelClass = (PaymentsModelClass) balancesList.get(position);
                 ((PaymentsHolder) holder).setPaymentsData(paymentsModelClass);
+
+            } else if (getItemViewType(position) == 2) {
+                BalancesModel balancesModel = (BalancesModel) balancesList.get(position);
+                ((titleHolder) holder).setTitleData(balancesModel);
             }
 
 
@@ -120,6 +132,23 @@ public class BalancesListRecyclerView extends RecyclerView.Adapter<RecyclerView.
             receivedfrom.setText(paymentsModelClass.getReceivedfrom());
             dateReceived.setText(paymentsModelClass.getDatereceived());
             amount.setText(paymentsModelClass.getAmount());
+        }
+    }
+
+    static  class titleHolder extends RecyclerView.ViewHolder{
+        TextView titleMonth, totalAmount;
+
+        public titleHolder(@NonNull View itemView) {
+            super(itemView);
+
+            titleMonth = itemView.findViewById(R.id.titleMonthTv);
+            totalAmount = itemView.findViewById(R.id.totalAmountTv);
+
+        }
+
+        void setTitleData(BalancesModel balancesModel){
+            titleMonth.setText(balancesModel.getTitle());
+            totalAmount.setText(balancesModel.getTitleAmount());
         }
     }
 }

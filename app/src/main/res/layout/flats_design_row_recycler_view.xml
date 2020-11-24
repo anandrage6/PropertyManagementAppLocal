@@ -253,7 +253,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="11dp"
-                    android:src="@drawable/ic_add_person" />
+                    android:src="@drawable/ic_person" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -265,7 +265,7 @@
                     android:inputType="text"
                     android:layout_marginStart="10dp"
                     android:textColor="@color/Black"
-                    android:text="Add Tenant"
+                    android:text="Tenant Name"
                     android:textSize="15dp" />
 
                 <TextView
@@ -274,13 +274,15 @@
                     android:layout_height="wrap_content"
                     android:hint="Add Tenant"
                     android:textColor="@color/Black"
-                    android:textAlignment="center"
+                    android:textAlignment="textEnd"
                     android:textSize="15dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="80dp"
                     android:gravity="center_horizontal"
-                    android:layout_marginLeft="170dp" />
+                    android:layout_marginLeft="170dp"
+                    android:layout_marginRight="5dp"
+                    tools:ignore="RtlCompat" />
 
             </LinearLayout>
         </LinearLayout>

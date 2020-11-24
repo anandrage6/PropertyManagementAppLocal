@@ -38,6 +38,8 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
     String strPaidwith, strTaxStatus;
     String tenantName;
 
+    double dAmount;
+
     private static long reftenantId;
     private static PaymentsCreateListener paymentsCreateListener;
     private DatabaseQueryClass databaseQueryClass;
@@ -212,7 +214,8 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
 
     @SuppressLint("LongLogTag")
     private void getData() {
-        String amount = pAmount.getText().toString();
+        dAmount = Integer.parseInt(pAmount.getText().toString());
+        String amount = String.valueOf(dAmount);
         String paidwith = strPaidwith;
         String datereceived = pDatereceived.getText().toString();
         String receivedfrom = pReceivedfrom.getText().toString();

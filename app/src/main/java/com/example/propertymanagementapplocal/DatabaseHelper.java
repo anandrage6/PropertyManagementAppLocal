@@ -16,7 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper databaseHelper;
 
     // All Static variables
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     // Database Name
     private static final String DATABASE_NAME = Config.DATABASE_NAME;
@@ -103,7 +103,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + Config.COLUMN_INVOICE_INVOICE_ISSUED + " TEXT, "
                 + Config.COLUMN_INVOICE_PaymentDue + " TEXT, "
                 + Config.COLUMN_INVOICE_Notes + " TEXT, "
-                + Config.COLUMN_INVOICE_ENTRYDATE + " INTEGER, "
+                + Config.COLUMN_INVOICE_ENTRYDATE + " TEXT, "
                 + Config.COLUMN_TI_ID + " INTEGER NOT NULL, "
                 + "FOREIGN KEY (" + Config.COLUMN_TI_ID + ") REFERENCES " + Config.TABLE_TENANTS + "(" + Config.COLUMN_TENANTS_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, "
                 + "CONSTRAINT " + Config.INVOICE_SUB_CONSTRAINT + " UNIQUE (" + Config.COLUMN_INVOICE_ID + ")"
@@ -118,7 +118,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + Config.COLUMN_PAYMENT_RECEIVEDFROM + " TEXT, "
                 + Config.COLUMN_PAYMENT_TAXSTATUS + " TEXT, "
                 + Config.COLUMN_PAYMENT_NOTES + " TEXT, "
-                + Config.COLUMN_PAYMENT_ENTRYDATE + " INTEGER, "
+                + Config.COLUMN_PAYMENT_ENTRYDATE + " TEXT, "
                 + Config.COLUMN_TP_ID + " INTEGER NOT NULL, "
                 + "FOREIGN KEY (" + Config.COLUMN_TP_ID + ") REFERENCES " + Config.TABLE_TENANTS + "(" + Config.COLUMN_TENANTS_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, "
                 + "CONSTRAINT " + Config.PAYMENTS_SUB_CONSTRAINT + " UNIQUE (" + Config.COLUMN_PAYMENT_ID + ")"

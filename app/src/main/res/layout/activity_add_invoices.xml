@@ -131,6 +131,7 @@
                     android:textAlignment="textEnd"
                     android:layout_marginLeft="30dp"
                     android:gravity="center"
+                    android:inputType="numberDecimal"
                     android:textColor="@color/Black"
                     android:layout_marginRight="5dp" />
 

@@ -52,6 +52,8 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
 
     Date date1, date2;
 
+    double drent, damount;
+
     //Awesome Validation
     AwesomeValidation awesomeValidation;
 
@@ -276,8 +278,10 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
             String rentisPaid = rentIsPaid;
             String totalOccupants = tvValue.getText().toString();
             String notes = tvNotes.getText().toString();
-            String rentAmount = edtRent.getText().toString();
-            String securityDeposit = edtSecurityDeposit.getText().toString();
+            drent = Double.parseDouble(edtRent.getText().toString());
+            String rentAmount = String.valueOf(drent);
+            damount = Double.parseDouble(edtSecurityDeposit.getText().toString());
+            String securityDeposit = String.valueOf(damount);
 
             if (phone.length() == 10) {
                 TenantModelClass tenant = new TenantModelClass(-1, name, phone, email, leaseStart, leaseEnd, rentisPaid, totalOccupants, notes, rentAmount, securityDeposit);

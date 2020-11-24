@@ -13,7 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="45dp"
             android:orientation="horizontal"
             android:layout_marginRight="60dp">
             <LinearLayout
@@ -73,7 +73,6 @@
                 android:textAlignment="textEnd"
                 android:gravity="center"
                 android:background="@null"
-                android:inputType="numberDecimal"
                 android:layout_marginLeft="70dp"
                 tools:ignore="RtlCompat" />
         </LinearLayout>

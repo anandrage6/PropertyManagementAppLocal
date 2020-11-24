@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -19,6 +21,7 @@ import java.util.List;
 
 public class DatabaseQueryClass {
     private Context context;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
     public DatabaseQueryClass(Context context) {
         this.context = context;
@@ -650,7 +653,7 @@ public class DatabaseQueryClass {
         contentValues.put(Config.COLUMN_INVOICE_INVOICE_ISSUED, invoice.getInvoiceIssued());
         contentValues.put(Config.COLUMN_INVOICE_PaymentDue, invoice.getPaymentDue());
         contentValues.put(Config.COLUMN_INVOICE_Notes, invoice.getNotes());
-        contentValues.put(Config.COLUMN_INVOICE_ENTRYDATE, new Date().getTime());
+        contentValues.put(Config.COLUMN_INVOICE_ENTRYDATE, sdf.format( new Date()));
         //contentValues.put(Config.COLUMN_PT_ID, id);
         contentValues.put(Config.COLUMN_TI_ID, tenantId);
 
@@ -694,16 +697,18 @@ public class DatabaseQueryClass {
                     String invoiceIssued = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_INVOICE_ISSUED));
                     String paymentDue = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_PaymentDue));
                     String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_Notes));
-                    long EntryDate = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_INVOICE_ENTRYDATE));
+                    String EntryDate = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_ENTRYDATE));
 
                     InvoiceModelClass invoiceModelClass = new InvoiceModelClass(id, title, details, amount, rent, invoiceIssued, paymentDue, notes);
-                    invoiceModelClass.setEntryDate(new Date(EntryDate));
+                    invoiceModelClass.setEntryDate(sdf.parse(EntryDate));
                     invoiceList.add(invoiceModelClass);
                     // Log.d("TotalInvoiceList : ==> ", String.valueOf(invoiceList.size()));
                 } while (cursor.moveToNext());
             }
         } catch (SQLiteException e) {
             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } catch (ParseException e) {
+            e.printStackTrace();
         } finally {
             if (cursor != null)
                 cursor.close();
@@ -850,7 +855,7 @@ public class DatabaseQueryClass {
 
     //Total Invoice Amount Query by tenantId
 
-    public InvoiceModelClass getInvoiceAoumtByTenantId(long tenantId){
+    public InvoiceModelClass getInvoiceTotalAoumtByTenantId(long tenantId){
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
 
@@ -859,7 +864,7 @@ public class DatabaseQueryClass {
         Cursor cursor = null;
 
         try{
-            //cursor = sqLiteDatabase.rawQuery("SELECT SUM(Config.COLUMN_INVOICE_RENT) FROM Config.TABLE_INVOICE", Config.COLUMN_TI_ID + " = ? ", new String[]{String.valueOf(tenantId)},null, null, null);
+           // cursor = sqLiteDatabase.rawQuery("SELECT SUM(Config.COLUMN_INVOICE_RENT) FROM Config.TABLE_INVOICE", Config.COLUMN_TI_ID + " = ? ", new String[]{String.valueOf(tenantId)},null, null, null);
 
             cursor = sqLiteDatabase.query(Config.TABLE_INVOICE,
                     new String[]{Config.COLUMN_INVOICE_ID, Config.COLUMN_INVOICE_TITLE,
@@ -901,7 +906,7 @@ public class DatabaseQueryClass {
         contentValues.put(Config.COLUMN_PAYMENT_RECEIVEDFROM, payment.getReceivedfrom());
         contentValues.put(Config.COLUMN_PAYMENT_TAXSTATUS, payment.getTaxstatus());
         contentValues.put(Config.COLUMN_PAYMENT_NOTES, payment.getNotes());
-        contentValues.put(Config.COLUMN_PAYMENT_ENTRYDATE, new Date().getTime());
+        contentValues.put(Config.COLUMN_PAYMENT_ENTRYDATE, sdf.format( new Date()));
         contentValues.put(Config.COLUMN_TP_ID, tenantId);
 
         try {
@@ -943,15 +948,18 @@ public class DatabaseQueryClass {
                     String receivedfrom = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_RECEIVEDFROM));
                     String taxstatus = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_TAXSTATUS));
                     String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_NOTES));
-                    long EntryDate = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_PAYMENT_ENTRYDATE));
+                    String EntryDate = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_ENTRYDATE));
                     PaymentsModelClass paymentsModelClass = new PaymentsModelClass(id, amount, paidwith, datereceived, receivedfrom, taxstatus, notes);
-                    paymentsModelClass.setEntryDate(new Date(EntryDate));
+
+                    paymentsModelClass.setEntryDate(sdf.parse(EntryDate));
                     paymentsList.add(paymentsModelClass);
                     // Log.d("TotalInvoiceList : ==> ", String.valueOf(invoiceList.size()));
                 } while (cursor.moveToNext());
             }
         } catch (SQLiteException e) {
             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } catch (ParseException e) {
+            e.printStackTrace();
         } finally {
             if (cursor != null)
                 cursor.close();
