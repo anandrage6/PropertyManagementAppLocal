@@ -650,6 +650,9 @@ public class DatabaseQueryClass {
         contentValues.put(Config.COLUMN_INVOICE_DETAILS, invoice.getDetails());
         contentValues.put(Config.COLUMN_INVOICE_AMOUNT, invoice.getAmount());
         contentValues.put(Config.COLUMN_INVOICE_RENT, invoice.getRent());
+        contentValues.put(Config.COLUMN_INVOICE_WATER, invoice.getWaterBill());
+        contentValues.put(Config.COLUMN_INVOICE_ELECTRICITY, invoice.getElectricityBill());
+        contentValues.put(Config.COLUMN_INVOICE_MAINTENANCE_CHARGES, invoice.getMaintenanceCharges());
         contentValues.put(Config.COLUMN_INVOICE_INVOICE_ISSUED, invoice.getInvoiceIssued());
         contentValues.put(Config.COLUMN_INVOICE_PaymentDue, invoice.getPaymentDue());
         contentValues.put(Config.COLUMN_INVOICE_Notes, invoice.getNotes());
@@ -680,7 +683,7 @@ public class DatabaseQueryClass {
         try {
             cursor = sqLiteDatabase.query(Config.TABLE_INVOICE,
                     new String[]{Config.COLUMN_INVOICE_ID, Config.COLUMN_INVOICE_TITLE,
-                            Config.COLUMN_INVOICE_DETAILS, Config.COLUMN_INVOICE_AMOUNT, Config.COLUMN_INVOICE_RENT, Config.COLUMN_INVOICE_INVOICE_ISSUED, Config.COLUMN_INVOICE_PaymentDue,
+                            Config.COLUMN_INVOICE_DETAILS, Config.COLUMN_INVOICE_AMOUNT, Config.COLUMN_INVOICE_RENT, Config.COLUMN_INVOICE_WATER, Config.COLUMN_INVOICE_ELECTRICITY, Config.COLUMN_INVOICE_MAINTENANCE_CHARGES, Config.COLUMN_INVOICE_INVOICE_ISSUED, Config.COLUMN_INVOICE_PaymentDue,
                             Config.COLUMN_INVOICE_Notes, Config.COLUMN_INVOICE_ENTRYDATE},
                     Config.COLUMN_TI_ID + " = ? ",
                     new String[]{String.valueOf(tenantId)},
@@ -694,12 +697,15 @@ public class DatabaseQueryClass {
                     String details = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_DETAILS));
                     String amount = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_AMOUNT));
                     String rent = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_RENT));
+                    String water = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_WATER));
+                    String electricity = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_ELECTRICITY));
+                    String maintenanceCharges = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_MAINTENANCE_CHARGES));
                     String invoiceIssued = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_INVOICE_ISSUED));
                     String paymentDue = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_PaymentDue));
                     String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_Notes));
                     String EntryDate = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_ENTRYDATE));
 
-                    InvoiceModelClass invoiceModelClass = new InvoiceModelClass(id, title, details, amount, rent, invoiceIssued, paymentDue, notes);
+                    InvoiceModelClass invoiceModelClass = new InvoiceModelClass(id, title, details, amount, rent, water, electricity, maintenanceCharges, invoiceIssued, paymentDue, notes);
                     invoiceModelClass.setEntryDate(sdf.parse(EntryDate));
                     invoiceList.add(invoiceModelClass);
                     // Log.d("TotalInvoiceList : ==> ", String.valueOf(invoiceList.size()));
@@ -739,11 +745,14 @@ public class DatabaseQueryClass {
                 String details = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_DETAILS));
                 String amount = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_AMOUNT));
                 String rent = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_RENT));
+                String water = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_WATER));
+                String electricity = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_ELECTRICITY));
+                String maintenanceCharges = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_MAINTENANCE_CHARGES));
                 String invoiceIssued = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_INVOICE_ISSUED));
                 String paymentDue = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_PaymentDue));
                 String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_Notes));
 
-                invoice = new InvoiceModelClass(invoiceId, title, details, amount, rent, invoiceIssued, paymentDue, notes);
+                invoice = new InvoiceModelClass(invoiceId, title, details, amount, rent, water, electricity, maintenanceCharges, invoiceIssued, paymentDue, notes);
 
             }
         } catch (SQLiteException e) {
@@ -770,6 +779,9 @@ public class DatabaseQueryClass {
         contentValues.put(Config.COLUMN_INVOICE_DETAILS, invoice.getDetails());
         contentValues.put(Config.COLUMN_INVOICE_AMOUNT, invoice.getAmount());
         contentValues.put(Config.COLUMN_INVOICE_RENT, invoice.getRent());
+        contentValues.put(Config.COLUMN_INVOICE_WATER, invoice.getWaterBill());
+        contentValues.put(Config.COLUMN_INVOICE_ELECTRICITY, invoice.getElectricityBill());
+        contentValues.put(Config.COLUMN_INVOICE_MAINTENANCE_CHARGES, invoice.getMaintenanceCharges());
         contentValues.put(Config.COLUMN_INVOICE_INVOICE_ISSUED, invoice.getInvoiceIssued());
         contentValues.put(Config.COLUMN_INVOICE_PaymentDue, invoice.getPaymentDue());
         contentValues.put(Config.COLUMN_INVOICE_Notes, invoice.getNotes());
@@ -810,6 +822,8 @@ public class DatabaseQueryClass {
         return deletedRowCount;
     }
 
+
+    /*
     //get Invoice By tenantId
 
     public InvoiceModelClass getIvoiceIdByTenantId(long tenantId) {
@@ -852,7 +866,10 @@ public class DatabaseQueryClass {
 
         return invoice;
     }
+    */
 
+
+    /*
     //Total Invoice Amount Query by tenantId
 
     public InvoiceModelClass getInvoiceTotalAoumtByTenantId(long tenantId){
@@ -888,6 +905,8 @@ public class DatabaseQueryClass {
 
         return invoice;
     }
+
+     */
 
 
 

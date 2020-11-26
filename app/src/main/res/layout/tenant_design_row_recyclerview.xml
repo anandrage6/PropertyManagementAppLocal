@@ -60,7 +60,7 @@
                     android:layout_marginLeft="10dp" />
                 <TextView
                     android:id="@+id/tenantName"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:hint="Name"
@@ -88,15 +88,17 @@
                     android:layout_marginLeft="10dp" />
                 <TextView
                     android:id="@+id/tenantPhone"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:hint="Phone"
                     android:textSize="15dp"
-                    android:textColor="@color/Black"
+                    android:textColor="@color/colorPrimary"
                     android:textAlignment="textStart"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:autoLink="phone"
+                    android:textColorLink="@color/colorPrimaryDark"
                     android:layout_marginLeft="10dp"
                     tools:ignore="RtlCompat" />
 
@@ -118,16 +120,18 @@
                     android:layout_marginLeft="10dp" />
                 <TextView
                     android:id="@+id/tenantEmail"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:hint="Email"
                     android:textSize="15dp"
-                    android:textColor="@color/Black"
+                    android:textColor="@color/colorPrimary"
+                    android:textColorLink="@color/colorPrimaryDark"
                     android:textAlignment="textStart"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:layout_marginLeft="10dp" />
+                    android:autoLink="email"
+                   />
 
             </LinearLayout>
 

@@ -53,6 +53,9 @@ public class Config {
     public static final String COLUMN_INVOICE_DETAILS = "Details";
     public static final String COLUMN_INVOICE_AMOUNT = "Amount";
     public static final String COLUMN_INVOICE_RENT = "Rent";
+    public static final String COLUMN_INVOICE_WATER = "Water";
+    public static final String COLUMN_INVOICE_ELECTRICITY = "Electricity";
+    public static final String COLUMN_INVOICE_MAINTENANCE_CHARGES = "Maintenance_Charges";
     public static final String COLUMN_INVOICE_INVOICE_ISSUED = "Invoice_issued";
     public static final String COLUMN_INVOICE_PaymentDue = "Payment_due";
     public static final String COLUMN_INVOICE_Notes = "Notes";

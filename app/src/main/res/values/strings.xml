@@ -109,12 +109,12 @@
     <string name="addpropertyempty">Add Property to start with...</string>
     <string name="addflatempty">Add Flat to start with...</string>
     <string name="addtenantempty">Add Tenant to start with...</string>
-    <string name="addinvoicesempty">Add Property to start with...</string>
-    <string name="addpaymentsempty">Add Property to start with...</string>
-    <string name="adddocumentsempty">Add Property to start with...</string>
+    <string name="addinvoicesempty">Add Invoice to start with...</string>
+    <string name="addpaymentsempty">Add Payments to start with...</string>
+    <string name="adddocumentsempty">Add Documents to start with...</string>
 
     //display flatno in Total tenant
-    <string name="flatno">FlatNo : </string>
+    <string name="flatno">FlatNo - </string>
 
 
 </resources>

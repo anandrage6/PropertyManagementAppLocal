@@ -71,28 +71,28 @@
                     android:src="@drawable/ic_floor" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
-                    android:text="Floor"
+                    android:text="Floor / Block"
                     android:textColor="@color/Black"
                     android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/floorTextView"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginStart="170dp"
-                    android:layout_marginEnd="0dp"
-                    android:hint=" Floor"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="5dp"
+                    android:hint="Floor"
                     android:textColor="@color/Black"
                     android:inputType="text"
                     android:textAlignment="textStart"
@@ -118,7 +118,7 @@
                     android:src="@drawable/ic_flat" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
@@ -126,20 +126,20 @@
                     android:layout_marginBottom="10dp"
                     android:inputType="text"
                     android:textColor="@color/Black"
-                    android:text="Flat No"
+                    android:text="Unit Number"
                     android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/flatNoTextView"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginStart="155dp"
-                    android:layout_marginEnd="0dp"
-                    android:hint=" FlatNo"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="5dp"
+                    android:hint="FlatNo"
                     android:textColor="@color/Black"
                     android:inputType="text"
                     android:textSize="15dp"
@@ -164,7 +164,7 @@
                     android:src="@drawable/ic_flatfacing" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
@@ -177,15 +177,15 @@
 
                 <TextView
                     android:id="@+id/flatfacingTextView"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginStart="130dp"
-                    android:layout_marginEnd="0dp"
-                    android:hint=" FlatFacing"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="5dp"
+                    android:hint="FlatFacing"
                     android:inputType="text"
                     android:textColor="@color/Black"
                     android:textSize="15dp"
@@ -210,7 +210,7 @@
                     android:src="@drawable/ic_bed" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
@@ -223,15 +223,15 @@
 
                 <TextView
                     android:id="@+id/noofbedroomsTextView"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="0dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginStart="93dp"
-                    android:layout_marginEnd="0dp"
-                    android:hint=" Bedroom"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="5dp"
+                    android:hint="Bedroom"
                     android:inputType="text"
                     android:textSize="15dp"
                     android:textAlignment="textStart"
@@ -256,7 +256,7 @@
                     android:src="@drawable/ic_person" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
@@ -274,11 +274,11 @@
                     android:layout_height="wrap_content"
                     android:hint="Add Tenant"
                     android:textColor="@color/Black"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="textStart"
                     android:textSize="15dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginStart="80dp"
+                    android:layout_marginStart="20dp"
                     android:gravity="center_horizontal"
                     android:layout_marginLeft="170dp"
                     android:layout_marginRight="5dp"

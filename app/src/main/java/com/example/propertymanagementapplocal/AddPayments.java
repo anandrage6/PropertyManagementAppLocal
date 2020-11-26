@@ -90,6 +90,7 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
 
         // querying tenantname through tenant id
         databaseQueryClass = new DatabaseQueryClass(AddPayments.this);
+
         mtenantModelClass = databaseQueryClass.getTenantById(reftenantId);
         tenantName = mtenantModelClass.getTenantName();
         pReceivedfrom.setText(tenantName);

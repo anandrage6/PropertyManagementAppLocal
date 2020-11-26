@@ -103,6 +103,7 @@
                 tools:ignore="RtlCompat" />
 
 
+
         </LinearLayout>
         <TextView
             android:id="@+id/textOption"
@@ -114,7 +115,7 @@
             android:text="&#8942;"
             android:textColor="@color/Black"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:layout_marginLeft="210dp" />
+            tools:ignore="RtlCompat" />
 
 
         <View

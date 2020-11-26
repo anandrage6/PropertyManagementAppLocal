@@ -3,7 +3,41 @@ package com.example.propertymanagementapplocal;
 public class InvoiceModelClass extends BalancesModel {
 
     private long invoiceId;
-    private String title, details, amount, rent, invoiceIssued, paymentDue, notes;
+    private String title;
+    private String details;
+    private String amount;
+    private String rent;
+    private String invoiceIssued;
+    private String paymentDue;
+    private String notes;
+    private String waterBill;
+    private String electricityBill;
+
+    public String getWaterBill() {
+        return waterBill;
+    }
+
+    public void setWaterBill(String waterBill) {
+        this.waterBill = waterBill;
+    }
+
+    public String getElectricityBill() {
+        return electricityBill;
+    }
+
+    public void setElectricityBill(String electricityBill) {
+        this.electricityBill = electricityBill;
+    }
+
+    public String getMaintenanceCharges() {
+        return maintenanceCharges;
+    }
+
+    public void setMaintenanceCharges(String maintenanceCharges) {
+        this.maintenanceCharges = maintenanceCharges;
+    }
+
+    private String maintenanceCharges;
     long tIId;
 
     public InvoiceModelClass(long invoiceId) {
@@ -23,13 +57,15 @@ public class InvoiceModelClass extends BalancesModel {
     }
 
     //paremetirised constructor
-
-    public InvoiceModelClass(long invoiceId, String title, String details, String amount, String rent, String invoiceIssued, String paymentDue, String notes) {
+    public InvoiceModelClass(long invoiceId, String title, String details, String amount, String rent,String waterBill, String electricityBill, String maintenanceCharges, String invoiceIssued, String paymentDue, String notes) {
         this.invoiceId = invoiceId;
         this.title = title;
         this.details = details;
         this.amount = amount;
         this.rent = rent;
+        this.waterBill = waterBill;
+        this.electricityBill = electricityBill;
+        this.maintenanceCharges = maintenanceCharges;
         this.invoiceIssued = invoiceIssued;
         this.paymentDue = paymentDue;
         this.notes = notes;

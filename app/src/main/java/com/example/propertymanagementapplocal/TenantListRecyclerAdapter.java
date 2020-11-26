@@ -90,6 +90,7 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
 
         //phone click
 
+        /*
         holder.phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,6 +139,8 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
                 }
             }
         });
+
+         */
 
 
 

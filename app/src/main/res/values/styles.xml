@@ -15,4 +15,9 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowAnimationStyle">@style/Animation.Design.BottomSheetDialog</item>
     </style>
+
+    <style name="EditTextCustomHolo" parent="android:Widget.EditText">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
 </resources>

@@ -16,7 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper databaseHelper;
 
     // All Static variables
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     // Database Name
     private static final String DATABASE_NAME = Config.DATABASE_NAME;
@@ -100,6 +100,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + Config.COLUMN_INVOICE_DETAILS + " TEXT, "
                 + Config.COLUMN_INVOICE_AMOUNT + " TEXT, "
                 + Config.COLUMN_INVOICE_RENT + " TEXT, "
+                + Config.COLUMN_INVOICE_WATER + " TEXT, "
+                + Config.COLUMN_INVOICE_ELECTRICITY + " TEXT, "
+                + Config.COLUMN_INVOICE_MAINTENANCE_CHARGES + " TEXT, "
                 + Config.COLUMN_INVOICE_INVOICE_ISSUED + " TEXT, "
                 + Config.COLUMN_INVOICE_PaymentDue + " TEXT, "
                 + Config.COLUMN_INVOICE_Notes + " TEXT, "

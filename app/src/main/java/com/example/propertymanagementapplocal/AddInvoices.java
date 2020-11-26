@@ -16,6 +16,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.lang.annotation.ElementType;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class AddInvoices extends AppCompatActivity {
@@ -23,15 +26,23 @@ public class AddInvoices extends AppCompatActivity {
     private static long refTenantId;
     private static InvoiceCreateListener invoiceCreateListener;
 
-    EditText rent;
+    EditText rent, waterBillEdT, electricityBillEdT, maintenanceChargesEdT;
     TextView amount, details, title, paymentdue, invoiceIssued, note, addLine;
     Button save, cancel;
     LinearLayout linearLayout;
 
     String Title, Amount, Details;
+    String tenantRent;
 
-    double strAmount;
+    double strAmount ;
     double strRent;
+    double strwaterBill;
+    double strElectricityBill;
+    double strMaintenanceCharges;
+
+    private DatabaseQueryClass databaseQueryClass;
+    private TenantModelClass mtenantModelClass;
+
 
     //empty Constructor
     public AddInvoices() {
@@ -106,6 +117,9 @@ public class AddInvoices extends AppCompatActivity {
         cancel = findViewById(R.id.invoiceCancelButton);
         linearLayout = findViewById(R.id.hidelayout);
         addLine = findViewById(R.id.addlineTextview);
+        waterBillEdT = findViewById(R.id.invoiceWaterBillEditText);
+        electricityBillEdT = findViewById(R.id.invoiceElecricityBillEditText);
+        maintenanceChargesEdT = findViewById(R.id.invoiceMaintananceChargesEditText);
 
 
         //navigation part
@@ -114,6 +128,17 @@ public class AddInvoices extends AppCompatActivity {
 
 
         linearLayout.setVisibility(linearLayout.GONE);
+        // querying tenantname through tenant id
+        databaseQueryClass = new DatabaseQueryClass(AddInvoices.this);
+
+
+        mtenantModelClass = databaseQueryClass.getTenantById(refTenantId);
+        tenantRent = mtenantModelClass.getRentAmount();
+        rent.setText(tenantRent);
+
+
+        //values amounts
+
 
 
         //notes
@@ -173,6 +198,7 @@ public class AddInvoices extends AppCompatActivity {
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
 
+        /*
         //startDate Picker
         invoiceIssued.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,6 +216,14 @@ public class AddInvoices extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+
+         */
+
+        //InvoiceDate
+        //Calendar calendar1 = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyy");
+        String currentDate = simpleDateFormat.format(calendar.getTime());
+        invoiceIssued.setText(currentDate);
 
         //EndDate Picker
         paymentdue.setOnClickListener(new View.OnClickListener() {
@@ -215,23 +249,58 @@ public class AddInvoices extends AppCompatActivity {
 
         String strTitle = title.getText().toString();
         String strDetails = details.getText().toString();
+
+
+        strRent = Double.parseDouble(rent.getText().toString());
+        String strInvoiceIssued = invoiceIssued.getText().toString();
+        String strpaymentdue = paymentdue.getText().toString();
+        String strNote = note.getText().toString();
+
         try {
 
-            strAmount = Integer.parseInt(amount.getText().toString());
+            strAmount = Double.parseDouble(amount.getText().toString());
+
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        strRent = Integer.parseInt(rent.getText().toString());
-        String strInvoiceIssued = invoiceIssued.getText().toString();
-        String strpaymentdue = paymentdue.getText().toString();
-        String strNote = note.getText().toString();
-        String Amount = amount.getText().toString();
-        String totalrent = String.valueOf(strRent - strAmount);
+
+
+       try {
+           strwaterBill = Double.parseDouble(waterBillEdT.getText().toString());
+       }
+       catch (Exception e) {
+           e.printStackTrace();
+       }
+
+        try {
+            strElectricityBill = Double.parseDouble(electricityBillEdT.getText().toString());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            strMaintenanceCharges = Double.parseDouble(maintenanceChargesEdT.getText().toString());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+       // strwaterBill = Double.parseDouble(waterBillEdT.getText().toString());
+       // strElectricityBill = Double.parseDouble(electricityBillEdT.getText().toString());
+       // strMaintenanceCharges = Double.parseDouble(maintenanceChargesEdT.getText().toString());
+
+        String Amount = String.valueOf(strAmount);
+        String waterBill = String.valueOf(strwaterBill);
+        String electricityBill = String.valueOf(strElectricityBill);
+        String maintenanceCharges = String.valueOf(strMaintenanceCharges);
+        String totalrent = String.valueOf(strRent - strAmount - strwaterBill - strElectricityBill + strMaintenanceCharges);
         Log.d("totalrent : ==> ", totalrent);
 
 
-        InvoiceModelClass invoice = new InvoiceModelClass(-1, strTitle, strDetails, Amount, totalrent, strInvoiceIssued, strpaymentdue, strNote);
+
+        InvoiceModelClass invoice = new InvoiceModelClass(-1, strTitle, strDetails, Amount, totalrent, waterBill, electricityBill, maintenanceCharges, strInvoiceIssued, strpaymentdue, strNote);
 
         DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(this);
 
