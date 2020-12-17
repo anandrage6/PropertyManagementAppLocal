@@ -117,8 +117,11 @@ public class AddInvoices extends AppCompatActivity {
         cancel = findViewById(R.id.invoiceCancelButton);
         linearLayout = findViewById(R.id.hidelayout);
         addLine = findViewById(R.id.addlineTextview);
+        /*
         waterBillEdT = findViewById(R.id.invoiceWaterBillEditText);
         electricityBillEdT = findViewById(R.id.invoiceElecricityBillEditText);
+
+         */
         maintenanceChargesEdT = findViewById(R.id.invoiceMaintananceChargesEditText);
 
 
@@ -266,6 +269,7 @@ public class AddInvoices extends AppCompatActivity {
         }
 
 
+        /*
        try {
            strwaterBill = Double.parseDouble(waterBillEdT.getText().toString());
        }
@@ -278,6 +282,8 @@ public class AddInvoices extends AppCompatActivity {
         }catch (Exception e) {
             e.printStackTrace();
         }
+
+         */
 
         try {
             strMaintenanceCharges = Double.parseDouble(maintenanceChargesEdT.getText().toString());
