@@ -32,7 +32,7 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
     private DatabaseQueryClass databaseQueryClass;
 
 
-    EditText rent;
+    EditText rent, waterBill, electricityBill, maintananceBill;
     TextView amount, details, title, paymentdue, invoiceIssued, note, addLine;
     Button save, cancel;
     LinearLayout linearLayout;
@@ -42,7 +42,7 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
     String Title, Amount, Details;
 
     double strAmount;
-    double strRent;
+    double strRent, strWaterBill, strElectricityBill, strMaintananceBill;
 
     //constructor
     public UpdateInvoiceDetails() {
@@ -118,6 +118,9 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
         cancel = findViewById(R.id.invoiceCancelButtonUpdate);
         linearLayout = findViewById(R.id.hidelayout);
         addLine = findViewById(R.id.addlineTextviewUpdate);
+        waterBill = findViewById(R.id.invoiceWaterEditTextUpdate);
+        electricityBill = findViewById(R.id.invoiceElectricityEditTextUpdate);
+        maintananceBill = findViewById(R.id.invoiceMaintananceEditTextUpdate);
 
 
         databaseQueryClass = new DatabaseQueryClass(getApplicationContext());
@@ -131,6 +134,9 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
         invoiceIssued.setText(mInvoiceModelClass.getInvoiceIssued());
         paymentdue.setText(mInvoiceModelClass.getPaymentDue());
         note.setText(mInvoiceModelClass.getNotes());
+        waterBill.setText(mInvoiceModelClass.getWaterBill());
+        electricityBill.setText(mInvoiceModelClass.getElectricityBill());
+        maintananceBill.setText(mInvoiceModelClass.getMaintenanceCharges());
 
 
         //notes
@@ -227,13 +233,33 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
                 strInvoiceIssued = invoiceIssued.getText().toString();
                 strPaymentdue = paymentdue.getText().toString();
                 strNotes = note.getText().toString();
+                try {
+                    strWaterBill = Double.parseDouble(waterBill.getText().toString());
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    strElectricityBill = Double.parseDouble(electricityBill.getText().toString());
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                try{
+                    strMaintananceBill = Double.parseDouble(maintananceBill.getText().toString());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
                 mInvoiceModelClass.setTitle(strtitle);
                 mInvoiceModelClass.setDetails(strDetails);
                 mInvoiceModelClass.setAmount(amountStr);
-                mInvoiceModelClass.setRent(String.valueOf(strRent - strAmount));
+                mInvoiceModelClass.setRent(String.valueOf(strRent - strAmount + strWaterBill + strElectricityBill + strMaintananceBill));
                 mInvoiceModelClass.setInvoiceIssued(strInvoiceIssued);
                 mInvoiceModelClass.setPaymentDue(strPaymentdue);
                 mInvoiceModelClass.setNotes(strNotes);
+                mInvoiceModelClass.setWaterBill(String.valueOf(strWaterBill));
+                mInvoiceModelClass.setElectricityBill(String.valueOf(strElectricityBill));
+                mInvoiceModelClass.setMaintenanceCharges(String.valueOf(strMaintananceBill));
 
                 long id = databaseQueryClass.updateInvoiceInfo(mInvoiceModelClass);
                 if (id > 0) {

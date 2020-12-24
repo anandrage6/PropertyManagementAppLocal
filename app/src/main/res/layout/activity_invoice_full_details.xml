@@ -143,8 +143,132 @@
             <LinearLayout
                 android:id="@+id/thirdlinear"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_below="@id/secondlinear"
+                android:layout_marginTop="2dp"
+                android:background="@color/cardview_light_background"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="54dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="11dp"
+                    android:src="@drawable/ic_roundplus" />
+
+                <TextView
+                    android:layout_width="156dp"
+                    android:layout_height="match_parent"
+                    android:text="Water Bill"
+                    android:textSize="15dp"
+                    android:textColor="@color/Black"
+                    android:textAlignment="textStart"
+                    android:gravity="center"
+                    tools:ignore="RtlCompat" />
+                <TextView
+                    android:id="@+id/waterTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="0.00"
+                    android:layout_marginStart="40dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="15sp"
+                    android:textColor="@color/Black"
+                    android:layout_marginLeft="40dp"
+                    android:gravity="center"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="10dp"
+                    tools:ignore="RtlCompat" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fourthlinear"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/thirdlinear"
+                android:layout_marginTop="2dp"
+                android:background="@color/cardview_light_background"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="54dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="11dp"
+                    android:src="@drawable/ic_roundplus" />
+
+                <TextView
+                    android:layout_width="156dp"
+                    android:layout_height="match_parent"
+                    android:text="Electricity Bill"
+                    android:textSize="15dp"
+                    android:textColor="@color/Black"
+                    android:textAlignment="textStart"
+                    android:gravity="center"
+                    tools:ignore="RtlCompat" />
+                <TextView
+                    android:id="@+id/electricityTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="0.00"
+                    android:layout_marginStart="40dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="15sp"
+                    android:textColor="@color/Black"
+                    android:layout_marginLeft="40dp"
+                    android:gravity="center"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="10dp"
+                    tools:ignore="RtlCompat" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fifthlinear"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/fourthlinear"
+                android:layout_marginTop="2dp"
+                android:background="@color/cardview_light_background"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="54dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="11dp"
+                    android:src="@drawable/ic_roundplus" />
+
+                <TextView
+                    android:layout_width="156dp"
+                    android:layout_height="match_parent"
+                    android:text="Maintanance Charges"
+                    android:textSize="15dp"
+                    android:textColor="@color/Black"
+                    android:textAlignment="textStart"
+                    android:gravity="center"
+                    tools:ignore="RtlCompat" />
+                <TextView
+                    android:id="@+id/maintananceTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="0.00"
+                    android:layout_marginStart="40dp"
+                    android:textAlignment="textEnd"
+                    android:textSize="15sp"
+                    android:textColor="@color/Black"
+                    android:layout_marginLeft="40dp"
+                    android:gravity="center"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="10dp"
+                    tools:ignore="RtlCompat" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/sixthlinear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fifthlinear"
                 android:layout_marginTop="2dp"
                 android:background="@color/cardview_light_background"
                 android:orientation="horizontal">
@@ -180,10 +304,10 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/fourthlinear"
+                android:id="@+id/seventhlinear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/thirdlinear"
+                android:layout_below="@id/sixthlinear"
                 android:layout_marginTop="2dp"
                 android:background="@color/cardview_light_background"
                 android:orientation="horizontal">
@@ -217,10 +341,10 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/fifthlinear"
+                android:id="@+id/eightlinear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/fourthlinear"
+                android:layout_below="@id/seventhlinear"
                 android:layout_marginTop="2dp"
                 android:background="@color/cardview_light_background"
                 android:orientation="horizontal">
@@ -253,8 +377,6 @@
                     tools:ignore="RtlCompat">
                 </TextView>
             </LinearLayout>
-
-
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

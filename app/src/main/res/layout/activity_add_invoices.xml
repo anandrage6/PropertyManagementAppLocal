@@ -182,7 +182,7 @@
 
         </LinearLayout>
 
-        <!---
+
         <LinearLayout
             android:id="@+id/thirdlinear"
             android:layout_width="match_parent"
@@ -196,7 +196,7 @@
                 android:layout_width="54dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="12dp"
-                android:src="@drawable/ic_roundminus" />
+                android:src="@drawable/ic_roundplus" />
 
             <TextView
                 android:layout_width="156dp"
@@ -240,7 +240,7 @@
                 android:layout_width="54dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="12dp"
-                android:src="@drawable/ic_roundminus" />
+                android:src="@drawable/ic_roundplus" />
 
             <TextView
                 android:layout_width="156dp"
@@ -269,13 +269,13 @@
                 tools:ignore="RtlCompat" />
 
         </LinearLayout>
-        -->
+
 
         <LinearLayout
             android:id="@+id/fifthlinear"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_below="@id/secondlinear"
+            android:layout_below="@id/fourthlinear"
             android:layout_marginTop="2dp"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal">

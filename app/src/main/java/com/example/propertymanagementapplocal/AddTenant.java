@@ -278,12 +278,19 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
             String rentisPaid = rentIsPaid;
             String totalOccupants = tvValue.getText().toString();
             String notes = tvNotes.getText().toString();
-            drent = Double.parseDouble(edtRent.getText().toString());
+            try {
+                drent = Double.parseDouble(edtRent.getText().toString());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             String rentAmount = String.valueOf(drent);
-            damount = Double.parseDouble(edtSecurityDeposit.getText().toString());
+            try {
+                damount = Double.parseDouble(edtSecurityDeposit.getText().toString());
+            }catch(Exception e){
+                e.printStackTrace();
+            }
             String securityDeposit = String.valueOf(damount);
 
-            if (phone.length() == 10) {
                 TenantModelClass tenant = new TenantModelClass(-1, name, phone, email, leaseStart, leaseEnd, rentisPaid, totalOccupants, notes, rentAmount, securityDeposit);
 
                 DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(this);
@@ -301,10 +308,6 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
                     tenantCreateListener.onTenantCreated(tenant);
                     finish();
                 }
-
-            } else {
-                Toast.makeText(getApplicationContext(), "Please Enter Valid 10 digits Number", Toast.LENGTH_LONG).show();
-            }
         }
 
     }

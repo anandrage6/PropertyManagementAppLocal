@@ -189,6 +189,131 @@
             android:background="@color/cardview_light_background"
             android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="54dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/ic_roundminus" />
+
+            <TextView
+                android:layout_width="156dp"
+                android:layout_height="match_parent"
+                android:text="Water Bill"
+                android:textSize="15dp"
+                android:textColor="@color/Black"
+                android:textAlignment="textStart"
+                android:gravity="center"
+                tools:ignore="RtlCompat" />
+            <EditText
+                android:id="@+id/invoiceWaterEditTextUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="0.00"
+                android:textColor="@color/Black"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="5dp"
+                android:textAlignment="textEnd"
+                android:textSize="15sp"
+                android:layout_marginLeft="40dp"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:layout_gravity="end"
+                tools:ignore="RtlCompat" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fourthlinear"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/thirdlinear"
+            android:layout_marginTop="2dp"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="54dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/ic_roundminus" />
+
+            <TextView
+                android:layout_width="156dp"
+                android:layout_height="match_parent"
+                android:text="Electricity Bill"
+                android:textSize="15dp"
+                android:textColor="@color/Black"
+                android:textAlignment="textStart"
+                android:gravity="center"
+                tools:ignore="RtlCompat" />
+            <EditText
+                android:id="@+id/invoiceElectricityEditTextUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="0.00"
+                android:textColor="@color/Black"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="5dp"
+                android:textAlignment="textEnd"
+                android:textSize="15sp"
+                android:layout_marginLeft="40dp"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:layout_gravity="end"
+                tools:ignore="RtlCompat" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fifthlinear"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/fourthlinear"
+            android:layout_marginTop="2dp"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="54dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/ic_roundminus" />
+
+            <TextView
+                android:layout_width="156dp"
+                android:layout_height="match_parent"
+                android:text="Maintanance Charges"
+                android:textSize="15dp"
+                android:textColor="@color/Black"
+                android:textAlignment="textStart"
+                android:gravity="center"
+                tools:ignore="RtlCompat" />
+            <EditText
+                android:id="@+id/invoiceMaintananceEditTextUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="0.00"
+                android:textColor="@color/Black"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="5dp"
+                android:textAlignment="textEnd"
+                android:textSize="15sp"
+                android:layout_marginLeft="40dp"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:layout_gravity="end"
+                tools:ignore="RtlCompat" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/sixthlinear"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/fifthlinear"
+            android:layout_marginTop="2dp"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal">
+
 
             <ImageView
                 android:layout_width="54dp"
@@ -209,10 +334,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/fourthlinear"
+            android:id="@+id/seventhlinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/thirdlinear"
+            android:layout_below="@id/sixthlinear"
             android:layout_marginTop="2dp"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal">
@@ -248,10 +373,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/fifthlinear"
+            android:id="@+id/eightlinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/fourthlinear"
+            android:layout_below="@id/seventhlinear"
             android:layout_marginTop="2dp"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal">
@@ -285,10 +410,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/sixthlinear"
+            android:id="@+id/ninthinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/fifthlinear"
+            android:layout_below="@id/eightlinear"
             android:layout_marginTop="2dp"
             android:background="@color/cardview_light_background"
             android:orientation="horizontal">

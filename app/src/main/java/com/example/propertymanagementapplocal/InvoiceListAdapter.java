@@ -77,6 +77,9 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
                 intent.putExtra(Config.COLUMN_INVOICE_INVOICE_ISSUED, invoice.getInvoiceIssued());
                 intent.putExtra(Config.COLUMN_INVOICE_PaymentDue, invoice.getPaymentDue());
                 intent.putExtra(Config.COLUMN_INVOICE_Notes, invoice.getNotes());
+                intent.putExtra(Config.COLUMN_INVOICE_WATER, invoice.getWaterBill());
+                intent.putExtra(Config.COLUMN_INVOICE_ELECTRICITY, invoice.getElectricityBill());
+                intent.putExtra(Config.COLUMN_INVOICE_MAINTENANCE_CHARGES, invoice.getMaintenanceCharges());
 
                 context.startActivity(intent);
 

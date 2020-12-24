@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 public class InvoiceFullDetails extends AppCompatActivity {
 
-    TextView title, details, amount, rent, invoiceIssued, paymentdue, note;
-    String strTitle, strDetails, strAmount, strRent, strInvoiceIssued, strPaymentDue, strNote;
+    TextView title, details, amount, rent, invoiceIssued, paymentdue, note, waterTv, electricityTv, maintananceTv ;
+    String strTitle, strDetails, strAmount, strRent, strInvoiceIssued, strPaymentDue, strNote, strWaterBill, strElectricityBill, strMaintananceCharges;
     private Toolbar toolbar;
 
     LinearLayout linearLayout;
@@ -31,6 +31,10 @@ public class InvoiceFullDetails extends AppCompatActivity {
         invoiceIssued = findViewById(R.id.invoiceissuedDateTv);
         paymentdue = findViewById(R.id.paymentdueDateTv);
         note = findViewById(R.id.noteTv);
+        waterTv = findViewById(R.id.waterTv);
+        electricityTv = findViewById(R.id.electricityTv);
+        maintananceTv = findViewById(R.id.maintananceTv);
+
         linearLayout = findViewById(R.id.invoiceFullDetailsHide);
 
         strTitle = getIntent().getStringExtra(Config.COLUMN_INVOICE_TITLE);
@@ -40,6 +44,10 @@ public class InvoiceFullDetails extends AppCompatActivity {
         strInvoiceIssued = getIntent().getStringExtra(Config.COLUMN_INVOICE_INVOICE_ISSUED);
         strPaymentDue = getIntent().getStringExtra(Config.COLUMN_INVOICE_PaymentDue);
         strNote = getIntent().getStringExtra(Config.COLUMN_INVOICE_Notes);
+        strWaterBill = getIntent().getStringExtra(Config.COLUMN_INVOICE_WATER);
+        strElectricityBill = getIntent().getStringExtra(Config.COLUMN_INVOICE_ELECTRICITY);
+        strMaintananceCharges = getIntent().getStringExtra(Config.COLUMN_INVOICE_MAINTENANCE_CHARGES);
+
 
         title.setText(strTitle);
         details.setText(strDetails);
@@ -48,6 +56,9 @@ public class InvoiceFullDetails extends AppCompatActivity {
         invoiceIssued.setText(strInvoiceIssued);
         paymentdue.setText(strPaymentDue);
         note.setText(strNote);
+        waterTv.setText(strWaterBill);
+        electricityTv.setText(strElectricityBill);
+        maintananceTv.setText(strMaintananceCharges);
 
         //show and hide layout
         //linearLayout.setVisibility(linearLayout.GONE);

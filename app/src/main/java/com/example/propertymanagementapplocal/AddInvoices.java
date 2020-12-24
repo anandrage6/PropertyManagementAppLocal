@@ -117,11 +117,10 @@ public class AddInvoices extends AppCompatActivity {
         cancel = findViewById(R.id.invoiceCancelButton);
         linearLayout = findViewById(R.id.hidelayout);
         addLine = findViewById(R.id.addlineTextview);
-        /*
+
         waterBillEdT = findViewById(R.id.invoiceWaterBillEditText);
         electricityBillEdT = findViewById(R.id.invoiceElecricityBillEditText);
 
-         */
         maintenanceChargesEdT = findViewById(R.id.invoiceMaintananceChargesEditText);
 
 
@@ -201,7 +200,7 @@ public class AddInvoices extends AppCompatActivity {
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
 
-        /*
+
         //startDate Picker
         invoiceIssued.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -220,7 +219,8 @@ public class AddInvoices extends AppCompatActivity {
             }
         });
 
-         */
+
+
 
         //InvoiceDate
         //Calendar calendar1 = Calendar.getInstance();
@@ -269,7 +269,7 @@ public class AddInvoices extends AppCompatActivity {
         }
 
 
-        /*
+
        try {
            strwaterBill = Double.parseDouble(waterBillEdT.getText().toString());
        }
@@ -283,7 +283,7 @@ public class AddInvoices extends AppCompatActivity {
             e.printStackTrace();
         }
 
-         */
+
 
         try {
             strMaintenanceCharges = Double.parseDouble(maintenanceChargesEdT.getText().toString());
@@ -291,6 +291,9 @@ public class AddInvoices extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        Log.d("waterbill : ==> ", String.valueOf(strwaterBill));
+        Log.d("electricity bill : ==> ", String.valueOf(strElectricityBill));
+        Log.d("maintanance bill : ==> ", String.valueOf(strMaintenanceCharges));
 
 
        // strwaterBill = Double.parseDouble(waterBillEdT.getText().toString());
@@ -301,7 +304,7 @@ public class AddInvoices extends AppCompatActivity {
         String waterBill = String.valueOf(strwaterBill);
         String electricityBill = String.valueOf(strElectricityBill);
         String maintenanceCharges = String.valueOf(strMaintenanceCharges);
-        String totalrent = String.valueOf(strRent - strAmount - strwaterBill - strElectricityBill + strMaintenanceCharges);
+        String totalrent = String.valueOf(strRent - strAmount + strwaterBill + strElectricityBill + strMaintenanceCharges);
         Log.d("totalrent : ==> ", totalrent);
 
 

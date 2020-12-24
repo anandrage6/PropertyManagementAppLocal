@@ -23,7 +23,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class AddPayments extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -44,6 +46,7 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
     private static PaymentsCreateListener paymentsCreateListener;
     private DatabaseQueryClass databaseQueryClass;
     private TenantModelClass mtenantModelClass;
+    List<InvoiceModelClass> invoiceList;
 
     AppCompatRadioButton taxableRadioBtn, nontaxableRadioBtn;
 
@@ -95,6 +98,22 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
         tenantName = mtenantModelClass.getTenantName();
         pReceivedfrom.setText(tenantName);
 
+        // invoice part to get total balance
+        invoiceList = new ArrayList<>();
+        //Log.d("Queryclass :==> ", String.valueOf(databaseQueryClass.getAllInvoicebyId(refFlatId)));
+        invoiceList.addAll(databaseQueryClass.getAllInvoicebyId(reftenantId));
+        //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
+
+        double totalInvoiceAmount = 0;
+
+        for (InvoiceModelClass invoiceModelClass : invoiceList) {
+            invoiceModelClass.setType(0);
+            totalInvoiceAmount = totalInvoiceAmount + Double.parseDouble(invoiceModelClass.getRent());
+
+        }
+
+        pAmount.setText(String.valueOf(totalInvoiceAmount));
+        //
 
         //spinner for paid with
         pPaidwith = findViewById(R.id.paymentPaidwithSpin);
