@@ -88,7 +88,7 @@
                     android:layout_width="54dp"
                     android:layout_height="25dp"
                     android:layout_marginTop="12dp"
-                    android:src="@drawable/ic_roundminus" />
+                    android:src="@drawable/ic_roundplus" />
 
                 <LinearLayout
                     android:layout_width="240dp"
@@ -325,7 +325,7 @@
                 android:id="@+id/addlineTextviewUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Add new line"
+                android:text="Add New Line"
                 android:textSize="15dp"
                 android:textColor="@color/Black"
                 android:textAlignment="textStart"
@@ -386,7 +386,7 @@
                 android:layout_width="239dp"
                 android:layout_height="50dp"
                 android:gravity="center"
-                android:text="Payment due"
+                android:text="Payment Due"
                 android:textAlignment="textStart"
                 android:layout_marginStart="10sp"
                 android:textSize="15dp"

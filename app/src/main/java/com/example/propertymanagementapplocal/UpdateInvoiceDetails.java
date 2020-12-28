@@ -253,7 +253,7 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
                 mInvoiceModelClass.setTitle(strtitle);
                 mInvoiceModelClass.setDetails(strDetails);
                 mInvoiceModelClass.setAmount(amountStr);
-                mInvoiceModelClass.setRent(String.valueOf(strRent - strAmount + strWaterBill + strElectricityBill + strMaintananceBill));
+                mInvoiceModelClass.setRent(String.valueOf(strRent + strAmount + strWaterBill + strElectricityBill + strMaintananceBill));
                 mInvoiceModelClass.setInvoiceIssued(strInvoiceIssued);
                 mInvoiceModelClass.setPaymentDue(strPaymentdue);
                 mInvoiceModelClass.setNotes(strNotes);

@@ -2,12 +2,17 @@ package com.example.propertymanagementapplocal;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.text.Selection;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +38,7 @@ public class AddInvoices extends AppCompatActivity {
 
     String Title, Amount, Details;
     String tenantRent;
+    String phoneNumber;
 
     double strAmount ;
     double strRent;
@@ -42,6 +48,7 @@ public class AddInvoices extends AppCompatActivity {
 
     private DatabaseQueryClass databaseQueryClass;
     private TenantModelClass mtenantModelClass;
+
 
 
     //empty Constructor
@@ -110,6 +117,9 @@ public class AddInvoices extends AppCompatActivity {
         details = findViewById(R.id.invoiceDetailsTextView);
         amount = findViewById(R.id.invoiceAmountTextView);
         rent = findViewById(R.id.invoiceRentEditText);
+        //int rentLength = rent.getText().length();
+        //Selection.setSelection(rent.getText(), rent.getText().toString().length());
+        //rent.setSelection(0);
         invoiceIssued = findViewById(R.id.invoiceIssuedSelectDate);
         paymentdue = findViewById(R.id.invoicePaymentdueSelectDate);
         note = findViewById(R.id.invoiceNoteTextView);
@@ -123,6 +133,9 @@ public class AddInvoices extends AppCompatActivity {
 
         maintenanceChargesEdT = findViewById(R.id.invoiceMaintananceChargesEditText);
 
+        // to send sms through permission grant access
+        ActivityCompat.requestPermissions(AddInvoices.this, new String[]{Manifest.permission.SEND_SMS,
+                Manifest.permission.READ_SMS}, PackageManager.PERMISSION_GRANTED);
 
         //navigation part
 
@@ -138,10 +151,8 @@ public class AddInvoices extends AppCompatActivity {
         tenantRent = mtenantModelClass.getRentAmount();
         rent.setText(tenantRent);
 
-
-        //values amounts
-
-
+        // getting phone number to send sms
+        phoneNumber = mtenantModelClass.getTenantphone();
 
         //notes
         note.setOnClickListener(new View.OnClickListener() {
@@ -247,6 +258,11 @@ public class AddInvoices extends AppCompatActivity {
 
     }
 
+    // getting phone number from tenant to send sms
+
+
+
+
     @SuppressLint("LongLogTag")
     private void getData() {
 
@@ -304,7 +320,7 @@ public class AddInvoices extends AppCompatActivity {
         String waterBill = String.valueOf(strwaterBill);
         String electricityBill = String.valueOf(strElectricityBill);
         String maintenanceCharges = String.valueOf(strMaintenanceCharges);
-        String totalrent = String.valueOf(strRent - strAmount + strwaterBill + strElectricityBill + strMaintenanceCharges);
+        String totalrent = String.valueOf(strRent + strAmount + strwaterBill + strElectricityBill + strMaintenanceCharges);
         Log.d("totalrent : ==> ", totalrent);
 
 
@@ -316,13 +332,19 @@ public class AddInvoices extends AppCompatActivity {
         //Log.d("propertyId", String.valueOf(propertyId));
         //Log.d("FlatId", String.valueOf(FlatId));
 
+
         long id = databaseQueryClass.insertInvoice(invoice, refTenantId);
         Log.e("Result Invoice id : ==> ", String.valueOf(id));
+
 
 
         if (id > 0) {
             invoice.setInvoiceId(id);
             invoiceCreateListener.onInvoiceCreated(invoice);
+
+            // sending
+            SmsManager mySmsManager = SmsManager.getDefault();
+            mySmsManager.sendTextMessage(phoneNumber, null, "Hello this is my message", null, null);
             finish();
         }
     }
