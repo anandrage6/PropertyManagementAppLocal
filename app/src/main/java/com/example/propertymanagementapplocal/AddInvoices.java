@@ -39,6 +39,9 @@ public class AddInvoices extends AppCompatActivity {
     String Title, Amount, Details;
     String tenantRent;
     String phoneNumber;
+    String tenantName;
+
+    String textMessage;
 
     double strAmount ;
     double strRent;
@@ -151,8 +154,10 @@ public class AddInvoices extends AppCompatActivity {
         tenantRent = mtenantModelClass.getRentAmount();
         rent.setText(tenantRent);
 
+        tenantName = mtenantModelClass.getTenantName();
         // getting phone number to send sms
         phoneNumber = mtenantModelClass.getTenantphone();
+
 
         //notes
         note.setOnClickListener(new View.OnClickListener() {
@@ -337,14 +342,16 @@ public class AddInvoices extends AppCompatActivity {
         Log.e("Result Invoice id : ==> ", String.valueOf(id));
 
 
-
         if (id > 0) {
             invoice.setInvoiceId(id);
             invoiceCreateListener.onInvoiceCreated(invoice);
 
+            //text message
+            textMessage = "Hi,"+ "\n"+ tenantName +"\n"+ waterBill;
+
             // sending
             SmsManager mySmsManager = SmsManager.getDefault();
-            mySmsManager.sendTextMessage(phoneNumber, null, "Hello this is my message", null, null);
+            mySmsManager.sendTextMessage(phoneNumber, null, textMessage, null, null);
             finish();
         }
     }
