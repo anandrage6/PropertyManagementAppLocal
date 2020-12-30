@@ -989,6 +989,76 @@ public class DatabaseQueryClass {
 
     }
 
+
+    //Update Payments purpose to get values
+    public PaymentsModelClass getPaymentsById(long paymentId) {
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
+
+        PaymentsModelClass payments = null;
+
+        Cursor cursor = null;
+
+        try {
+            cursor = sqLiteDatabase.query(Config.TABLE_PAYMENTS, null,
+                    Config.COLUMN_PAYMENT_ID + " = ? ", new String[]{String.valueOf(paymentId)},
+                    null, null, null);
+
+            if (cursor != null && cursor.moveToFirst()) {
+                String amount = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_AMOUNT));
+                String paidwith = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_PAIDWITH));
+                String datereceived = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_DATERECEIVED));
+                String receivedfrom = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_RECEIVEDFROM));
+                String taxstatus = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_TAXSTATUS));
+                String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_NOTES));
+                String EntryDate = cursor.getString(cursor.getColumnIndex(Config.COLUMN_PAYMENT_ENTRYDATE));
+                 payments = new PaymentsModelClass(paymentId, amount, paidwith, datereceived, receivedfrom, taxstatus, notes);
+            }
+        } catch (SQLiteException e) {
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            if (cursor != null)
+                cursor.close();
+            sqLiteDatabase.close();
+        }
+
+        return payments;
+    }
+
+    // update Payments Info
+
+    public long updatePaymentInfo(PaymentsModelClass payment) {
+
+        long rowCount = 0;
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Config.COLUMN_PAYMENT_AMOUNT, payment.getAmount());
+        contentValues.put(Config.COLUMN_PAYMENT_PAIDWITH, payment.getPaidwith());
+        contentValues.put(Config.COLUMN_PAYMENT_DATERECEIVED, payment.getDatereceived());
+        contentValues.put(Config.COLUMN_PAYMENT_RECEIVEDFROM, payment.getReceivedfrom());
+        contentValues.put(Config.COLUMN_PAYMENT_TAXSTATUS, payment.getTaxstatus());
+        contentValues.put(Config.COLUMN_PAYMENT_NOTES, payment.getNotes());
+        contentValues.put(Config.COLUMN_PAYMENT_ENTRYDATE, sdf.format( new Date()));
+
+
+
+        try {
+            rowCount = sqLiteDatabase.update(Config.TABLE_PAYMENTS, contentValues,
+                    Config.COLUMN_PAYMENT_ID + " = ? ",
+                    new String[]{String.valueOf(payment.getPaymentId())});
+        } catch (SQLiteException e) {
+            Logger.d("Exception: " + e.getMessage());
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            sqLiteDatabase.close();
+        }
+
+        return rowCount;
+    }
+
+
     //delete payments
 
     public long deletePaymentsById(long paymentId) {

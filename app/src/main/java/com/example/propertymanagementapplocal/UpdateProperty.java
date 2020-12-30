@@ -224,6 +224,7 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
 
     }
 
+    //for spinner values
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         if (adapterView == stateSpin) {

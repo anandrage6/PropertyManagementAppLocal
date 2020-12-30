@@ -122,6 +122,17 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
                             //edit case
                             case R.id.menu_item_Edit:
                                 //Toast.makeText(context, "long update", Toast.LENGTH_LONG).show();
+                                UpdatePaymentDetails updatePaymentDetails = UpdatePaymentDetails.newInstance(payment.getPaymentId(), paymentListPosition, new PaymentUpdateListener() {
+                                    @Override
+                                    public void onPaymentInfoUpdated(PaymentsModelClass payment, int position) {
+                                        paymentList.set(position, payment);
+                                        notifyDataSetChanged();
+
+                                    }
+
+                                });
+                                Intent i = new Intent(context, updatePaymentDetails.getClass());
+                                context.startActivity(i);
 
                                 break;
 

@@ -234,7 +234,7 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
 
     @SuppressLint("LongLogTag")
     private void getData() {
-        dAmount = Integer.parseInt(pAmount.getText().toString());
+        dAmount = Double.parseDouble(pAmount.getText().toString());
         String amount = String.valueOf(dAmount);
         String paidwith = strPaidwith;
         String datereceived = pDatereceived.getText().toString();
