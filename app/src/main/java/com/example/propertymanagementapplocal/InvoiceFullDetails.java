@@ -3,7 +3,12 @@ package com.example.propertymanagementapplocal;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -12,9 +17,17 @@ public class InvoiceFullDetails extends AppCompatActivity {
     TextView title, details, amount, rent, invoiceIssued, paymentdue, note, waterTv, electricityTv, maintananceTv ;
     String strTitle, strDetails, strAmount, strRent, strInvoiceIssued, strPaymentDue, strNote, strWaterBill, strElectricityBill, strMaintananceCharges;
     private Toolbar toolbar;
+    Button smsButton;
+    private long invoiceId;
+    //private long refTenantId;
+    long tenantId;
+    String phoneNumber, textMessage;
 
+    private DatabaseQueryClass databaseQueryClass;
+    private TenantModelClass mtenantModelClass;
     LinearLayout linearLayout;
 
+    @SuppressLint("LongLogTag")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +36,8 @@ public class InvoiceFullDetails extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Invoice Details");
+
+        databaseQueryClass = new DatabaseQueryClass(getApplicationContext());
 
         title = findViewById(R.id.titleTv);
         details = findViewById(R.id.detailsTv);
@@ -34,9 +49,12 @@ public class InvoiceFullDetails extends AppCompatActivity {
         waterTv = findViewById(R.id.waterTv);
         electricityTv = findViewById(R.id.electricityTv);
         maintananceTv = findViewById(R.id.maintananceTv);
+        smsButton = findViewById(R.id.invoiceResendSms);
 
         linearLayout = findViewById(R.id.invoiceFullDetailsHide);
 
+        invoiceId = getIntent().getLongExtra(Config.COLUMN_INVOICE_ID, -1);
+        Log.e("invoicesId  in full details ========> ", String.valueOf(invoiceId));
         strTitle = getIntent().getStringExtra(Config.COLUMN_INVOICE_TITLE);
         strDetails = getIntent().getStringExtra(Config.COLUMN_INVOICE_DETAILS);
         strAmount = getIntent().getStringExtra(Config.COLUMN_INVOICE_AMOUNT);
@@ -48,6 +66,13 @@ public class InvoiceFullDetails extends AppCompatActivity {
         strElectricityBill = getIntent().getStringExtra(Config.COLUMN_INVOICE_ELECTRICITY);
         strMaintananceCharges = getIntent().getStringExtra(Config.COLUMN_INVOICE_MAINTENANCE_CHARGES);
 
+        // getting tenantId from invoice Adapter
+        tenantId = getIntent().getLongExtra("refTenantId", -1);
+
+        Log.e("tenantId on resume in invoices full details ========> ", String.valueOf(tenantId));
+
+       mtenantModelClass = databaseQueryClass.getTenantById(tenantId);
+       phoneNumber = mtenantModelClass.getTenantphone();
 
         title.setText(strTitle);
         details.setText(strDetails);
@@ -68,6 +93,17 @@ public class InvoiceFullDetails extends AppCompatActivity {
         } else {
             linearLayout.setVisibility(linearLayout.GONE);
         }
+
+        textMessage = "hello resend sms";
+        smsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // sending
+                SmsManager mySmsManager = SmsManager.getDefault();
+                mySmsManager.sendTextMessage(phoneNumber, null, textMessage, null, null);
+            }
+        });
+
 
     }
 }

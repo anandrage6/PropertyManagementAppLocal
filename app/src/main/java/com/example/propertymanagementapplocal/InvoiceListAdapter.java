@@ -3,6 +3,7 @@ package com.example.propertymanagementapplocal;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,10 +25,14 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
     private DatabaseQueryClass databaseQueryClass;
     InvoicesFragment invoicesFragment;
 
-    public InvoiceListAdapter(Context context, List<InvoiceModelClass> invoiceList, InvoicesFragment invoicesFragment) {
+    private long refTenantId;
+   // private  TenantModelClass tenantModelClass;
+
+    public InvoiceListAdapter(Context context, List<InvoiceModelClass> invoiceList, InvoicesFragment invoicesFragment, long tenantId) {
         this.context = context;
         this.invoiceList = invoiceList;
         this.invoicesFragment = invoicesFragment;
+        this.refTenantId = tenantId;
         databaseQueryClass = new DatabaseQueryClass(context);
     }
 
@@ -52,6 +57,13 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
         holder.invoiceIssued.setText(invoice.getInvoiceIssued());
         holder.paymentdue.setText(invoice.getPaymentDue());
         holder.note.setText(invoice.getNotes());
+
+         */
+
+        /*
+        tenantModelClass = databaseQueryClass.getTenantById(refTenantId);
+        long tenantId = tenantModelClass.getTenantId();
+                Log.e("tenantId on resume in invoices full details ========> ", String.valueOf(tenantId));
 
          */
 
@@ -80,6 +92,9 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
                 intent.putExtra(Config.COLUMN_INVOICE_WATER, invoice.getWaterBill());
                 intent.putExtra(Config.COLUMN_INVOICE_ELECTRICITY, invoice.getElectricityBill());
                 intent.putExtra(Config.COLUMN_INVOICE_MAINTENANCE_CHARGES, invoice.getMaintenanceCharges());
+
+                //passing tenantId
+                intent.putExtra("refTenantId", refTenantId);
 
                 context.startActivity(intent);
 
@@ -183,6 +198,10 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
                                 intent.putExtra(Config.COLUMN_INVOICE_INVOICE_ISSUED, invoice.getInvoiceIssued());
                                 intent.putExtra(Config.COLUMN_INVOICE_PaymentDue, invoice.getPaymentDue());
                                 intent.putExtra(Config.COLUMN_INVOICE_Notes, invoice.getNotes());
+
+                                //passing tenantId
+                                intent.putExtra("refTenantId", refTenantId);
+
 
                                 context.startActivity(intent);
                                 break;

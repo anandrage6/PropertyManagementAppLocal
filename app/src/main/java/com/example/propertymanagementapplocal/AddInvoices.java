@@ -347,7 +347,18 @@ public class AddInvoices extends AppCompatActivity {
             invoiceCreateListener.onInvoiceCreated(invoice);
 
             //text message
-            textMessage = "Hi,"+ "\n"+ tenantName +"\n"+ waterBill;
+            textMessage = "Hi,"+ "\n"+
+                    tenantName+"\n"+
+                    "Your New Invoice Id " + id +"\n"+
+                     strTitle+" = "+Amount+"\n"+ strDetails+"\n"+
+                    "Water Bill = " +waterBill+"\n"+
+                    "Electricity Bill = "+electricityBill+"\n"+
+                    "Maintanance Charges = "+maintenanceCharges+"\n"+
+                    "Invoice Issued = "+strInvoiceIssued+"\n"+
+                    "Payment Due = "+strpaymentdue+"\n"+
+                    "Notes = "+strNote;
+
+
 
             // sending
             SmsManager mySmsManager = SmsManager.getDefault();

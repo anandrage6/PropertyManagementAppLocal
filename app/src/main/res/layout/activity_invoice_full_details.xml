@@ -377,6 +377,31 @@
                     tools:ignore="RtlCompat">
                 </TextView>
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ninthLinear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/eightlinear"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="170dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="170dp">
+
+                <Button
+                    android:id="@+id/invoiceResendSms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/roundedborder"
+                    android:text=" Resend Sms "
+                    android:textColor="@color/green" />
+            </LinearLayout>
+
+
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

@@ -823,37 +823,40 @@ public class DatabaseQueryClass {
     }
 
 
-    /*
-    //get Invoice By tenantId
+    //to get tenantid by InvoiceId
 
-    public InvoiceModelClass getIvoiceIdByTenantId(long tenantId) {
+    public TenantModelClass getTenantIdByInvoiceId(long invoiceId) {
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
 
-        InvoiceModelClass invoice = null;
+        TenantModelClass tenant = null;
 
         Cursor cursor = null;
 
         try {
-            cursor = sqLiteDatabase.query(Config.TABLE_INVOICE, null,
-                    Config.COLUMN_TI_ID + " = ? ", new String[]{String.valueOf(tenantId)},
+            cursor = sqLiteDatabase.query(Config.TABLE_TENANTS, null,
+                    Config.COLUMN_TENANTS_ID + " = ? ", new String[]{String.valueOf(invoiceId)},
                     null, null, null);
 
             if (cursor != null && cursor.moveToFirst()) {
-                long invoiceId = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_INVOICE_ID));
-                String title = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_TITLE));
-                String details = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_DETAILS));
-                String amount = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_AMOUNT));
-                String rent = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_RENT));
-                String invoiceIssued = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_INVOICE_ISSUED));
-                String paymentDue = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_PaymentDue));
-                String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_Notes));
+                long tenantId = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_TENANTS_ID));
+                String name = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_NAME));
+                String phone = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_PHONE));
+                String email = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_EMAIL));
+                String leaseStart = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_LEASESTART));
+                String leaseEnd = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_LEASEEND));
+                String rentIsPaid = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_RENTISPAID));
+                String totalOccupants = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_TOTALOCCUPANTS));
+                String notes = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_NOTES));
+                String rent = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_RENT));
+                String securityDeposit = cursor.getString(cursor.getColumnIndex(Config.COLUMN_TENANTS_SECURITYDEPOSIT));
+               // long ITId = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_TI_ID));
 
 
+                tenant = new TenantModelClass(tenantId, name, phone, email, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rent, securityDeposit);
+               // tenant.setfTId(ITId);
+               //tenant.getT();
 
-                invoice = new InvoiceModelClass(invoiceId, title, details, amount, rent, invoiceIssued, paymentDue, notes);
-                //tenant.setfTId(flatId);
-                invoice.gettIId();
 
             }
         } catch (SQLiteException e) {
@@ -864,49 +867,9 @@ public class DatabaseQueryClass {
             sqLiteDatabase.close();
         }
 
-        return invoice;
-    }
-    */
-
-
-    /*
-    //Total Invoice Amount Query by tenantId
-
-    public InvoiceModelClass getInvoiceTotalAoumtByTenantId(long tenantId){
-        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
-        SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
-
-        InvoiceModelClass invoice = null;
-
-        Cursor cursor = null;
-
-        try{
-           // cursor = sqLiteDatabase.rawQuery("SELECT SUM(Config.COLUMN_INVOICE_RENT) FROM Config.TABLE_INVOICE", Config.COLUMN_TI_ID + " = ? ", new String[]{String.valueOf(tenantId)},null, null, null);
-
-            cursor = sqLiteDatabase.query(Config.TABLE_INVOICE,
-                    new String[]{Config.COLUMN_INVOICE_ID, Config.COLUMN_INVOICE_TITLE,
-                            Config.COLUMN_INVOICE_RENT},
-                    Config.COLUMN_TI_ID + " = ? ",
-                    new String[]{String.valueOf(tenantId)},
-                    Config.COLUMN_TI_ID, null, null);
-
-            if (cursor != null && cursor.moveToFirst()) {
-                long invoiceId = cursor.getInt(cursor.getColumnIndex(Config.COLUMN_INVOICE_ID));
-                String title = cursor.getString(cursor.getColumnIndex(Config.COLUMN_INVOICE_TITLE));
-
-            }
-        }catch (SQLiteException e){
-            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
-        } finally {
-            if (cursor != null)
-                cursor.close();
-            sqLiteDatabase.close();
-        }
-
-        return invoice;
+        return tenant;
     }
 
-     */
 
 
 

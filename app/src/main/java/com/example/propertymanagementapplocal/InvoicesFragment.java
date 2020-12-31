@@ -80,7 +80,7 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
         //Log.d("InvoiceList : ==> ", String.valueOf(invoiceList.size()));
         //List<TenantModelClass> allT = new ArrayList<TenantModelClass>();
 
-        invoiceListAdapter = new InvoiceListAdapter(getContext(), invoiceList, InvoicesFragment.this);
+        invoiceListAdapter = new InvoiceListAdapter(getContext(), invoiceList, InvoicesFragment.this, tenantId);
         invoiceRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         invoiceRecyclerView.setAdapter(invoiceListAdapter);
 

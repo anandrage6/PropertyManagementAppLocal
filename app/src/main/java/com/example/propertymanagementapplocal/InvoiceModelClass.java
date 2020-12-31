@@ -40,10 +40,6 @@ public class InvoiceModelClass extends BalancesModel {
     private String maintenanceCharges;
     long tIId;
 
-    public InvoiceModelClass(long invoiceId) {
-        this.invoiceId = invoiceId;
-    }
-
     public long gettIId() {
         return tIId;
     }
