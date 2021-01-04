@@ -163,13 +163,26 @@
                 android:textAlignment="textStart"
                 android:gravity="center"
                 tools:ignore="RtlCompat" />
+
+            <TextView
+                android:id="@+id/currencyId"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:textSize="15dp"
+                android:textAlignment="textEnd"
+                android:text=""
+                android:textColor="@color/Black"
+                android:layout_marginStart="70dp"
+                android:gravity="center"
+                tools:ignore="RtlCompat" />
+
             <EditText
                 android:id="@+id/invoiceRentEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="0.00"
                 android:background="@null"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginEnd="5dp"
                 android:textAlignment="textEnd"
                 android:textSize="15sp"
@@ -208,13 +221,25 @@
                 android:textAlignment="textStart"
                 android:gravity="center"
                 tools:ignore="RtlCompat" />
+
+            <TextView
+                android:id="@+id/currencyId2"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:textSize="15dp"
+                android:textAlignment="textEnd"
+                android:text=""
+                android:textColor="@color/Black"
+                android:layout_marginStart="70dp"
+                android:gravity="center"
+                tools:ignore="RtlCompat" />
             <EditText
                 android:id="@+id/invoiceWaterBillEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="0.00"
                 android:background="@null"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginEnd="5dp"
                 android:textAlignment="textEnd"
                 android:textSize="15sp"
@@ -252,13 +277,25 @@
                 android:textAlignment="textStart"
                 android:gravity="center"
                 tools:ignore="RtlCompat" />
+
+            <TextView
+                android:id="@+id/currencyId3"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:textSize="15dp"
+                android:textAlignment="textEnd"
+                android:text=""
+                android:textColor="@color/Black"
+                android:layout_marginStart="70dp"
+                android:gravity="center"
+                tools:ignore="RtlCompat" />
             <EditText
                 android:id="@+id/invoiceElecricityBillEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="0.00"
                 android:background="@null"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginEnd="5dp"
                 android:textAlignment="textEnd"
                 android:textSize="15sp"
@@ -296,13 +333,24 @@
                 android:textAlignment="textStart"
                 android:gravity="center"
                 tools:ignore="RtlCompat" />
+            <TextView
+                android:id="@+id/currencyId4"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:textSize="15dp"
+                android:textAlignment="textEnd"
+                android:text=""
+                android:textColor="@color/Black"
+                android:layout_marginStart="70dp"
+                android:gravity="center"
+                tools:ignore="RtlCompat" />
             <EditText
                 android:id="@+id/invoiceMaintananceChargesEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="0.00"
                 android:background="@null"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginEnd="5dp"
                 android:textAlignment="textEnd"
                 android:textSize="15sp"

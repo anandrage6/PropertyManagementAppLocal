@@ -2,12 +2,14 @@ package com.example.propertymanagementapplocal;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,7 +35,7 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
 
 
     EditText rent, waterBill, electricityBill, maintananceBill;
-    TextView amount, details, title, paymentdue, invoiceIssued, note, addLine;
+    TextView amount, details, title, paymentdue, invoiceIssued, note, addLine, currencyId, currencyId2, currencyId3, currencyId4;
     Button save, cancel;
     LinearLayout linearLayout;
 
@@ -121,6 +123,10 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
         waterBill = findViewById(R.id.invoiceWaterEditTextUpdate);
         electricityBill = findViewById(R.id.invoiceElectricityEditTextUpdate);
         maintananceBill = findViewById(R.id.invoiceMaintananceEditTextUpdate);
+        currencyId = findViewById(R.id.currencyId);
+        currencyId2 = findViewById(R.id.currencyId2);
+        currencyId3 = findViewById(R.id.currencyId3);
+        currencyId4 = findViewById(R.id.currencyId4);
 
 
         databaseQueryClass = new DatabaseQueryClass(getApplicationContext());
@@ -299,6 +305,18 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
                 alertDialog.show();
             }
         });
+
+        //preferences settings
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+        String upiv = pref.getString("ownerUpiId","");
+        String curv = pref.getString("currencyType","₹");
+        String rendv = pref.getString("RentalDueday","One Month");
+
+        currencyId.setText(curv.trim());
+        currencyId2.setText(curv.trim());
+        currencyId3.setText(curv.trim());
+        currencyId4.setText(curv.trim());
 
 
     }

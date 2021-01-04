@@ -28,12 +28,24 @@
                 tools:ignore="RtlCompat" />
 
             <TextView
+                android:id="@+id/currencyId"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="130dp"
+                android:gravity="center"
+                android:text=""
+                android:textAlignment="textEnd"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="20dp"
+                tools:ignore="RtlCompat" />
+
+            <TextView
                 android:id="@+id/totalAmountTv"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="TotalAmount"
                 android:textAlignment="textEnd"
-                android:layout_marginStart="200dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginEnd="10dp"
                 android:layout_gravity="center"
                 android:gravity="center"

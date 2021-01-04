@@ -1,6 +1,7 @@
 package com.example.propertymanagementapplocal;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -77,6 +79,17 @@ public class BalancesListRecyclerView extends RecyclerView.Adapter<RecyclerView.
                 ((titleHolder) holder).setTitleData(balancesModel);
             }
 
+        //preferences settings
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+
+        String upiv = pref.getString("ownerUpiId","");
+        String curv = pref.getString("currencyType","₹");
+        String rendv = pref.getString("RentalDueday","One Month");
+
+
+           if( getItemViewType(position) == 2){
+               ((titleHolder) holder).currencyId.setText(curv);
+           }
 
     }
 
@@ -136,13 +149,14 @@ public class BalancesListRecyclerView extends RecyclerView.Adapter<RecyclerView.
     }
 
     static  class titleHolder extends RecyclerView.ViewHolder{
-        TextView titleMonth, totalAmount;
+        TextView titleMonth, totalAmount, currencyId;
 
         public titleHolder(@NonNull View itemView) {
             super(itemView);
 
             titleMonth = itemView.findViewById(R.id.titleMonthTv);
             totalAmount = itemView.findViewById(R.id.totalAmountTv);
+            currencyId = itemView.findViewById(R.id.currencyId);
 
         }
 

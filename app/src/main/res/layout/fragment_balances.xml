@@ -31,10 +31,22 @@
                 tools:ignore="RtlCompat" />
 
             <TextView
+                android:id="@+id/currencyId"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:gravity="center"
+                android:text=""
+                android:textAlignment="textEnd"
+                android:textColor="@color/Black"
+                android:textSize="15dp"
+                tools:ignore="RtlCompat" />
+
+            <TextView
                 android:id="@+id/totalBalanceTv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="60dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginEnd="30dp"
                 android:text="Amount"
                 android:textAlignment="textStart"
@@ -63,18 +75,30 @@
                     tools:ignore="RtlCompat" />
 
                 <TextView
-                    android:id="@+id/remainingBalanceTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:id="@+id/currencyId2"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/Black"
+                    android:textSize="15dp"
+                    tools:ignore="RtlCompat" />
+
+                <TextView
+                    android:id="@+id/remainingBalanceTv"
+                    android:layout_width="167dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="25dp"
                     android:layout_marginEnd="30dp"
+                    android:layout_marginRight="30dp"
+                    android:gravity="center"
                     android:text="Amount"
                     android:textAlignment="textStart"
-                    android:layout_gravity="center"
-                    android:gravity="center"
                     android:textSize="15dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="30dp"
                     tools:ignore="RtlCompat" />
 
             </LinearLayout>
@@ -93,12 +117,23 @@
                     android:textSize="15dp"
                     android:layout_marginLeft="10dp"
                     tools:ignore="RtlCompat" />
+                <TextView
+                    android:id="@+id/currencyId3"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="64dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/Black"
+                    android:textSize="15dp"
+                    tools:ignore="RtlCompat" />
 
                 <TextView
                     android:id="@+id/balancePaidTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="64dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginEnd="30dp"
                     android:text="Amount"
                     android:textAlignment="textStart"

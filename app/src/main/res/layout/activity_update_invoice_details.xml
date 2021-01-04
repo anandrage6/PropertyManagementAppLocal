@@ -162,6 +162,17 @@
                 android:textAlignment="textStart"
                 android:gravity="center"
                 tools:ignore="RtlCompat" />
+            <TextView
+                android:id="@+id/currencyId"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:textSize="15dp"
+                android:textAlignment="textEnd"
+                android:text=""
+                android:textColor="@color/Black"
+                android:layout_marginStart="40dp"
+                android:gravity="center"
+                tools:ignore="RtlCompat" />
             <EditText
                 android:id="@+id/invoiceRentEditTextUpdate"
                 android:layout_width="match_parent"
@@ -193,7 +204,7 @@
                 android:layout_width="54dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="12dp"
-                android:src="@drawable/ic_roundminus" />
+                android:src="@drawable/ic_roundplus" />
 
             <TextView
                 android:layout_width="156dp"
@@ -202,6 +213,17 @@
                 android:textSize="15dp"
                 android:textColor="@color/Black"
                 android:textAlignment="textStart"
+                android:gravity="center"
+                tools:ignore="RtlCompat" />
+            <TextView
+                android:id="@+id/currencyId2"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:textSize="15dp"
+                android:textAlignment="textEnd"
+                android:text=""
+                android:textColor="@color/Black"
+                android:layout_marginStart="40dp"
                 android:gravity="center"
                 tools:ignore="RtlCompat" />
             <EditText
@@ -235,7 +257,7 @@
                 android:layout_width="54dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="12dp"
-                android:src="@drawable/ic_roundminus" />
+                android:src="@drawable/ic_roundplus" />
 
             <TextView
                 android:layout_width="156dp"
@@ -244,6 +266,17 @@
                 android:textSize="15dp"
                 android:textColor="@color/Black"
                 android:textAlignment="textStart"
+                android:gravity="center"
+                tools:ignore="RtlCompat" />
+            <TextView
+                android:id="@+id/currencyId3"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:textSize="15dp"
+                android:textAlignment="textEnd"
+                android:text=""
+                android:textColor="@color/Black"
+                android:layout_marginStart="40dp"
                 android:gravity="center"
                 tools:ignore="RtlCompat" />
             <EditText
@@ -277,7 +310,7 @@
                 android:layout_width="54dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="12dp"
-                android:src="@drawable/ic_roundminus" />
+                android:src="@drawable/ic_roundplus" />
 
             <TextView
                 android:layout_width="156dp"
@@ -286,6 +319,17 @@
                 android:textSize="15dp"
                 android:textColor="@color/Black"
                 android:textAlignment="textStart"
+                android:gravity="center"
+                tools:ignore="RtlCompat" />
+            <TextView
+                android:id="@+id/currencyId4"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:textSize="15dp"
+                android:textAlignment="textEnd"
+                android:text=""
+                android:textColor="@color/Black"
+                android:layout_marginStart="40dp"
                 android:gravity="center"
                 tools:ignore="RtlCompat" />
             <EditText

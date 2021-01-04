@@ -1,9 +1,11 @@
 package com.example.propertymanagementapplocal;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,7 +34,7 @@ public class Balances extends Fragment {
 
     List<BalancesModel> balancesList;
     BalancesListRecyclerView balancesListRecyclerViewAdapter;
-    TextView totalBalance, remainingBalance, balancePaid;
+    TextView totalBalance, remainingBalance, balancePaid, currencyId, currencyId2, currencyId3;
 
 
     //invoice part
@@ -61,6 +63,10 @@ public class Balances extends Fragment {
         totalBalance = view.findViewById(R.id.totalBalanceTv);
         remainingBalance = view.findViewById(R.id.remainingBalanceTv);
         balancePaid = view.findViewById(R.id.balancePaidTv);
+
+        currencyId = view.findViewById(R.id.currencyId);
+        currencyId2 = view.findViewById(R.id.currencyId2);
+        currencyId3 = view.findViewById(R.id.currencyId3);
 
         databaseQueryClass = new DatabaseQueryClass(getContext());
 
@@ -206,6 +212,18 @@ public class Balances extends Fragment {
         balancesListRecyclerViewAdapter = new BalancesListRecyclerView(getContext(), balancesList);
         balancesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         balancesRecyclerView.setAdapter(balancesListRecyclerViewAdapter);
+
+        //preferences settings
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+        String upiv = pref.getString("ownerUpiId","");
+        String curv = pref.getString("currencyType","₹");
+        String rendv = pref.getString("RentalDueday","One Month");
+
+        currencyId.setText(curv);
+        currencyId2.setText(curv);
+        currencyId3.setText(curv);
+
 
         return view;
     }

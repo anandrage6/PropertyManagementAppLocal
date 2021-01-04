@@ -3,10 +3,12 @@ package com.example.propertymanagementapplocal;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -42,13 +44,13 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
 
     EditText edtTenantName, edtPhoneNumber, edtEmail, edtRent, edtSecurityDeposit;
     Spinner spinRentIsPaid;
-    TextView tvValue, tvNotes, tvLeaseStart, tvLeaseEnd;
+    TextView tvValue, tvNotes, tvLeaseStart, tvLeaseEnd, currencyId, currencyId2;
     Button saveBtn, cancelBtn;
     ImageButton incrementBtn, decrementBtn;
     int count = 0;
 
-    String strDate1 = "01/01/0001";
-    String strDate2 = "01/02/00002";
+    String strDate1 = "01/01/1997";
+    String strDate2 = "02/02/2021";
 
     Date date1, date2;
 
@@ -109,6 +111,8 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
         decrementBtn = findViewById(R.id.tenantDecrementBtn);
         saveBtn = findViewById(R.id.tenantSaveButton);
         cancelBtn = findViewById(R.id.tenantCancelButton);
+        currencyId = findViewById(R.id.currencyId);
+        currencyId2 = findViewById(R.id.currencyId2);
 
        /*
         if (getArguments() != null) {
@@ -186,25 +190,8 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         month = month + 1;
                         strDate1 = day + "/" + month + "/" + year;
-
-                        //tvLeaseStart.setText(strDate1);
-                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
-                        try {
-                            date1 = simpleDateFormat.parse(strDate1);
-                            date2 = simpleDateFormat.parse(strDate2);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                        if(date1.compareTo(date2) < 0){
-
-                            Toast.makeText(getApplicationContext(), "Lease Start is greater than Lease End", Toast.LENGTH_LONG).show();
-                            //tvLeaseStart.setText(strDate1);
-                        }else if(date1.compareTo(date2) == 0){
-                            tvLeaseStart.setText(strDate1);
-                        }else{
-                            tvLeaseStart.setText(strDate1);
-                            //Toast.makeText(getApplicationContext(), "Lease Start is greater than Lease End", Toast.LENGTH_LONG).show();
-                        }
+                        CheckDates(strDate1, strDate2);
+                        tvLeaseStart.setText(strDate1);
 
                     }
                 }, year, month, day);
@@ -213,6 +200,7 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
                 //datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
 
                 datePickerDialog.show();
+
             }
         });
 
@@ -225,21 +213,8 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         month = month + 1;
                          strDate2 = day + "/" + month + "/" + year;
-
-                       SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
-                        try {
-                            date1 = simpleDateFormat.parse(strDate1);
-                            date2 = simpleDateFormat.parse(strDate2);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                        if(date1.compareTo(date2) < 0){
-                            tvLeaseEnd.setText(strDate2);
-                        }else if(date1.compareTo(date2) ==0){
-                            tvLeaseEnd.setText(strDate2);
-                        }else{
-                            Toast.makeText(getApplicationContext(), "Lease End is less than Lease Start", Toast.LENGTH_LONG).show();
-                        }
+                        CheckDates(strDate1, strDate2);
+                         tvLeaseEnd.setText(strDate2);
 
                     }
                 }, year, month, day);
@@ -247,6 +222,7 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
                 //disable past date
                // datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
+
             }
         });
 
@@ -263,6 +239,16 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
                 finish();
             }
         });
+
+        //preferences settings
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+        String upiv = pref.getString("ownerUpiId","");
+        String curv = pref.getString("currencyType","₹");
+        String rendv = pref.getString("RentalDueday","One Month");
+
+        currencyId.setText(curv.trim());
+        currencyId2.setText(curv.trim());
 
     }
 
@@ -323,4 +309,27 @@ public class AddTenant extends AppCompatActivity implements AdapterView.OnItemSe
 
     }
 
+    public static boolean CheckDates(String d1, String d2){
+        SimpleDateFormat dfDate  = new SimpleDateFormat("dd-MM-yyyy");
+        boolean b = false;
+        try {
+            if(dfDate.parse(d1).before(dfDate.parse(d2)))
+            {
+                b = true;//If start date is before end date
+
+            }
+            else if(dfDate.parse(d1).equals(dfDate.parse(d2)))
+            {
+                b = true;//If two dates are equal
+            }
+            else
+            {
+                b = false; //If start date is after the end date
+            }
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return b;
+    }
 }

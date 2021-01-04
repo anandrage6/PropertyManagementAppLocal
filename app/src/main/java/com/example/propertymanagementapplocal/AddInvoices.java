@@ -3,12 +3,14 @@ package com.example.propertymanagementapplocal;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.preference.PreferenceManager;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -32,7 +34,7 @@ public class AddInvoices extends AppCompatActivity {
     private static InvoiceCreateListener invoiceCreateListener;
 
     EditText rent, waterBillEdT, electricityBillEdT, maintenanceChargesEdT;
-    TextView amount, details, title, paymentdue, invoiceIssued, note, addLine;
+    TextView amount, details, title, paymentdue, invoiceIssued, note, addLine, currencyId, currencyId2, currencyId3, currencyId4;
     Button save, cancel;
     LinearLayout linearLayout;
 
@@ -130,6 +132,10 @@ public class AddInvoices extends AppCompatActivity {
         cancel = findViewById(R.id.invoiceCancelButton);
         linearLayout = findViewById(R.id.hidelayout);
         addLine = findViewById(R.id.addlineTextview);
+        currencyId = findViewById(R.id.currencyId);
+        currencyId2 = findViewById(R.id.currencyId2);
+        currencyId3 = findViewById(R.id.currencyId3);
+        currencyId4 = findViewById(R.id.currencyId4);
 
         waterBillEdT = findViewById(R.id.invoiceWaterBillEditText);
         electricityBillEdT = findViewById(R.id.invoiceElecricityBillEditText);
@@ -260,6 +266,18 @@ public class AddInvoices extends AppCompatActivity {
             }
         });
 
+        //preferences settings
+        //preferences settings
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+        String upiv = pref.getString("ownerUpiId","");
+        String curv = pref.getString("currencyType","₹");
+        String rendv = pref.getString("RentalDueday","One Month");
+
+        currencyId.setText(curv.trim());
+        currencyId2.setText(curv.trim());
+        currencyId3.setText(curv.trim());
+        currencyId4.setText(curv.trim());
 
     }
 

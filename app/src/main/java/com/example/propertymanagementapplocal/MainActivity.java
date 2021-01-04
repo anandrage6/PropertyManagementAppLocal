@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -113,6 +115,25 @@ public class MainActivity extends AppCompatActivity {
         email = hView.findViewById(R.id.email);
         name.setText("Anand");
         email.setText("Anandkumar@gmail.com");
+
+        /*
+        // settings shared preferences
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        String namev = pref.getString("ownerName","");
+        String addv = pref.getString("OwnerAddress","");
+        String mobv = pref.getString("ownerMobile", "");
+        String upiv = pref.getString("ownerUpiId","");
+        String curv = pref.getString("currencyType","₹");
+        String rendv = pref.getString("RentalDueday","One Month");
+
+        Toast.makeText(this,namev, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,addv, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,mobv, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,upiv, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,curv, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,rendv, Toast.LENGTH_SHORT).show();
+
+         */
 
     }
 

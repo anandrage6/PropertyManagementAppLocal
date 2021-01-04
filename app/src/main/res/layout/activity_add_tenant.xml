@@ -357,6 +357,7 @@
             android:orientation="horizontal"
             android:layout_marginBottom="2dp">
 
+
             <TextView
                 android:layout_width="116dp"
                 android:layout_height="match_parent"
@@ -369,11 +370,23 @@
                android:textColor="@color/Black"
                 tools:ignore="RtlCompat" />
 
+            <TextView
+                android:id="@+id/currencyId"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:textSize="15dp"
+                android:textAlignment="textEnd"
+                android:text=""
+                android:textColor="@color/Black"
+                android:layout_marginStart="170dp"
+                android:gravity="center"
+                tools:ignore="RtlCompat" />
+
             <EditText
                 android:id="@+id/tenentRentEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="150dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginLeft="100dp"
                 android:hint="0.00"
                 android:textSize="15dp"
@@ -407,11 +420,23 @@
                 android:textColor="@color/Black"
                 tools:ignore="RtlCompat" />
 
+            <TextView
+                android:id="@+id/currencyId2"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:textSize="15dp"
+                android:textAlignment="textEnd"
+                android:text=""
+                android:textColor="@color/Black"
+                android:layout_marginStart="69dp"
+                android:gravity="center"
+                tools:ignore="RtlCompat" />
+
             <EditText
                 android:id="@+id/tenantSecurityDepositEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginLeft="100dp"
                 android:hint="0.00"
                 android:textSize="15dp"

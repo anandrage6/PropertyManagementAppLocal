@@ -2,13 +2,15 @@ package com.example.propertymanagementapplocal;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
 public class TenantFullDetails extends AppCompatActivity {
 
-    TextView name, email, phone, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rentAmount, securityDeposit;
+    TextView name, email, phone, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rentAmount, securityDeposit, currencyId, currencyId2;
     String strName, strPhone, strEmail, strleaseStart, strLeaseEnd, strRentIsPaid, strTotalOccupants, strNotes, strRentAmount, strSecurityDeposit;
 
     private Toolbar toolbar;
@@ -35,6 +37,8 @@ public class TenantFullDetails extends AppCompatActivity {
         notes = findViewById(R.id.notesTextView);
         rentAmount = findViewById(R.id.rentAmountTextView);
         securityDeposit = findViewById(R.id.depositTextView);
+        currencyId = findViewById(R.id.currencyId);
+        currencyId2 = findViewById(R.id.currencyId2);
 
         //getting values
         strName = getIntent().getStringExtra(Config.COLUMN_TENANTS_NAME);
@@ -58,6 +62,17 @@ public class TenantFullDetails extends AppCompatActivity {
         notes.setText(strNotes);
         rentAmount.setText(strRentAmount);
         securityDeposit.setText(strSecurityDeposit);
+
+        //preferences settings
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+        String upiv = pref.getString("ownerUpiId","");
+        String curv = pref.getString("currencyType","₹");
+        String rendv = pref.getString("RentalDueday","One Month");
+
+        currencyId.setText(curv);
+        currencyId2.setText(curv);
+
 
 
     }

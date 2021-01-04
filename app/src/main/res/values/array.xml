@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
         <string-array name="Countrycurrencylist">
-
             <item>Albania - Lek</item>
             <item>Afghanistan - Afghani</item>
             <item>Argentina - Peso</item>
@@ -114,32 +113,31 @@
             <item>Viet Nam - Dong</item>
             <item>Yemen - Rial</item>
             <item>Zimbabwe - Dollar</item>
-
         </string-array>
         <string-array name="CounteryCurrencyValues">
             <item>Lek</item>
             <item>؋</item>
-            <item>$</item>
+            <item> $</item>
             <item>ƒ</item>
-            <item>$</item>
+            <item>  $</item>
             <item>₼</item>
-            <item>$</item>
-            <item>$</item>
+            <item>   $</item>
+            <item>    $</item>
             <item>p.</item>
             <item>BZ$</item>
-            <item>$</item>
+            <item>     $</item>
             <item>$b</item>
             <item>KM</item>
             <item>P</item>
             <item>лв</item>
             <item>R$</item>
-            <item>$</item>
+            <item>      $</item>
             <item>៛</item>
-            <item>$</item>
-            <item>$</item>
-            <item>$</item>
+            <item>       $</item>
+            <item>        $</item>
+            <item>         $</item>
             <item>¥</item>
-            <item>$</item>
+            <item>          $</item>
             <item>₡</item>
             <item>kn</item>
             <item>₱</item>
@@ -147,19 +145,19 @@
             <item>kr</item>
             <item>RD$</item>
             <item>£</item>
-            <item>$</item>
+            <item>           $</item>
             <item>kr</item>
             <item>€</item>
             <item>£</item>
-            <item>$</item>
+            <item>            $</item>
             <item>₾</item>
             <item>¢</item>
             <item>£</item>
             <item>Q</item>
             <item>£</item>
-            <item>$</item>
+            <item>             $</item>
             <item>L</item>
-            <item>$</item>
+            <item>              $</item>
             <item>Ft</item>
             <item>kr</item>
             <item>₹</item>
@@ -177,15 +175,15 @@
             <item>₭</item>
             <item>Ls</item>
             <item>£</item>
-            <item>$</item>
+            <item>               $</item>
             <item>Lt</item>
             <item>ден</item>
             <item>RM</item>
             <item>₨</item>
-            <item>$</item>
+            <item>                $</item>
             <item>₮</item>
             <item>MT</item>
-            <item>$</item>
+            <item>                 $</item>
             <item>₨</item>
             <item>ƒ</item>
             <item>$</item>
@@ -206,23 +204,23 @@
             <item>﷼</item>
             <item>Дин.</item>
             <item>₨</item>
-            <item>$</item>
-            <item>$</item>
+            <item>                  $</item>
+            <item>                   $</item>
             <item>S</item>
             <item>R</item>
             <item>₨</item>
             <item>kr</item>
             <item>CHF</item>
-            <item>$</item>
+            <item>                    $</item>
             <item>£</item>
             <item>NT$</item>
             <item>฿</item>
             <item>TT$</item>
             <item>₺</item>
-            <item>$</item>
+            <item>                       $</item>
             <item>₴</item>
             <item>£</item>
-            <item>$</item>
+            <item>                         $</item>
             <item>$U</item>
             <item>лв</item>
             <item>Bs</item>

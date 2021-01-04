@@ -2,12 +2,14 @@ package com.example.propertymanagementapplocal;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,7 +38,7 @@ public class UpdateTenantDetails extends AppCompatActivity implements AdapterVie
 
     EditText edtTenantName, edtPhoneNumber, edtEmail, edtRent, edtSecurityDeposit;
     Spinner spinRentIsPaid;
-    TextView tvValue, tvNotes, tvLeaseStart, tvLeaseEnd;
+    TextView tvValue, tvNotes, tvLeaseStart, tvLeaseEnd, currencyId, currencyId2;
     Button saveBtn, cancelBtn;
     ImageButton incrementBtn, decrementBtn;
     int count = 0;
@@ -84,6 +86,8 @@ public class UpdateTenantDetails extends AppCompatActivity implements AdapterVie
         decrementBtn = findViewById(R.id.tenantDecrementBtnUpdate);
         saveBtn = findViewById(R.id.tenantSaveButtonUpdate);
         cancelBtn = findViewById(R.id.tenantCancelButtonUpdate);
+        currencyId = findViewById(R.id.currencyId);
+        currencyId2 = findViewById(R.id.currencyId2);
 
 
         databaseQueryClass = new DatabaseQueryClass(getApplicationContext());
@@ -247,6 +251,17 @@ public class UpdateTenantDetails extends AppCompatActivity implements AdapterVie
                 alertDialog.show();
             }
         });
+
+        //preferences setting
+        //preferences settings
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+        String upiv = pref.getString("ownerUpiId","");
+        String curv = pref.getString("currencyType","₹");
+        String rendv = pref.getString("RentalDueday","One Month");
+
+        currencyId.setText(curv);
+        currencyId2.setText(curv);
 
     }
 
