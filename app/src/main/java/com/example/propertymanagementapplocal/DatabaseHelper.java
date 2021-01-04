@@ -16,7 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper databaseHelper;
 
     // All Static variables
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
 
     // Database Name
     private static final String DATABASE_NAME = Config.DATABASE_NAME;
@@ -127,13 +127,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + "CONSTRAINT " + Config.PAYMENTS_SUB_CONSTRAINT + " UNIQUE (" + Config.COLUMN_PAYMENT_ID + ")"
                 + ")";
 
+        //Create Document Table
+        String CREATE_DOCUMENTS_TABLE = "CREATE TABLE " + Config.TABLE_DOCUMENTS + "("
+                + Config.COLUMN_DOCUMENTS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + Config.COLUMN_DOCUMENTS_DOC + " BLOB, "
+                + Config.COLUMN_TD_ID + " INTEGER NOT NULL, "
+                + "FOREIGN KEY (" + Config.COLUMN_TD_ID + ") REFERENCES " + Config.TABLE_TENANTS + "(" + Config.COLUMN_TENANTS_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, "
+                + "CONSTRAINT " + Config.DOCUMENTS_SUB_CONSTRAINT + " UNIQUE (" + Config.COLUMN_DOCUMENTS_ID + ")"
+                + ")";
 
         db.execSQL(CREATE_PROPERTIES_TABLE);
         db.execSQL(CREATE_FLAT_TABLE);
         db.execSQL(CREATE_TENANT_TABLE);
         db.execSQL(CREATE_INVOICE_TABLE);
         db.execSQL(CREATE_PAYMENTS_TABLE);
-
+        db.execSQL(CREATE_DOCUMENTS_TABLE);
 
         Logger.d("DB created!");
 
@@ -147,6 +155,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + Config.TABLE_TENANTS);
         db.execSQL("DROP TABLE IF EXISTS " + Config.TABLE_INVOICE);
         db.execSQL("DROP TABLE IF EXISTS " + Config.TABLE_PAYMENTS);
+        db.execSQL("DROP TABLE IF EXISTS " + Config.TABLE_DOCUMENTS);
 
 
         // Create tables again

@@ -79,6 +79,14 @@ public class Config {
     public static final String PAYMENTS_SUB_CONSTRAINT = "tenant_sub_unique";
 
 
+    //Documents Column
+    public static final String TABLE_DOCUMENTS = "Docs";
+    public static final String COLUMN_DOCUMENTS_ID = "id";
+    public static final String COLUMN_DOCUMENTS_DOC = "Document";
+    public static final String COLUMN_TD_ID = "tenant_fk_id";
+    public static final String DOCUMENTS_SUB_CONSTRAINT = "tenant_sub_unique";
+
+
     //others for general purpose key-value pair data
     public static final String TITLE = "title";
     public static final String CREATE_PROPERTY = "create_property";

@@ -1043,6 +1043,32 @@ public class DatabaseQueryClass {
         return deletedRowCount;
     }
 
+    //documents
+    //Document Insert
+
+    public long insertDocument(DocumentModelClass documentModel, long tenantId) {
+        long rowId = -1;
+        long rowCount = 0;
+
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Config.COLUMN_DOCUMENTS_DOC, documentModel.getDoc());
+        contentValues.put(Config.COLUMN_TD_ID, tenantId);
+
+        try {
+            rowId = sqLiteDatabase.insertOrThrow(Config.TABLE_DOCUMENTS, null, contentValues);
+        } catch (SQLiteException e) {
+            Logger.d(e);
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            sqLiteDatabase.close();
+        }
+
+        return rowId;
+
+    }
 
 }
 
