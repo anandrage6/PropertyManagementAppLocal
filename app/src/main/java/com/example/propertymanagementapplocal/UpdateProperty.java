@@ -140,6 +140,7 @@ public class UpdateProperty extends AppCompatActivity implements AdapterView.OnI
         stateAdapter.addAll(allStates);
         stateSpin.setOnItemSelectedListener(this);
 
+
         //propertyType Spinner
         String cPropertyType = mPropertyModelClass.getPropertyType();
         cPropertyTypes = new ArrayList<>();

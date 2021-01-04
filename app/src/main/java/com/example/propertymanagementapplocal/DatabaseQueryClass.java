@@ -192,7 +192,7 @@ public class DatabaseQueryClass {
         return rowCount;
     }
 
-    // delete property
+    // settings property
     public long deletePropertyById(long id) {
         long deletedRowCount = -1;
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
@@ -212,17 +212,17 @@ public class DatabaseQueryClass {
         return deletedRowCount;
     }
 
-    //delete all property
+    //settings all property
 
-    //delete all items
+    //settings all items
     public boolean deleteAllProperties() {
         boolean deleteStatus = false;
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
 
         try {
-            //for "1" delete() method returns number of deleted rows
-            //if you don't want row count just use delete(TABLE_NAME, null, null)
+            //for "1" settings() method returns number of deleted rows
+            //if you don't want row count just use settings(TABLE_NAME, null, null)
             sqLiteDatabase.delete(Config.TABLE_PROPERTY, null, null);
 
             long count = DatabaseUtils.queryNumEntries(sqLiteDatabase, Config.TABLE_PROPERTY);
@@ -399,7 +399,7 @@ public class DatabaseQueryClass {
     }
 
 
-    //single delete
+    //single settings
     public boolean deleteFlatById(long flatId) {
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(context);
         SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
@@ -567,7 +567,7 @@ public class DatabaseQueryClass {
         return rowCount;
     }
 
-    //delete record tenant
+    //settings record tenant
 
     public long deleteTenantById(long tenantId) {
         long deletedRowCount = -1;
@@ -801,7 +801,7 @@ public class DatabaseQueryClass {
     }
 
 
-    //delete Invoice
+    //settings Invoice
 
     public long deleteInvoiceById(long invoiceId) {
         long deletedRowCount = -1;
@@ -1022,7 +1022,7 @@ public class DatabaseQueryClass {
     }
 
 
-    //delete payments
+    //settings payments
 
     public long deletePaymentsById(long paymentId) {
         long deletedRowCount = -1;

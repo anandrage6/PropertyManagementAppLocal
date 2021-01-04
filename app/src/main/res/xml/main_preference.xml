@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="Owner-info"
+        android:title="Owner Information">
+        <EditTextPreference
+            android:dialogMessage="Your Name"
+            android:dialogTitle="OwnerName"
+            android:key="ownerName"
+            android:title="Owner Name"
+            android:summary="jay"/>
+        <EditTextPreference
+            android:dialogMessage="Address"
+            android:dialogTitle="Enter your Address"
+            android:key="OwnerAddress"
+            android:title="Owner Address"
+            android:summary="jay@gmail.com"/>
+        <EditTextPreference
+            android:dialogMessage="Mobile"
+            android:dialogTitle="Enter Your Mobile Number"
+            android:key="ownerMobile"
+            android:title="Mobile"
+            android:summary="92823u8123"/>
+        <EditTextPreference
+            android:dialogMessage="UPI Id"
+            android:dialogTitle="Enter Your UPI Id"
+            android:key="ownerUpiId"
+            android:title="UPI Id"
+            android:summary="2983298@ybl"
+            />
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Application Configuration">
+        <ListPreference
+
+            android:key="currencyType"
+            android:title="Type of Currency "
+            android:summary="Select Your Currency Type"
+            android:entries="@array/Countrycurrencylist"
+            android:defaultValue="₹"
+            android:entryValues="@array/CounteryCurrencyValues"
+            >
+
+        </ListPreference>
+
+        <ListPreference
+            android:key="RentalDueday"
+            android:title="Rental Due Term"
+            android:summary="Select Rental Due Term"
+            android:entries="@array/rentalduedateentries"
+            android:defaultValue="One Month"
+            android:entryValues="@array/rentalduedatvalues">
+
+        </ListPreference>
+
+
+    </PreferenceCategory>
+</PreferenceScreen>

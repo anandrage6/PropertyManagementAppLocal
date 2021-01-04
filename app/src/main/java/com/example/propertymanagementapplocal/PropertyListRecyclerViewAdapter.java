@@ -84,7 +84,7 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
             }
         });
 
-        //update property / delete property / view property
+        //update property / settings property / view property
         holder.optionMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,7 +110,7 @@ public class PropertyListRecyclerViewAdapter extends RecyclerView.Adapter<Proper
                                 //updateProperty.show(((MainActivity) context).getSupportFragmentManager(), Config.UPDATE_PROPERTY);
                                 break;
 
-                            //delete case
+                            //settings case
                             case R.id.menu_item_delete:
                                 //Toast.makeText(context, "Deleted", Toast.LENGTH_LONG).show();
 

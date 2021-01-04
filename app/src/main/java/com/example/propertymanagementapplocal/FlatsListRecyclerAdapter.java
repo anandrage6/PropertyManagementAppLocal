@@ -101,7 +101,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
         });
 
 
-        //update/see details/ delete
+        //update/see details/ settings
         holder.optionMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,7 +128,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
                                 context.startActivity(i);
                                 break;
                             case R.id.menu_item_delete:
-                                //Toast.makeText(context, "delete", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(context, "settings", Toast.LENGTH_LONG).show();
 
                                 FlatsModelClass mflat = flatsList.get(position);
                                 DatabaseQueryClass databaseQueryClass = new DatabaseQueryClass(context);
@@ -141,7 +141,7 @@ public class FlatsListRecyclerAdapter extends RecyclerView.Adapter<FlatsListRecy
                                     ((PropertyDetails) context).viewVisibility();
                                     Toast.makeText(context, " deleted ", Toast.LENGTH_SHORT).show();
                                 } else
-                                    Toast.makeText(context, "Cannot delete!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Cannot settings!", Toast.LENGTH_SHORT).show();
                                 break;
                             case R.id.menu_item_seeDetails:
                                 //Toast.makeText(context, "see details", Toast.LENGTH_LONG).show();

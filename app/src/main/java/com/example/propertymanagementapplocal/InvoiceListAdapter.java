@@ -117,7 +117,7 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
                                 Toast.makeText(context, "long update", Toast.LENGTH_LONG).show();
                                 break;
                             case R.id.long_delete:
-                                //Toast.makeText(context, "long delete", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(context, "long settings", Toast.LENGTH_LONG).show();
 
                                 InvoiceModelClass mInvoice = invoiceList.get(position);
                                 long count = databaseQueryClass.deleteInvoiceById(mInvoice.getInvoiceId());
@@ -169,10 +169,10 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
                                 Intent i = new Intent(context, updateInvoiceDetails.getClass());
                                 context.startActivity(i);
                                 break;
-                            //delete case
+                            //settings case
                             case R.id.menu_item_delete:
 
-                                //Toast.makeText(context, "long delete", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(context, "long settings", Toast.LENGTH_LONG).show();
                                 InvoiceModelClass mInvoice = invoiceList.get(position);
                                 long count = databaseQueryClass.deleteInvoiceById(mInvoice.getInvoiceId());
 

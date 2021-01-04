@@ -167,10 +167,10 @@ public class TenantListRecyclerAdapter extends RecyclerView.Adapter<TenantListRe
                                 context.startActivity(i);
                                 break;
 
-                            //delete case
+                            //settings case
                             case R.id.menu_item_delete:
 
-                                //Toast.makeText(context, "long delete", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(context, "long settings", Toast.LENGTH_LONG).show();
 
                                 TenantModelClass mTenant = tenantList.get(position);
                                 long count = databaseQueryClass.deleteTenantById(mTenant.getTenantId());

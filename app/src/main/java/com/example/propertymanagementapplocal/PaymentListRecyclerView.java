@@ -80,7 +80,7 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
                                 Toast.makeText(context, "long update", Toast.LENGTH_LONG).show();
                                 break;
                             case R.id.long_delete:
-                                //Toast.makeText(context, "long delete", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(context, "long settings", Toast.LENGTH_LONG).show();
                                 PaymentsModelClass mPayment = paymentList.get(position);
                                 long count = databaseQueryClass.deletePaymentsById(mPayment.getPaymentId());
 
@@ -136,10 +136,10 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
 
                                 break;
 
-                            //delete case
+                            //settings case
                             case R.id.menu_item_delete:
 
-                                //Toast.makeText(context, "long delete", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(context, "long settings", Toast.LENGTH_LONG).show();
 
                                 PaymentsModelClass mPayment = paymentList.get(position);
                                 long count = databaseQueryClass.deletePaymentsById(mPayment.getPaymentId());

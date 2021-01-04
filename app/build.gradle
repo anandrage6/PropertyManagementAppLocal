@@ -68,4 +68,8 @@ dependencies {
     //json
     implementation 'com.google.code.gson:gson:2.8.2'
 
+    //settings
+    //noinspection NotInterpolated
+    implementation 'androidx.preference:preference:$preference_version'
+
 }
