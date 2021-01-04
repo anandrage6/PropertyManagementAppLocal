@@ -19,12 +19,12 @@ public class SettingPreferences extends PreferenceActivity {
     public static class MyPreferenceFragment extends PreferenceFragment {
 
         public static final String name = "ownerName";
-        public static final String Address = "ownerAddress";
-        public static final String Email = "ownerEmail";
+        public static final String address = "ownerAddress";
+        public static final String email = "ownerEmail";
         public static final String upiID = "ownerUpiId";
-        public static final String Mobile = "ownerMobile";
-        public static final String Currency = "currencyType";
-        public static final String Duedate = "RentalDueday";
+        public static final String mobile = "ownerMobile";
+        public static final String currency = "currencyType";
+        public static final String duedate = "RentalDueday";
         private SharedPreferences.OnSharedPreferenceChangeListener preferenceChangeListener;
 
 
@@ -35,22 +35,22 @@ public class SettingPreferences extends PreferenceActivity {
             preferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
                 @Override
                 public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-                    if (s.equals(Currency)) {
+                    if (s.equals(currency)) {
                         Preference currencypref = findPreference(s);
                         currencypref.setSummary(sharedPreferences.getString(s, ""));
 
                     }
-                    if (s.equals(Duedate)) {
+                    if (s.equals(duedate)) {
                         Preference duepref = findPreference(s);
                         duepref.setSummary(sharedPreferences.getString(s, ""));
 
                     }
-                    if (s.equals(Address)) {
+                    if (s.equals(address)) {
                         Preference Addpref = findPreference(s);
                         Addpref.setSummary(sharedPreferences.getString(s, ""));
 
                     }
-                    if (s.equals(Mobile)) {
+                    if (s.equals(mobile)) {
                         Preference mobpref = findPreference(s);
                         mobpref.setSummary(sharedPreferences.getString(s, ""));
 
@@ -79,21 +79,21 @@ public class SettingPreferences extends PreferenceActivity {
         public void onResume() {
             super.onResume();
             getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(preferenceChangeListener);
-            /*
+
             Preference nameprf = findPreference(name);
             nameprf.setSummary(getPreferenceScreen().getSharedPreferences().getString(name,""));
-            Preference Addprf = findPreference(Address);
-            Addprf.setSummary(getPreferenceScreen().getSharedPreferences().getString(Address,""));
+            Preference Addprf = findPreference(address);
+            Addprf.setSummary(getPreferenceScreen().getSharedPreferences().getString(address,""));
             Preference upiprf = findPreference(upiID);
             upiprf.setSummary(getPreferenceScreen().getSharedPreferences().getString(upiID,""));
-            Preference mobprf = findPreference(Mobile);
-            mobprf.setSummary(getPreferenceScreen().getSharedPreferences().getString(Mobile,""));
-            Preference Currencyprf = findPreference(Currency);
-            Currencyprf.setSummary(getPreferenceScreen().getSharedPreferences().getString(Currency,""));
-            Preference dueprf = findPreference(Duedate);
-            dueprf.setSummary(getPreferenceScreen().getSharedPreferences().getString(Duedate,""));
+            Preference mobprf = findPreference(mobile);
+            mobprf.setSummary(getPreferenceScreen().getSharedPreferences().getString(mobile,""));
+            Preference Currencyprf = findPreference(currency);
+            Currencyprf.setSummary(getPreferenceScreen().getSharedPreferences().getString(currency,""));
+            Preference dueprf = findPreference(duedate);
+            dueprf.setSummary(getPreferenceScreen().getSharedPreferences().getString(duedate,""));
 
-             */
+
         }
 
         @Override

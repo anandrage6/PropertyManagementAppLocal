@@ -2,14 +2,16 @@ package com.example.propertymanagementapplocal;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
 public class PaymentDetails extends AppCompatActivity {
     private Toolbar toolbar;
 
-    TextView amountTv, paidwithTv, datereceivedTv, receivedfromTv, taxstatusTv, notesTv;
+    TextView amountTv, paidwithTv, datereceivedTv, receivedfromTv, taxstatusTv, notesTv, currencyId;
     String strAmount, strPaidwith, strDatereceived, strReceivedfrom, strTaxstatus, strNotes;
 
     @Override
@@ -22,6 +24,8 @@ public class PaymentDetails extends AppCompatActivity {
         getSupportActionBar().setTitle("Payment Details");
 
         //id's
+
+        currencyId = findViewById(R.id.currencyId);
 
         amountTv = findViewById(R.id.paymentDetailsAmount);
         paidwithTv = findViewById(R.id.paymentDetailsPaidwith);
@@ -48,6 +52,15 @@ public class PaymentDetails extends AppCompatActivity {
         taxstatusTv.setText(strTaxstatus);
         notesTv.setText(strNotes);
 
+
+        //preferences settings
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+        String upiv = pref.getString("ownerUpiId","");
+        String curv = pref.getString("currencyType","₹");
+        String rendv = pref.getString("RentalDueday","One Month");
+
+        currencyId.setText(curv.trim());
 
     }
 }

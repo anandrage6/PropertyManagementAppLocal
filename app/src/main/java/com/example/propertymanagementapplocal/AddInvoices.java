@@ -266,7 +266,7 @@ public class AddInvoices extends AppCompatActivity {
             }
         });
 
-        //preferences settings
+
         //preferences settings
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 

@@ -2,6 +2,7 @@ package com.example.propertymanagementapplocal;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -41,6 +43,15 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
         final int paymentListPosition = position;
         final PaymentsModelClass payment = paymentList.get(position);
         final long paymentId = payment.getPaymentId();
+
+        //preferences settings
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+
+        String upiv = pref.getString("ownerUpiId","");
+        String curv = pref.getString("currencyType","₹");
+        String rendv = pref.getString("RentalDueday","One Month");
+
+        holder.currencyId.setText(curv.trim());
 
         holder.amount.setText(payment.getAmount());
         holder.receivedfrom.setText(payment.getReceivedfrom());
@@ -190,7 +201,7 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
     public class PaymentViewHolder extends RecyclerView.ViewHolder {
 
         TextView receivedfrom, dateReceived, amount;
-        TextView optionMenu;
+        TextView optionMenu, currencyId;
 
         public PaymentViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -198,6 +209,7 @@ public class PaymentListRecyclerView extends RecyclerView.Adapter<PaymentListRec
             dateReceived = itemView.findViewById(R.id.paymentDateReceivedTextView);
             amount = itemView.findViewById(R.id.paymentAmountTextView);
             optionMenu = itemView.findViewById(R.id.textOption);
+            currencyId = itemView.findViewById(R.id.currencyId);
 
         }
     }

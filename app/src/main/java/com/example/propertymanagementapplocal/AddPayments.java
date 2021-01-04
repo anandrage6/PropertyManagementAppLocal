@@ -4,11 +4,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatRadioButton;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,7 +36,7 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
     EditText pAmount, pReceivedfrom;
     Spinner pPaidwith;
     //Switch pTaxstatus;
-    TextView pNotes, pDatereceived;
+    TextView pNotes, pDatereceived, currencyId;
     Button pSave, pCancel;
 
     String strPaidwith, strTaxStatus;
@@ -78,6 +80,7 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
         // setSupportActionBar(toolbar);
         //getSupportActionBar().setTitle("Add Payments");
 
+        currencyId = findViewById(R.id.currencyId);
 
         pAmount = findViewById(R.id.paymentAmountEdt);
         pReceivedfrom = findViewById(R.id.paymentReceivedFromEdt);
@@ -198,6 +201,15 @@ public class AddPayments extends AppCompatActivity implements AdapterView.OnItem
 
             }
         });
+
+        //preferences settings
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+        String upiv = pref.getString("ownerUpiId","");
+        String curv = pref.getString("currencyType","₹");
+        String rendv = pref.getString("RentalDueday","One Month");
+
+        currencyId.setText(curv.trim());
 
 
     }

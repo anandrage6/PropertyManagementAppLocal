@@ -91,6 +91,18 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="8dp"
                     tools:ignore="RtlCompat" />
+                <TextView
+                    android:id="@+id/currencyId"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:textSize="15dp"
+                    android:textAlignment="textEnd"
+                    android:text=""
+                    android:textColor="@color/Black"
+                    android:layout_marginStart="180dp"
+                    android:gravity="center"
+                    tools:ignore="RtlCompat" />
+
                 <EditText
                     android:id="@+id/paymentAmountEdt"
                     android:layout_width="match_parent"
@@ -103,7 +115,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_gravity="center"
                     android:inputType="numberDecimal"
-                    android:layout_marginStart="150dp"
+                    android:layout_marginStart="0dp"
                     tools:ignore="RtlCompat" />
             </LinearLayout>
 

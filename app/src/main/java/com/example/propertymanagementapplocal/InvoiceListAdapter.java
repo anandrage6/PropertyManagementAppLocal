@@ -2,6 +2,7 @@ package com.example.propertymanagementapplocal;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -66,6 +68,14 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
                 Log.e("tenantId on resume in invoices full details ========> ", String.valueOf(tenantId));
 
          */
+        //preferences settings
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+
+        String upiv = pref.getString("ownerUpiId","");
+        String curv = pref.getString("currencyType","₹");
+        String rendv = pref.getString("RentalDueday","One Month");
+
+        holder.currencyId.setText(curv.trim());
 
         String id = String.valueOf(invoiceId);
 
@@ -231,7 +241,7 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
 
     public class invoiceCustomViewHolder extends RecyclerView.ViewHolder {
 
-        TextView invoiceissuedDateTv, paymentduedateTv, rentTextView, invoiceIdTv;
+        TextView invoiceissuedDateTv, paymentduedateTv, rentTextView, invoiceIdTv, currencyId;
         TextView optionMenu;
 
         public invoiceCustomViewHolder(@NonNull View itemView) {
@@ -243,6 +253,7 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
             rentTextView = itemView.findViewById(R.id.rentTextView);
             invoiceIdTv = itemView.findViewById(R.id.invoiceId);
             optionMenu = itemView.findViewById(R.id.textOption);
+            currencyId = itemView.findViewById(R.id.currencyId);
 
         }
     }

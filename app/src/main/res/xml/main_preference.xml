@@ -14,7 +14,7 @@
         <EditTextPreference
             android:dialogMessage="Address"
             android:dialogTitle="Enter your Address"
-            android:key="OwnerAddress"
+            android:key="ownerAddress"
             android:title="Owner Address"
             android:summary="jay@gmail.com"/>
         <EditTextPreference

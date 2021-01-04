@@ -4,11 +4,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatRadioButton;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +23,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,7 +48,7 @@ public class UpdatePaymentDetails extends AppCompatActivity implements AdapterVi
     //EditText
     EditText pAmount, pReceivedfrom;
     Spinner pPaidwith;
-    TextView pNotes, pDatereceived;
+    TextView pNotes, pDatereceived, currencyId;
     //spin paid with
     ArrayList<String> paidWithAll;
     ArrayAdapter<String> paidWithAdapter;
@@ -96,6 +101,7 @@ public class UpdatePaymentDetails extends AppCompatActivity implements AdapterVi
         // setSupportActionBar(toolbar);
         //getSupportActionBar().setTitle("Add Payments");
 
+        currencyId = findViewById(R.id.currencyId);
 
         pAmount = findViewById(R.id.paymentAmountEdtUpdate);
         pReceivedfrom = findViewById(R.id.paymentReceivedFromEdtUpdate);
@@ -124,7 +130,7 @@ public class UpdatePaymentDetails extends AppCompatActivity implements AdapterVi
         paidWithAll = new ArrayList<>();
         paidWithAll.add(paidWith);
         List<String> allPaidWith = Arrays.asList(getResources().getStringArray(R.array.Paid_With));
-        paidWithAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, paidWithAll);
+        paidWithAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, paidWithAll);
         pPaidwith.setAdapter(paidWithAdapter);
         paidWithAdapter.addAll(allPaidWith);
         pPaidwith.setOnItemSelectedListener(this);
@@ -186,6 +192,40 @@ public class UpdatePaymentDetails extends AppCompatActivity implements AdapterVi
                 getData();
             }
         });
+
+        pCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(UpdatePaymentDetails.this);
+                alertDialogBuilder.setTitle("Confirm Exit...!!");
+                alertDialogBuilder.setMessage("Are you sure you want to exit");
+                alertDialogBuilder.setCancelable(false);
+                alertDialogBuilder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                });
+                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(UpdatePaymentDetails.this, "You Clicked on Cancel", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
+
+        //preferences settings
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+        String upiv = pref.getString("ownerUpiId","");
+        String curv = pref.getString("currencyType","₹");
+        String rendv = pref.getString("RentalDueday","One Month");
+
+        currencyId.setText(curv.trim());
 
     }
 

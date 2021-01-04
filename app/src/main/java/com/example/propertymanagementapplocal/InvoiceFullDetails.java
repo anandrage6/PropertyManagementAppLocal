@@ -2,8 +2,10 @@ package com.example.propertymanagementapplocal;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -14,7 +16,7 @@ import android.widget.TextView;
 
 public class InvoiceFullDetails extends AppCompatActivity {
 
-    TextView title, details, amount, rent, invoiceIssued, paymentdue, note, waterTv, electricityTv, maintananceTv ;
+    TextView title, details, amount, rent, invoiceIssued, paymentdue, note, waterTv, electricityTv, maintananceTv, currencyId, currencyId2, currencyId3, currencyId4;
     String strTitle, strDetails, strAmount, strRent, strInvoiceIssued, strPaymentDue, strNote, strWaterBill, strElectricityBill, strMaintananceCharges;
     private Toolbar toolbar;
     Button smsButton;
@@ -50,6 +52,11 @@ public class InvoiceFullDetails extends AppCompatActivity {
         electricityTv = findViewById(R.id.electricityTv);
         maintananceTv = findViewById(R.id.maintananceTv);
         smsButton = findViewById(R.id.invoiceResendSms);
+
+        currencyId = findViewById(R.id.currencyId);
+        currencyId2 = findViewById(R.id.currencyId2);
+        currencyId3 = findViewById(R.id.currencyId3);
+        currencyId4 = findViewById(R.id.currencyId4);
 
         linearLayout = findViewById(R.id.invoiceFullDetailsHide);
 
@@ -103,6 +110,18 @@ public class InvoiceFullDetails extends AppCompatActivity {
                 mySmsManager.sendTextMessage(phoneNumber, null, textMessage, null, null);
             }
         });
+
+        //preferences settings
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+        String upiv = pref.getString("ownerUpiId","");
+        String curv = pref.getString("currencyType","₹");
+        String rendv = pref.getString("RentalDueday","One Month");
+
+        currencyId.setText(curv.trim());
+        currencyId2.setText(curv.trim());
+        currencyId3.setText(curv.trim());
+        currencyId4.setText(curv.trim());
 
 
     }

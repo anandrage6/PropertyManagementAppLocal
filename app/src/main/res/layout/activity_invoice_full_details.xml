@@ -123,11 +123,22 @@
                     android:gravity="center"
                     tools:ignore="RtlCompat" />
                 <TextView
+                    android:id="@+id/currencyId"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:textSize="15dp"
+                    android:textAlignment="textEnd"
+                    android:text=""
+                    android:textColor="@color/Black"
+                    android:layout_marginStart="80dp"
+                    android:gravity="center"
+                    tools:ignore="RtlCompat" />
+                <TextView
                     android:id="@+id/rentTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="0.00"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginStart="0dp"
                     android:textAlignment="textEnd"
                     android:textSize="15sp"
                     android:textColor="@color/Black"
@@ -165,11 +176,22 @@
                     android:gravity="center"
                     tools:ignore="RtlCompat" />
                 <TextView
+                    android:id="@+id/currencyId2"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:textSize="15dp"
+                    android:textAlignment="textEnd"
+                    android:text=""
+                    android:textColor="@color/Black"
+                    android:layout_marginStart="80dp"
+                    android:gravity="center"
+                    tools:ignore="RtlCompat" />
+                <TextView
                     android:id="@+id/waterTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="0.00"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginStart="0dp"
                     android:textAlignment="textEnd"
                     android:textSize="15sp"
                     android:textColor="@color/Black"
@@ -206,11 +228,22 @@
                     android:gravity="center"
                     tools:ignore="RtlCompat" />
                 <TextView
+                    android:id="@+id/currencyId3"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:textSize="15dp"
+                    android:textAlignment="textEnd"
+                    android:text=""
+                    android:textColor="@color/Black"
+                    android:layout_marginStart="80dp"
+                    android:gravity="center"
+                    tools:ignore="RtlCompat" />
+                <TextView
                     android:id="@+id/electricityTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="0.00"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginStart="0dp"
                     android:textAlignment="textEnd"
                     android:textSize="15sp"
                     android:textColor="@color/Black"
@@ -247,11 +280,22 @@
                     android:gravity="center"
                     tools:ignore="RtlCompat" />
                 <TextView
+                    android:id="@+id/currencyId4"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:textSize="15dp"
+                    android:textAlignment="textEnd"
+                    android:text=""
+                    android:textColor="@color/Black"
+                    android:layout_marginStart="80dp"
+                    android:gravity="center"
+                    tools:ignore="RtlCompat" />
+                <TextView
                     android:id="@+id/maintananceTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="0.00"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginStart="0dp"
                     android:textAlignment="textEnd"
                     android:textSize="15sp"
                     android:textColor="@color/Black"
