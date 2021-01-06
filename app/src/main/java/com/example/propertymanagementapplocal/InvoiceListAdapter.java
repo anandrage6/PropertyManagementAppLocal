@@ -75,7 +75,350 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
         String curv = pref.getString("currencyType","₹");
         String rendv = pref.getString("RentalDueday","One Month");
 
-        holder.currencyId.setText(curv.trim());
+
+        switch (curv) {
+            case "ARS-$":
+            case "AUD-$":
+            case "BSD-$":
+            case "BBD-$":
+            case "BMD-$":
+            case "BND-$":
+            case "CAD-$":
+            case "KYD-$":
+            case "CLP-$":
+            case "COP-$":
+            case "SVC-$":
+            case "FJD-$":
+            case "GYD-$":
+            case "HKD-$":
+            case "LRD-$":
+            case "MXN-$":
+            case "NAD-$":
+            case "NZD-$":
+            case "SGD-$":
+            case "SBD-$":
+            case "SRD-$":
+            case "TVD-$":
+            case "USD-$":
+                holder.currencyId.setText("$");
+
+
+                break;
+            case "FKP-£":
+            case "EGP-£":
+            case "GIP-£":
+            case "GGP-£":
+            case "IMP-£":
+            case "JEP-£":
+            case "LBP-£":
+            case "SHP-£":
+            case "SYP-£":
+            case "GBP-£":
+                holder.currencyId.setText("£");
+
+
+                break;
+            case "ALL-Lek":
+                holder.currencyId.setText("Lek");
+
+
+                break;
+            case "؋-AFN":
+                holder.currencyId.setText("؋");
+
+
+                break;
+            case "AWG-ƒ":
+            case "ANG-ƒ":
+                holder.currencyId.setText("ƒ");
+
+
+
+                break;
+            case "AZN-₼":
+               holder.currencyId.setText("₼");
+
+
+                break;
+            case "BYR-p.":
+                holder.currencyId.setText("p.");
+
+
+                break;
+            case "BZD-BZ$":
+                holder.currencyId.setText("BZ$");
+
+                break;
+            case "BOB-$b":
+                holder.currencyId.setText("$b");
+
+                break;
+            case "BAM-KM":
+                holder.currencyId.setText("KM");
+
+
+                break;
+            case "BWP-P":
+                holder.currencyId.setText("P");
+
+
+                break;
+            case "BGN-лв":
+            case "KZT-лв":
+            case "KGS-лв":
+            case "UZS-лв":
+                holder.currencyId.setText("лв");
+
+
+                break;
+            case "BRL-R$":
+                holder.currencyId.setText("R$");
+
+                break;
+            case "KHR-៛":
+                holder.currencyId.setText("៛");
+
+                break;
+            case "CNY-¥":
+            case "JPY-¥":
+               holder.currencyId.setText("¥");
+
+
+                break;
+            case "CRC-₡":
+                holder.currencyId.setText("₡");
+
+                break;
+            case "HRK-kn":
+                holder.currencyId.setText("kn");
+
+                break;
+            case "CUP-₱":
+            case "PHP-₱":
+                holder.currencyId.setText("₱");
+
+
+
+                break;
+            case "CZK-Kč":
+                holder.currencyId.setText("Kč");
+
+
+                break;
+            case "DKK-kr":
+            case "EEK-kr":
+            case "ISK-kr":
+            case "NOK-kr":
+            case "SEK-kr":
+                holder.currencyId.setText("kr");
+
+
+                break;
+            case "DOP-RD$":
+                holder.currencyId.setText("RD$");
+
+
+                break;
+            case "EUR-€":
+                holder.currencyId.setText("€");
+
+
+                break;
+            case "GEL-₾":
+                holder.currencyId.setText("₾");
+
+
+                break;
+            case "GHC-¢":
+                holder.currencyId.setText("¢");
+
+
+                break;
+            case "GTQ-Q":
+                holder.currencyId.setText("Q");
+
+
+                break;
+            case "HNL-L":
+                holder.currencyId.setText("L");
+
+                break;
+            case "HUF-Ft":
+                holder.currencyId.setText("Ft");
+
+
+                break;
+            case "INR-₹":
+                holder.currencyId.setText("₹");
+
+
+                break;
+            case "IDR-Rp":
+                holder.currencyId.setText("Rp");
+
+
+                break;
+            case "﷼-IRR":
+            case "﷼-OMR":
+            case "QAR-﷼":
+            case "﷼-SAR":
+            case "﷼-YER":
+                holder.currencyId.setText("﷼");
+
+
+                break;
+            case "ILS-₪":
+                holder.currencyId.setText("₪");
+
+                break;
+            case "JMD-J$":
+                holder.currencyId.setText("J$");
+
+                break;
+            case "KPW-₩":
+            case "KRW-₩":
+                holder.currencyId.setText("₩");
+
+
+                break;
+            case "LAK-₭":
+                holder.currencyId.setText("₭");
+
+
+                break;
+            case "LVL-Ls":
+                holder.currencyId.setText("Ls");
+
+                break;
+            case "LTL-Lt":
+                holder.currencyId.setText("Lt");
+
+
+                break;
+            case "MKD-ден":
+                holder.currencyId.setText("ден");
+
+                break;
+            case "MYR-RM":
+                holder.currencyId.setText("RM");
+
+
+                break;
+            case "MUR-₨":
+            case "NPR-₨":
+            case "PKR-₨":
+            case "SCR-₨":
+            case "LKR-₨":
+                holder.currencyId.setText("₨");
+
+                break;
+            case "MNT-₮":
+                holder.currencyId.setText("₮");
+
+                break;
+            case "MZN-MT":
+                holder.currencyId.setText("MT");
+
+
+                break;
+            case "NIO-C$":
+                holder.currencyId.setText("C$");
+
+                break;
+            case "NGN-₦":
+                holder.currencyId.setText("₦");
+
+                break;
+            case "PAB-B/.":
+                holder.currencyId.setText("B/.");
+
+                break;
+            case "PYG-Gs":
+                holder.currencyId.setText("Gs");
+
+
+                break;
+            case "PEN-S/.":
+                holder.currencyId.setText("S/.");
+
+
+                break;
+
+            case "PLN-zł":
+                holder.currencyId.setText("zł");
+
+                break;
+            case "RON-lei":
+                holder.currencyId.setText("lei");
+
+
+                break;
+            case "RUB-₽":
+                holder.currencyId.setText("₽");
+
+
+                break;
+            case "RSD-Дин.":
+                holder.currencyId.setText("Дин.");
+
+                break;
+            case "SOS-S":
+                holder.currencyId.setText("S");
+
+
+                break;
+            case "ZAR-R":
+                holder.currencyId.setText("R");
+
+
+                break;
+            case "CHF-CHF":
+                holder.currencyId.setText("CHF");
+
+
+                break;
+            case "TWD-NT$":
+                holder.currencyId.setText("NT$");
+
+
+                break;
+            case "THB-฿":
+                holder.currencyId.setText("฿");
+
+
+                break;
+            case "TTD-TT$":
+                holder.currencyId.setText("TT$");
+
+
+                break;
+            case "TRL-₺":
+                holder.currencyId.setText("₺");
+
+
+                break;
+            case "UAH-₴":
+                holder.currencyId.setText("₴");
+
+                break;
+            case "UYU-$U":
+               holder.currencyId.setText("$U");
+
+                break;
+            case "VEF-Bs":
+                holder.currencyId.setText("Bs");
+
+                break;
+            case "VND-₫":
+               holder.currencyId.setText("₫");
+
+
+                break;
+            case "ZWD-Z$":
+                holder.currencyId.setText("Z$");
+                break;
+
+        }
 
         String id = String.valueOf(invoiceId);
 

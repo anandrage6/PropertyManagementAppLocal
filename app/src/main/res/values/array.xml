@@ -115,118 +115,118 @@
             <item>Zimbabwe - Dollar</item>
         </string-array>
         <string-array name="CounteryCurrencyValues">
-            <item>Lek</item>
-            <item>؋</item>
-            <item> $</item>
-            <item>ƒ</item>
-            <item>  $</item>
-            <item>₼</item>
-            <item>   $</item>
-            <item>    $</item>
-            <item>p.</item>
-            <item>BZ$</item>
-            <item>     $</item>
-            <item>$b</item>
-            <item>KM</item>
-            <item>P</item>
-            <item>лв</item>
-            <item>R$</item>
-            <item>      $</item>
-            <item>៛</item>
-            <item>       $</item>
-            <item>        $</item>
-            <item>         $</item>
-            <item>¥</item>
-            <item>          $</item>
-            <item>₡</item>
-            <item>kn</item>
-            <item>₱</item>
-            <item>Kč</item>
-            <item>kr</item>
-            <item>RD$</item>
-            <item>£</item>
-            <item>           $</item>
-            <item>kr</item>
-            <item>€</item>
-            <item>£</item>
-            <item>            $</item>
-            <item>₾</item>
-            <item>¢</item>
-            <item>£</item>
-            <item>Q</item>
-            <item>£</item>
-            <item>             $</item>
-            <item>L</item>
-            <item>              $</item>
-            <item>Ft</item>
-            <item>kr</item>
-            <item>₹</item>
-            <item>Rp</item>
-            <item>﷼</item>
-            <item>£</item>
-            <item>₪</item>
-            <item>J$</item>
-            <item>¥</item>
-            <item>£</item>
-            <item>лв</item>
-            <item>₩</item>
-            <item>₩</item>
-            <item>лв</item>
-            <item>₭</item>
-            <item>Ls</item>
-            <item>£</item>
-            <item>               $</item>
-            <item>Lt</item>
-            <item>ден</item>
-            <item>RM</item>
-            <item>₨</item>
-            <item>                $</item>
-            <item>₮</item>
-            <item>MT</item>
-            <item>                 $</item>
-            <item>₨</item>
-            <item>ƒ</item>
-            <item>$</item>
-            <item>C$</item>
-            <item>₦</item>
-            <item>kr</item>
-            <item>﷼</item>
-            <item>₨</item>
-            <item>B/.</item>
-            <item>Gs</item>
-            <item>S/.</item>
-            <item>₱</item>
-            <item>zł</item>
-            <item>﷼</item>
-            <item>lei</item>
-            <item>₽</item>
-            <item>£</item>
-            <item>﷼</item>
-            <item>Дин.</item>
-            <item>₨</item>
-            <item>                  $</item>
-            <item>                   $</item>
-            <item>S</item>
-            <item>R</item>
-            <item>₨</item>
-            <item>kr</item>
-            <item>CHF</item>
-            <item>                    $</item>
-            <item>£</item>
-            <item>NT$</item>
-            <item>฿</item>
-            <item>TT$</item>
-            <item>₺</item>
-            <item>                       $</item>
-            <item>₴</item>
-            <item>£</item>
-            <item>                         $</item>
-            <item>$U</item>
-            <item>лв</item>
-            <item>Bs</item>
-            <item>₫</item>
-            <item>﷼</item>
-            <item>Z$</item>
+            <item>ALL-Lek</item>
+            <item>؋-AFN</item>
+            <item>ARS-$</item>
+            <item>AWG-ƒ</item>
+            <item>AUD-$</item>
+            <item>AZN-₼</item>
+            <item>BSD-$</item>
+            <item>BBD-$</item>
+            <item>BYR-p.</item>
+            <item>BZD-BZ$</item>
+            <item>BMD-$</item>
+            <item>BOB-$b</item>
+            <item>BAM-KM</item>
+            <item>BWP-P</item>
+            <item>BGN-лв</item>
+            <item>BRL-R$</item>
+            <item>BND-$</item>
+            <item>KHR-៛</item>
+            <item>CAD-$</item>
+            <item>KYD-$</item>
+            <item>CLP-$</item>
+            <item>CNY-¥</item>
+            <item>COP-$</item>
+            <item>CRC-₡</item>
+            <item>HRK-kn</item>
+            <item>CUP-₱</item>
+            <item>CZK-Kč</item>
+            <item>DKK-kr</item>
+            <item>DOP-RD$</item>
+            <item>EGP-£</item>
+            <item>SVC-$</item>
+            <item>EEK-kr</item>
+            <item>EUR-€</item>
+            <item>FKP-£</item>
+            <item>FJD-$</item>
+            <item>GEL-₾</item>
+            <item>GHC-¢</item>
+            <item>GIP-£</item>
+            <item>GTQ-Q</item>
+            <item>GGP-£</item>
+            <item>GYD-$</item>
+            <item>HNL-L</item>
+            <item>HKD-$</item>
+            <item>HUF-Ft</item>
+            <item>ISK-kr</item>
+            <item>INR-₹</item>
+            <item>IDR-Rp</item>
+            <item>﷼-IRR</item>
+            <item>IMP-£</item>
+            <item>ILS-₪</item>
+            <item>JMD-J$</item>
+            <item>JPY-¥</item>
+            <item>JEP-£</item>
+            <item>KZT-лв</item>
+            <item>KPW-₩</item>
+            <item>KRW-₩</item>
+            <item>KGS-лв</item>
+            <item>LAK-₭</item>
+            <item>LVL-Ls</item>
+            <item>LBP-£</item>
+            <item>LRD-$</item>
+            <item>LTL-Lt</item>
+            <item>MKD-ден</item>
+            <item>MYR-RM</item>
+            <item>MUR-₨</item>
+            <item>MXN-$</item>
+            <item>MNT-₮</item>
+            <item>MZN-MT</item>
+            <item>NAD-$</item>
+            <item>NPR-₨</item>
+            <item>ANG-ƒ</item>
+            <item>NZD-$</item>
+            <item>NIO-C$</item>
+            <item>NGN-₦</item>
+            <item>NOK-kr</item>
+            <item>﷼-OMR</item>
+            <item>PKR-₨</item>
+            <item>PAB-B/.</item>
+            <item>PYG-Gs</item>
+            <item>PEN-S/.</item>
+            <item>PHP-₱</item>
+            <item>PLN-zł</item>
+            <item>QAR-﷼</item>
+            <item>RON-lei</item>
+            <item>RUB-₽</item>
+            <item>SHP-£</item>
+            <item>﷼-SAR</item>
+            <item>RSD-Дин.</item>
+            <item>SCR-₨</item>
+            <item>SGD-$</item>
+            <item>SBD-$</item>
+            <item>SOS-S</item>
+            <item>ZAR-R</item>
+            <item>LKR-₨</item>
+            <item>SEK-kr</item>
+            <item>CHF-CHF</item>
+            <item>SRD-$</item>
+            <item>SYP-£</item>
+            <item>TWD-NT$</item>
+            <item>THB-฿</item>
+            <item>TTD-TT$</item>
+            <item>TRL-₺</item>
+            <item>TVD-$</item>
+            <item>UAH-₴</item>
+            <item>GBP-£</item>
+            <item>USD-$</item>
+            <item>UYU-$U</item>
+            <item>UZS-лв</item>
+            <item>VEF-Bs</item>
+            <item>VND-₫</item>
+            <item>﷼-YER</item>
+            <item>ZWD-Z$</item>
         </string-array>
         <string-array name="rentalduedateentries">
             <item>One Week</item>
