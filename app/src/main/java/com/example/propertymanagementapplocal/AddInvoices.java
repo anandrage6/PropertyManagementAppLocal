@@ -25,9 +25,11 @@ import android.widget.TextView;
 
 import java.lang.annotation.ElementType;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class AddInvoices extends AppCompatActivity {
@@ -233,9 +235,16 @@ public class AddInvoices extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         month = month + 1;
-                        String date = day + "/" + month + "/" + year;
-                        invoiceIssued.setText(date);
-
+                        String date1 = day + "/" + month + "/" + year;
+                        //invoiceIssued.setText(date);
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                        Date parsedDate = new Date();
+                        try {
+                            parsedDate = sdf.parse(date1);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        invoiceIssued.setText(sdf.format(parsedDate));
 
                     }
                 }, year, month, day);
@@ -260,8 +269,17 @@ public class AddInvoices extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         month = month + 1;
-                        String date = day + "/" + month + "/" + year;
-                        paymentdue.setText(date);
+                        String date2 = day + "/" + month + "/" + year;
+                        //paymentdue.setText(date);
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                        Date parsedDate = new Date();
+                        try {
+                            parsedDate = sdf.parse(date2);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        paymentdue.setText(sdf.format(parsedDate));
                     }
                 }, year, month, day);
                 datePickerDialog.show();
@@ -869,7 +887,9 @@ public class AddInvoices extends AppCompatActivity {
             // sending
             SmsManager mySmsManager = SmsManager.getDefault();
             ArrayList<String> parts = mySmsManager.divideMessage(textMessage);
-            mySmsManager.sendTextMessage(phoneNumber, null, parts.get(0), null, null);
+            for(String s: parts) {
+                mySmsManager.sendTextMessage(phoneNumber, null, s, null, null);
+            }
             finish();
         }
     }

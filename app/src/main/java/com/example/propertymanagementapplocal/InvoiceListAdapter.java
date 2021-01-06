@@ -512,7 +512,7 @@ public class InvoiceListAdapter extends RecyclerView.Adapter<InvoiceListAdapter.
                             //Edit case
                             case R.id.menu_item_Edit:
 
-                                UpdateInvoiceDetails updateInvoiceDetails = UpdateInvoiceDetails.newInstance(invoice.getInvoiceId(), invoiceListPosition, new InvoiceUpdateListener() {
+                                UpdateInvoiceDetails updateInvoiceDetails = UpdateInvoiceDetails.newInstance(invoice.getInvoiceId(), invoiceListPosition, refTenantId, new InvoiceUpdateListener() {
                                     @Override
                                     public void onInvoiceInfoUpdated(InvoiceModelClass invoice, int position) {
                                         invoiceList.set(position, invoice);

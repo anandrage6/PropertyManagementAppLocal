@@ -25,9 +25,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class UpdatePaymentDetails extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -152,8 +155,18 @@ public class UpdatePaymentDetails extends AppCompatActivity implements AdapterVi
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         month = month + 1;
-                        String date = day + "/" + month + "/" + year;
-                        pDatereceived.setText(date);
+                        String date2 = day + "/" + month + "/" + year;
+                       // pDatereceived.setText(date);
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                        Date parsedDate = new Date();
+                        try {
+                            parsedDate = sdf.parse(date2);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        pDatereceived.setText(sdf.format(parsedDate));
 
                     }
                 }, year, month, day);

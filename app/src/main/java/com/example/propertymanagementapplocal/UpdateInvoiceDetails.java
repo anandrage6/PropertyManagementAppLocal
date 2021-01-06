@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -19,7 +20,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class UpdateInvoiceDetails extends AppCompatActivity {
 
@@ -30,6 +34,8 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
     private static InvoiceUpdateListener invoiceUpdateListener;
 
     private InvoiceModelClass mInvoiceModelClass;
+
+    private TenantModelClass mTenantModelClass;
 
     private DatabaseQueryClass databaseQueryClass;
 
@@ -43,8 +49,9 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
 
     String Title, Amount, Details;
 
-    double strAmount;
+    double strAmount, tenantRent;
     double strRent, strWaterBill, strElectricityBill, strMaintananceBill;
+    private static long refTenantId;
 
     //constructor
     public UpdateInvoiceDetails() {
@@ -53,11 +60,12 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
 
     //new Instance
 
-    public static UpdateInvoiceDetails newInstance(long id, int position, InvoiceUpdateListener listener) {
+    public static UpdateInvoiceDetails newInstance(long id, int position,long tenantId, InvoiceUpdateListener listener) {
 
         invoiceId = id;
         invoiceItemPosition = position;
         invoiceUpdateListener = listener;
+        refTenantId = tenantId;
 
         UpdateInvoiceDetails updateInvoice = new UpdateInvoiceDetails();
         return updateInvoice;
@@ -131,18 +139,26 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
 
         databaseQueryClass = new DatabaseQueryClass(getApplicationContext());
 
+        //tenant values to get
+
+        mTenantModelClass = databaseQueryClass.getTenantById(refTenantId);
+        Log.e("Rent of tenant======> ", mTenantModelClass.getRentAmount());
+        tenantRent = Double.parseDouble(mTenantModelClass.getRentAmount());
+
+
         mInvoiceModelClass = databaseQueryClass.getInvoiceById(invoiceId);
 
         title.setText(mInvoiceModelClass.getTitle());
         details.setText(mInvoiceModelClass.getDetails());
         amount.setText(mInvoiceModelClass.getAmount());
-        rent.setText(mInvoiceModelClass.getRent());
+        rent.setText( mTenantModelClass.getRentAmount());
         invoiceIssued.setText(mInvoiceModelClass.getInvoiceIssued());
         paymentdue.setText(mInvoiceModelClass.getPaymentDue());
         note.setText(mInvoiceModelClass.getNotes());
         waterBill.setText(mInvoiceModelClass.getWaterBill());
         electricityBill.setText(mInvoiceModelClass.getElectricityBill());
         maintananceBill.setText(mInvoiceModelClass.getMaintenanceCharges());
+
 
 
         //notes
@@ -185,9 +201,18 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         month = month + 1;
-                        String date = day + "/" + month + "/" + year;
-                        invoiceIssued.setText(date);
+                        String date1 = day + "/" + month + "/" + year;
+                       // invoiceIssued.setText(date);
 
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                        Date parsedDate = new Date();
+                        try {
+                            parsedDate = sdf.parse(date1);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        invoiceIssued.setText(sdf.format(parsedDate));
 
                     }
                 }, year, month, day);
@@ -203,8 +228,20 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                         month = month + 1;
-                        String date = day + "/" + month + "/" + year;
-                        paymentdue.setText(date);
+                        String date2 = day + "/" + month + "/" + year;
+                       // paymentdue.setText(date);
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                        Date parsedDate = new Date();
+                        try {
+                            parsedDate = sdf.parse(date2);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        paymentdue.setText(sdf.format(parsedDate));
+
+
                     }
                 }, year, month, day);
                 datePickerDialog.show();
