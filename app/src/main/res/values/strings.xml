@@ -117,4 +117,17 @@
     <string name="flatno">FlatNo - </string>
 
 
+    <string name="state">State</string>
+
+    <string name="cancel">CANCEL</string>
+    <string name="todo">TODO</string>
+
+    <string name="zip_code">Zip Code</string>
+    <string name="city">City</string>
+    <string name="property_type">Property Type</string>
+    <string name="save">SAVE</string>
+    <string name="add_property">Add Property</string>
+    <string name="description">Description</string>
+
+
 </resources>

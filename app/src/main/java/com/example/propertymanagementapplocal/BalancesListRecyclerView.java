@@ -88,7 +88,7 @@ public class BalancesListRecyclerView extends RecyclerView.Adapter<RecyclerView.
 
 
            if( getItemViewType(position) == 2){
-               ((titleHolder) holder).currencyId.setText(curv);
+               ((titleHolder) holder).currencyId2.setText(curv);
            }
 
     }
@@ -106,7 +106,7 @@ public class BalancesListRecyclerView extends RecyclerView.Adapter<RecyclerView.
     // invoice part adapter
     static class InvoiceHolder extends RecyclerView.ViewHolder{
 
-       private TextView invoiceissuedDateTv, paymentduedateTv, rentTextView, invoiceIdTv;
+       private TextView invoiceissuedDateTv, paymentduedateTv, rentTextView, invoiceIdTv, currencyId0;
 
         InvoiceHolder(@NonNull View itemView) {
             super(itemView);
@@ -115,6 +115,7 @@ public class BalancesListRecyclerView extends RecyclerView.Adapter<RecyclerView.
             paymentduedateTv = itemView.findViewById(R.id.paymentdueTextViewBalances);
             rentTextView = itemView.findViewById(R.id.rentTextViewBalances);
             invoiceIdTv = itemView.findViewById(R.id.invoiceIdBalances);
+            currencyId0 = itemView.findViewById(R.id.currencyId0);
         }
 
         void setInvoiceData(InvoiceModelClass invoiceModelClass){
@@ -131,7 +132,7 @@ public class BalancesListRecyclerView extends RecyclerView.Adapter<RecyclerView.
 
     static class PaymentsHolder extends RecyclerView.ViewHolder{
 
-         private TextView receivedfrom, dateReceived, amount;
+         private TextView receivedfrom, dateReceived, amount, currencyId1;
 
             PaymentsHolder(@NonNull View itemView) {
             super(itemView);
@@ -139,6 +140,7 @@ public class BalancesListRecyclerView extends RecyclerView.Adapter<RecyclerView.
             receivedfrom = itemView.findViewById(R.id.paymentReceivedFromTextViewBalance);
             dateReceived = itemView.findViewById(R.id.paymentDateReceivedTextViewBalance);
             amount = itemView.findViewById(R.id.paymentAmountTextViewBalance);
+            currencyId1 = itemView.findViewById(R.id.currencyId1);
         }
 
         void setPaymentsData(PaymentsModelClass paymentsModelClass){
@@ -149,14 +151,14 @@ public class BalancesListRecyclerView extends RecyclerView.Adapter<RecyclerView.
     }
 
     static  class titleHolder extends RecyclerView.ViewHolder{
-        TextView titleMonth, totalAmount, currencyId;
+        TextView titleMonth, totalAmount, currencyId2;
 
         public titleHolder(@NonNull View itemView) {
             super(itemView);
 
             titleMonth = itemView.findViewById(R.id.titleMonthTv);
             totalAmount = itemView.findViewById(R.id.totalAmountTv);
-            currencyId = itemView.findViewById(R.id.currencyId);
+            currencyId2 = itemView.findViewById(R.id.currencyId2);
 
         }
 

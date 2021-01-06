@@ -15,7 +15,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -39,7 +39,8 @@
                     android:background="@color/design_default_color_background"
                     android:scaleType="fitXY"
 
-                    android:src="@drawable/imageplsceholder" />
+                    android:src="@drawable/imageplsceholder"
+                    android:contentDescription="@string/todo" />
             </LinearLayout>
 
             <LinearLayout
@@ -56,7 +57,7 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="0dp"
                     android:gravity="center"
-                    android:text="Property Type"
+                    android:text="@string/property_type"
                     android:textAlignment="center"
                     android:textSize="20dp"
                     android:textStyle="bold"
@@ -187,7 +188,7 @@
                     android:id="@+id/cityEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="City"
+                    android:hint="@string/city"
                     android:background="@null"
                     android:textAlignment="center"
                     android:layout_marginStart="15dp"
@@ -208,9 +209,9 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="0dp"
                     android:gravity="center"
-                    android:text="State"
+                    android:text="@string/state"
                     android:textAlignment="center"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     tools:ignore="RtlCompat" />
 
@@ -238,7 +239,7 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="0dp"
                     android:gravity="center"
-                    android:text="Zip Code"
+                    android:text="@string/zip_code"
                     android:textAlignment="center"
                     android:textSize="20dp"
                     android:textStyle="bold"
@@ -247,12 +248,13 @@
                     android:id="@+id/zipCodeEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Zip Code"
+                    android:hint="@string/zip_code"
                     android:background="@null"
                     android:textAlignment="center"
                     android:layout_marginStart="15dp"
                     android:layout_marginLeft="100dp"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"
+                     />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/ninthlinear"
@@ -267,7 +269,7 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="0dp"
                     android:gravity="center"
-                    android:text="Description"
+                    android:text="@string/description"
                     android:textAlignment="center"
                     android:textSize="20dp"
                     android:textStyle="bold"
@@ -281,7 +283,7 @@
                     android:layout_marginStart="130dp"
                     android:layout_marginLeft="100dp"
                     android:background="@null"
-                    android:hint="Description"
+                    android:hint="@string/description"
 
                     android:textAlignment="center" />
             </LinearLayout>
@@ -315,7 +317,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/roundedborder"
-                android:text="CANCEL"
+                android:text="@string/cancel"
                 android:textColor="@color/green"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -327,7 +329,7 @@
                 android:layout_marginStart="240dp"
                 android:layout_marginLeft="16dp"
                 android:gravity="center_horizontal"
-                android:text="Add Property"
+                android:text="@string/add_property"
                 android:textStyle="bold"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_light_background"
@@ -346,7 +348,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/roundedborder"
-                android:text="SAVE"
+                android:text="@string/save"
                 android:textColor="@color/green"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

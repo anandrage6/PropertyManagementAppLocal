@@ -28,6 +28,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class AddInvoices extends AppCompatActivity {
     // private static long FlatId;
@@ -868,7 +869,13 @@ public class AddInvoices extends AppCompatActivity {
             // sending
             SmsManager mySmsManager = SmsManager.getDefault();
             ArrayList<String> parts = mySmsManager.divideMessage(textMessage);
-            mySmsManager.sendTextMessage(phoneNumber, null, parts.get(1), null, null);
+            /*
+            for(String list: parts){
+
+            }
+
+             */
+            mySmsManager.sendTextMessage(phoneNumber, null, parts.get(0), null, null);
             finish();
         }
     }

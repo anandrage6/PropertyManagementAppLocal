@@ -62,10 +62,21 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/currencyId1"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:textSize="15dp"
+                android:textAlignment="textEnd"
+                android:text=""
+                android:textColor="@color/Black"
+                android:layout_marginStart="50dp"
+                android:gravity="center"
+                tools:ignore="RtlCompat" />
+            <TextView
                 android:id="@+id/paymentAmountTextViewBalance"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="70dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginEnd="10sp"
                 android:hint="0.00"
                 android:textSize="15sp"
