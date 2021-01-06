@@ -106,7 +106,8 @@ public class BalancesListRecyclerView extends RecyclerView.Adapter<RecyclerView.
     // invoice part adapter
     static class InvoiceHolder extends RecyclerView.ViewHolder{
 
-       private TextView invoiceissuedDateTv, paymentduedateTv, rentTextView, invoiceIdTv, currencyId0;
+       private TextView invoiceissuedDateTv, paymentduedateTv, rentTextView, invoiceIdTv;
+        TextView currencyId0;
 
         InvoiceHolder(@NonNull View itemView) {
             super(itemView);
@@ -132,7 +133,8 @@ public class BalancesListRecyclerView extends RecyclerView.Adapter<RecyclerView.
 
     static class PaymentsHolder extends RecyclerView.ViewHolder{
 
-         private TextView receivedfrom, dateReceived, amount, currencyId1;
+         private TextView receivedfrom, dateReceived, amount;
+                 TextView currencyId1;
 
             PaymentsHolder(@NonNull View itemView) {
             super(itemView);

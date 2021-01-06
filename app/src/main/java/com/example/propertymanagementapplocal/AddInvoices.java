@@ -869,12 +869,6 @@ public class AddInvoices extends AppCompatActivity {
             // sending
             SmsManager mySmsManager = SmsManager.getDefault();
             ArrayList<String> parts = mySmsManager.divideMessage(textMessage);
-            /*
-            for(String list: parts){
-
-            }
-
-             */
             mySmsManager.sendTextMessage(phoneNumber, null, parts.get(0), null, null);
             finish();
         }
