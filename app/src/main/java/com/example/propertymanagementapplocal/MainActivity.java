@@ -20,6 +20,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -37,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     FloatingActionButton btnadd;
 
+    //ads
+    private AdView mAdView;
+
     private TextView propertyListEmptyTextView;
 
     //new recycler part
@@ -50,6 +58,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //App Id
+        //MobileAds.initialize(this, "ca-app-pub-1722001050000485~8005397194");
+
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+        // ca-app-pub-1722001050000485~8005397194
 
         recyclerView = findViewById(R.id.apartmentRecyclerId);
         Logger.addLogAdapter(new AndroidLogAdapter());

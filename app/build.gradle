@@ -12,10 +12,11 @@ android {
 
     defaultConfig {
         applicationId "com.example.propertymanagementapplocal"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -71,5 +72,11 @@ dependencies {
     //settings
     //noinspection NotInterpolated
     implementation 'androidx.preference:preference:$preference_version'
+
+    //ads dependency
+    implementation 'com.google.android.gms:play-services-ads:19.6.0'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.google.guava:guava:27.0.1-android'
 
 }

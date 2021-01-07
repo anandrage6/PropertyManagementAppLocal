@@ -160,7 +160,6 @@ public class UpdateInvoiceDetails extends AppCompatActivity {
         maintananceBill.setText(mInvoiceModelClass.getMaintenanceCharges());
 
 
-
         //notes
         note.setOnClickListener(new View.OnClickListener() {
             @Override
