@@ -28,6 +28,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -43,6 +46,8 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
     //ProgressDialog mprogress;
     String state, propertyType;
     String imagetext;
+
+    private InterstitialAd mInterstitialAd;
 
     //Awesome Validation
     AwesomeValidation awesomeValidation;
@@ -68,6 +73,14 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_property);
+
+        //interstitial ads
+        mInterstitialAd = new InterstitialAd(AddProperty.this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+
+
 
         //finding id's
         imageBtn = findViewById(R.id.imageButton);
@@ -123,7 +136,21 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
             public void onClick(View view) {
                 //when click on save insert data into database
                 getData();
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+
+                    mInterstitialAd.setAdListener(new AdListener() {
+                        @Override
+                        public void onAdClosed() {
+                            // Load the next interstitial.
+                            //mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                            finish();
+                        }
+
+                    });
+                }
             }
+
         });
 
         //Button cancel
@@ -132,6 +159,19 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
             @Override
             public void onClick(View view) {
                 finish();
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+
+                    mInterstitialAd.setAdListener(new AdListener() {
+                        @Override
+                        public void onAdClosed() {
+                            // Load the next interstitial.
+                            //mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                            finish();
+                        }
+
+                    });
+                }
             }
         });
 
@@ -326,6 +366,29 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+
+            mInterstitialAd.setAdListener(new AdListener() {
+                @Override
+                public void onAdClosed() {
+                    // Load the next interstitial.
+                    //mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                    finish();
+                }
+
+            });
+
+        }else{
+            //Log.e("eroor =====> ", "errorOccured");
+            super.onBackPressed();
+        }
 
     }
 }

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,8 +21,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
@@ -61,17 +64,19 @@ public class MainActivity extends AppCompatActivity {
 
         //App Id
         //MobileAds.initialize(this, "ca-app-pub-1722001050000485~8005397194");
-
-
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+        MobileAds.initialize(MainActivity.this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
 
+        // banner ads
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+
+
 
         // ca-app-pub-1722001050000485~8005397194
 
@@ -158,6 +163,10 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this,rendv, Toast.LENGTH_SHORT).show();
 
          */
+
+    }
+
+    private void displayInterstitial() {
 
     }
 
