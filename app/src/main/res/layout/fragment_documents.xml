@@ -6,51 +6,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Documents">
 
-    <!--
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="0dp">
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        tools:ignore="MissingConstraints">
 
-
-        <ScrollView
-            android:id="@+id/scrollable"
+        <ImageSwitcher
+            android:id="@+id/imageSwitcher"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="300dp"
+            android:background="@drawable/imageplsceholder"
+            android:layout_marginTop="0dp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/documentRecyclerId"
-                android:layout_width="409dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="1dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginRight="1dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-        </ScrollView>
-    </LinearLayout>
-    -->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/Documentimg"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/nextBtn"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/imageplsceholder">
+            android:layout_marginTop="410dp"
+            android:text="Next"/>
+        <Button
+            android:id="@+id/prvBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="410dp"
+            android:layout_marginStart="315dp"
+            android:text="Previous"
+            android:layout_marginLeft="315dp" />
 
-        </ImageView>
-    </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

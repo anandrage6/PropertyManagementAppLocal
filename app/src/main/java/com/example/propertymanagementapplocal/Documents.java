@@ -19,13 +19,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.Toast;
+import android.widget.ViewSwitcher;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.w3c.dom.Document;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 import static android.app.Activity.RESULT_OK;
@@ -35,18 +41,22 @@ public class Documents extends Fragment {
     private long refFlatId;
     private long refTenantId;
     FloatingActionButton btnadd;
+    Button nxtBtn, prvBtn;
     final int REQUEST_EXTERNAL_STORAGE = 100;
-    ImageView imageView;
-    Uri imageUri;
+    ImageSwitcher imageView;
     private  DatabaseQueryClass databaseQueryClass;    ;
     private TenantModelClass mtenantModelClass;
     String tenantName;
     private long tenantId;
     private static DocumentCreatedListner documentCreatedListner;
+    ArrayList<Uri> imageUris;
+    private static final int PICK_IMAGES_CODE = 0;
+    int position = 0;
 
 
     public Documents() {
     }
+
 
     @SuppressLint("LongLogTag")
     @Override
@@ -55,139 +65,123 @@ public class Documents extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_documents, container, false);
 
-        imageView = view.findViewById(R.id.Documentimg);
+        imageUris = new ArrayList<>();
+
+        imageView = view.findViewById(R.id.imageSwitcher);
+        btnadd = view.findViewById(R.id.addbtn);
+        nxtBtn = view.findViewById(R.id.nextBtn);
+        prvBtn = view.findViewById(R.id.prvBtn);
+
         databaseQueryClass = new DatabaseQueryClass(getContext());
+
+
 
         refFlatId = getArguments().getLong("1");
         Log.d("flatRefFId_in_Documents: ==> ", String.valueOf(refFlatId));
 
         tenantId = getArguments().getLong("2");
-        Log.e("tenantId in Payments ===== > ", String.valueOf(tenantId));
+        Log.e("tenantId in Documents ===== > ", String.valueOf(tenantId));
 
 
         try {
             mtenantModelClass = databaseQueryClass.getTenantIdByFlatId(refFlatId);
             tenantId = mtenantModelClass.getTenantId();
-            Log.e("tenantId on resume in Payments ========> ", String.valueOf(tenantId));
+            Log.e("tenantId in Documents ========> ", String.valueOf(tenantId));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        // Floatind Add Button
-        btnadd = view.findViewById(R.id.addbtn);
-        btnadd.setOnClickListener(new View.OnClickListener() {
+
+
+        imageView.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                ImageView imageView1 = new ImageView(getContext());
+                return imageView1;
+            }
+        });
+
+
+
+        //imageView.setImageURI(imageUris.get(0));
+
+        nxtBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions((Activity) getContext(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_EXTERNAL_STORAGE);
-//                    return;
-                } else {
-                    launchGalleryIntent();
+
+                if(position > imageUris.size() -1){
+                    position++;
+                    imageView.setImageURI(imageUris.get(position));
+                }else{
+                    Toast.makeText(getContext(), "No More Images",Toast.LENGTH_LONG).show();
                 }
 
             }
         });
+
+        prvBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(position > 0){
+                    position--;
+                    imageView.setImageURI(imageUris.get(position));
+                }else{
+                    Toast.makeText(getContext(), "No previous images", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        btnadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pickImageIntent();
+            }
+        });
+       
         return view;
 
     }
 
-    public void launchGalleryIntent() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+    private void pickImageIntent() {
+        Intent intent = new Intent();
         intent.setType("image/*");
-        startActivityForResult(intent, REQUEST_EXTERNAL_STORAGE);
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Images(s)"), PICK_IMAGES_CODE);
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_EXTERNAL_STORAGE: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
-                    launchGalleryIntent();
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                return;
-            }
-
-            // other 'case' lines to check for other
-            // permissions this app might request.
-        }
-    }
-
-
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    @SuppressLint("LongLogTag")
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_EXTERNAL_STORAGE && resultCode == RESULT_OK && data!=null && data.getData()!=null) {
 
-            final List<Bitmap> bitmaps = new ArrayList<>();
-            ClipData clipData = data.getClipData();
+        if(requestCode == PICK_IMAGES_CODE){
+            if(resultCode == Activity.RESULT_OK){
+                if(data.getClipData() != null){
 
-            if (clipData != null) {
-                //multiple images selecetd
-                for (int i = 0; i < clipData.getItemCount(); i++) {
-                    imageUri = clipData.getItemAt(i).getUri();
-                    Log.d("URI", imageUri.toString());
-                    try {
-                        InputStream inputStream = getActivity().getApplicationContext().getContentResolver().openInputStream(imageUri);
-                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                        bitmaps.add(bitmap);
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
+                    //picked multiple images
+                    int count = data.getClipData().getItemCount(); //number of picked images
+                    for(int i=0; i<count; i++){
+                        //get image uri at specific index
+                        Uri imageUri = data.getClipData().getItemAt(i).getUri();
+                        Log.e("multiple Uri =============> ", String.valueOf(imageUri));
+                        imageUris.add(imageUri); // add to list
                     }
+                    //set first image uri to image switcher
+                    imageView.setImageURI(imageUris.get(0));
+                    position = 0;
+                    //Log.e("multiple Uri =============> ", String.valueOf(imageUris.get(0)));
+                }else{
+                    //picked single image
+
+                    Uri imageUri = data.getData();
+                    imageUris.add(imageUri);
+                    //set image uri to image switcher
+                    imageView.setImageURI(imageUris.get(0));
+                    position = 0;
+                    Log.e("Single Uri =============> ", String.valueOf(imageUris.get(0)));
                 }
-            } else {
-                //single image selected
-                Uri imageUri = data.getData();
-                Log.d("URI", imageUri.toString());
-                try {
-                    InputStream inputStream = getActivity().getApplicationContext().getContentResolver(). openInputStream(imageUri);
-                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                    bitmaps.add(bitmap);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-                if(!bitmaps.isEmpty()){
-                    DocumentModelClass documentModelClass = new DocumentModelClass(-1, bitmaps);
-                    long id = databaseQueryClass.insertDocument(documentModelClass, tenantId );
-                    if (id>0){
-                        documentModelClass.setId(id);
-                        documentCreatedListner.OnDocumentCreated(documentModelClass);
-
-                    }
-
-                }
-
             }
-
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    for (final Bitmap b : bitmaps) {
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                imageView.setImageBitmap(b);
-                            }
-                        });
-
-                        try {
-                            Thread.sleep(3000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }).start();
         }
     }
 }
