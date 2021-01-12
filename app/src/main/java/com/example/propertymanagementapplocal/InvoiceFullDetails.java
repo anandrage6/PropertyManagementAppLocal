@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class InvoiceFullDetails extends AppCompatActivity {
 
@@ -108,6 +109,7 @@ public class InvoiceFullDetails extends AppCompatActivity {
                 // sending
                 SmsManager mySmsManager = SmsManager.getDefault();
                 mySmsManager.sendTextMessage(phoneNumber, null, textMessage, null, null);
+                Toast.makeText(getApplicationContext(), "Sms sent", Toast.LENGTH_LONG).show();
             }
         });
 
