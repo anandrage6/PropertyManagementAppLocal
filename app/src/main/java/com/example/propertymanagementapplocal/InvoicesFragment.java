@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -35,6 +37,8 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
     private LinearLayout emptyListLinearLayout;
 
     private TenantModelClass mtenantModelClass;
+    //ads
+    private AdView mAdView;
 
 
     public InvoicesFragment() {
@@ -47,6 +51,12 @@ public class InvoicesFragment extends Fragment implements InvoiceCreateListener 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_invoices, container, false);
+
+        // banner ads
+        mAdView = v.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         databaseQueryClass = new DatabaseQueryClass(getContext());
         emptyListLinearLayout = v.findViewById(R.id.invoiceListHide);
 

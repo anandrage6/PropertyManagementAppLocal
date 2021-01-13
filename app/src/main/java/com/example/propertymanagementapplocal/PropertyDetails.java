@@ -17,6 +17,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -55,11 +61,19 @@ public class PropertyDetails extends AppCompatActivity implements FlatsCreateLis
     private RecyclerView flatsrecyclerView;
     private FlatsListRecyclerAdapter flatsListRecyclerAdapter;
 
+    //ads
+    private AdView mAdView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_details);
+
+        // banner ads
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         locationTv = findViewById(R.id.locationTextViewDetails);
         ownerNameTv = findViewById(R.id.ownernameTextViewDetails);

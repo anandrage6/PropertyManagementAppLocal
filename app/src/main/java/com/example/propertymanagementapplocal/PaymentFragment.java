@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -35,6 +37,8 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
 
     private TenantModelClass mtenantModelClass;
     private long tenantId;
+    //ads
+    private AdView mAdView;
 
     public PaymentFragment() {
     }
@@ -45,6 +49,12 @@ public class PaymentFragment extends Fragment implements PaymentsCreateListener 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_payment, container, false);
+
+        // banner ads
+        mAdView = v.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         databaseQueryClass = new DatabaseQueryClass(getContext());
 
         refFlatId = getArguments().getLong("1");

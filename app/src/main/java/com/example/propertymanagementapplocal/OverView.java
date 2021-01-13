@@ -17,6 +17,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -49,6 +54,9 @@ public class OverView extends Fragment implements TenantCreateListener {
 
     private long rFid;
 
+    //ads
+    private AdView mAdView;
+
     public OverView() {
         //empty
     }
@@ -59,6 +67,14 @@ public class OverView extends Fragment implements TenantCreateListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_over_view, container, false);
+
+
+        // banner ads
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
         databaseQueryClass = new DatabaseQueryClass(getContext());
 
         balanceRecyclerView = view.findViewById(R.id.recyclerViewBalances);

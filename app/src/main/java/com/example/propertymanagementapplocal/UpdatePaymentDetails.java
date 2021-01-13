@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -185,7 +186,7 @@ public class UpdatePaymentDetails extends AppCompatActivity implements AdapterVi
 
          */
 
-       // strTaxStatus = mPaymentModelClass.getTaxstatus();
+        strTaxStatus = mPaymentModelClass.getTaxstatus();
 
         pNotes.setText(mPaymentModelClass.getNotes());
         //notes
@@ -630,7 +631,7 @@ public class UpdatePaymentDetails extends AppCompatActivity implements AdapterVi
                     nontaxableRadioBtn.setTextColor(Color.WHITE);
                     taxableRadioBtn.setTextColor(Color.BLACK);
                     strTaxStatus = nontaxableRadioBtn.getText().toString();
-                    //Log.e("StrTaxstatus_nontax : ==> ", strTaxStatus);
+                    Log.e("StrTaxstatus_nontax : ==> ", strTaxStatus);
                     //Toast.makeText(AddPayments.this, "nonTax: ==> "+strTaxStatus, Toast.LENGTH_LONG).show();
 
                 }
@@ -640,7 +641,7 @@ public class UpdatePaymentDetails extends AppCompatActivity implements AdapterVi
                     nontaxableRadioBtn.setTextColor(Color.BLACK);
                     taxableRadioBtn.setTextColor(Color.WHITE);
                     strTaxStatus = taxableRadioBtn.getText().toString();
-                    //Log.e("StrTaxstatus tax : ==> ", strTaxStatus);
+                    Log.e("StrTaxstatus tax : ==> ", strTaxStatus);
                     //Toast.makeText(AddPayments.this, "Tax: ==> "+strTaxStatus, Toast.LENGTH_LONG).show();
                 }
                 break;

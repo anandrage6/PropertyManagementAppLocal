@@ -28,6 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -227,9 +228,19 @@ public class UpdateTenantDetails extends AppCompatActivity implements AdapterVie
         rentIsPaidList = new ArrayList<>();
         rentIsPaidList.add(strRentispaid);
         List<String> Listrentispaid = Arrays.asList(getResources().getStringArray(R.array.Rent_is_Paid));
+       // int selectedPosit = 0;
+        for(int i=0;i< rentIsPaidList.size();i++){
+           if(strRentispaid == rentIsPaidList.get(i)){
+              // rentIsPaidList.clear();
+               //selectedPosit = Integer.parseInt(rentIsPaidList.get(i));
+           }
+        }
         rentIsPaidAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, rentIsPaidList);
         spinRentIsPaid.setAdapter(rentIsPaidAdapter);
+       // spinRentIsPaid.setSelected(selectedPosit);
         rentIsPaidAdapter.addAll(Listrentispaid);
+       // rentIsPaidAdapter.clear();
+       // rentIsPaidAdapter.addAll(Listrentispaid);
         spinRentIsPaid.setOnItemSelectedListener(this);
 
         //Total Occupants

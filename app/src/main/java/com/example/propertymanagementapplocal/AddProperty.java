@@ -136,6 +136,7 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
             public void onClick(View view) {
                 //when click on save insert data into database
                 getData();
+                /*
                 if (mInterstitialAd.isLoaded()) {
                     mInterstitialAd.show();
 
@@ -149,6 +150,8 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
 
                     });
                 }
+
+                 */
             }
 
         });
@@ -159,6 +162,7 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
             @Override
             public void onClick(View view) {
                 finish();
+                /*
                 if (mInterstitialAd.isLoaded()) {
                     mInterstitialAd.show();
 
@@ -172,6 +176,8 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
 
                     });
                 }
+
+                 */
             }
         });
 
@@ -372,6 +378,7 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
     @Override
     public void onBackPressed() {
 
+        /*
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
 
@@ -390,5 +397,8 @@ public class AddProperty extends AppCompatActivity implements AdapterView.OnItem
             super.onBackPressed();
         }
 
+         */
+
+        finish();
     }
 }

@@ -163,6 +163,7 @@ public class AddInvoices extends AppCompatActivity {
         mtenantModelClass = databaseQueryClass.getTenantById(refTenantId);
         tenantRent = mtenantModelClass.getRentAmount();
         rent.setText(tenantRent);
+        rent.setSelection(tenantRent.length());
 
         tenantName = mtenantModelClass.getTenantName();
         // getting phone number to send sms

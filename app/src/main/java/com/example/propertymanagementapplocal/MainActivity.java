@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Property Management");
 
+        /*
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -139,11 +140,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
         View hView = navigationView.getHeaderView(0);
         name = hView.findViewById(R.id.name);
         email = hView.findViewById(R.id.email);
-        name.setText("Anand");
-        email.setText("Anandkumar@gmail.com");
+        name.setText("");
+        email.setText("");
+
+         */
 
         /*
         // settings shared preferences
@@ -197,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
         viewVisibility();
     }
 
+    /*
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -204,6 +210,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+
+
 
         /*
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -226,8 +234,12 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
 
-         */
+
     }
+
+     */
+
+
 
     public void openActivityAddProperty() {
         Intent i = new Intent(this, AddProperty.class);

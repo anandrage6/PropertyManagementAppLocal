@@ -9,6 +9,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 public class TenantFullDetails extends AppCompatActivity {
 
     TextView name, email, phone, leaseStart, leaseEnd, rentIsPaid, totalOccupants, notes, rentAmount, securityDeposit, currencyId, currencyId2;
@@ -16,10 +22,21 @@ public class TenantFullDetails extends AppCompatActivity {
 
     private Toolbar toolbar;
 
+    //ads
+    private AdView mAdView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tenant_full_details);
+
+
+
+        // banner ads
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
 
 
         toolbar = findViewById(R.id.toolbar);

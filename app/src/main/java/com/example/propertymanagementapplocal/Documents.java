@@ -6,8 +6,10 @@ import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +17,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +47,7 @@ public class Documents extends Fragment {
     FloatingActionButton btnadd;
     Button nxtBtn, prvBtn;
     final int REQUEST_EXTERNAL_STORAGE = 100;
-    ImageSwitcher imageView;
+    ImageView imageView;
     private  DatabaseQueryClass databaseQueryClass;    ;
     private TenantModelClass mtenantModelClass;
     String tenantName;
@@ -52,6 +56,7 @@ public class Documents extends Fragment {
     ArrayList<Uri> imageUris;
     private static final int PICK_IMAGES_CODE = 0;
     int position = 0;
+
 
 
     public Documents() {
@@ -69,7 +74,7 @@ public class Documents extends Fragment {
 
         imageView = view.findViewById(R.id.imageSwitcher);
         btnadd = view.findViewById(R.id.addbtn);
-        nxtBtn = view.findViewById(R.id.nextBtn);
+        nxtBtn = view.findViewById(R.id.nxtBtn);
         prvBtn = view.findViewById(R.id.prvBtn);
 
         databaseQueryClass = new DatabaseQueryClass(getContext());
@@ -92,7 +97,7 @@ public class Documents extends Fragment {
         }
 
 
-
+/*
         imageView.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
             public View makeView() {
@@ -100,6 +105,8 @@ public class Documents extends Fragment {
                 return imageView1;
             }
         });
+
+ */
 
 
 
@@ -156,7 +163,7 @@ public class Documents extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == PICK_IMAGES_CODE){
-            if(resultCode == Activity.RESULT_OK){
+            if(resultCode == RESULT_OK){
                 if(data.getClipData() != null){
 
                     //picked multiple images
@@ -175,11 +182,24 @@ public class Documents extends Fragment {
                     //picked single image
 
                     Uri imageUri = data.getData();
-                    imageUris.add(imageUri);
+
+                   // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                       //String picturePath = FileUtils.getPath(getContext(), imageUri);
+                      // Uri PicUri = Uri.parse(picturePath);
+                       //imageView.setImageURI(imageUri);
+                    imageView.setImageResource(R.drawable.header);
+                       Log.e("PicUri===> ", String.valueOf(imageUri));
+                    //}
+
+
+
+                    //imageUris.add(imageUri);
                     //set image uri to image switcher
-                    imageView.setImageURI(imageUris.get(0));
+                   // imageView.setImageURI(Uri.parse(picturePath));
                     position = 0;
-                    Log.e("Single Uri =============> ", String.valueOf(imageUris.get(0)));
+                    Log.e("Single Uri =============> ", String.valueOf(imageUri));
+
+
                 }
             }
         }

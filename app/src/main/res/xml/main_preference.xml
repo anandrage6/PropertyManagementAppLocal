@@ -40,6 +40,7 @@
             android:title="Type of Currency "
             android:summary="Select Your Currency Type"
             android:entries="@array/Countrycurrencylist"
+            android:defaultValue="INR-₹"
             android:entryValues="@array/CounteryCurrencyValues"
             >
 

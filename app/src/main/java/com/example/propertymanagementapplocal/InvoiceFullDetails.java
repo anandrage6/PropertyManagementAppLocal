@@ -15,6 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 public class InvoiceFullDetails extends AppCompatActivity {
 
     TextView title, details, amount, rent, invoiceIssued, paymentdue, note, waterTv, electricityTv, maintananceTv, currencyId, currencyId2, currencyId3, currencyId4;
@@ -30,11 +33,22 @@ public class InvoiceFullDetails extends AppCompatActivity {
     private TenantModelClass mtenantModelClass;
     LinearLayout linearLayout;
 
+    //ads
+    private AdView mAdView;
+
+
+
     @SuppressLint("LongLogTag")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invoice_full_details);
+
+        // banner ads
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

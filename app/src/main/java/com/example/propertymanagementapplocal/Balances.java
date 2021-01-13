@@ -15,6 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,6 +48,8 @@ public class Balances extends Fragment {
     String totalRent;
     TenantModelClass mtenantModelClass;
 
+    //ads
+    private AdView mAdView;
     //payments part
     List<PaymentsModelClass> paymentList;
 
@@ -60,6 +65,12 @@ public class Balances extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_balances, container, false);
+
+        // banner ads
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         totalBalance = view.findViewById(R.id.totalBalanceTv);
         remainingBalance = view.findViewById(R.id.remainingBalanceTv);
         balancePaid = view.findViewById(R.id.balancePaidTv);
